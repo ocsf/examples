@@ -1,2 +1,2 @@
 # Examples
-This repo contains example of raw event examples and possible translations to the OCSF schema.
+This repo contains examples of raw events and possible translations to the OCSF schema.
