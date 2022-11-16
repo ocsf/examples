@@ -1,0 +1,77 @@
+{
+  "actor": {
+    "process": {
+      "file": {
+        "path": "C:\\Windows\\System32\\cmd.exe",
+        "parent_folder": "C:\\Windows\\System32",
+        "type_id": 1,
+        "name": "cmd.exe"
+      },
+      "pid": 3948
+    },
+    "user": {
+      "uid": "ATTACKRANGE\\Administrator",
+      "account_type": "Windows Account",
+      "domain": "ATTACKRANGE",
+      "name": "Administrator",
+      "account_type_id": 2,
+      "session_uid": "0x55E621"
+    }
+  },
+  "metadata": {
+    "uid": "4b92acf8-3f63-483e-8040-57aba851fd26",
+    "product": {
+      "feature": {
+        "name": "Security"
+      },
+      "name": "Microsoft Windows",
+      "vendor_name": "Microsoft"
+    },
+    "profiles": ["host"],
+    "original_time": "03/12/2021 10:48:14 AM",
+    "version": "0.31.2"
+  },
+  "category_uid": 1,
+  "process": {
+    "file": {
+      "path": "C:\\Windows\\System32\\reg.exe",
+      "parent_folder": "C:\\Windows\\System32",
+      "type_id": 1,
+      "name": "reg.exe"
+    },
+    "cmd_line": "reg  save HKLM\\system C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\system ",
+    "pid": 4696,
+    "user": {
+      "uid": "NULL SID",
+      "domain": "-",
+      "name": "-",
+      "session_uid": "0x0"
+    }
+  },
+  "status_id": 1,
+  "class_uid": 1007,
+  "activity_id": 1,
+  "severity_id": 1,
+  "time": 1615564094000,
+  "message": "A new process has been created.",
+  "device": {
+    "os": {
+      "type_id": 100,
+      "name": "Windows"
+    },
+    "type_id": 0,
+    "name": "win-dc-725.attackrange.local"
+  },
+  "unmapped": {
+    "TaskCategory": "Process Creation",
+    "EventType": "0",
+    "SourceName": "Microsoft Windows security auditing.",
+    "EventCode": "4688",
+    "Process Information": {
+      "Token Elevation Type": "%%1936",
+      "Mandatory Label": "Mandatory Label\\High Mandatory Level"
+    },
+    "OpCode": "Info",
+    "RecordNumber": "257874"
+  }
+}
