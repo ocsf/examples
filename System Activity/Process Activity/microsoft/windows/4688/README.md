@@ -10,6 +10,7 @@
  ### OCSF Version: 0.31.2
  - `category_uid`: `1` `(System Activity)`
  - `class_uid`: `1007` `(Process Activity)`
+ - `activity_id`: `1` `(Launch)`
  - `metadata.profiles`: `[host]`
  ### Mapping:
  
