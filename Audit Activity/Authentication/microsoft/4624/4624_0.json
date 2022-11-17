@@ -1,0 +1,99 @@
+{
+  "activity_id": 1,
+  "actor": {
+    "process": {
+      "file": {
+        "name": "services.exe",
+        "parent_folder": "C:\\Windows\\System32",
+        "path": "C:\\Windows\\System32\\services.exe",
+        "type_id": 1
+      },
+      "pid": 848
+    },
+    "user": {
+      "account_type": "Windows Account",
+      "account_type_id": 2,
+      "domain": "ATTACKRANGE",
+      "name": "WIN-DC-725$",
+      "session_uid": "0x3E7",
+      "uid": "NT AUTHORITY\\SYSTEM"
+    }
+  },
+  "auth_protocol": "Negotiate",
+  "auth_protocol_id": -1,
+  "category_uid": 3,
+  "class_uid": 3002,
+  "device": {
+    "name": "win-dc-725.attackrange.local",
+    "os": {
+      "name": "Windows",
+      "type_id": 100
+    },
+    "type_id": 0
+  },
+  "dst_endpoint": {
+    "hostname": "win-dc-725.attackrange.local"
+  },
+  "logon_process": {
+    "name": "Advapi  ",
+    "pid": -1
+  },
+  "logon_type_id": 5,
+  "message": "An account was successfully logged on.",
+  "metadata": {
+    "original_time": "03/12/2021 10:48:14 AM",
+    "product": {
+      "feature": {
+        "name": "Security"
+      },
+      "name": "Microsoft Windows",
+      "vendor_name": "Microsoft"
+    },
+    "profiles": [
+      "host"
+    ],
+    "uid": "53397835-d3fc-4781-9087-a6e7b57e7f6a",
+    "version": "0.31.2"
+  },
+  "severity_id": 1,
+  "src_endpoint": {
+    "ip": "-",
+    "name": "-",
+    "port": 0
+  },
+  "status_id": 1,
+  "time": 1615564094000,
+  "unmapped": {
+    "Detailed Authentication Information": {
+      "Key Length": "0",
+      "Package Name (NTLM only)": "-",
+      "Transited Services": "-"
+    },
+    "EventCode": "4624",
+    "EventType": "0",
+    "Impersonation Level": "Impersonation",
+    "Logon Information": {
+      "Elevated Token": "Yes",
+      "Restricted Admin Mode": "-",
+      "Virtual Account": "No"
+    },
+    "New Logon": {
+      "Linked Logon ID": "0x0",
+      "Network Account Domain": "-",
+      "Network Account Name": "-"
+    },
+    "OpCode": "Info",
+    "RecordNumber": "257879",
+    "SourceName": "Microsoft Windows security auditing.",
+    "TaskCategory": "Logon"
+  },
+  "user": {
+    "account_type": "Windows Account",
+    "account_type_id": 2,
+    "domain": "NT AUTHORITY",
+    "name": "SYSTEM",
+    "session_uid": "0x3E7",
+    "session_uuid": "{00000000-0000-0000-0000-000000000000}",
+    "uid": "NT AUTHORITY\\SYSTEM"
+  }
+}
