@@ -14,20 +14,20 @@
  - `metadata.profiles`: `[host]`
  ### Mapping:
  
-| OCSF        | Raw           |
-| ------------- |-------------|
-| `actor.process.file`       | `Process Information.Creator Process Name` |
-| `actor.process.pid`        | `Process Information.Creator Process ID`   |
+| OCSF                       | Raw                                                                                                                      |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `actor.process.file`       | `Process Information.Creator Process Name`                                                                               |
+| `actor.process.pid`        | `Process Information.Creator Process ID`                                                                                 |
 | `actor.user.domain`        | `Subject.Account Domain` *(MSFT event version 0-1)*<br>_OR_<br>`Creator Subject.Account Domain` *(MSFT event version 2)* |
-| `actor.user.name`        | `Subject.Account Name` *(MSFT event version 0-1)*<br>_OR_<br>`Creator Subject.Account Name` *(MSFT event version 2)* |
-| `actor.user.session_uid` | `Subject.Logon ID` *(MSFT event version 0-1)*<br>_OR_<br>`Creator Subject.Logon ID` *(MSFT event version 2)* |
-| `actor.user.uid` | `Subject.Security ID` *(MSFT event version 0-1)*<br>_OR_<br>`Creator Subject.Security ID` *(MSFT event version 2)* |
-| `device.name` | `ComputerName` |
-| `message` | `Message` |
-| `process.cmd_line`        | `Process Information.Process Command Line` |
-| `process.file`             | `Process Information.New Process Name`     |
-| `process.pid`              | `Process Information.New Process ID`      |
-| `process.user.domain`      | `Target Subject.Account Domain`            |
-| `process.user.name`        | `Target Subject.Account Name`              |
-| `process.user.session_uid` | `Target Subject.Logon ID`                  |
-| `process.user.uid`         | `Target Subject.Security ID`              |
+| `actor.user.name`          | `Subject.Account Name` *(MSFT event version 0-1)*<br>_OR_<br>`Creator Subject.Account Name` *(MSFT event version 2)*     |
+| `actor.user.session_uid`   | `Subject.Logon ID` *(MSFT event version 0-1)*<br>_OR_<br>`Creator Subject.Logon ID` *(MSFT event version 2)*             |
+| `actor.user.uid`           | `Subject.Security ID` *(MSFT event version 0-1)*<br>_OR_<br>`Creator Subject.Security ID` *(MSFT event version 2)*       |
+| `device.name`              | `ComputerName`                                                                                                           |
+| `message`                  | `Message`                                                                                                                |
+| `process.cmd_line`         | `Process Information.Process Command Line`                                                                               |
+| `process.file`             | `Process Information.New Process Name`                                                                                   |
+| `process.pid`              | `Process Information.New Process ID`                                                                                     |
+| `process.user.domain`      | `Target Subject.Account Domain`                                                                                          |
+| `process.user.name`        | `Target Subject.Account Name`                                                                                            |
+| `process.user.session_uid` | `Target Subject.Logon ID`                                                                                                |
+| `process.user.uid`         | `Target Subject.Security ID`                                                                                             |
