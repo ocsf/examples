@@ -1,3 +1,6 @@
+03/12/2021 10:48:14 AM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
 EventCode=4624
 EventType=0
 Type=Information
