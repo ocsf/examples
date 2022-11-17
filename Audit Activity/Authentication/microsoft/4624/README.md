@@ -24,8 +24,8 @@
 | `actor.user.uid`         | `Subject.Security ID`                                                                                       |
 | `auth_protocol`          | `Detailed Authentication Information.Authentication Package`                                                |
 | `device.name`            | `ComputerName`                                                                                              |
-| `dst_endpoint.hostname`  | `ComputerName`                                                                                              |
-| `message`                | `Message`                                                                                                   |
+| `dst_endpoint.hostname`  | `ComputerName`                                                                                              |                                                                                                  |
 | `logon_process.name`     | `Detailed Authentication Information.Logon Process`                                                         |
 | `logon_type_id`          | `Logon Type` *(MSFT event version 0-1)*<br>_OR_<br> `Logon Information.Logon Type` *(MSFT event version 2)* |
+| `message`                | `Message` 
 | `src_endpoint.name`      | `Network Information.Workstation Name`                                                                      |
