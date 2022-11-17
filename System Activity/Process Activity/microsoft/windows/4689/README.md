@@ -14,15 +14,15 @@
  - `metadata.profiles`: `[host]`
  ### Mapping:
  
-| OCSF        | Raw           |
-| ------------- |-------------|
-| `actor.process.file`       | `Process Information.Process Name` |
-| `actor.user.domain`        | `Subject.Account Domain` |
-| `actor.user.name`        | `Subject.Account Name` |
-| `actor.user.session_uid` | `Subject.Logon ID` |
-| `actor.user.uid` | `Subject.Security ID` |
-| `device.name` | `ComputerName` |
-| `message` | `Message` |
-| `process.file`             | `Process Information.Process Name`     |
-| `process.pid`              | `Process Information.Process ID`      |
-| `process.user.domain`      | `Target Subject.Account Domain`            |
+| OCSF                     | Raw                                |
+| ------------------------ | ---------------------------------- |
+| `actor.process.file`     | `Process Information.Process Name` |
+| `actor.user.domain`      | `Subject.Account Domain`           |
+| `actor.user.name`        | `Subject.Account Name`             |
+| `actor.user.session_uid` | `Subject.Logon ID`                 |
+| `actor.user.uid`         | `Subject.Security ID`              |
+| `device.name`            | `ComputerName`                     |
+| `message`                | `Message`                          |
+| `process.file`           | `Process Information.Process Name` |
+| `process.pid`            | `Process Information.Process ID`   |
+| `process.user.domain`    | `Target Subject.Account Domain`    |
