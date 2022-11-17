@@ -1,0 +1,90 @@
+{
+  "activity_id": 1,
+  "actor": {
+    "process": {
+      "file": {
+        "name": "-",
+        "path": "-",
+        "type_id": 1
+      },
+      "pid": 0
+    },
+    "user": {
+      "account_type": "Windows Account",
+      "account_type_id": 2,
+      "domain": "-",
+      "name": "-",
+      "session_uid": "0x0",
+      "uid": "NULL SID"
+    }
+  },
+  "auth_protocol": "NTLM",
+  "auth_protocol_id": 1,
+  "category_uid": 3,
+  "class_uid": 3002,
+  "device": {
+    "name": "EC2AMAZ-6KJ2BPP",
+    "os": {
+      "name": "Windows",
+      "type_id": 100
+    },
+    "type_id": 0
+  },
+  "dst_endpoint": {
+    "hostname": "EC2AMAZ-6KJ2BPP"
+  },
+  "logon_process": {
+    "name": "NtLmSsp ",
+    "pid": -1
+  },
+  "logon_type_id": 3,
+  "message": "An account failed to log on.",
+  "metadata": {
+    "original_time": "10/08/2020 12:41:47 PM",
+    "product": {
+      "feature": {
+        "name": "Security"
+      },
+      "name": "Microsoft Windows",
+      "vendor_name": "Microsoft"
+    },
+    "profiles": [
+      "host"
+    ],
+    "uid": "dd6755af-393a-4eab-8f44-0c24f5ffc590",
+    "version": "0.31.2"
+  },
+  "severity_id": 1,
+  "src_endpoint": {
+    "ip": "-",
+    "name": "EC2AMAZ-6KJ2BPP",
+    "port": 0
+  },
+  "status": "0xC000006D",
+  "status_detail": "Unknown user name or bad password.",
+  "status_id": 2,
+  "time": 1602175307000,
+  "unmapped": {
+    "Detailed Authentication Information": {
+      "Key Length": "0",
+      "Package Name (NTLM only)": "-",
+      "Transited Services": "-"
+    },
+    "EventCode": "4625",
+    "EventType": "0",
+    "Failure Information": {
+      "Sub Status": "0xC000006A"
+    },
+    "OpCode": "Info",
+    "RecordNumber": "223742",
+    "SourceName": "Microsoft Windows security auditing.",
+    "TaskCategory": "Logon"
+  },
+  "user": {
+    "account_type": "Windows Account",
+    "account_type_id": 2,
+    "domain": "EC2AMAZ-6KJ2BPP",
+    "name": "Administrator",
+    "uid": "NULL SID"
+  }
+}
