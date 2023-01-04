@@ -1,0 +1,87 @@
+{
+    "activity_id": 1,
+    "activity_name": "Generate",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "classname": "Security Finding",
+    "class_uid": 2001,
+    "finding": {
+        "created_time": 1672758699558,
+        "desc": "Linux Kernel Module injection using insmod detected (user=%user.name user_loginuid=%user.loginuid parent_process=%proc.pname module=%proc.args %container.info image=%container.image.repository:%container.image.tag)",
+        "title": "Linux Kernel Module Injection Detected",
+        "types": [
+            "syscalls"
+        ],
+        "uid": "ec834826-90c1-458a-8eec-a014e7266754"
+    },
+    "message": "Linux Kernel Module Injection Detected",
+    "metadata": {
+        "version": "0.1.0",
+        "product": {
+            "vendor_name": "Falcosecurity",
+            "name": "Falco"
+        },
+        "labels": [
+            "process"
+        ]
+    },
+    "observables": [
+        {
+            "name": "hostname",
+            "type": "Other",
+            "type_id": 0,
+            "value": "host0.local"
+        },
+        {
+            "name": "proc.pname",
+            "type": "Other",
+            "type_id": 0,
+            "value": "proc.pname"
+        },
+        {
+            "name": "container.info",
+            "type": "Other",
+            "type_id": 0,
+            "value": "container.info"
+        },
+        {
+            "name": "proc.args",
+            "type": "Other",
+            "type_id": 0,
+            "value": "proc.args"
+        },
+        {
+            "name": "user.loginuid",
+            "type": "Other",
+            "type_id": 0,
+            "value": "user.loginuid"
+        },
+        {
+            "name": "user.name",
+            "type": "Other",
+            "type_id": 0,
+            "value": "user.name"
+        },
+        {
+            "name": "container.image.repository",
+            "type": "Other",
+            "type_id": 0,
+            "value": "container.image.repository"
+        },
+        {
+            "name": "container.image.tag",
+            "type": "Other",
+            "type_id": 0,
+            "value": "container.image.tag"
+        }
+    ],
+    "raw_data": "{\"uuid\":\"ec834826-90c1-458a-8eec-a014e7266754\",\"output\":\"Linux Kernel Module injection using insmod detected (user=%user.name user_loginuid=%user.loginuid parent_process=%proc.pname module=%proc.args %container.info image=%container.image.repository:%container.image.tag)\",\"priority\":\"Warning\",\"rule\":\"Linux Kernel Module Injection Detected\",\"time\":\"2023-01-03T15:11:39.558068644Z\",\"output_fields\":{\"akey\":\"AValue\",\"bkey\":\"BValue\",\"ckey\":\"CValue\",\"container.image.repository\":\"container.image.repository\",\"container.image.tag\":\"container.image.tag\",\"container.info\":\"container.info\",\"dkey\":\"bar\",\"proc.args\":\"proc.args\",\"proc.pname\":\"proc.pname\",\"user.loginuid\":\"user.loginuid\",\"user.name\":\"user.name\"},\"source\":\"syscalls\",\"tags\":[\"process\"],\"hostname\":\"host0.local\"}",
+    "severity": "Medium",
+    "severity_id": 3,
+    "state": "New",
+    "state_id": 1,
+    "status": "Warning",
+    "time": 1672758699558,
+    "type_name": "Security Finding: Generate",
+    "type_uid": 200101
+}
