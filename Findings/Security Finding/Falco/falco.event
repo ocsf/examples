@@ -1,0 +1,21 @@
+{
+    "uuid": "ec834826-90c1-458a-8eec-a014e7266754",
+    "output": "Linux Kernel Module injection using insmod detected (user=%user.name user_loginuid=%user.loginuid parent_process=%proc.pname module=%proc.args %container.info image=%container.image.repository:%container.image.tag)",
+    "priority": "Warning",
+    "rule": "Linux Kernel Module Injection Detected",
+    "time": "2023-01-03T15:11:39.558068644Z",
+    "output_fields": {
+        "container.image.repository": "container.image.repository",
+        "container.image.tag": "container.image.tag",
+        "container.info": "container.info",
+        "proc.args": "proc.args",
+        "proc.pname": "proc.pname",
+        "user.loginuid": "user.loginuid",
+        "user.name": "user.name"
+    },
+    "source": "syscalls",
+    "tags": [
+        "process"
+    ],
+    "hostname": "host0.local"
+}
