@@ -1,0 +1,7 @@
+index=moose_data sourcetype="aws:asl" class_name = "DNS Activity"
+| fields src_endpoint.ip, rcode
+| eval nxBool = if (rcode="NXDOMAIN", 1, 0)
+| stats count as Total, sum(nxBool) as nxTotal by src_endpoint.ip
+| eval nxPerc=round(nxTotal/Total,5)
+| fields src_endpoint.ip, nxPerc
+| sort - nxPerc
