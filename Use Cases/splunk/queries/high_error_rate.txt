@@ -1,0 +1,5 @@
+index=moose_data sourcetype="aws:asl" class_name = "*API"   "api.response.error"!=null
+| fields identity.user.uid, api.response.error, api.operation
+| fillnull value=NULL
+| stats  count by identity.user.uid, api.response.error, api.operation
+| sort  -count

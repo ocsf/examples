@@ -1,0 +1,4 @@
+index=moose_data sourcetype="aws:asl" category_name = "Network Activity"
+| fields dst_endpoint.port
+| stats  count by dst_endpoint.port
+| sort  - count
