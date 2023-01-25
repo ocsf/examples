@@ -1,0 +1,4 @@
+index=moose_data sourcetype="aws:asl" class_name = "DNS Activity"
+| fields src_endpoint.ip, rcode
+| eval nxBool = if (rcode="NXDOMAIN", 1, 0) , failBool = if (rcode="SERVFAIL", 1, 0), noErrorBool = if (rcode="NOERROR", 1, 0)
+| timechart count as Total, sum(nxBool) as nxTotal, sum(failBool) as "serverFailTotal", sum(noErrorBool) as "noErrorTotal"

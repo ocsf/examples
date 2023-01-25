@@ -1,0 +1,3 @@
+index=moose_data sourcetype="aws:asl" category_name = "Network Activity"
+| fields activity_name , class_name
+| chart  count over activity_name by class_name

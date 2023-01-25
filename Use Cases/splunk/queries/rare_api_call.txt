@@ -1,0 +1,8 @@
+index=moose_data sourcetype="aws:asl" class_name = "*API" "identity.user.uid" != null
+| fields identity.user.uid, api.response.error, api.operation
+| fillnull value=NULL
+| stats count by identity.user.uid,api.response.error, api.operation
+| eventstats sum(count) AS Total by identity.user.uid
+| eval percentage=round(count / Total,5)
+| table identity.user.uid,api.response.error, api.operation, percentage, count, Total
+| sort percentage
