@@ -25,7 +25,7 @@ The original aggregated dataframe prior to filtering and percentile aggregation:
 ![This is an image](images/loginFailures.png)
 
 The resulting dataframe after filtering users with login failure rate greater than the 90th percentile:
-![This is an image](images/highLoginfailures.png)
+![This is an image](images/highLoginFailures.png)
 
 
 ### Read in Authentication event class parquet data to detect ips failing to log into a high rate of distinct users names. 
