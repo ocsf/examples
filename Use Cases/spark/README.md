@@ -1,7 +1,7 @@
 # Spark Use Cases
 
 ### Read in Authentication event class parquet data to detect users with a high rate of login failures.
-###### This could indicative of brute force login attempts.
+###### ***This could indicative of brute force login attempts.***
 ```
 import org.apache.spark.sql.types.DoubleType
 import org.apache.spark.sql.expressions.Window
@@ -38,12 +38,12 @@ val df = spark.read.parquet("pwSpray.parquet")
 val windowSpec = Window.partitionBy("`user.domain`")
 val percentileVal = 0.9
 
-val passwordSprayDf = df.
+val passwordSprayDf = df
 .filter(col("message").contains("failed"))
 .groupBy("`src_endpoint.ip`", "`user.domain`")
-.agg(countDistinct("`user.name`").as("distinctUsers"))
-.withColumn("highPerc", percentile_approx(col("distinctUsers"), lit(percentileVal), lit(10000)).over(windowSpec))
-.filter(col("distinctUsers") > col("highPerc"))
+.agg(countDistinct("`user.name`").as("numDistinctUsers"))
+.withColumn("highPerc", percentile_approx(col("numDistinctUsers"), lit(percentileVal), lit(10000)).over(windowSpec))
+.filter(col("numDistinctUsers") > col("highPerc"))
 ```
 
 The original aggregated dataframe prior to filtering and percentile aggregation:
