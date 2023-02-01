@@ -1,0 +1,67 @@
+{
+  "assigned_to": "SomeUserName",
+  "categories": [
+    "Host Login Failed",
+    "User Login Failure"
+  ],
+  "category_count": 2,
+  "credibility": 3,
+  "description": "Multiple Login Failures for the Same User containing Authentication rejected.",
+  "destination_networks": [
+    "other"
+  ],
+  "device_count": 2,
+  "domain_id": 0,
+  "event_count": 2394,
+  "first_persisted_time": 1591293146000,
+  "flow_count": 0,
+  "follow_up": false,
+  "id": 11,
+  "inactive": true,
+  "last_persisted_time": 1591295429000,
+  "last_updated_time": 1591293416129,
+  "local_destination_address_ids": [
+    15
+  ],
+  "local_destination_count": 1,
+  "log_sources": [
+    {
+      "id": 118,
+      "name": "VpnConcentrator @ 99.9.9.9",
+      "type_id": 23,
+      "type_name": "VpnConcentrator"
+    },
+    {
+      "id": 63,
+      "name": "Custom Rule Engine-8 :: ip-134-242",
+      "type_id": 18,
+      "type_name": "EventCRE"
+    }
+  ],
+  "magnitude": 2,
+  "offense_source": "99.9.9.9",
+  "offense_type": 1,
+  "policy_category_count": 0,
+  "protected": false,
+  "relevance": 0,
+  "remote_destination_count": 1,
+  "rules": [
+    {
+      "id": 100440,
+      "type": "CRE_RULE"
+    }
+  ],
+  "security_category_count": 2,
+  "severity": 4,
+  "source_address_ids": [
+    9,
+    10,
+    11,
+    12
+  ],
+  "source_count": 4,
+  "source_network": "other",
+  "start_time": 1591293145331,
+  "status": "OPEN",
+  "username_count": 4
+}

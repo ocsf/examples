@@ -1,0 +1,293 @@
+{
+  "attacks": [],
+  "finding": {
+    "uid": "11",
+    "title": "Multiple Login Failures for the Same User containing Authentication rejected.",
+    "created_time": 1591293145331,
+    "desc": "Multiple Login Failures for the Same User containing Authentication rejected.",
+    "first_seen_time": 1591293146000,
+    "last_seen_time": 1591295429000,
+    "remediation": [],
+    "types": []
+  },
+  "malware": [],
+  "resource": [],
+  "state": "In Progress",
+  "state_id": 2,
+  "vulnerabilities": [],
+  "activity_id": 1,
+  "category_uid": 2,
+  "class_uid": 2001,
+  "time": 1591293145331,
+  "message": "Multiple Login Failures for the Same User containing Authentication rejected.",
+  "metadata": {
+    "original_time": 1591293145331,
+    "product": {
+      "lang": "en",
+      "name": "QRadar SIEM",
+      "version": "7.5.0",
+      "vendor_name": "IBM"
+    },
+    "version": "7.5.0",
+    "labels": [],
+    "modified_time": 1591293416129
+  },
+  "severity_id": 3,
+  "activity_name": "Generate",
+  "category_name": "Findings",
+  "class_name": "Security Finding",
+  "end_time": 1591295429000,
+  "enrichments": [
+    {
+      "data": "[]",
+      "name": "CategoryCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "2"
+    },
+    {
+      "data": "[]",
+      "name": "DeviceCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "2"
+    },
+    {
+      "data": "[]",
+      "name": "EventCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "2394"
+    },
+    {
+      "data": "[]",
+      "name": "FlowCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "0"
+    },
+    {
+      "data": "[]",
+      "name": "PolicyCategoryCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "0"
+    },
+    {
+      "data": "[]",
+      "name": "RemoteDestinationCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "1"
+    },
+    {
+      "data": "[]",
+      "name": "LocalDestinationCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "1"
+    },
+    {
+      "data": "[]",
+      "name": "SecurityCategoryCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "2"
+    },
+    {
+      "data": "[]",
+      "name": "SourceCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "4"
+    },
+    {
+      "data": "[]",
+      "name": "UsernameCount",
+      "provider": "EP",
+      "type": "counter",
+      "value": "4"
+    },
+    {
+      "data": "[]",
+      "name": "Magnitude",
+      "provider": "EP",
+      "type": "score",
+      "value": "2"
+    },
+    {
+      "data": "[]",
+      "name": "Credibility",
+      "provider": "EP",
+      "type": "score",
+      "value": "3"
+    },
+    {
+      "data": "[]",
+      "name": "Relevance",
+      "provider": "EP",
+      "type": "score",
+      "value": "0"
+    },
+    {
+      "data": "[]",
+      "name": "Severity",
+      "provider": "EP",
+      "type": "score",
+      "value": "4"
+    },
+    {
+      "data": "[]",
+      "name": "OffenseType",
+      "provider": "EP",
+      "type": "correlation",
+      "value": "1"
+    },
+    {
+      "data": "[]",
+      "name": "OffenseSource",
+      "provider": "EP",
+      "type": "correlation",
+      "value": "99.9.9.9"
+    },
+    {
+      "data": "[]",
+      "name": "DomainID",
+      "provider": "EP",
+      "type": "correlation",
+      "value": "0"
+    },
+    {
+      "data": "[]",
+      "name": "Severity",
+      "provider": "EP",
+      "type": "correlation",
+      "value": "4"
+    },
+    {
+      "data": "{\n  \"id\": 100440,\n  \"type\": \"CRE_RULE\"\n}",
+      "name": "Rule",
+      "provider": "EP",
+      "type": "correlation",
+      "value": "100440"
+    }
+  ],
+  "observables": [
+    {
+      "name": "AssignedTo",
+      "type": "User",
+      "type_id": 21,
+      "value": "SomeUserName"
+    },
+    {
+      "name": "Category",
+      "type": "Other",
+      "type_id": 99,
+      "value": "Host Login Failed"
+    },
+    {
+      "name": "Category",
+      "type": "Other",
+      "type_id": 99,
+      "value": "User Login Failure"
+    },
+    {
+      "name": "SourceNetwork",
+      "type": "Other",
+      "type_id": 99,
+      "value": "other"
+    },
+    {
+      "name": "DestinationNetwork",
+      "type": "Other",
+      "type_id": 99,
+      "value": "other"
+    },
+    {
+      "name": "LogSourceId",
+      "type": "Other",
+      "type_id": 99,
+      "value": "118"
+    },
+    {
+      "name": "LogSourceName",
+      "type": "Other",
+      "type_id": 99,
+      "value": "VpnConcentrator @ 99.9.9.9"
+    },
+    {
+      "name": "LogSourceTypeId",
+      "type": "Other",
+      "type_id": 99,
+      "value": "23"
+    },
+    {
+      "name": "LogSourceTypeName",
+      "type": "Other",
+      "type_id": 99,
+      "value": "VpnConcentrator"
+    },
+    {
+      "name": "LogSourceId",
+      "type": "Other",
+      "type_id": 99,
+      "value": "63"
+    },
+    {
+      "name": "LogSourceName",
+      "type": "Other",
+      "type_id": 99,
+      "value": "Custom Rule Engine-8 :: ip-134-242"
+    },
+    {
+      "name": "LogSourceTypeId",
+      "type": "Other",
+      "type_id": 99,
+      "value": "18"
+    },
+    {
+      "name": "LogSourceTypeName",
+      "type": "Other",
+      "type_id": 99,
+      "value": "EventCRE"
+    },
+    {
+      "name": "DomainId",
+      "type": "Other",
+      "type_id": 99,
+      "value": "0"
+    },
+    {
+      "name": "SourceAddress",
+      "type": "IP Address",
+      "type_id": 2,
+      "value": "0.0.0.9"
+    },
+    {
+      "name": "SourceAddress",
+      "type": "IP Address",
+      "type_id": 2,
+      "value": "0.0.0.10"
+    },
+    {
+      "name": "SourceAddress",
+      "type": "IP Address",
+      "type_id": 2,
+      "value": "0.0.0.11"
+    },
+    {
+      "name": "SourceAddress",
+      "type": "IP Address",
+      "type_id": 2,
+      "value": "0.0.0.12"
+    },
+    {
+      "name": "LocalDestinationAddress",
+      "type": "IP Address",
+      "type_id": 2,
+      "value": "0.0.0.15"
+    }
+  ],
+  "severity": "MEDIUM",
+  "status_code": "OPEN"
+}
