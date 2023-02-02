@@ -1,51 +1,55 @@
 {
-    "time": 1649721732000,
-    "activity_name": "Refused",
     "activity_id": 5,
+    "activity_name": "Refuse",
     "category_name": "Network Activity",
     "category_uid": 4,
     "class_name": "Network Activity",
     "class_uid": 4001,
-    "connection_info": {
-        "direction": "ingress",
-        "direction_id": 0,
-        "protocol_num": 6,
-        "protocol_ver": "IPv4",
-        "tcp_flags": 2,
-        "boundary": "Unknown",
-        "boundary_id": 0
-    },
-    "dst_endpoint": {
-        "instance_uid": "i-000000000000000000",
-        "interface_uid": "eni-0000000000000000",
-        "intermediate_ips": null,
-        "ip": "172.31.2.52",
-        "port": 39938,
-        "subnet_uid": "subnet-0ae9ec091a01c6915",
-        "svc_name": "-",
-        "vpc_uid": "vpc-00000000"
-    },
-    "end_time": 1649721788000,
-    "metadata": {
-        "product": {
-            "name": "Amazon VPC",
-            "vendor_name": "AWS",
-            "version": "5",
-            "feature": {
-                "name": "Flowlogs"
-            }
-        },
-        "version": "0.32.0",
-        "profiles": ["cloud"]
-    },
     "cloud": {
         "account_uid": "123456789012",
         "provider": "AWS",
         "region": "us-east-1",
         "zone": "use1-az1"
     },
-    "severity": "Other",
-    "severity_id": -1,
+    "connection_info": {
+        "boundary": "Other",
+        "boundary_id": 99,
+        "direction": "Inbound",
+        "direction_id": 1,
+        "protocol_num": 6,
+        "protocol_ver": "IPv4",
+        "tcp_flags": 2
+    },
+    "disposition": "Blocked",
+    "disposition_id": 2,
+    "dst_endpoint": {
+        "instance_uid": "i-000000000000000000",
+        "interface_uid": "eni-000000000000000000",
+        "intermediate_ips": null,
+        "ip": "172.31.2.52",
+        "port": 39938,
+        "subnet_uid": "subnet-000000000000000000",
+        "svc_name": "-",
+        "vpc_uid": "vpc-00000000"
+    },
+    "end_time": 1649721788000,
+    "metadata": {
+        "product": {
+            "feature": {
+                "name": "Flowlogs"
+            },
+            "name": "Amazon VPC",
+            "vendor_name": "AWS",
+            "version": "5"
+        },
+        "profiles": [
+            "cloud",
+            "security_control"
+        ],
+        "version": "0.99.2"
+    },
+    "severity": "Informational",
+    "severity_id": 1,
     "src_endpoint": {
         "instance_uid": null,
         "interface_uid": null,
@@ -57,20 +61,22 @@
         "vpc_uid": null
     },
     "start_time": 1649721732000,
+    "status_code": "OK",
+    "time": 1649721732000,
     "traffic": {
         "bytes": 40,
         "packets": 1
     },
-    "type_name": "Network Activity: Refused",
-    "type_uid": 400106,
+    "type_name": "Network Activity: Refuse",
+    "type_uid": 400105,
     "unmapped": [
-        [
-            "log_status",
-            "OK"
-        ],
         [
             "sublocation_id",
             "-"
+        ],
+        [
+            "flow_direction",
+            "ingress"
         ],
         [
             "sublocation_type",
