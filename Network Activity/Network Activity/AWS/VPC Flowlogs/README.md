@@ -4,16 +4,16 @@
 - **Event References**:
   - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 
- ### OCSF Version: 0.33.0
+ ### OCSF Version: 0.99.0
  - `category_uid`: `4` `(Network Activity)`
  - `class_uid`: `4001` `(Network Activity)`
- - `activity_id`: `5` `(Refused)`
- - `metadata.profiles`: `[cloud]`
+ - `activity_id`: `5` `(Refuse)`
+ - `metadata.profiles`: `[cloud, security_control]`
  - `metadata.product.name`: `Amazon VPC`
  - `metadata.product.feature.name`: `Flowlogs`
  - `metadata.product.vendor_name`: `AWS`
- - `severity`: `Other`
- - `severity_id`: `-1`
+ - `severity`: `Informational`
+ - `severity_id`: `1`
 
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
@@ -37,13 +37,17 @@
 |`src_endpoint.svc_name`|`pkt_src_aws_service`|
 |`dst_endpoint.svc_name`|`pkt_dst_aws_service`|
 |`connection_info.direction`|`flow_direction`|
-|`unmapped.log_status`|`log_status`|
+|`connection_info.direction_id`|`flow_direction`|
 |`unmapped.sublocation_type`|`sublocation_type`|
 |`unmapped.sublocation_id`|`sublocation_id`|
+|`unmapped.sublocation_id`|`flow_direction`|
 |`activity_name`|`action`|
 |`activity_id`|`action`|
 |`type_uid`|`action`|
 |`type_name`|`action`|
+|`disposition`|`action`|
+|`disposition_id`|`action`|
+|`status_code`|`log_status`|
 |`connection_info.boundary_id`|`traffic_path`|
 |`connection_info.boundary`|`traffic_path`|
 |`connection_info.direction_id`|`flow_direction`|
@@ -52,10 +56,10 @@
 |`src_endpoint.intermediate_ips`|`pkt_srcaddr` or `srcaddr`|
 |`src_endpoint.ip`|`pkt_srcaddr` or `srcaddr`|
 |`dst_endpoint.interface_uid`|`interface_id`|
-|`dst_endpoint.vpc_uid`|`interface_id`|
-|`dst_endpoint.instance_uid`|`interface_id`|
-|`dst_endpoint.subnet_uid`|`interface_id`|
+|`dst_endpoint.vpc_uid`|`vpc_id`|
+|`dst_endpoint.instance_uid`|`instance_id`|
+|`dst_endpoint.subnet_uid`|`subnet_id`|
 |`src_endpoint.interface_uid`|`interface_id`|
-|`src_endpoint.vpc_uid`|`interface_id`|
-|`src_endpoint.instance_uid`|`interface_id`|
-|`src_endpoint.subnet_uid`|`interface_id`|
+|`src_endpoint.vpc_uid`|`vpc_id`|
+|`src_endpoint.instance_uid`|`instance_id`|
+|`src_endpoint.subnet_uid`|`subnet_id`|
