@@ -46,7 +46,7 @@
             "cloud",
             "security_control"
         ],
-        "version": "0.99.0"
+        "version": "0.99.2"
     },
     "severity": "Informational",
     "severity_id": 1,

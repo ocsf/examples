@@ -4,7 +4,7 @@
 - **Event References**:
   - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-query-logs.html
 
- ### OCSF Version: 0.99.0
+ ### OCSF Version: 0.99.2
  - `category_uid`: `4`
  - `category_name`: `Network Activity`
  - `class_uid`: `4003`
