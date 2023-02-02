@@ -5,9 +5,11 @@
   - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 
  ### OCSF Version: 0.99.0
- - `category_uid`: `4` `(Network Activity)`
- - `class_uid`: `4001` `(Network Activity)`
- - `activity_id`: `5` `(Refuse)`
+ - `category_uid`: `4`
+ - `category_name`: `Network Activity`
+ - `class_uid`: `4001`
+ - `class_name`: `Network Activity`
+ - `cloud.provider`: `AWS`
  - `metadata.profiles`: `[cloud, security_control]`
  - `metadata.product.name`: `Amazon VPC`
  - `metadata.product.feature.name`: `Flowlogs`
