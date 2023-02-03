@@ -1,1 +1,0 @@
-# Container Lifecycle Activity Examples

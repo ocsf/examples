@@ -1,1 +1,0 @@
-# Cloud Storage Activity Examples
