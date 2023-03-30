@@ -1,0 +1,85 @@
+{
+  "activity_id": 1,
+  "activity_name": "Access",
+  "actor": {
+    "process": {
+      "file": {
+        "name": "services.exe",
+        "parent_folder": "C:\\Windows\\System32",
+        "path": "C:\\Windows\\System32\\services.exe",
+        "type": "Regular File",
+        "type_id": 1
+      },
+      "pid": 532
+    },
+    "session": {
+      "uid": "0x3e7"
+    },
+    "user": {
+      "account_type": "Windows Account",
+      "account_type_id": 2,
+      "domain": "SOI",
+      "name": "SZUSOIDC1$",
+      "uid": "NT AUTHORITY\\SYSTEM"
+    }
+  },
+  "category_name": "System Activity",
+  "category_uid": 1,
+  "class_name": "Windows Resource Activity",
+  "class_uid": 1010,
+  "device": {
+    "hostname": "szusoidc1.soi.dir.acme080.com",
+    "os": {
+      "name": "Windows",
+      "type": "Windows",
+      "type_id": 100
+    },
+    "type": "Unknown",
+    "type_id": 0
+  },
+  "message": "An attempt was made to access an object.",
+  "metadata": {
+    "original_time": "01/14/2015 08:30:54 PM",
+    "product": {
+      "feature": {
+        "name": "Security"
+      },
+      "name": "Microsoft Windows",
+      "vendor_name": "Microsoft"
+    },
+    "profiles": [
+      "host"
+    ],
+    "uid": "05e90f2c-5be6-484c-aefb-f8e6f591bd2c",
+    "version": "1.0.0-rc.2"
+  },
+  "severity": "Informational",
+  "severity_id": 1,
+  "status": "Success",
+  "status_id": 1,
+  "time": 1421285454000,
+  "type_name": "Windows Resource Activity: Access",
+  "type_uid": 101001,
+  "unmapped": {
+    "Access Mask": "0x2",
+    "Access Request Information": {
+      "Accesses": "Set key value"
+    },
+    "CaseID": "AD_4663",
+    "EventCode": "4663",
+    "EventType": "0",
+    "Object": {
+      "Object Server": "Security"
+    },
+    "OpCode": "Info",
+    "RecordNumber": "989202992",
+    "SourceName": "Microsoft Windows security auditing.",
+    "TaskCategory": "Registry"
+  },
+  "win_resource": {
+    "name": "\\REGISTRY\\MACHINE\\SYSTEM\\ControlSet001\\Services\\EventLog\\Security",
+    "type": "Key",
+    "type_id": 25,
+    "uid": "0x564"
+  }
+}

@@ -1,0 +1,30 @@
+01/14/2015 08:30:54 PM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
+EventCode=4663
+EventType=0
+Type=Information
+ComputerName=szusoidc1.soi.dir.acme080.com
+TaskCategory=Registry
+OpCode=Info
+RecordNumber=989202992
+CaseID=AD_4663
+Keywords=Audit Success
+Message=An attempt was made to access an object.
+Subject:
+    Security ID:        NT AUTHORITY\SYSTEM
+    Account Name:       SZUSOIDC1$
+    Account Domain:     SOI
+    Logon ID:       0x3e7
+Object:
+    Object Server:  Security
+    Object Type:    Key
+    Object Name:    \REGISTRY\MACHINE\SYSTEM\ControlSet001\Services\EventLog\Security
+    Handle ID:  0x564
+Process Information:
+    Process ID: 0x214
+    Process Name:   C:\Windows\System32\services.exe
+Access Request Information:
+    Accesses:   Set key value
+
+    Access Mask:    0x2
