@@ -1,0 +1,77 @@
+01/09/2019 12:46:00 AM
+LogName=Security
+SourceName=Microsoft Windows security auditing.
+EventCode=4661
+EventType=0
+Type=Information
+ComputerName=STLDIRDC1.dir.solutia.com
+TaskCategory=SAM
+OpCode=Info
+RecordNumber=3166250565
+Keywords=Audit Success
+Message=A handle to an object was requested.
+Subject :
+	Security ID:		NT AUTHORITY\SYSTEM
+	Account Name:		STLDIRDC1$
+	Account Domain:		DIR
+	Logon ID:		0x3e7
+Object:
+	Object Server:	Security Account Manager
+	Object Type:	SAM_DOMAIN
+	Object Name:	DC=dir,DC=solutia,DC=com
+	Handle ID:	0x7f79620
+Process Information:
+	Process ID:	0x1ec
+	Process Name:	C:\Windows\System32\lsass.exe
+Access Request Information:
+	Transaction ID:	{00000000-0000-0000-0000-000000000000}
+	Accesses:	DELETE
+				READ_CONTROL
+				WRITE_DAC
+				WRITE_OWNER
+				ReadPasswordParameters
+				WritePasswordParameters
+				ReadOtherParameters
+				WriteOtherParameters
+				CreateUser
+				CreateGlobalGroup
+				CreateLocalGroup
+				GetLocalGroupMembership
+				ListAccounts
+
+	Access Mask:	0x2d
+	Privileges Used for Access Check:	ǿ\x0F-
+	Properties:	---
+	domain
+DELETE
+READ_CONTROL
+WRITE_DAC
+WRITE_OWNER
+ReadPasswordParameters
+WritePasswordParameters
+ReadOtherParameters
+WriteOtherParameters
+CreateUser
+CreateGlobalGroup
+CreateLocalGroup
+GetLocalGroupMembership
+ListAccounts
+		Domain Password & Lockout Policies
+			lockOutObservationWindow
+			lockoutDuration
+			lockoutThreshold
+			maxPwdAge
+			minPwdAge
+			minPwdLength
+			pwdHistoryLength
+			pwdProperties
+		Other Domain Parameters (for use by SAM)
+			serverState
+			serverRole
+			modifiedCount
+			uASCompat
+			forceLogoff
+			domainReplica
+			oEMInformation
+		Domain Administer Server
+	Restricted SID Count:	0
