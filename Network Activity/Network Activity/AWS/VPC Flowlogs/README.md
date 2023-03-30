@@ -5,12 +5,12 @@
   - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 
  ### OCSF Version: 1.0.0-rc2
- - `category_uid`: `3`
- - `category_name`: `Audit Activity`
- - `class_uid`: `3001`
- - `class_name`: `Account Change`
+ - `category_uid`: `4`
+ - `category_name`: `Network Activity`
+ - `class_uid`: `4001`
+ - `class_name`: `Network Activity`
  - `cloud.provider`: `AWS`
- - `metadata.profiles`: `[cloud]`
+ - `metadata.profiles`: `[cloud, security_control]`
  - `metadata.product.name`: `Amazon VPC`
  - `metadata.product.feature.name`: `Flowlogs`
  - `metadata.product.vendor_name`: `AWS`
