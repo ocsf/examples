@@ -1,21 +1,17 @@
-# Event Dossier: Amazon Route53 Resolver Query Log
+# Event Dossier: Amazon Security Hub Findings Log
 ### NOERROR Query Results
-- **Description**: Translates a Route53 Resolver query log to OCSF. 
-- **Event References**:
-  - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-query-logs.html
+- **Description**: Translates a Amazon Security Hub Finding log to OCSF. 
 
  ### OCSF Version: 1.0.0-rc.2
- - `category_uid`: `4`
- - `category_name`: `Network Activity`
- - `class_uid`: `4003`
- - `class_name`: `DNS Activity`
+ - `category_uid`: `2`
+ - `category_name`: `Findings`
+ - `class_uid`: `2001`
+ - `class_name`: `Security Finding`
  - `cloud.provider`: `AWS`
- - `metadata.profiles`: `[cloud, security_control]`
- - `metadata.product.name`: `Route 53`
- - `metadata.product.feature.name`: `Query Logs`
+ - `metadata.profiles`: `[cloud]`
+ - `metadata.product.name`: `Security Hub`
+ - `metadata.product.feature.name`: `Security Hub`
  - `metadata.product.vendor_name`: `AWS`
- - `connection_info.direction`: `Unkown`
- - `connection_info.direction_id`: `0`
  - `severity`: `Informational`
  - `severity_id`: `1`
 
@@ -24,30 +20,18 @@
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
-|`metadata.product.version` | `version`       |
-|`cloud.account_uid`|`account_id`|
-|`cloud.region`|`region`|
-|`disposition_id`|`firewall_rule_action`|
-|`disposition`|`firewall_rule_action`|
-|`src_endpoint.vpc_uid`|`vpc_id`|
-|`time`|`query_timestamp`|
-|`query.hostname`|`query_name`|
-|`query.type`|`query_type`|
-|`query.class`|`query_class`|
-|`rcode`|`rcode`|
-|`rcode_id`|`rcode`|
-|`activity_name`|`rcode`|
-|`activity_id`|`rcode`|
-|`type_uid`|`rcode`|
-|`type_name`|`rcode`|
-|`answers[].type`|`answers[].Type`|
-|`answers[].rdata`|`answers[].Rdata`|
-|`answers[].class`|`answers[].Class`|
-|`src_endpoint.ip`|`srcaddr`|
-|`src_endpoint.port`|`srcport`|
-|`connection_info.protocol_name`|`transport`|
-|`src_endpoint.instance_uid`|`srcids.instance`|
-|`dst_endpoint.instance_uid`|`srcids.resolver_endpoint`|
-|`dst_endpoint.interface_uid`|`srcids.resolver_network_interface`|
-|`unmapped.firewall_rule_group_id`|`firewall_rule_group_id`|
-|`unmapped.firewall_domain_list_id`|`firewall_domain_list_id`|
+|`metadata.product.version` | `Schemaversion`       |
+|`finding.uid`|`Id`|
+|`metadata.product.uid`|`ProductArn`|
+|`metadata.product.product.name`|`ProductName`|
+|`metadata.product.product.feature.name`|`ProductName`|
+|`metadata.product.vendor_name`|`CompanyName`|
+|`cloud.region`|`Region`|
+|`metadata.product.feature.uid`|`GeneratorId`|
+|`cloud.account_uid`|`AwsAccountId`|
+|`finding.types[]`|`Types[]`|
+|`finding.first_seen_time`|`FirstObservedAt`|
+|`finding.last_seen_time`|`LastObservedAt`|
+|`finding.create_time`|`CreatedAt`|
+|`finding.modified_time`|`UpdatedAt`|
+|`-`|`-`|
