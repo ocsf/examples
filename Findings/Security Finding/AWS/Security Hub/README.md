@@ -129,4 +129,8 @@
 |`vulnerabilities[].related_vulnerabilities[]`|`Vulnerabilities[].RelatedVulnerabilities[]`|
 |`vulnerabilities[].vendor_name`|`Vulnerabilities[].Vendor.Name`|
 |`vulnerabilities[].Vendor.kb_articles[]`|`Vulnerabilities[].Vendor.Url`|
-
+|`vulnerabilities[].packages[].architecture`|`Vulnerabilities[].VulnerablePackages[].Architecture`|
+|`vulnerabilities[].packages[].epoch`|`Vulnerabilities[].VulnerablePackages[].Epoch`|
+|`vulnerabilities[].packages[].name`|`Vulnerabilities[].VulnerablePackages[].Name`|
+|`vulnerabilities[].packages[].release`|`Vulnerabilities[].VulnerablePackages[].Release`|
+|`vulnerabilities[].packages[].version`|`Vulnerabilities[].VulnerablePackages[].Version`|
