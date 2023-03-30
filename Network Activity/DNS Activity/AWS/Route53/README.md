@@ -14,6 +14,8 @@
  - `metadata.product.name`: `Route 53`
  - `metadata.product.feature.name`: `Query Logs`
  - `metadata.product.vendor_name`: `AWS`
+ - `connection_info.direction`: `Unkown`
+ - `connection_info.direction_id`: `0`
  - `severity`: `Informational`
  - `severity_id`: `1`
 
@@ -49,5 +51,3 @@
 |`dst_endpoint.interface_uid`|`srcids.resolver_network_interface`|
 |`unmapped.firewall_rule_group_id`|`firewall_rule_group_id`|
 |`unmapped.firewall_domain_list_id`|`firewall_domain_list_id`|
-|`connection_info.direction`|`None`|
-|`connection_info.direction_id`|`None`|
