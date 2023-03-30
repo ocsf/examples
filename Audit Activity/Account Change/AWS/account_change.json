@@ -1,0 +1,84 @@
+{
+	"metadata": {
+		"product": {
+			"version": "1.08",
+			"name": "CloudTrail",
+			"vendor_name": "AWS",
+			"feature": {
+				"name": "Management"
+			}
+		},
+		"uid": "7b414d15-cb9b-4bfa-88dd-68b42f1d60e8",
+		"profiles": [
+			"cloud"
+		],
+		"version": "1.0.0-rc.2"
+	},
+	"time": 1675384114000,
+	"cloud": {
+		"region": "us-east-1",
+		"provider": "AWS"
+	},
+	"api": {
+		"response": {},
+		"operation": "CreateRole",
+		"request": {
+			"uid": "ab1441af-76c1-4476-9f52-30d070ac4eba"
+		},
+		"service": {
+			"name": "iam.amazonaws.com"
+		}
+	},
+	"actor": {
+		"user": {
+			"type": "AssumedRole",
+			"uid": "AROAIOJRFK4IOK6BW5ISY:Admin-user",
+			"uuid": "arn:aws:sts::112233445566:assumed-role/Admin/Admin-user",
+			"account_uid": "112233445566",
+			"credential_uid": "ASIAXTKM3VWIT242TLUS"
+		},
+		"session": {
+			"created_time": 1675383887000,
+			"mfa": false,
+			"issuer": "arn:aws:iam::112233445566:role/Admin"
+		},
+		"invoked_by": "cloudformation.amazonaws.com",
+		"idp": {}
+	},
+	"http_request": {
+		"user_agent": "AWS Internal"
+	},
+	"src_endpoint": {
+		"domain": "cloudformation.amazonaws.com"
+	},
+	"class_name": "",
+	"class_uid": ,
+	"category_name": "",
+	"category_uid": 3,
+	"severity_id": 1,
+	"severity": "Informational",
+	"status_id": 1,
+	"status": "Success",
+	"user": {
+		"name": "User-Role-Name",
+		"uid": "AROAXTKM3VWIVSRGSFG7J"
+	},
+	"activity_name": "Create",
+	"activity_id": 1,
+	"type_uid": 300101,
+	"type_name": "Account Change: Create",
+	"unmapped": {
+		"sessionCredentialFromConsole": "true",
+		"responseElements": "{\"role\":{\"path\":\"/\",\"roleName\":\"User-Role-Name\",\"roleId\":\"AROAXTKM3VWIVSRGSFG7J\",\"arn\":\"arn:aws:iam::112233445566:role/User-Role-Name\",\"createDate\":\"Feb 3, 2023 12:28:34 AM\",\"assumeRolePolicyDocument\":\"%7B%22Statement%22%3A%5B%7B%22Action%22%3A%5B%22sts%3AAssumeRole%22%5D%2C%22Effect%22%3A%22Allow%22%2C%22Principal%22%3A%7B%22Service%22%3A%5B%22ec2.amazonaws.com%22%5D%7D%7D%5D%7D\"}}",
+		"userIdentity_sessionContext_sessionIssuer_type": "Role",
+		"userIdentity_sessionContext_sessionIssuer_accountId": "112233445566",
+		"requestParameters": "{\"path\":\"/\",\"roleName\":\"User-Role-Name\",\"assumeRolePolicyDocument\":\"{\\\"Statement\\\":[{\\\"Action\\\":[\\\"sts:AssumeRole\\\"],\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"Service\\\":[\\\"ec2.amazonaws.com\\\"]}}]}\",\"description\":\"\"}",
+		"recipientAccountId": "112233445566",
+		"readOnly": "false",
+		"userIdentity_sessionContext_sessionIssuer_principalId": "AROAIOJRFK4IOK6BW5ISY",
+		"eventType": "AwsApiCall",
+		"managementEvent": "true",
+		"userIdentity_sessionContext_sessionIssuer_arn": "arn:aws:iam::112233445566:role/Admin",
+		"userIdentity_sessionContext_sessionIssuer_userName": "Admin"
+	}
+}

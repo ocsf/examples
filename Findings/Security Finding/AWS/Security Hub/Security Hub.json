@@ -1,0 +1,164 @@
+{
+	"metadata": {
+		"product": {
+			"version": "2018-10-08",
+			"feature": {
+				"uid": "aws-foundational-security-best-practices/v/1.0.0/EC2.19",
+				"name": "Security Hub"
+			},
+			"uid": "arn:aws:securityhub:us-east-1::product/aws/securityhub",
+			"vendor_name": "AWS",
+			"name": "Security Hub"
+		},
+		"profiles": [
+			"cloud"
+		],
+		"version": "1.0.0-rc.2"
+	},
+	"time": 1659636559100,
+	"cloud": {
+		"account_uid": "123456789100",
+		"region": "us-east-1",
+		"provider": "AWS"
+	},
+	"resources": [
+		{
+			"type": "AwsEc2SecurityGroup",
+			"uid": "arn:aws:ec2:us-east-1:123456789100:security-group/sg-1234567899900",
+			"cloud_partition": "aws",
+			"region": "us-east-1",
+			"labels": [
+				"billingCode=abcd-1-2-3",
+				"needsPatching=true"
+			],
+			"details": "{\"AwsEc2SecurityGroup\":{\"GroupName\":\"eks-cluster-sg\",\"GroupId\":\"sg-1234567899900\",\"OwnerId\":\"123456789100\",\"VpcId\":\"vpc-1234567890\",\"IpPermissions\":[{\"IpProtocol\":\"-1\",\"UserIdGroupPairs\":[{\"GroupId\":\"sg-1234567899900\",\"UserId\":\"123456789100\"},{\"GroupId\":\"sg-1234567891100\",\"UserId\":\"123456789100\"}]}],\"IpPermissionsEgress\":[{\"IpProtocol\":\"-1\",\"IpRanges\":[{\"CidrIp\":\"0.0.0.0/0\"}]}]}}"
+		}
+	],
+	"finding": {
+		"created_time": 1635449619417,
+		"uid": "arn:aws:securityhub:us-east-1:123456789100:subscription/cis-aws-foundations-benchmark/v/1.2.0/3.9/finding/randomsample",
+		"desc": "This control checks whether unrestricted incoming traffic for the security groups is accessible to the specified ports [3389, 20, 23, 110, 143, 3306, 8080, 1433, 9200, 9300, 25, 445, 135, 21, 1434, 4333, 5432, 5500, 5601, 22, 3000, 5000, 8088, 8888] that have the highest risk. This control passes when none of the rules in a security group allow ingress traffic from 0.0.0.0/0 for the listed ports.",
+		"title": "EC2.19 Security groups should not allow unrestricted access to ports with high risk",
+		"modified_time": 1659636559100,
+		"first_seen_time": 1635449619417,
+		"last_seen_time": 1659636565316,
+		"related_events": [
+			{
+				"product_uid": "arn:aws:securityhub:us-east-1::product/aws/guardduty",
+				"uid": "123e4567-e89b-12d3-a456-426655440000"
+			},
+			{
+				"product_uid": "arn:aws:securityhub:us-east-1::product/aws/guardduty",
+				"uid": "123e4567-e89b-12d3-a456-426655411111"
+			}
+		],
+		"types": [
+			"Software and Configuration Checks/Industry and Regulatory Standards/AWS-Foundational-Security-Best-Practices"
+		],
+		"remediation": {
+			"desc": "For directions on how to fix this issue, consult the AWS Security Hub Foundational Security Best Practices documentation.",
+			"kb_articles": [
+				"https://docs.aws.amazon.com/console/securityhub/EC2.19/remediation"
+			]
+		}
+	},
+	"compliance": {
+		"status": "PASSED",
+		"requirements": [
+			"PCI1.2"
+		],
+		"status_detail": "CloudWatch alarms do not exist in the account"
+	},
+	"malware": [
+		{
+			"name": "Stringler",
+			"path": "/usr/sbin/stringler",
+			"classification_ids": [
+				1
+			],
+			"classifications": [
+				"Adware"
+			]
+		}
+	],
+	"process": {
+		"name": "syslogd",
+		"pid": 12345,
+		"file": {
+			"path": "/usr/sbin/syslogd",
+			"type_id": 0,
+			"name": "''"
+		},
+		"parent_process": {
+			"pid": 56789
+		},
+		"created_time": 1632782251000,
+		"terminated_time": 1632785851000
+	},
+	"vulnerabilities": [
+		{
+			"cve": {
+				"cvss": {
+					"base_score": 4.6999998093,
+					"vector_string": "AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+					"version": "V3"
+				},
+				"uid": "CVE-2020-12345",
+				"created_time": 1579132903000,
+				"modified_time": 1579132903000
+			},
+			"references": [
+				"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-12418"
+			],
+			"related_vulnerabilities": [
+				"CVE-2021-12345"
+			],
+			"vendor_name": "Alas",
+			"kb_articles": [
+				"https://alas.aws.amazon.com/ALAS-2020-1337.html"
+			],
+			"packages": [
+				{
+					"architecture": "x86_64",
+					"name": "openssl",
+					"epoch": 1,
+					"release": "16.amzn2.0.3",
+					"version": "1.0.2k"
+				},
+				{
+					"architecture": "x86_64",
+					"name": "yaml",
+					"epoch": 3,
+					"release": "16.amzn2.0.3",
+					"version": "4.3.2"
+				}
+			]
+		}
+	],
+	"class_name": "Security Finding",
+	"class_uid": 2001,
+	"category_name": "Findings",
+	"category_uid": 2,
+	"severity_id": 1,
+	"severity": "Informational",
+	"activity_name": "Update",
+	"activity_id": 2,
+	"type_uid": 200102,
+	"type_name": "Security Finding: Update",
+	"state_id": 3,
+	"state": "Suppressed",
+	"unmapped": {
+		"Severity_Normalized": "0",
+		"Compliance_SecurityControlId": "[\"ABCDEFxyz\"]",
+		"Severity_Original": "INFORMATIONAL",
+		"CompanyName": "AWS",
+		"FindingProviderFields": "{\"Severity\":{\"Label\":\"INFORMATIONAL\",\"Original\":\"INFORMATIONAL\"},\"Types\":[\"Software and Configuration Checks/Industry and Regulatory Standards/AWS-Foundational-Security-Best-Practices\"]}",
+		"RecordState": "ARCHIVED",
+		"ProductFields": "{\"StandardsArn\":\"arn:aws:securityhub:::standards/aws-foundational-security-best-practices/v/1.0.0\",\"StandardsSubscriptionArn\":\"arn:aws:securityhub:us-east-1:123456789100:subscription/aws-foundational-security-best-practices/v/1.0.0\",\"ControlId\":\"EC2.19\",\"RecommendationUrl\":\"https://docs.aws.amazon.com/console/securityhub/EC2.19/remediation\",\"RelatedAWSResources:0/name\":\"securityhub-vpc-sg-restricted-common-ports-2af29baf\",\"RelatedAWSResources:0/type\":\"AWS::Config::ConfigRule\",\"StandardsControlArn\":\"arn:aws:securityhub:us-east-1:123456789100:control/aws-foundational-security-best-practices/v/1.0.0/EC2.19\",\"aws/securityhub/ProductName\":\"Security Hub\",\"aws/securityhub/CompanyName\":\"AWS\",\"Resources:0/Id\":\"arn:aws:ec2:us-east-1:123456789100:security-group/sg-1234567899900\",\"aws/securityhub/FindingId\":\"arn:aws:securityhub:us-east-1:123456789100:subscription/cis-aws-foundations-benchmark/v/1.2.0/3.9/finding/randomsample\"}",
+		"Severity_Product": "0",
+		"Malware": "[{\"Name\":\"Stringler\",\"Type\":\"ADWARE\",\"Path\":\"/usr/sbin/stringler\",\"State\":\"OBSERVED\"}]",
+		"Vulnerabilities": "[{\"Cvss\":[{\"BaseScore\":4.7e0,\"BaseVector\":\"AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N\",\"Version\":\"V3\"},{\"BaseScore\":4.4e0,\"BaseVector\":\"AV:L/AC:M/Au:N/C:C/I:N/A:N\",\"Version\":\"V2\"}],\"Id\":\"CVE-2020-12345\",\"ReferenceUrls\":[\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-12418\",\"http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-17563\"],\"RelatedVulnerabilities\":[\"CVE-2021-12345\"],\"Vendor\":{\"Name\":\"Alas\",\"Url\":\"https://alas.aws.amazon.com/ALAS-2020-1337.html\",\"VendorCreatedAt\":\"2020-01-16T00:01:43Z\",\"VendorSeverity\":\"Medium\",\"VendorUpdatedAt\":\"2020-01-16T00:01:43Z\"},\"VulnerablePackages\":[{\"Architecture\":\"x86_64\",\"Epoch\":\"1\",\"Name\":\"openssl\",\"Release\":\"16.amzn2.0.3\",\"Version\":\"1.0.2k\"},{\"Architecture\":\"x86_64\",\"Epoch\":\"3\",\"Name\":\"yaml\",\"Release\":\"16.amzn2.0.3\",\"Version\":\"4.3.2\"}]}]",
+		"Compliance_StatusReasons": "[{\"Description\":\"CloudWatch alarms do not exist in the account\",\"ReasonCode\":\"CW_ALARMS_NOT_PRESENT\"}]",
+		"Compliance_AssociatedStandards": "[\"PCI1.2\",\"PCI\"]"
+	}
+}

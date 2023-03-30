@@ -1,0 +1,69 @@
+{
+      "metadata": {
+            "product": {
+                  "version": "1.03",
+                  "name": "CloudTrail",
+                  "vendor_name": "AWS",
+                  "feature": {
+                        "name": "Management, Data, and Insights"
+                  }
+            },
+            "uid": "6f4ab5bd-2daa-4d00-be14-d92efEXAMPLE",
+            "profiles": [
+                  "cloud"
+            ],
+            "version": "1.0.0-rc.2"
+      },
+      "time": 1459524708000,
+      "cloud": {
+            "region": "us-west-2",
+            "provider": "AWS"
+      },
+      "api": {
+            "response": {},
+            "operation": "CreateLoadBalancer",
+            "request": {
+                  "uid": "b9960276-b9b2-11e3-8a13-f1ef1EXAMPLE"
+            },
+            "version": "2015-12-01",
+            "service": {
+                  "name": "elasticloadbalancing.amazonaws.com"
+            }
+      },
+      "actor": {
+            "user": {
+                  "type": "IAMUser",
+                  "name": "Alice",
+                  "uid": "123456789012",
+                  "uuid": "arn:aws:iam::123456789012:user/Alice",
+                  "account_uid": "123456789012",
+                  "credential_uid": "AKIAIOSFODNN7EXAMPLE"
+            },
+            "session": {},
+            "idp": {}
+      },
+      "http_request": {
+            "user_agent": "aws-cli/1.10.10 Python/2.7.9 Windows/7 botocore/1.4.1"
+      },
+      "src_endpoint": {
+            "ip": "198.51.100.1"
+      },
+      "class_name": "API Activity",
+      "class_uid": 3005,
+      "category_name": "Audit Activity",
+      "category_uid": 3,
+      "severity_id": 1,
+      "severity": "Informational",
+      "status": "Success",
+      "status_id": 1,
+      "activity_name": "Create",
+      "activity_id": 1,
+      "type_uid": 300501,
+      "type_name": "API Activity: Create",
+      "unmapped": {
+            "responseElements": "{\"loadBalancers\":[{\"type\":\"application\",\"loadBalancerName\":\"my-load-balancer\",\"vpcId\":\"vpc-3ac0fb5f\",\"securityGroups\":[\"sg-5943793c\"],\"state\":{\"code\":\"provisioning\"},\"availabilityZones\":[{\"subnetId\":\"subnet-8360a9e7\",\"zoneName\":\"us-west-2a\"},{\"subnetId\":\"subnet-b7d581c0\",\"zoneName\":\"us-west-2b\"}],\"dNSName\":\"my-load-balancer-1836718677.us-west-2.elb.amazonaws.com\",\"canonicalHostedZoneId\":\"Z2P70J7HTTTPLU\",\"createdTime\":\"Apr 11, 2016 5:23:50 PM\",\"loadBalancerArn\":\"arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/ffcddace1759e1d0\",\"scheme\":\"internet-facing\"}]}",
+            "requestParameters": "{\"subnets\":[\"subnet-8360a9e7\",\"subnet-b7d581c0\"],\"securityGroups\":[\"sg-5943793c\"],\"name\":\"my-load-balancer\",\"scheme\":\"internet-facing\"}",
+            "recipientAccountId": "123456789012",
+            "eventType": "AwsApiCall"
+      }
+}

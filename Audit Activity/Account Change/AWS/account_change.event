@@ -1,0 +1,59 @@
+{
+	"Records": [
+		{
+			"eventVersion": "1.08",
+			"userIdentity": {
+				"type": "AssumedRole",
+				"principalId": "AROAIOJRFK4IOK6BW5ISY:Admin-user",
+				"arn": "arn:aws:sts::112233445566:assumed-role/Admin/Admin-user",
+				"accountId": "112233445566",
+				"accessKeyId": "ASIAXTKM3VWIT242TLUS",
+				"sessionContext": {
+					"sessionIssuer": {
+						"type": "Role",
+						"principalId": "AROAIOJRFK4IOK6BW5ISY",
+						"arn": "arn:aws:iam::112233445566:role/Admin",
+						"accountId": "112233445566",
+						"userName": "Admin"
+					},
+					"webIdFederationData": {},
+					"attributes": {
+						"creationDate": "2023-02-03T00:24:47Z",
+						"mfaAuthenticated": "false"
+					}
+				},
+				"invokedBy": "cloudformation.amazonaws.com"
+			},
+			"eventTime": "2023-02-03T00:28:34Z",
+			"eventSource": "iam.amazonaws.com",
+			"eventName": "CreateRole",
+			"awsRegion": "us-east-1",
+			"sourceIPAddress": "cloudformation.amazonaws.com",
+			"userAgent": "AWS Internal",
+			"requestParameters": {
+				"path": "/",
+				"roleName": "User-Role-Name",
+				"assumeRolePolicyDocument": "{\"Statement\":[{\"Action\":[\"sts:AssumeRole\"],\"Effect\":\"Allow\",\"Principal\":{\"Service\":[\"ec2.amazonaws.com\"]}}]}",
+				"description": ""
+			},
+			"responseElements": {
+				"role": {
+					"path": "/",
+					"roleName": "User-Role-Name",
+					"roleId": "AROAXTKM3VWIVSRGSFG7J",
+					"arn": "arn:aws:iam::112233445566:role/User-Role-Name",
+					"createDate": "Feb 3, 2023 12:28:34 AM",
+					"assumeRolePolicyDocument": "%7B%22Statement%22%3A%5B%7B%22Action%22%3A%5B%22sts%3AAssumeRole%22%5D%2C%22Effect%22%3A%22Allow%22%2C%22Principal%22%3A%7B%22Service%22%3A%5B%22ec2.amazonaws.com%22%5D%7D%7D%5D%7D"
+				}
+			},
+			"requestID": "ab1441af-76c1-4476-9f52-30d070ac4eba",
+			"eventID": "7b414d15-cb9b-4bfa-88dd-68b42f1d60e8",
+			"readOnly": false,
+			"eventType": "AwsApiCall",
+			"managementEvent": true,
+			"recipientAccountId": "112233445566",
+			"eventCategory": "Management",
+			"sessionCredentialFromConsole": "true"
+		}
+	]
+}
