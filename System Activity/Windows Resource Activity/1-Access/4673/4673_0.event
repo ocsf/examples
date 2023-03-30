@@ -1,0 +1,29 @@
+01/28/2022 04:12:19 PM
+LogName=Security
+EventCode=4673
+EventType=0
+ComputerName=SesWin2019DC1.SesTest.local
+SourceName=Microsoft Windows security auditing.
+Type=Information
+RecordNumber=374060
+Keywords=Audit Failure
+TaskCategory=Sensitive Privilege Use
+OpCode=Info
+Message=A privileged service was called.
+
+Subject:
+	Security ID:		SESTEST\splunker
+	Account Name:		splunker
+	Account Domain:		SESTEST
+	Logon ID:		0xDE9AD8
+
+Service:
+	Server:	Security
+	Service Name:	-
+
+Process:
+	Process ID:	0x6a8
+	Process Name:	C:\Windows\explorer.exe
+
+Service Request Information:
+	Privileges:		SeTcbPrivilege

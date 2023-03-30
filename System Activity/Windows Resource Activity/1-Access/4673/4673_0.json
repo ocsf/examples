@@ -1,0 +1,69 @@
+{
+  "activity_id": 1,
+  "actor": {
+    "process": {
+      "file": {
+        "name": "explorer.exe",
+        "parent_folder": "C:\\Windows",
+        "path": "C:\\Windows\\explorer.exe",
+        "type_id": 1
+      },
+      "pid": 1704
+    },
+    "session": {
+      "uid": "0xDE9AD8"
+    },
+    "user": {
+      "account_type": "Windows Account",
+      "account_type_id": 2,
+      "domain": "SESTEST",
+      "name": "splunker",
+      "uid": "SESTEST\\splunker"
+    }
+  },
+  "category_uid": 1,
+  "class_uid": 1010,
+  "device": {
+    "hostname": "SesWin2019DC1.SesTest.local",
+    "os": {
+      "name": "Windows",
+      "type_id": 100
+    },
+    "type_id": 0
+  },
+  "message": "A privileged service was called.",
+  "metadata": {
+    "original_time": "01/28/2022 04:12:19 PM",
+    "product": {
+      "feature": {
+        "name": "Security"
+      },
+      "name": "Microsoft Windows",
+      "vendor_name": "Microsoft"
+    },
+    "profiles": [
+      "host"
+    ],
+    "uid": "995559a6-1921-463f-93e1-9c5ca932dc8c",
+    "version": "1.0.0-rc.2"
+  },
+  "severity_id": 1,
+  "status_id": 2,
+  "time": 1643404339000,
+  "unmapped": {
+    "EventCode": "4673",
+    "EventType": "0",
+    "OpCode": "Info",
+    "RecordNumber": "374060",
+    "Service Request Information": {
+      "Privileges": "SeTcbPrivilege"
+    },
+    "SourceName": "Microsoft Windows security auditing.",
+    "TaskCategory": "Sensitive Privilege Use"
+  },
+  "win_resource": {
+    "name": "-",
+    "type": "Security",
+    "type_id": 0
+  }
+}
