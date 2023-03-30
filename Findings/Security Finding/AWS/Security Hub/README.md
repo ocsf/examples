@@ -37,3 +37,9 @@
 |`unmapped.Severity_Original`|`Severity.Original`|
 |`unmapped.Severity_Normalized`|`Severity.Normalized`|
 |`unmapped.Severity_Product`|`Severity.Product`|
+|`finding.title`|`Title`|
+|`finding.desc`|`Description`|
+|`finding.remediation.desc`|`Remediation.Recommendation.Text`|
+|`finding.remediation.kb_articles[]`|`Remediation.Recommendation.Url`|
+|`finding.related_events[].product_uid`|`RelatedFindings[].ProductArn`|
+|`finding.related_events[].uid`|`RelatedFindings[].Id`|
