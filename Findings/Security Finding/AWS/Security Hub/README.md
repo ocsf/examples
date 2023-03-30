@@ -85,7 +85,7 @@
 |`resources[].details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpRanges[].CidrIp`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpRanges[].CidrIp`|
 |`compliance.status`|`Compliance.Status`|
 |`compliance.requirements[]`|`Compliance.RelatedRequirements[]`|
-|`compliance.status_detail`|`Compliance.StatusReasons[].Description***`|
+|`compliance.status_detail`|`Compliance.StatusReasons[].Description`|
 |`unmapped.Compliance_StatusReasons[].Description`|`Compliance.StatusReasons[].Description`|
 |`unmapped.Compliance_StatusReasons[].ReasonCode`|`Compliance.StatusReasons[].ReasonCode`|
 |`unmapped.Compliance_AssociatedStandards[]`|`Compliance.AssociatedStandards[]`|
