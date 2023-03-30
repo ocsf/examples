@@ -21,7 +21,7 @@
  - `state_id`: `3`
  - `state`: `Suppressed`
  - `malware[].classification_ids`: `1`
- - 
+
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
 
@@ -134,3 +134,5 @@
 |`vulnerabilities[].packages[].name`|`Vulnerabilities[].VulnerablePackages[].Name`|
 |`vulnerabilities[].packages[].release`|`Vulnerabilities[].VulnerablePackages[].Release`|
 |`vulnerabilities[].packages[].version`|`Vulnerabilities[].VulnerablePackages[].Version`|
+|`-`|`WorkflowState`|
+|`-`|`Workflow.Status`|
