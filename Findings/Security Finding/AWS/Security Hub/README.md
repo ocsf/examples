@@ -119,3 +119,14 @@
 |`unmapped.Vulnerabilities[].VulnerablePackages[].Name`|`Vulnerabilities[].VulnerablePackages[].Name`|
 |`unmapped.Vulnerabilities[].VulnerablePackages[].Release`|`Vulnerabilities[].VulnerablePackages[].Release`|
 |`unmapped.Vulnerabilities[].VulnerablePackages[].Version`|`Vulnerabilities[].VulnerablePackages[].Version`|
+|`vulnerabilities[].cve.cvss.base_score`|`Vulnerabilities[].Cvss[].BaseScore`|
+|`vulnerabilities[].cve.cvss.vector_string`|`Vulnerabilities[].Cvss[].BaseVector`|
+|`vulnerabilities[].cve.cvss.version`|`Vulnerabilities[].Cvss[].Version`|
+|`vulnerabilities[].cve.uid`|`Vulnerabilities[].Cvss[].Id`|
+|`vulnerabilities[].cve.created_time`|`Vulnerabilities[].Vendor.VendorCreatedAt`|
+|`vulnerabilities[].cve.modified_time`|`Vulnerabilities[].Vendor.VendorUpdatedAt`|
+|`vulnerabilities[].references[]`|`Vulnerabilities[].ReferenceUrls[]`|
+|`vulnerabilities[].related_vulnerabilities[]`|`Vulnerabilities[].RelatedVulnerabilities[]`|
+|`vulnerabilities[].vendor_name`|`Vulnerabilities[].Vendor.Name`|
+|`vulnerabilities[].Vendor.kb_articles[]`|`Vulnerabilities[].Vendor.Url`|
+
