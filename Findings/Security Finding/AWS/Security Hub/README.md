@@ -20,7 +20,8 @@
  - `activity_id`: `2`
  - `state_id`: `3`
  - `state`: `Suppressed`
-
+ - `malware[].classification_ids`: `1`
+ - 
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
 
@@ -82,6 +83,33 @@
 |`resources[].details.AwsEc2SecurityGroup.IpPermissions[].UserIdGroupPairs[].UserId`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissions[].UserIdGroupPairs[].UserId`|
 |`resources[].details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpProtocol`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpProtocol`|
 |`resources[].details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpRanges[].CidrIp`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpRanges[].CidrIp`|
+|`compliance.status`|`Compliance.Status`|
+|`compliance.requirements[]`|`Compliance.RelatedRequirements[]`|
+|`compliance.status_detail`|`Compliance.StatusReasons[].Description***`|
+|`unmapped.Compliance_StatusReasons[].Description`|`Compliance.StatusReasons[].Description`|
+|`unmapped.Compliance_StatusReasons[].ReasonCode`|`Compliance.StatusReasons[].ReasonCode`|
+|`unmapped.Compliance_AssociatedStandards[]`|`Compliance.AssociatedStandards[]`|
+|`unmapped.Compliance_SecurityControlId[]`|`Compliance.SecurityControlId[]`|
+|`unmapped.FindingProviderFields.Severity.Label`|`FindingProviderFields.Severity.Label`|
+|`unmapped.FindingProviderFields.Severity.Original`|`FindingProviderFields.Severity.Original`|
+|`unmapped.FindingProviderFields.[]`|`FindingProviderFields.[]`|
+|`unmapped.RecordState`|`RecordState`|
+|`unmapped.CompanyName`|`CompanyName`|
+|`malware[].name`|`Malware[].Name`|
+|`malware[].path`|`Malware[].Path`|
+|`malware[].classifications[]`|`Malware[].Type`|
+|`unmapped.Malware[].Name`|`Malware[].Name`|
+|`unmapped.Malware[].Type`|`Malware[].Type`|
+|`unmapped.Malware[].Path`|`Malware[].Path`|
+|`unmapped.Malware[].State`|`Malware[].State`|
+|``|``|
+|``|``|
+|``|``|
+|``|``|
+|``|``|
+|``|``|
+|``|``|
+|``|``|
 |``|``|
 |``|``|
 |``|``|
