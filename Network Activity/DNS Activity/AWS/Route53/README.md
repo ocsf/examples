@@ -49,3 +49,5 @@
 |`dst_endpoint.interface_uid`|`srcids.resolver_network_interface`|
 |`unmapped.firewall_rule_group_id`|`firewall_rule_group_id`|
 |`unmapped.firewall_domain_list_id`|`firewall_domain_list_id`|
+|`connection_info.direction`|`None`|
+|`connection_info.direction_id`|`None`|
