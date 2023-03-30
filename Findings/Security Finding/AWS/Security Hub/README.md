@@ -12,7 +12,6 @@
  - `metadata.product.name`: `Security Hub`
  - `metadata.product.feature.name`: `Security Hub`
  - `metadata.product.vendor_name`: `AWS`
- - `severity`: `Informational`
  - `severity_id`: `1`
 
  ### Mapping:
@@ -34,4 +33,7 @@
 |`finding.last_seen_time`|`LastObservedAt`|
 |`finding.create_time`|`CreatedAt`|
 |`finding.modified_time`|`UpdatedAt`|
-|`-`|`-`|
+|`severity`|`Severity.Label`|
+|`unmapped.Severity_Original`|`Severity.Original`|
+|`unmapped.Severity_Normalized`|`Severity.Normalized`|
+|`unmapped.Severity_Product`|`Severity.Product`|
