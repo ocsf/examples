@@ -1,32 +1,40 @@
 {
   "activity_id": 1,
+  "activity_name": "Launch",
   "actor": {
     "process": {
       "file": {
         "name": "cmd.exe",
         "parent_folder": "C:\\Windows\\System32",
         "path": "C:\\Windows\\System32\\cmd.exe",
+        "type": "Regular File",
         "type_id": 1
       },
       "pid": 3948
+    },
+    "session": {
+      "uid": "0x55E621"
     },
     "user": {
       "account_type": "Windows Account",
       "account_type_id": 2,
       "domain": "ATTACKRANGE",
       "name": "Administrator",
-      "session_uid": "0x55E621",
       "uid": "ATTACKRANGE\\Administrator"
     }
   },
+  "category_name": "System Activity",
   "category_uid": 1,
+  "class_name": "Process Activity",
   "class_uid": 1007,
   "device": {
-    "name": "win-dc-725.attackrange.local",
+    "hostname": "win-dc-725.attackrange.local",
     "os": {
       "name": "Windows",
+      "type": "Windows",
       "type_id": 100
     },
+    "type": "Unknown",
     "type_id": 0
   },
   "message": "A new process has been created.",
@@ -42,8 +50,8 @@
     "profiles": [
       "host"
     ],
-    "uid": "be7905b0-6dac-4296-be12-a311af0465ec",
-    "version": "0.31.2"
+    "uid": "a47bd2fb-4da1-4378-8961-81f81f90aec2",
+    "version": "1.0.0-rc.2"
   },
   "process": {
     "cmd_line": "reg  save HKLM\\system C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\system ",
@@ -51,19 +59,26 @@
       "name": "reg.exe",
       "parent_folder": "C:\\Windows\\System32",
       "path": "C:\\Windows\\System32\\reg.exe",
+      "type": "Regular File",
       "type_id": 1
     },
     "pid": 4696,
+    "session": {
+      "uid": "0x0"
+    },
     "user": {
       "domain": "-",
       "name": "-",
-      "session_uid": "0x0",
       "uid": "NULL SID"
     }
   },
+  "severity": "Informational",
   "severity_id": 1,
+  "status": "Success",
   "status_id": 1,
   "time": 1615564094000,
+  "type_name": "Process Activity: Launch",
+  "type_uid": 100701,
   "unmapped": {
     "EventCode": "4688",
     "EventType": "0",

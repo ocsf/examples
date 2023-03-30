@@ -1,0 +1,125 @@
+{
+  "activity_id": 99,
+  "actor": {
+    "process": {
+      "file": {
+        "name": "lsass.exe",
+        "parent_folder": "C:\\Windows\\System32",
+        "path": "C:\\Windows\\System32\\lsass.exe",
+        "type_id": 1
+      },
+      "pid": 492
+    },
+    "session": {
+      "uid": "0x3e7"
+    },
+    "user": {
+      "account_type": "Windows Account",
+      "account_type_id": 2,
+      "domain": "DIR",
+      "name": "STLDIRDC1$",
+      "uid": "NT AUTHORITY\\SYSTEM"
+    }
+  },
+  "category_uid": 1,
+  "class_uid": 1010,
+  "device": {
+    "hostname": "STLDIRDC1.dir.solutia.com",
+    "os": {
+      "name": "Windows",
+      "type_id": 100
+    },
+    "type_id": 0
+  },
+  "message": "A handle to an object was requested.",
+  "metadata": {
+    "original_time": "01/09/2019 12:46:00 AM",
+    "product": {
+      "feature": {
+        "name": "Security"
+      },
+      "name": "Microsoft Windows",
+      "vendor_name": "Microsoft"
+    },
+    "profiles": [
+      "host"
+    ],
+    "uid": "d9e6a7b1-3177-4542-8de1-bfd582f87727",
+    "version": "1.0.0-rc.2"
+  },
+  "severity_id": 1,
+  "status_id": 1,
+  "time": 1547012760000,
+  "unmapped": {
+    "Access Request Information": {
+      "Access Mask": "0x2d",
+      "Accesses": [
+        "DELETE",
+        "READ_CONTROL",
+        "WRITE_DAC",
+        "WRITE_OWNER",
+        "ReadPasswordParameters",
+        "WritePasswordParameters",
+        "ReadOtherParameters",
+        "WriteOtherParameters",
+        "CreateUser",
+        "CreateGlobalGroup",
+        "CreateLocalGroup",
+        "GetLocalGroupMembership",
+        "ListAccounts"
+      ],
+      "Privileges Used for Access Check": "ǿ\\x0F-",
+      "Properties": [
+        "---",
+        "domain",
+        "DELETE",
+        "READ_CONTROL",
+        "WRITE_DAC",
+        "WRITE_OWNER",
+        "ReadPasswordParameters",
+        "WritePasswordParameters",
+        "ReadOtherParameters",
+        "WriteOtherParameters",
+        "CreateUser",
+        "CreateGlobalGroup",
+        "CreateLocalGroup",
+        "GetLocalGroupMembership",
+        "ListAccounts",
+        "Domain Password & Lockout Policies",
+        "lockOutObservationWindow",
+        "lockoutDuration",
+        "lockoutThreshold",
+        "maxPwdAge",
+        "minPwdAge",
+        "minPwdLength",
+        "pwdHistoryLength",
+        "pwdProperties",
+        "Other Domain Parameters (for use by SAM)",
+        "serverState",
+        "serverRole",
+        "modifiedCount",
+        "uASCompat",
+        "forceLogoff",
+        "domainReplica",
+        "oEMInformation",
+        "Domain Administer Server"
+      ],
+      "Restricted SID Count": "0",
+      "Transaction ID": "{00000000-0000-0000-0000-000000000000}"
+    },
+    "EventCode": "4661",
+    "EventType": "0",
+    "Object": {
+      "Object Server": "Security Account Manager"
+    },
+    "OpCode": "Info",
+    "RecordNumber": "3166250565",
+    "SourceName": "Microsoft Windows security auditing.",
+    "TaskCategory": "SAM"
+  },
+  "win_resource": {
+    "name": "DC=dir,DC=solutia,DC=com",
+    "type_id": 36,
+    "uid": "0x7f79620"
+  }
+}

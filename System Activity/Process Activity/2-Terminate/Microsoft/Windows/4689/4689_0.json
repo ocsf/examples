@@ -1,32 +1,40 @@
 {
   "activity_id": 2,
+  "activity_name": "Terminate",
   "actor": {
     "process": {
       "file": {
         "name": "auditon.exe",
         "parent_folder": "C:\\Generate_Security_Events1",
         "path": "C:\\Generate_Security_Events1\\auditon.exe",
+        "type": "Regular File",
         "type_id": 1
       },
       "pid": 1524
+    },
+    "session": {
+      "uid": "0x1806d9"
     },
     "user": {
       "account_type": "Windows Account",
       "account_type_id": 2,
       "domain": "LOGISTICS",
       "name": "Administrator",
-      "session_uid": "0x1806d9",
       "uid": "S-1-5-21-1135140816-2109348461-2107143693-500"
     }
   },
+  "category_name": "System Activity",
   "category_uid": 1,
+  "class_name": "Process Activity",
   "class_uid": 1007,
   "device": {
-    "name": "dcc1.Logistics.local",
+    "hostname": "dcc1.Logistics.local",
     "os": {
       "name": "Windows",
+      "type": "Windows",
       "type_id": 100
     },
+    "type": "Unknown",
     "type_id": 0
   },
   "exit_code": 0,
@@ -43,21 +51,26 @@
     "profiles": [
       "host"
     ],
-    "uid": "148eb541-ae0f-4f66-be89-e240ed54677b",
-    "version": "0.31.2"
+    "uid": "cc27b41c-94e0-48a9-8cc2-5a1598fb8d1f",
+    "version": "1.0.0-rc.2"
   },
   "process": {
     "file": {
       "name": "auditon.exe",
       "parent_folder": "C:\\Generate_Security_Events1",
       "path": "C:\\Generate_Security_Events1\\auditon.exe",
+      "type": "Regular File",
       "type_id": 1
     },
     "pid": 1524
   },
+  "severity": "Informational",
   "severity_id": 1,
+  "status": "Success",
   "status_id": 1,
   "time": 1567696969000,
+  "type_name": "Process Activity: Terminate",
+  "type_uid": 100702,
   "unmapped": {
     "EventCode": "4689",
     "EventType": "0",

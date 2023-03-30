@@ -1,33 +1,41 @@
 {
   "activity_id": 1,
+  "activity_name": "Logon",
   "actor": {
     "process": {
       "file": {
         "name": "-",
         "path": "-",
+        "type": "Regular File",
         "type_id": 1
       },
       "pid": 0
+    },
+    "session": {
+      "uid": "0x0"
     },
     "user": {
       "account_type": "Windows Account",
       "account_type_id": 2,
       "domain": "-",
       "name": "-",
-      "session_uid": "0x0",
       "uid": "NULL SID"
     }
   },
   "auth_protocol": "NTLM",
   "auth_protocol_id": 1,
+  "category_name": "Audit Activity",
   "category_uid": 3,
+  "class_name": "Authentication",
   "class_uid": 3002,
   "device": {
-    "name": "EC2AMAZ-6KJ2BPP",
+    "hostname": "EC2AMAZ-6KJ2BPP",
     "os": {
       "name": "Windows",
+      "type": "Windows",
       "type_id": 100
     },
+    "type": "Unknown",
     "type_id": 0
   },
   "dst_endpoint": {
@@ -37,6 +45,7 @@
     "name": "NtLmSsp ",
     "pid": -1
   },
+  "logon_type": "Network",
   "logon_type_id": 3,
   "message": "An account failed to log on.",
   "metadata": {
@@ -51,9 +60,10 @@
     "profiles": [
       "host"
     ],
-    "uid": "dd6755af-393a-4eab-8f44-0c24f5ffc590",
-    "version": "0.31.2"
+    "uid": "a738d6e6-4ebd-49bb-805e-45d0604a1bef",
+    "version": "1.0.0-rc.2"
   },
+  "severity": "Informational",
   "severity_id": 1,
   "src_endpoint": {
     "ip": "-",
@@ -64,6 +74,8 @@
   "status_detail": "Unknown user name or bad password.",
   "status_id": 2,
   "time": 1602175307000,
+  "type_name": "Authentication: Logon",
+  "type_uid": 300201,
   "unmapped": {
     "Detailed Authentication Information": {
       "Key Length": "0",
