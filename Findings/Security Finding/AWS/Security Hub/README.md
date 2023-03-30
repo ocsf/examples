@@ -13,6 +13,13 @@
  - `metadata.product.feature.name`: `Security Hub`
  - `metadata.product.vendor_name`: `AWS`
  - `severity_id`: `1`
+ - `type_uid`: `200102`
+ - `type_name`: `Security Finding: Update`
+ - `severity_id`: `1`
+ - `activity_name`: `Update`
+ - `activity_id`: `2`
+ - `state_id`: `3`
+ - `state`: `Suppressed`
 
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
