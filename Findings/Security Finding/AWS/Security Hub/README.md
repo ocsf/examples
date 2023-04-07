@@ -15,10 +15,11 @@
  - `severity_id`: `1`
  - `type_uid`: `200102`
  - `type_name`: `Security Finding: Update`
- - `severity_id`: `1`
  - `activity_name`: `Update`
  - `activity_id`: `2`
  - `malware[].classification_ids`: `1`
+ - `state`: `Suppressed`
+ - `state_id`: `3`
 
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
@@ -29,8 +30,6 @@ Any fields not present in an explicit mapping will be auto-unmapped to the unmap
 | -------------------------- | ----------------|
 |`metadata.product.version` | `Schemaversion`       |
 |`finding.uid`|`Id`|
-|`state`|`Workflow.Status`|
-|`state_id`|`Workflow.Status`|
 |`metadata.product.uid`|`ProductArn`|
 |`metadata.product.product.name`|`ProductName`|
 |`metadata.product.product.feature.name`|`ProductName`|
@@ -93,3 +92,13 @@ Any fields not present in an explicit mapping will be auto-unmapped to the unmap
 |`vulnerabilities[].packages[].name`|`Vulnerabilities[].VulnerablePackages[].Name`|
 |`vulnerabilities[].packages[].release`|`Vulnerabilities[].VulnerablePackages[].Release`|
 |`vulnerabilities[].packages[].version`|`Vulnerabilities[].VulnerablePackages[].Version`|
+
+ ### Conditional Mapping:
+ - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
+
+Any fields described within the conditional mappings are are subject to dynamic mappings contingent on matching a condition within the mapping schema. Fields which fail to meet a particuclar conditional are assigned a default value from the OCSF schema description.
+
+| OCSF                       | Raw             |
+| -------------------------- | ----------------|
+|`state`|`Workflow.Status`|
+|`state_id`|`Workflow.Status`|
