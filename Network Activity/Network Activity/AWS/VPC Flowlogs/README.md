@@ -4,7 +4,7 @@
 - **Event References**:
   - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 
- ### OCSF Version: 0.99.2
+ ### OCSF Version: 1.0.0-rc.2
  - `category_uid`: `4`
  - `category_name`: `Network Activity`
  - `class_uid`: `4001`
@@ -40,9 +40,6 @@
 |`dst_endpoint.svc_name`|`pkt_dst_aws_service`|
 |`connection_info.direction`|`flow_direction`|
 |`connection_info.direction_id`|`flow_direction`|
-|`unmapped.sublocation_type`|`sublocation_type`|
-|`unmapped.sublocation_id`|`sublocation_id`|
-|`unmapped.sublocation_id`|`flow_direction`|
 |`activity_name`|`action`|
 |`activity_id`|`action`|
 |`type_uid`|`action`|
