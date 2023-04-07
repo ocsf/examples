@@ -4,7 +4,7 @@
 - **Event References**:
   - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-query-logs.html
 
- ### OCSF Version: 0.99.2
+ ### OCSF Version: 1.0.0-rc.2
  - `category_uid`: `4`
  - `category_name`: `Network Activity`
  - `class_uid`: `4003`
@@ -47,5 +47,3 @@
 |`src_endpoint.instance_uid`|`srcids.instance`|
 |`dst_endpoint.instance_uid`|`srcids.resolver_endpoint`|
 |`dst_endpoint.interface_uid`|`srcids.resolver_network_interface`|
-|`unmapped.firewall_rule_group_id`|`firewall_rule_group_id`|
-|`unmapped.firewall_domain_list_id`|`firewall_domain_list_id`|
