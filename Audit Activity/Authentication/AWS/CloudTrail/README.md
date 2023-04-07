@@ -1,7 +1,7 @@
 # Event Dossier: Amazon CloudTrail Generic API Activity
 
-### A CloudTrail event for DescribeDirectConnectGateways API
-- **Description**: Translates a DescribeDirectConnectGateways Event to OCSF.
+### A CloudTrail event for CreateUser API
+- **Description**: Translates a CreateUser Event to OCSF.
 - **Event References**:
   - https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html
 
