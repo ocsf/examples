@@ -7,7 +7,7 @@
 
  ### OCSF Version: 1.0.0-rc.2
   - `class_name`: `Authentication`
-  - `class_uid`: `3002
+  - `class_uid`: `3002`
   - `category_name`: `Audit Activity`
   - `category_uid`: `3`
   - `cloud.provider`: `AWS`
