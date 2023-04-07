@@ -1,1 +1,1 @@
-# Event Dossier: Amazon Generic API Activity Log
+# Event Dossier: Amazon CloudTrail Generic API Activity Log
