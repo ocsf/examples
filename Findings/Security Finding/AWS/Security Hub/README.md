@@ -41,7 +41,7 @@ Any fields not present in an explicit mapping will be auto-unmapped to the unmap
 |`finding.first_seen_time`|`FirstObservedAt`|
 |`finding.last_seen_time`|`LastObservedAt`|
 |`time`|`LastObservedAt`|
-|`finding.create_time`|`CreatedAt`|
+|`finding.created_time`|`CreatedAt`|
 |`finding.modified_time`|`UpdatedAt`|
 |`severity`|`Severity.Label`|
 |`finding.title`|`Title`|
