@@ -4,7 +4,7 @@
 - **Event References**:
   - https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-query-logs.html
 
- ### OCSF Version: 1.0.0-rc.2
+ ### OCSF Version: 0.99.2
  - `category_uid`: `4`
  - `category_name`: `Network Activity`
  - `class_uid`: `4003`
@@ -14,8 +14,6 @@
  - `metadata.product.name`: `Route 53`
  - `metadata.product.feature.name`: `Query Logs`
  - `metadata.product.vendor_name`: `AWS`
- - `connection_info.direction`: `Unkown`
- - `connection_info.direction_id`: `0`
  - `severity`: `Informational`
  - `severity_id`: `1`
 
