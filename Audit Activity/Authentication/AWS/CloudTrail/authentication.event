@@ -1,0 +1,30 @@
+{
+	"additionalEventData": {
+		"LoginTo": "https://console.aws.amazon.com/console/home?state=hashArgs%23&isauthcode=true",
+		"MFAIdentifier": "arn:aws:iam::111122223333:u2f/user/anaya/default-AAAAAAAABBBBBBBBCCCCCCCCDD",
+		"MFAUsed": "Yes",
+		"MobileVersion": "No"
+	},
+	"awsRegion": "us-east-1",
+	"eventCategory": "Management",
+	"eventID": "fed06f42-cb12-4764-8c69-121063dc79b9",
+	"eventName": "ConsoleLogin",
+	"eventSource": "signin.amazonaws.com",
+	"eventTime": "2022-11-10T16:24:34Z",
+	"eventType": "AwsConsoleSignIn",
+	"eventVersion": "1.08",
+	"recipientAccountId": "111122223333",
+	"requestParameters": null,
+	"responseElements": {
+		"ConsoleLogin": "Success"
+	},
+	"sourceIPAddress": "192.0.2.0",
+	"userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+	"userIdentity": {
+		"accountId": "111122223333",
+		"arn": "arn:aws:iam::111122223333:user/anaya",
+		"principalId": "AIDACKCEVSQ6C2EXAMPLE",
+		"type": "IAMUser",
+		"userName": "anaya"
+	}
+}
