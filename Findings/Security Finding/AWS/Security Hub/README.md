@@ -16,7 +16,8 @@
  - `metadata.product.vendor_name`: `AWS`
 
  ### Mapping:
- - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements. Any fields not present in an explicit mapping will be moved to the unmapped object.
+ - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements. 
+ - Any field not present in an explicit mapping will be moved to the unmapped object.
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
