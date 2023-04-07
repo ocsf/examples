@@ -1,52 +1,30 @@
 {
-	"Records": [
-		{
-			"eventVersion": "1.07",
-			"userIdentity": {
-				"type": "IAMUser",
-				"principalId": "AIDAQRSTUVWXYZEXAMPLE",
-				"arn": "arn:aws:iam::777788889999:user/JohnDoe",
-				"accountId": "777788889999",
-				"accessKeyId": "AKIAQRSTUVWXYZEXAMPLE",
-				"userName": "JohnDoe"
-			},
-			"eventTime": "2014-07-18T15:07:39Z",
-			"eventSource": "sts.amazonaws.com",
-			"eventName": "AssumeRole",
-			"eventCategory": "Management",
-			"awsRegion": "us-east-2",
-			"sourceIPAddress": "192.0.2.101",
-			"userAgent": "aws-cli/1.11.10 Python/2.7.8 Linux/3.2.45-0.6.wd.865.49.315.metal1.x86_64 botocore/1.4.67",
-			"requestParameters": {
-				"roleArn": "arn:aws:iam::111122223333:role/EC2-dev",
-				"roleSessionName": "JohnDoe-EC2-dev",
-				"sourceIdentity": "JohnDoe",
-				"serialNumber": "arn:aws:iam::777788889999:mfa"
-			},
-			"responseElements": {
-				"credentials": {
-					"sessionToken": "<encoded session token blob>",
-					"accessKeyId": "AKIAQRSTUVWXYZEXAMPLE",
-					"expiration": "Jul 18, 2023, 4:07:39 PM"
-				},
-				"assumedRoleUser": {
-					"assumedRoleId": "AIDAQRSTUVWXYZEXAMPLE:JohnDoe-EC2-dev",
-					"arn": "arn:aws:sts::111122223333:assumed-role/EC2-dev/JohnDoe-EC2-dev"
-				},
-				"sourceIdentity": "JohnDoe"
-			},
-			"resources": [
-				{
-					"ARN": "arn:aws:iam::111122223333:role/EC2-dev",
-					"accountId": "111122223333",
-					"type": "AWS::IAM::Role"
-				}
-			],
-			"requestID": "4EXAMPLE-0e8d-11e4-96e4-e55c0EXAMPLE",
-			"sharedEventID": "bEXAMPLE-efea-4a70-b951-19a88EXAMPLE",
-			"eventID": "dEXAMPLE-ac7f-466c-a608-4ac8dEXAMPLE",
-			"eventType": "AwsApiCall",
-			"recipientAccountId": "111122223333"
-		}
-	]
+	"additionalEventData": {
+		"LoginTo": "https://console.aws.amazon.com/console/home?state=hashArgs%23&isauthcode=true",
+		"MFAIdentifier": "arn:aws:iam::111122223333:u2f/user/anaya/default-AAAAAAAABBBBBBBBCCCCCCCCDD",
+		"MFAUsed": "Yes",
+		"MobileVersion": "No"
+	},
+	"awsRegion": "us-east-1",
+	"eventCategory": "Management",
+	"eventID": "fed06f42-cb12-4764-8c69-121063dc79b9",
+	"eventName": "ConsoleLogin",
+	"eventSource": "signin.amazonaws.com",
+	"eventTime": "2022-11-10T16:24:34Z",
+	"eventType": "AwsConsoleSignIn",
+	"eventVersion": "1.08",
+	"recipientAccountId": "111122223333",
+	"requestParameters": null,
+	"responseElements": {
+		"ConsoleLogin": "Success"
+	},
+	"sourceIPAddress": "192.0.2.0",
+	"userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+	"userIdentity": {
+		"accountId": "111122223333",
+		"arn": "arn:aws:iam::111122223333:user/anaya",
+		"principalId": "AIDACKCEVSQ6C2EXAMPLE",
+		"type": "IAMUser",
+		"userName": "anaya"
+	}
 }
