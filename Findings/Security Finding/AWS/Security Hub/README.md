@@ -1,6 +1,9 @@
-# Event Dossier: Amazon Security Hub Findings Log
-### NOERROR Query Results
-- **Description**: Translates a Amazon Security Hub Finding log to OCSF. 
+# Event Dossier: Amazon Security Hub Finding
+### A Generic Security Hub finding in ASFF format
+- **Description**: Translates a generic Amazon Security Hub Finding to OCSF.
+- **Event References**:
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/asff-required-attributes.html
+  - https://docs.aws.amazon.com/securityhub/latest/userguide/asff-top-level-attributes.html
 
  ### OCSF Version: 1.0.0-rc.2
  - `category_uid`: `2`
@@ -10,16 +13,7 @@
  - `cloud.provider`: `AWS`
  - `metadata.profiles`: `[cloud]`
  - `metadata.product.name`: `Security Hub`
- - `metadata.product.feature.name`: `Security Hub`
  - `metadata.product.vendor_name`: `AWS`
- - `severity_id`: `1`
- - `type_uid`: `200102`
- - `type_name`: `Security Finding: Update`
- - `activity_name`: `Update`
- - `activity_id`: `2`
- - `malware[].classification_ids`: `1`
- - `state`: `Suppressed`
- - `state_id`: `3`
 
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
@@ -102,3 +96,7 @@ Any fields described within the conditional mappings are are subject to dynamic 
 | -------------------------- | ----------------|
 |`state`|`Workflow.Status`|
 |`state_id`|`Workflow.Status`|
+|`activity_name`|`CreatedAt/UpdatedAt`|
+|`activity_id`|`CreatedAt/UpdatedAt`|
+|`type_uid`|`CreatedAt/UpdatedAt`|
+|`type_name`|`CreatedAt/UpdatedAt`|
