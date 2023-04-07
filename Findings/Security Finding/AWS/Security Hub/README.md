@@ -16,9 +16,7 @@
  - `metadata.product.vendor_name`: `AWS`
 
  ### Mapping:
- - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
-
-Any fields not present in an explicit mapping will be auto-unmapped to the unmapped object. 
+ - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements. Any fields not present in an explicit mapping will be moved to the unmapped object.
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
@@ -88,9 +86,7 @@ Any fields not present in an explicit mapping will be auto-unmapped to the unmap
 |`vulnerabilities[].packages[].version`|`Vulnerabilities[].VulnerablePackages[].Version`|
 
  ### Conditional Mapping:
- - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
-
-Any fields described within the conditional mappings are are subject to dynamic mappings contingent on matching a condition within the mapping schema. Fields which fail to meet a particuclar conditional are assigned a default value from the OCSF schema description.
+ - Any fields described within the conditional mappings are are subject to dynamic mappings contingent on matching a condition within the mapping schema. Fields which fail to meet a particuclar conditional are assigned a default value from the OCSF schema description.
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
