@@ -59,12 +59,12 @@ Any fields described within the conditional mappings are are subject to dynamic 
 |`api.request.uid`|`requestID`|
 |`src_endpoint.domain`|`sourceIPAddress`|
 |`user.uid`|`userIdentity.principalId`|
-|`user.name`|`responseElements.role.description`|
 |`user.uid`|`responseElements.role.roleId`|
-|`user.name`|`responseElements.user.userName`|
 |`user.uid`|`responseElements.user.userId`|
+|`user.name`|`responseElements.role.description`|
 |`user.name`|`requestParameters.userName`|
 |`user.name`|`requestParameters.roleName`|
+|`user.name`|`responseElements.user.userName`|
 |`src_endpoint.ip/src_endpoint.domain`|`sourceIPAddress`|
 
 
