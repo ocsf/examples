@@ -55,15 +55,11 @@ Any fields described within the conditional mappings are are subject to dynamic 
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
-|`status`|`errorCode`|
-|`status_id`|`errorCode`|
 |`metadata.product.feature.name`|`eventCategory`|
-|`api.request.uid`|`requestID`|
-|`src_endpoint.ip/src_endpoint.domain`|`sourceIPAddress`|
-|`activity_name`|`eventName`|
-|`activity_id`|`eventName`|
-|`type_uid`|`eventName`|
-|`type_name`|`eventName`|
-
-
-|`api.request.uid`|`requestID`|
+|`src_endpoint.domain`|`sourceIPAddress`|
+|`src_endpoint.ip`|`requestID`|
+|`user.uid`|`userIdentity.principalId`|
+|`user.uuid`|`requestParameters.roleArn/userIdentity.arn`|
+|`user.name`|`requestParameters.roleSessionName`|
+|`status_id`|`responseElements.ConsoleLogin`|
+|`mfa`|`additionalEventData.MFAUsed`|
