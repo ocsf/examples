@@ -18,8 +18,6 @@
  - `severity_id`: `1`
  - `activity_name`: `Update`
  - `activity_id`: `2`
- - `state_id`: `3`
- - `state`: `Suppressed`
  - `malware[].classification_ids`: `1`
 
  ### Mapping:
@@ -29,6 +27,8 @@
 | -------------------------- | ----------------|
 |`metadata.product.version` | `Schemaversion`       |
 |`finding.uid`|`Id`|
+|`state`|`Workflow.Status`|
+|`state_id`|`Workflow.Status`|
 |`metadata.product.uid`|`ProductArn`|
 |`metadata.product.product.name`|`ProductName`|
 |`metadata.product.product.feature.name`|`ProductName`|
@@ -91,5 +91,3 @@
 |`vulnerabilities[].packages[].name`|`Vulnerabilities[].VulnerablePackages[].Name`|
 |`vulnerabilities[].packages[].release`|`Vulnerabilities[].VulnerablePackages[].Release`|
 |`vulnerabilities[].packages[].version`|`Vulnerabilities[].VulnerablePackages[].Version`|
-|`-`|`WorkflowState`|
-|`-`|`Workflow.Status`|
