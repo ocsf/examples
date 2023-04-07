@@ -1,67 +1,25 @@
 {
-	"Records": [
-		{
-			"eventVersion": "1.03",
-			"userIdentity": {
-				"type": "IAMUser",
-				"principalId": "123456789012",
-				"arn": "arn:aws:iam::123456789012:user/Alice",
-				"accountId": "123456789012",
-				"accessKeyId": "AKIAIOSFODNN7EXAMPLE",
-				"userName": "Alice"
-			},
-			"eventTime": "2016-04-01T15:31:48Z",
-			"eventSource": "elasticloadbalancing.amazonaws.com",
-			"eventName": "CreateLoadBalancer",
-			"awsRegion": "us-west-2",
-			"sourceIPAddress": "198.51.100.1",
-			"userAgent": "aws-cli/1.10.10 Python/2.7.9 Windows/7 botocore/1.4.1",
-			"requestParameters": {
-				"subnets": [
-					"subnet-8360a9e7",
-					"subnet-b7d581c0"
-				],
-				"securityGroups": [
-					"sg-5943793c"
-				],
-				"name": "my-load-balancer",
-				"scheme": "internet-facing"
-			},
-			"responseElements": {
-				"loadBalancers": [
-					{
-						"type": "application",
-						"loadBalancerName": "my-load-balancer",
-						"vpcId": "vpc-3ac0fb5f",
-						"securityGroups": [
-							"sg-5943793c"
-						],
-						"state": {
-							"code": "provisioning"
-						},
-						"availabilityZones": [
-							{
-								"subnetId": "subnet-8360a9e7",
-								"zoneName": "us-west-2a"
-							},
-							{
-								"subnetId": "subnet-b7d581c0",
-								"zoneName": "us-west-2b"
-							}
-						],
-						"dNSName": "my-load-balancer-1836718677.us-west-2.elb.amazonaws.com",
-						"canonicalHostedZoneId": "Z2P70J7HTTTPLU",
-						"createdTime": "Apr 11, 2016 5:23:50 PM",
-						"loadBalancerArn": "arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/ffcddace1759e1d0",
-						"scheme": "internet-facing"
-					}
-				]
-			},
-			"requestID": "b9960276-b9b2-11e3-8a13-f1ef1EXAMPLE",
-			"eventID": "6f4ab5bd-2daa-4d00-be14-d92efEXAMPLE",
-			"eventType": "AwsApiCall",
-			"apiVersion": "2015-12-01",
-			"recipientAccountId": "123456789012"
-		}
-	]
+	"userAgent": "Boto3/1.15.2 Python/3.8.2 Linux/5.6.3-arch1-1 Botocore/1.18.2",
+	"eventID": "71c88be9-ea5c-43c7-8c82-02ecb5ec7f09",
+	"userIdentity": {
+		"type": "IAMUser",
+		"principalId": "AIDADO2GQD0K8TEF7KW1V",
+		"arn": "arn:aws:iam::811596193553:user/Level6",
+		"accountId": "811596193553",
+		"accessKeyId": "AKIA3Z2XBVUDFQ9TU4MD",
+		"userName": "Level6"
+	},
+	"eventType": "AwsApiCall",
+	"sourceIPAddress": "205.8.181.128",
+	"eventName": "DescribeDirectConnectGateways",
+	"eventSource": "directconnect.amazonaws.com",
+	"recipientAccountId": "811596193553",
+	"requestParameters": null,
+	"awsRegion": "us-east-1",
+	"requestID": "1c8a6220-4263-4763-b526-20c1d1dd012c",
+	"responseElements": {
+		"directConnectGateways": []
+	},
+	"eventVersion": "1.05",
+	"eventTime": "2020-09-21T22:22:52Z"
 }
