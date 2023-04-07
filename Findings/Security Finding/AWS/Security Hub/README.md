@@ -16,9 +16,8 @@
  - `metadata.product.vendor_name`: `AWS`
 
  ### Mapping:
- - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
-
-Any fields not present in an explicit mapping will be auto-unmapped to the unmapped object. 
+ - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements. 
+ - Any field not present in an explicit mapping will be moved to the unmapped object.
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
@@ -54,17 +53,8 @@ Any fields not present in an explicit mapping will be auto-unmapped to the unmap
 |`resources[].uid`|`Resources[].Id`|
 |`resources[].cloud_partition`|`Resources[].Partition`|
 |`resources[].region`|`Resources[].Region`|
-|`resources[].labels.billingCode`|`Resources[].Tags.billingCode`|
-|`resources[].labels.needsPatching`|`Resources[].Tags.needsPatching`|
-|`resources[].details.Resources[].Details.AwsEc2SecurityGroup.GroupName`|`Resources[].Details.AwsEc2SecurityGroup.GroupName`|
-|`resources[].details.AwsEc2SecurityGroup.GroupId`|`Resources[].Details.AwsEc2SecurityGroup.GroupId`|
-|`resources[].details.AwsEc2SecurityGroup.OwnerId`|`Resources[].Details.AwsEc2SecurityGroup.OwnerId`|
-|`resources[].details..AwsEc2SecurityGroup.VpcId`|`Resources[].Details.AwsEc2SecurityGroup.VpcId`|
-|`resources[].details.AwsEc2SecurityGroup.IpPermissions[].IpProtocol`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissions[].IpProtocol`|
-|`resources[].details.AwsEc2SecurityGroup.IpPermissions[].UserIdGroupPairs[].GroupId`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissions[].UserIdGroupPairs[].GroupId`|
-|`resources[].details.AwsEc2SecurityGroup.IpPermissions[].UserIdGroupPairs[].UserId`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissions[].UserIdGroupPairs[].UserId`|
-|`resources[].details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpProtocol`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpProtocol`|
-|`resources[].details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpRanges[].CidrIp`|`Resources[].Details.AwsEc2SecurityGroup.IpPermissionsEgress[].IpRanges[].CidrIp`|
+|`resources[].labels`|`Resources[].Tags`|
+|`resources[].details`|`Resources[].Details`|
 |`compliance.status`|`Compliance.Status`|
 |`compliance.requirements[]`|`Compliance.RelatedRequirements[]`|
 |`compliance.status_detail`|`Compliance.StatusReasons[].Description`|
@@ -88,9 +78,7 @@ Any fields not present in an explicit mapping will be auto-unmapped to the unmap
 |`vulnerabilities[].packages[].version`|`Vulnerabilities[].VulnerablePackages[].Version`|
 
  ### Conditional Mapping:
- - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
-
-Any fields described within the conditional mappings are are subject to dynamic mappings contingent on matching a condition within the mapping schema. Fields which fail to meet a particuclar conditional are assigned a default value from the OCSF schema description.
+ - Any fields described within the conditional mappings are are subject to dynamic mappings contingent on matching a condition within the mapping schema. Fields which fail to meet a particuclar conditional are assigned a default value from the OCSF schema description.
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
