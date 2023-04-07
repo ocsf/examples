@@ -58,13 +58,8 @@ Any fields described within the conditional mappings are are subject to dynamic 
 |`metadata.product.feature.name`|`eventCategory`|
 |`api.request.uid`|`requestID`|
 |`src_endpoint.domain`|`sourceIPAddress`|
-|`user.uid`|`userIdentity.principalId`|
-|`user.uid`|`responseElements.role.roleId`|
-|`user.uid`|`responseElements.user.userId`|
-|`user.name`|`responseElements.role.description`|
-|`user.name`|`requestParameters.userName`|
-|`user.name`|`requestParameters.roleName`|
-|`user.name`|`responseElements.user.userName`|
+|`user.uid`|`userIdentity.principalId/responseElements.role.roleId/responseElements.user.userId`|
+|`user.name`|`responseElements.role.description/requestParameters.userName/requestParameters.roleName/responseElements.user.userName`|
 |`src_endpoint.ip/src_endpoint.domain`|`sourceIPAddress`|
 
 
