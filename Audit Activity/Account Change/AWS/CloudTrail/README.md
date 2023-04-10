@@ -58,6 +58,6 @@ Any fields described within the conditional mappings are are subject to dynamic 
 |`api.request.uid`|`requestID`|
 |`src_endpoint.domain`|`sourceIPAddress`|
 |`user.uid`|`userIdentity.principalId/responseElements.role.roleId/responseElements.user.userId`|
-|`user.name`|`responseElements.role.path/responseElements.role.description/requestParameters.userName/requestParameters.roleName/responseElements.user.userName`|
+|`user.name`|`responseElements.role.path/responseElements.role.description/requestParameters.userName/responseElements.role.roleName/responseElements.user.userName`|
 |`src_endpoint.ip/src_endpoint.domain`|`sourceIPAddress`|
 |`status/status_id`|`errorCode`|
