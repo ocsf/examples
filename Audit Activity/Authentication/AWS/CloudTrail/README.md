@@ -56,6 +56,7 @@ Any fields described within the conditional mappings are are subject to dynamic 
 | -------------------------- | ----------------|
 |`metadata.product.feature.name`|`eventCategory`|
 |`src_endpoint.domain/src_endpoint.ip`|`sourceIPAddress`|
+|`api.request.uid`|`requestID`|
 |`user.uid`|`userIdentity.principalId`|
 |`user.uuid`|`requestParameters.roleArn/userIdentity.arn`|
 |`user.name`|`requestParameters.roleSessionName`|
