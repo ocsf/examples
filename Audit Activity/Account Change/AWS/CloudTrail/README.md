@@ -47,7 +47,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`time`|`eventTime`|
 |`api.response.error`|`errorCode`|
 |`api.response.message`|`errorMessage`|
-|`dst_endpoint.svc_name`|`additionalEventData.LoginTo`|
 
  ### Conditional Mapping:
 Any fields described within the conditional mappings are are subject to dynamic mappings contingent on matching a condition within the mapping schema. Fields which fail to meet a particuclar conditional are assigned a default value from the OCSF schema description.
