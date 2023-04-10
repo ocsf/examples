@@ -32,7 +32,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`actor.user.uuid`|`userIdentity.arn`|
 |`actor.session.created_time`|`userIdentity.sessionContext.attributes.creationDate`|
 |`actor.session.mfa`|`userIdentity.sessionContext.attributes.mfaAuthenticated`|
-|`status/status_id`|`responseElements.ConsoleLogin`|
 |`actor.session.issuer`|`userIdentity.sessionContext.sessionIssuer.arn`|
 |`actor.invoked_by`|`userIdentity.invokedBy`|
 |`actor.idp.name`|`userIdentity.webIdFederationData.federatedProvider`|
@@ -61,3 +60,4 @@ Any fields described within the conditional mappings are are subject to dynamic 
 |`user.uid`|`userIdentity.principalId/responseElements.role.roleId/responseElements.user.userId`|
 |`user.name`|`responseElements.role.description/requestParameters.userName/requestParameters.roleName/responseElements.user.userName`|
 |`src_endpoint.ip/src_endpoint.domain`|`sourceIPAddress`|
+|`status/status_id`|`errorCode`|
