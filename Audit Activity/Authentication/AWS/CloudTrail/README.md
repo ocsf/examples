@@ -56,10 +56,10 @@ Any fields described within the conditional mappings are are subject to dynamic 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
 |`metadata.product.feature.name`|`eventCategory`|
-|`src_endpoint.domain`|`sourceIPAddress`|
-|`src_endpoint.ip`|`requestID`|
+|`src_endpoint.domain/src_endpoint.ip`|`sourceIPAddress`|
 |`user.uid`|`userIdentity.principalId`|
 |`user.uuid`|`requestParameters.roleArn/userIdentity.arn`|
 |`user.name`|`requestParameters.roleSessionName`|
-|`status_id`|`responseElements.ConsoleLogin`|
+|`status/status_id`|`responseElements.ConsoleLogin`|
 |`mfa`|`additionalEventData.MFAUsed`|
+|`activity_name/activity_idtype_name/type_name/type_uid`|`eventName`|
