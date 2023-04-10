@@ -44,7 +44,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`http_request.user_agent`|`userAgent`|
 |`metadata.product.version`|`eventVersion`|
 |`metadata.uid`|`eventID`|
-|`metadata.version`|`eventVersion`|
 |`time`|`eventTime`|
 |`api.response.error`|`errorCode`|
 |`api.response.message`|`errorMessage`|
