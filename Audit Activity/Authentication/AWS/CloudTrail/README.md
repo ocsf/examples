@@ -1,7 +1,7 @@
-# Event Dossier: Amazon CloudTrail Generic API Activity
+# Event Dossier: Amazon CloudTrail Authentication API Activity
 
-### A CloudTrail event for CreateUser API
-- **Description**: Translates a CreateUser Event to OCSF.
+### A CloudTrail event for ConsoleLogin API
+- **Description**: Translates a ConsoleLogin Event to OCSF.
 - **Event References**:
   - https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html
 
