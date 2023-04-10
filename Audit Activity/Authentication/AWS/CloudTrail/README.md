@@ -62,4 +62,4 @@ Any fields described within the conditional mappings are are subject to dynamic 
 |`user.name`|`requestParameters.roleSessionName`|
 |`status/status_id`|`responseElements.ConsoleLogin`|
 |`mfa`|`additionalEventData.MFAUsed`|
-|`activity_name/activity_idtype_name/type_name/type_uid`|`eventName`|
+|`activity_name/activity_id/type_name/type_name/type_uid`|`eventName`|
