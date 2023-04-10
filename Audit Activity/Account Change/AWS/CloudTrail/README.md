@@ -61,3 +61,4 @@ Any fields described within the conditional mappings are are subject to dynamic 
 |`user.name`|`responseElements.role.path/responseElements.role.description/requestParameters.userName/responseElements.role.roleName/responseElements.user.userName/requestParameters.roleName`|
 |`src_endpoint.ip/src_endpoint.domain`|`sourceIPAddress`|
 |`status/status_id`|`errorCode`|
+|`activity_name/activity_id/type_uid/type_name`|`eventName`|
