@@ -1,50 +1,30 @@
 {
-	"eventVersion": "1.08",
-	"userIdentity": {
-		"type": "AssumedRole",
-		"principalId": "AROA2W7SOKHDLNCOKZNPS:Admin-user",
-		"arn": "arn:aws:sts::112233445566:assumed-role/Admin/Admin-user",
-		"accountId": "112233445566",
-		"accessKeyId": "ASIA2W7SOKHDHBO4U2HE",
-		"sessionContext": {
-			"sessionIssuer": {
-				"type": "Role",
-				"principalId": "AROA2W7SOKHDLNCOKZNPS",
-				"arn": "arn:aws:iam::112233445566:role/Admin",
-				"accountId": "112233445566",
-				"userName": "Admin"
-			},
-			"webIdFederationData": {},
-			"attributes": {
-				"creationDate": "2023-03-17T16:43:57Z",
-				"mfaAuthenticated": "false"
-			}
-		}
+	"additionalEventData": {
+		"LoginTo": "https://console.aws.amazon.com/console/home?state=hashArgs%23&isauthcode=true",
+		"MFAIdentifier": "arn:aws:iam::111122223333:u2f/user/anaya/default-AAAAAAAABBBBBBBBCCCCCCCCDD",
+		"MFAUsed": "Yes",
+		"MobileVersion": "No"
 	},
-	"eventTime": "2023-03-17T17:07:59Z",
-	"eventSource": "iam.amazonaws.com",
-	"eventName": "CreateUser",
 	"awsRegion": "us-east-1",
-	"sourceIPAddress": "52.95.4.21",
-	"userAgent": "AWS Internal",
-	"requestParameters": {
-		"userName": "test_user2"
-	},
-	"responseElements": {
-		"user": {
-			"path": "/",
-			"userName": "test_user2",
-			"userId": "AIDA2W7SOKHDM47UMJRTX",
-			"arn": "arn:aws:iam::112233445566:user/test_user2",
-			"createDate": "Mar 17, 2023 5:07:59 PM"
-		}
-	},
-	"requestID": "c99bf9da-e0bd-4bf7-bb32-c8be25618afc",
-	"eventID": "7dd15a89-ae0f-4340-8e6c-d6981246c71b",
-	"readOnly": false,
-	"eventType": "AwsApiCall",
-	"managementEvent": true,
-	"recipientAccountId": "112233445566",
 	"eventCategory": "Management",
-	"sessionCredentialFromConsole": "true"
+	"eventID": "fed06f42-cb12-4764-8c69-121063dc79b9",
+	"eventName": "ConsoleLogin",
+	"eventSource": "signin.amazonaws.com",
+	"eventTime": "2022-11-10T16:24:34Z",
+	"eventType": "AwsConsoleSignIn",
+	"eventVersion": "1.08",
+	"recipientAccountId": "111122223333",
+	"requestParameters": null,
+	"responseElements": {
+		"ConsoleLogin": "Success"
+	},
+	"sourceIPAddress": "192.0.2.0",
+	"userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36",
+	"userIdentity": {
+		"accountId": "111122223333",
+		"arn": "arn:aws:iam::111122223333:user/anaya",
+		"principalId": "AIDACKCEVSQ6C2EXAMPLE",
+		"type": "IAMUser",
+		"userName": "anaya"
+	}
 }
