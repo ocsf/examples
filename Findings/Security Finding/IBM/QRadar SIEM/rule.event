@@ -1,0 +1,16 @@
+{
+  "owner": "admin",
+  "identifier": "SYSTEM-1362",
+  "base_host_id": 53,
+  "capacity_timestamp": 1682977095597,
+  "origin": "SYSTEM",
+  "creation_date": 1133304801579,
+  "type": "EVENT",
+  "enabled": true,
+  "modification_date": 1666096973166,
+  "linked_rule_identifier": null,
+  "name": "Network DoS Attack Detected",
+  "average_capacity": 1478677,
+  "id": 100079,
+  "base_capacity": 1478677
+}
