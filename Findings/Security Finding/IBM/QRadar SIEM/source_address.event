@@ -1,0 +1,20 @@
+{
+  "event_flow_count": 36,
+  "local_destination_address_ids": [
+    1020,
+    1087
+  ],
+  "first_event_flow_seen": 1674849989018,
+  "last_event_flow_seen": 1682347469220,
+  "source_ip": "99.99.99.99",
+  "magnitude": 0,
+  "id": 546,
+  "offense_ids": [
+    540,
+    557,
+    574,
+    591
+  ],
+  "domain_id": 0,
+  "network": "Net-99-99-99.Net_99_0_0_0"
+}

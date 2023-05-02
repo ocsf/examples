@@ -1,27 +1,61 @@
 {
-  "attacks": [],
-  "finding": {
-    "uid": "11",
-    "title": "Multiple Login Failures for the Same User containing Authentication rejected.",
-    "created_time": 1591293145331,
-    "desc": "Multiple Login Failures for the Same User containing Authentication rejected.",
-    "first_seen_time": 1591293146000,
-    "last_seen_time": 1591295429000,
-    "remediation": [],
-    "types": []
+  "analytic": {
+    "desc": "Custom Rule Engine",
+    "name": "CRE",
+    "relatedAnalytics": [
+      {
+        "category": "CRE_RULE",
+        "name": "Network DoS Attack Detected",
+        "type": "Rule",
+        "typeId": 1,
+        "uid": "100079"
+      }
+    ],
+    "type": "Rule",
+    "typeId": 1
   },
-  "malware": [],
-  "resource": [],
+  "finding": {
+    "uid": "591",
+    "title": "BLEEDING-EDGE DOS -ISC- ICMP blind TCP reset DoS guessing attempt\n",
+    "created_time": 1682347463218,
+    "desc": "BLEEDING-EDGE DOS -ISC- ICMP blind TCP reset DoS guessing attempt\n",
+    "first_seen_time": 1682347463000,
+    "last_seen_time": 1682781010000
+  },
+  "confidence_score": 2,
+  "confidence": "Low",
+  "confidence_id": 2,
+  "data_sources": [
+    "Snort @ wolverine"
+  ],
+  "impact_score": 0,
+  "impact": "Low",
+  "impact_id": 1,
+  "malware": [
+    {
+      "classification_ids": [
+        5
+      ],
+      "classifications": [
+        "DDOS"
+      ],
+      "name": "ICMP DoS"
+    }
+  ],
+  "risk_level": "High",
+  "risk_level_id": 3,
+  "risk_score": 3,
   "state": "In Progress",
   "state_id": 2,
-  "vulnerabilities": [],
   "activity_id": 1,
   "category_uid": 2,
   "class_uid": 2001,
-  "time": 1591293145331,
-  "message": "Multiple Login Failures for the Same User containing Authentication rejected.",
+  "time": 1682347463218,
+  "message": "BLEEDING-EDGE DOS -ISC- ICMP blind TCP reset DoS guessing attempt\n",
   "metadata": {
-    "original_time": 1591293145331,
+    "log_name": "Offense",
+    "log_provider": "IBM QRadar",
+    "original_time": 1682347463218,
     "product": {
       "lang": "en",
       "name": "QRadar SIEM",
@@ -29,265 +63,172 @@
       "vendor_name": "IBM"
     },
     "version": "7.5.0",
-    "labels": [],
-    "modified_time": 1591293416129
+    "modified_time": 1682347469220
   },
-  "severity_id": 3,
-  "activity_name": "Generate",
+  "activity_name": "Create",
   "category_name": "Findings",
   "class_name": "Security Finding",
-  "end_time": 1591295429000,
+  "count": 2,
+  "end_time": 1682781010000,
   "enrichments": [
     {
-      "data": "[]",
-      "name": "CategoryCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "2"
-    },
-    {
-      "data": "[]",
-      "name": "DeviceCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "2"
-    },
-    {
-      "data": "[]",
-      "name": "EventCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "2394"
-    },
-    {
-      "data": "[]",
-      "name": "FlowCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "0"
-    },
-    {
-      "data": "[]",
-      "name": "PolicyCategoryCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "0"
-    },
-    {
-      "data": "[]",
-      "name": "RemoteDestinationCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "1"
-    },
-    {
-      "data": "[]",
-      "name": "LocalDestinationCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "1"
-    },
-    {
-      "data": "[]",
-      "name": "SecurityCategoryCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "2"
-    },
-    {
-      "data": "[]",
-      "name": "SourceCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "4"
-    },
-    {
-      "data": "[]",
-      "name": "UsernameCount",
-      "provider": "EP",
-      "type": "counter",
-      "value": "4"
-    },
-    {
-      "data": "[]",
       "name": "Magnitude",
-      "provider": "EP",
-      "type": "score",
-      "value": "2"
-    },
-    {
-      "data": "[]",
-      "name": "Credibility",
-      "provider": "EP",
+      "provider": "Event Processor",
       "type": "score",
       "value": "3"
     },
     {
-      "data": "[]",
-      "name": "Relevance",
-      "provider": "EP",
-      "type": "score",
-      "value": "0"
-    },
-    {
-      "data": "[]",
-      "name": "Severity",
-      "provider": "EP",
-      "type": "score",
-      "value": "4"
-    },
-    {
-      "data": "[]",
-      "name": "OffenseType",
-      "provider": "EP",
+      "name": "offense_type",
+      "provider": "Event Processor",
       "type": "correlation",
+      "value": "2"
+    },
+    {
+      "name": "offense_source",
+      "provider": "Event Processor",
+      "type": "correlation",
+      "value": "BLEEDING-EDGE DOS -ISC- ICMP blind TCP reset DoS guessing attempt"
+    },
+    {
+      "name": "category_count",
+      "provider": "Event Processor",
+      "type": "counter",
       "value": "1"
     },
     {
-      "data": "[]",
-      "name": "OffenseSource",
-      "provider": "EP",
-      "type": "correlation",
-      "value": "99.9.9.9"
+      "name": "device_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "1"
     },
     {
-      "data": "[]",
-      "name": "DomainID",
-      "provider": "EP",
+      "name": "event_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "2"
+    },
+    {
+      "name": "flow_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "0"
+    },
+    {
+      "name": "policy_category_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "0"
+    },
+    {
+      "name": "remote_destination_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "0"
+    },
+    {
+      "name": "local_destination_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "2"
+    },
+    {
+      "name": "security_category_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "1"
+    },
+    {
+      "name": "source_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "1"
+    },
+    {
+      "name": "user_name_count",
+      "provider": "Event Processor",
+      "type": "counter",
+      "value": "0"
+    },
+    {
+      "name": "domain_id",
+      "provider": "Event Processor",
       "type": "correlation",
       "value": "0"
     },
     {
-      "data": "[]",
-      "name": "Severity",
-      "provider": "EP",
-      "type": "correlation",
-      "value": "4"
+      "name": "source_network",
+      "provider": "Event Processor",
+      "type": "network",
+      "value": "Net-99-99-99.Net_99_0_0_0"
     },
     {
-      "data": "{\n  \"id\": 100440,\n  \"type\": \"CRE_RULE\"\n}",
-      "name": "Rule",
-      "provider": "EP",
-      "type": "correlation",
-      "value": "100440"
+      "name": "destination_network",
+      "provider": "Event Processor",
+      "type": "network",
+      "value": "Net-88-88-88.Net_88_88_0_0"
+    },
+    {
+      "name": "destination_network",
+      "provider": "Event Processor",
+      "type": "network",
+      "value": "Net-77-77-77.Net_77_0_0_0"
     }
   ],
   "observables": [
     {
-      "name": "AssignedTo",
+      "name": "log_source_id",
+      "type": "Other",
+      "type_id": 99,
+      "value": "112"
+    },
+    {
+      "name": "log_source_name",
+      "type": "Other",
+      "type_id": 99,
+      "value": "Snort @ wolverine"
+    },
+    {
+      "name": "log_source_type_id",
+      "type": "Other",
+      "type_id": 99,
+      "value": "2"
+    },
+    {
+      "name": "log_source_type_name",
+      "type": "Other",
+      "type_id": 99,
+      "value": "Snort"
+    },
+    {
+      "name": "assigned_to",
       "type": "User",
       "type_id": 21,
-      "value": "SomeUserName"
+      "value": "SomeUser"
     },
     {
-      "name": "Category",
+      "name": "low_level_category",
       "type": "Other",
       "type_id": 99,
-      "value": "Host Login Failed"
+      "value": "ICMP DoS"
     },
     {
-      "name": "Category",
-      "type": "Other",
-      "type_id": 99,
-      "value": "User Login Failure"
-    },
-    {
-      "name": "SourceNetwork",
-      "type": "Other",
-      "type_id": 99,
-      "value": "other"
-    },
-    {
-      "name": "DestinationNetwork",
-      "type": "Other",
-      "type_id": 99,
-      "value": "other"
-    },
-    {
-      "name": "LogSourceId",
-      "type": "Other",
-      "type_id": 99,
-      "value": "118"
-    },
-    {
-      "name": "LogSourceName",
-      "type": "Other",
-      "type_id": 99,
-      "value": "VpnConcentrator @ 99.9.9.9"
-    },
-    {
-      "name": "LogSourceTypeId",
-      "type": "Other",
-      "type_id": 99,
-      "value": "23"
-    },
-    {
-      "name": "LogSourceTypeName",
-      "type": "Other",
-      "type_id": 99,
-      "value": "VpnConcentrator"
-    },
-    {
-      "name": "LogSourceId",
-      "type": "Other",
-      "type_id": 99,
-      "value": "63"
-    },
-    {
-      "name": "LogSourceName",
-      "type": "Other",
-      "type_id": 99,
-      "value": "Custom Rule Engine-8 :: ip-134-242"
-    },
-    {
-      "name": "LogSourceTypeId",
-      "type": "Other",
-      "type_id": 99,
-      "value": "18"
-    },
-    {
-      "name": "LogSourceTypeName",
-      "type": "Other",
-      "type_id": 99,
-      "value": "EventCRE"
-    },
-    {
-      "name": "DomainId",
-      "type": "Other",
-      "type_id": 99,
-      "value": "0"
-    },
-    {
-      "name": "SourceAddress",
+      "name": "source_address",
       "type": "IP Address",
       "type_id": 2,
-      "value": "0.0.0.9"
+      "value": "99.99.99.99"
     },
     {
-      "name": "SourceAddress",
+      "name": "local_destination_address",
       "type": "IP Address",
       "type_id": 2,
-      "value": "0.0.0.10"
+      "value": "88.88.88.88"
     },
     {
-      "name": "SourceAddress",
+      "name": "local_destination_address",
       "type": "IP Address",
       "type_id": 2,
-      "value": "0.0.0.11"
-    },
-    {
-      "name": "SourceAddress",
-      "type": "IP Address",
-      "type_id": 2,
-      "value": "0.0.0.12"
-    },
-    {
-      "name": "LocalDestinationAddress",
-      "type": "IP Address",
-      "type_id": 2,
-      "value": "0.0.0.15"
+      "value": "77.77.77.77"
     }
   ],
-  "severity": "MEDIUM",
   "status_code": "OPEN"
 }

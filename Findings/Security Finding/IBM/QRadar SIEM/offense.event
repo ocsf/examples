@@ -1,67 +1,62 @@
 {
-  "assigned_to": "SomeUserName",
-  "categories": [
-    "Host Login Failed",
-    "User Login Failure"
-  ],
-  "category_count": 2,
-  "credibility": 3,
-  "description": "Multiple Login Failures for the Same User containing Authentication rejected.",
-  "destination_networks": [
-    "other"
-  ],
-  "device_count": 2,
-  "domain_id": 0,
-  "event_count": 2394,
-  "first_persisted_time": 1591293146000,
-  "flow_count": 0,
-  "follow_up": false,
-  "id": 11,
-  "inactive": true,
-  "last_persisted_time": 1591295429000,
-  "last_updated_time": 1591293416129,
-  "local_destination_address_ids": [
-    15
-  ],
-  "local_destination_count": 1,
-  "log_sources": [
-    {
-      "id": 118,
-      "name": "VpnConcentrator @ 99.9.9.9",
-      "type_id": 23,
-      "type_name": "VpnConcentrator"
-    },
-    {
-      "id": 63,
-      "name": "Custom Rule Engine-8 :: ip-134-242",
-      "type_id": 18,
-      "type_name": "EventCRE"
-    }
-  ],
-  "magnitude": 2,
-  "offense_source": "99.9.9.9",
-  "offense_type": 1,
-  "policy_category_count": 0,
-  "protected": false,
-  "relevance": 0,
-  "remote_destination_count": 1,
+  "last_persisted_time": 1682781010000,
+  "username_count": 0,
+  "description": "BLEEDING-EDGE DOS -ISC- ICMP blind TCP reset DoS guessing attempt\n",
   "rules": [
     {
-      "id": 100440,
+      "id": 100079,
       "type": "CRE_RULE"
     }
   ],
-  "security_category_count": 2,
-  "severity": 4,
+  "event_count": 2,
+  "flow_count": 0,
+  "assigned_to": "SomeUser",
+  "security_category_count": 1,
+  "follow_up": false,
   "source_address_ids": [
-    9,
-    10,
-    11,
-    12
+    546
   ],
-  "source_count": 4,
-  "source_network": "other",
-  "start_time": 1591293145331,
-  "status": "OPEN",
-  "username_count": 4
+  "source_count": 1,
+  "inactive": true,
+  "protected": false,
+  "closing_user": null,
+  "destination_networks": [
+    "Net-88-88-88.Net_88_88_0_0",
+    "Net-77-77-77.Net_77_0_0_0"
+  ],
+  "source_network": "Net-99-99-99.Net_99_0_0_0",
+  "category_count": 1,
+  "close_time": null,
+  "remote_destination_count": 0,
+  "start_time": 1682347463218,
+  "magnitude": 3,
+  "last_updated_time": 1682347469220,
+  "credibility": 2,
+  "id": 591,
+  "categories": [
+    "ICMP DoS"
+  ],
+  "severity": 8,
+  "policy_category_count": 0,
+  "log_sources": [
+    {
+      "type_name": "Snort",
+      "type_id": 2,
+      "name": "Snort @ wolverine",
+      "id": 112
+    }
+  ],
+  "closing_reason_id": null,
+  "device_count": 1,
+  "first_persisted_time": 1682347463000,
+  "offense_type": 2,
+  "relevance": 0,
+  "domain_id": 0,
+  "offense_source": "BLEEDING-EDGE DOS -ISC- ICMP blind TCP reset DoS guessing attempt",
+  "local_destination_address_ids": [
+    1020,
+    1087
+  ],
+  "local_destination_count": 2,
+  "status": "OPEN"
 }
