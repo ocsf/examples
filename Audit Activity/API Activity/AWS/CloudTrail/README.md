@@ -54,7 +54,7 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`resources[].type`|`resources[].type`|
 
  ### Conditional Mapping:
-Any fields described within the conditional mappings are are subject to dynamic mappings contingent on matching a condition within the mapping schema. Fields which fail to meet a particuclar conditional are assigned a default value from the OCSF schema description.
+ - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
