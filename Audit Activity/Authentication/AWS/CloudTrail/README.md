@@ -20,7 +20,7 @@
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
 
-Any fields not present in an explicit mapping will be mapped to the unmapped object. 
+- Any fields not present in an explicit mapping will be mapped to the unmapped object. 
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
@@ -50,7 +50,7 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`dst_endpoint.svc_name`|`additionalEventData.LoginTo`|
 
  ### Conditional Mapping:
-Any fields described within the conditional mappings are are subject to dynamic mappings contingent on matching a condition within the mapping schema. Fields which fail to meet a particuclar conditional are assigned a default value from the OCSF schema description.
+ - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
