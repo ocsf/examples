@@ -7,7 +7,7 @@
   - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624
   - https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4624
   
- ### OCSF Version: 0.31.2
+ ### OCSF Version: 1.0.0-rc.2
  - `category_uid`: `3` `(System Activity)`
  - `class_uid`: `3002` `(Process Activity)`
  - `activity_id`: `1` `(Logon)`

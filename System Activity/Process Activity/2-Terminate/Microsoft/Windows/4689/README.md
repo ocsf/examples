@@ -7,7 +7,7 @@
   - https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4689
   - https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4689
   
- ### OCSF Version: 0.31.2
+ ### OCSF Version: 1.0.0-rc.2
  - `category_uid`: `1` `(System Activity)`
  - `class_uid`: `1007` `(Process Activity)`
  - `activity_id`: `2` `(Terminate)`
