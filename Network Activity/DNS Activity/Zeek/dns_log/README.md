@@ -1,9 +1,9 @@
-# Event Dossier: Zeek Query Log
+# Event Dossier: Zeek dns.log
 ### NOERROR Query Results
 - **Description**: Translates a Zeek query log to OCSF. 
 - **Event References**:
   - https://docs.zeek.org/en/master/logs/dns.html
-  - https://schema.ocsf.io/1.0.0-rc.3/objects/dns_query
+  - [https://schema.ocsf.io/1.0.0-rc.3/objects/dns_query](https://schema.ocsf.io/1.0.0-rc.3/classes/dns_activity)
 
  ### OCSF Version: 1.0.0-rc.2
  - `category_uid`: `4`
