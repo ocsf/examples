@@ -24,21 +24,22 @@
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
-|'time'|'time'|
-|'packet_uid'|'packet_uid'|
-|'src_endpoint.ip'|'src_endpoint.ip'|
-|'srce_endpoint.port'|'srce_endpoint.port'|
-|'id.resp_h'|'id.resp_h'|
-|'id.resp_p'|'id.resp_p'|
-|'connection_info.protocol_name'|'connection_info.protocol_name'|
-|'transaction_uid'|'transaction_uid'|
-|'query.hostname'|'query.hostname'|
-|'query.class'|'query.class'|
-|'opcode'|'opcode'|
-|'rcode'|'rcode'|
-|'rcode_id'|'rcode_id'|
-|answers'|'answers'|
-|'type'|'type'|
+|''time''|'ts'|
+|''uuid''|'uid'|
+|''src_endpoint.ip''|'id.orig_h'|
+|''src_endpoint.port''|'id.orig_p'|
+|''query.hostname''|'query'|
+|''query.type''|'qtype_name'|
+|''query.class''|'qclass_name'|
+|''rcode''|'rcode_name'|
+|''rcode_id''|'rcode_name|
+|''anwers''|'answers'|
+|''dst_endpoint.ip''|'id.resp_h'|
+|''dst_endpoint.port''|'id.resp_p'|
+|''connection_info.protocol_name''|'proto'|
+|''transaction_uid''|'trans_id'|
+|''ttl''|'TTLs|
+
 
 
 
@@ -54,4 +55,3 @@
 |'RD'|unmapped'|
 |'RA'|unmapped'|
 |'Z'|unmapped'|
-|'TTLs'|unmapped'|
