@@ -12,7 +12,7 @@
  - `class_name`: `DNS Activity`
  - `metadata.profiles`: `[security_control]`
  - `metadata.product.name`: `Zeek`
- - `metadata.product.feature.name`: `Query Logs`
+ - `metadata.product.feature.name`: `dns.log`
  - `metadata.product.vendor_name`: `Zeek`
  - `severity`: `Informational`
  - `severity_id`: `1`
