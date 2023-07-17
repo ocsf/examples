@@ -1,6 +1,7 @@
 # Event Dossier: Zeek conn.log
 ### 
 - **Description**: Translates a Zeek conn.log to OCSF. 
+
 - **Event References**:
   - https://docs.zeek.org/en/master/logs/conn.html
   - https://schema.ocsf.io/1.0.0-rc.3/classes/network_activity
@@ -24,6 +25,8 @@
 
 | OCSF                          | Raw           |
 | ----------------------------- | --------------|
+|'time'                         |'ts'           |
+|'uuid'                         |'uid'          |
 |'src_endpoint.port'            |'id.orig_p'    |
 |'dst_endpoint.ip'              |'id.resp_h'    |
 |'dst_endpoint.port'            |'id.resp_p'    |
