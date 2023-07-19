@@ -6,7 +6,7 @@
   - https://docs.zeek.org/en/master/logs/conn.html
   - https://schema.ocsf.io/1.0.0-rc.3/classes/network_activity
  
- ### OCSF Version: 1.0.0-rc.2
+ ### OCSF Version: 1.0.0-rc.3
  - `category_uid`: `4`
  - `category_name`: `Network Activity`
  - `class_uid`: `4001`
