@@ -5,7 +5,7 @@
   - https://docs.zeek.org/en/master/logs/ssl.html
   - https://schema.ocsf.io/1.0.0-rc.3/classes/network_activity
  
- ### OCSF Version: 1.0.0-rc.2
+ ### OCSF Version: 1.0.0-rc.3
  - `category_uid`: `4`
  - `category_name`: `Network Activity`
  - `class_uid`: `4001`
@@ -22,24 +22,24 @@
 
  - Any fields not present in an explicit mapping will be mapped to the unmapped object. 
 
-| OCSF                          | Raw               |
-| ----------------------------- | ----------------- |
-|'time'                         |'ts'               |
-|'uuid'                         |'uid'              |
-|'src_endpoint.ip'              |'id.orig_h'        |
-|'src_endpoint.port'            |'id.orig_p'        |
-|'dst_endpoint.ip'              |'id.resp_h'        |
-|'dst_endpoint.port'            |'id.resp_p'        |
-|'version'                      |'version'          |
-|'cipher'                       |'cipher'           |
-|'certificate'                  |'curve'            |
-|'domain'                       |'server_name'      |
-|'certificate_chain'            |'cert_chain_fluids'|
-|'subject'                      |'subject'          |
-|'issuer'                       |'issuer'           |
-|'unmapped'                     |'next_protocol'    |
-|'unmapped'                     |'resumed'          |
-|'unmapped'                     |'established'      |
+| OCSF                           | Raw               |
+| ------------------------------ | ----------------- |
+|'time'                          |'ts'               |
+|'uuid'                          |'uid'              |
+|'src_endpoint.ip'               |'id.orig_h'        |
+|'src_endpoint.port'             |'id.orig_p'        |
+|'dst_endpoint.ip'               |'id.resp_h'        |
+|'dst_endpoint.port'             |'id.resp_p'        |
+|'version'                       |'version'          |
+|'cipher'                        |'cipher'           |
+|'certificate'                   |'curve'            |
+|'domain'                        |'server_name'      |
+|'certificate_chain'             |'cert_chain_fluids'|
+|'subject'                       |'subject'          |
+|'issuer'                        |'issuer'           |
+|'unmapped'                      |'next_protocol'    |
+|'unmapped'                      |'resumed'          |
+|'network_activity.status_id':'1'|'established'      |
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.

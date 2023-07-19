@@ -3,9 +3,9 @@
 - **Description**: Translates a Zeek query log to OCSF. 
 - **Event References**:
   - https://docs.zeek.org/en/master/logs/dns.html
-  - https://schema.ocsf.io/1.0.0-rc.2/objects/dns_query
+  - https://schema.ocsf.io/1.0.0-rc.3/objects/dns_query
   
- ### OCSF Version: 1.0.0-rc.2
+ ### OCSF Version: 1.0.0-rc.3
  - `category_uid`: `4`
  - `category_name`: `Network Activity`
  - `class_uid`: `4003`
@@ -33,7 +33,7 @@
 |'query.class'                  |'qclass_name'    |
 |'rcode'                        |'rcode_name'     |
 |'rcode_id'                     |'rcode_name'     |
-|'anwers.rdata'                 |'answers'        |
+|'answers.rdata'                 |'answers'        |
 |'dst_endpoint.ip'              |'id.resp_h'      |
 |'dst_endpoint.port'            |'id.resp_p'      |
 |'connection_info.protocol_name'|'proto'          |
@@ -59,11 +59,11 @@ Z (Reserved for future use): This field is reserved for future use. In current D
 
 | OCSF                       | Raw           | 
 | -------------------------- | ------------- |
-|'answers.flag_ids:`1`       |'AA'           | 
-|'answers.flag_ids:`2`       |'TC'           | 
-|'answers.flag_ids:`3`       |'RD'           | 
-|'answers.flag_ids:`4`       |'RA'           | 
-|'answers.flag_ids:`99`      |'Z'            |
+|'answers.flag_ids':`1`       |'AA'           | 
+|'answers.flag_ids':`2`       |'TC'           | 
+|'answers.flag_ids':`3`       |'RD'           | 
+|'answers.flag_ids':`4`       |'RA'           | 
+|'answers.flag_ids':`99`      |'Z'            |
 | -------------------------- | ------------- |
 
 
