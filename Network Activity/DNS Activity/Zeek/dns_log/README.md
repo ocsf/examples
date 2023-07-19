@@ -40,6 +40,11 @@
 |'answers.ttl'                  |'TTLs            |
 |'answers.packet_uid'           |'trans_id'       |
 |'activity_id':'4'              |'reject'         |
+|'answers.flag_ids.1`           |'AA'             | 
+|'answers.flag_ids.2`           |'TC'             | 
+|'answers.flag_ids.3`           |'RD'             | 
+|'answers.flag_ids.4`           |'RA'             | 
+|'answers.flag_ids.99`          |'Z'              |
 | ----------------------------- | --------------- |
 
  ### Conditional Mapping:
@@ -55,17 +60,6 @@ RD (Recursion Desired): This flag indicates if the client (i.e., the system maki
 RA (Recursion Available): This flag indicates if the DNS server can perform recursive queries. If it's "true", the server can perform recursion. Here it's "false", which means that the server does not have the capability to perform recursion.
 
 Z (Reserved for future use): This field is reserved for future use. In current DNS specifications, it should always be "0" in all queries and responses.
-
-
-| OCSF                       | Raw           | 
-| -------------------------- | ------------- |
-|'answers.flag_ids':`1`       |'AA'           | 
-|'answers.flag_ids':`2`       |'TC'           | 
-|'answers.flag_ids':`3`       |'RD'           | 
-|'answers.flag_ids':`4`       |'RA'           | 
-|'answers.flag_ids':`99`      |'Z'            |
-| -------------------------- | ------------- |
-
 
  ### Unmapped:
 | OCSF                       | Raw           |
