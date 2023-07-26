@@ -1,0 +1,60 @@
+{
+       "activity_name": "Traffic",
+      "activity_id": 6,
+      "category_name": "Network Activity",
+      "category_uid": 4,
+      "class_name": "Network Activity",
+      "class_uid": 4001,
+      "type_uid": 400106,
+      "type_name": "Network Activity: Traffic",
+      "severity_id": 1,
+      "severity": "Informational",
+      "start_time": "2015/06/17T00:00:00.083",
+      "end_time": "2015/06/17T00:00:00.089",
+      "duration": 0.006,
+      "metadata": {
+            "product": {
+                  "version": "3.9.0",
+                  "name": "SiLK",
+                  "feature": {
+                        "name": " Network Flow Data"
+                  },
+                  "vendor_name": "CERT/NetSA at Carnegie Mellon University - Software Engineering Institute"
+            },
+            "version": "1.0.0-rc.3"
+      },
+      "src_endpoint": {
+            "port": 63975,
+            "ip": "192.168.40.20"
+      },
+      "dst_endpoint": {
+            "port": 443,
+            "ip": "10.0.40.21"
+      },
+      "connection_info": {
+            "protocol_num": 6,
+            "tcp_flags": 19,
+            "boundary_id": 99,
+            "boundary": "Other",
+            "direction_id": 2,
+            "direction": "Outbound"
+      },
+      "traffic": {
+            "packets": 8,
+            "bytes": 344
+      },
+      "unmapped": {
+            "sensor": "S1",
+            "in": 0,
+	    "out": 0,
+	    "nhIP": "0.0.0.0",
+	    "initialFlags": "",
+      	    "sessionFlags": "",
+	    "attributes": "",
+	    "application": 0,
+	    "class": "all",
+	    "type": "outweb",
+	    "iType": "",
+	    "iCode": ""
+      }
+}
