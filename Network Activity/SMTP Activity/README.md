@@ -1,1 +1,0 @@
-# SMTP Activity Examples
