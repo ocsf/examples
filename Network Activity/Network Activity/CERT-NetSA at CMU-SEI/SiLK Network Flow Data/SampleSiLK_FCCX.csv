@@ -1,0 +1,2 @@
+sIP,dIP,sPort,dPort,protocol,packets,bytes,flags,sTime,duration,eTime,sensor,in,out,nhIP,initialFlags,sessionFlags,attributes,application,class,type,sTime+msec,eTime+msec,dur+msec,iType,iCode
+192.168.40.20,10.0.40.21,63975,443,6,8,344,FSA,2015/06/17T00:00:00.083,0.006,2015/06/17T00:00:00.089,S1,0,0,0.0.0.0,,,,0,all,outweb,2015/06/17T00:00:00.083,2015/06/17T00:00:00.089,0.006,,
