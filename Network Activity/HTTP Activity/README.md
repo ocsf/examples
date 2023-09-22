@@ -1,6 +1,6 @@
-# Event Dossier: Amazon VPC Flowlogs
-### Amazon VPC Flowlog Connection Refused
-- **Description**: Translates Amazon VPC Flowlog event where a connection was refused to OCSF. The source might be in csv or parquet. The source field names may vary with a `-` compared to a `_` depending on the source type. This file has been anonymized and contains only 1 record showing version 5 fields in alphabetical order.
+# Event Dossier: Amazon WAF
+### Amazon WAF Connection Refused
+- **Description**: Translates Amazon WAF event where a connection was refused to OCSF. The source might be in csv or parquet. The source field names may vary with a `-` compared to a `_` depending on the source type. This file has been anonymized and contains only 1 record showing version 5 fields in alphabetical order.
 - **Event References**:
   - https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html
 
