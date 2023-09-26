@@ -46,8 +46,7 @@
 |`requestHeadersInserted[].name`|`http_request.http_headers[].name`|
 |`requestHeadersInserted[].value`|`http_request.http_headers[].value`|
 |`responseCodeSent`|`firewall_rule.status_code`|
-|_concat_|
-|`httpRequest.headers[].value.Host;httpRequest.uri;httpRequest.args`|`http_request.url.hostname`|
+
 
 
 
@@ -63,31 +62,21 @@
 |`action`|`http_response.code`|
 |`disposition`|`action`|
 |`disposition_id`|`action`|
-
-
-|`httpRequest.headers[].name.User-Agent`|`http_request.user_agent`|
-|`httpRequest.headers[].name.X-Forwarded-For`|`http_request.x_forwarded_for`|
 |`ttpRequest.headers[].name.referer`|`http_request.referrer`|
 |`httpRequest.headers[].name.X-Forwarded-Port`|`http_request.url.port`|
 |`httpRequest.headers[].name`|`http_request.http_headers[].name`|
+|Subject to evaluation, _if `httpRequest.headers[].name` equals `User-Agent`_ - |
+|`httpRequest.headers[].name.value`|`http_request.user_agent`|
+|_elseif `httpRequest.headers[].name` equals `Host`_ - |
+|_concat_|
+|`httpRequest.headers[].value;httpRequest.uri;httpRequest.args`|`http_request.url.hostname`|
+|_elseif `httpRequest.headers[].name` equals `X-Forwarded-Fort`_ - |
+|`httpRequest.headers[].name.value`|`http_request.x_forwarded_for`|
+|_elseif `httpRequest.headers[].name` equals `referer`_ - |
+|`httpRequest.headers[].name.value`|`http_request.referrer`|
+|_elseif `httpRequest.headers[].name` equals `X-Forwarded-Port`_ - |
+|`httpRequest.headers[].name.value`|`http_request.url.port`|
+|_else_|
+|`httpRequest.headers[].name.value`|`http_request.http_headers[].name`|
 
-|Subject to evaluation, _if `pkt_dstaddr` equals `dstaddr`_ - |
-|`dst_endpoint.ip`|`dstaddr`| 
-|_else_|
-|`dst_endpoint.ip`|`pkt_dstaddr`|
-|`dst_endpoint.intermediate_ips`|`dstaddr`|
-|Subject to evaluation, _if `pkt_srcaddr` equals `srcaddr`_ - |
-|`src_endpoint.ip`|`srcaddr`|
-|_else_|
-|`src_endpoint.ip`|`pkt_srcaddr`| 
-|`src_endpoint.intermediate_ips`|`srcaddr`|
-|Subject to evaluation, _if `flow_direction` equals `ingress`_ - |
-|`dst_endpoint.interface_uid`|`interface_id`|
-|`dst_endpoint.vpc_uid`|`vpc_id`|
-|`dst_endpoint.instance_uid`|`instance_id`|
-|`dst_endpoint.subnet_uid`|`subnet_id`|
-|Subject to evaluation, _if `flow_direction` equals `egress`_ - |
-|`src_endpoint.interface_uid`|`interface_id`|
-|`src_endpoint.vpc_uid`|`vpc_id`|
-|`src_endpoint.instance_uid`|`instance_id`|
-|`src_endpoint.subnet_uid`|`subnet_id`|
+
