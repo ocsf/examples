@@ -65,7 +65,7 @@
 |`ttpRequest.headers[].name.referer`|`http_request.referrer`|
 |`httpRequest.headers[].name.X-Forwarded-Port`|`http_request.url.port`|
 |`httpRequest.headers[].name`|`http_request.http_headers[].name`|
-|Subject to evaluation, _if `httpRequest.headers[].name` equals `User-Agent`_ - |
+|_if `httpRequest.headers[].name` equals `User-Agent`_ - |
 |`httpRequest.headers[].name.value`|`http_request.user_agent`|
 |_elseif `httpRequest.headers[].name` equals `Host`_ - |
 |_concat_|
