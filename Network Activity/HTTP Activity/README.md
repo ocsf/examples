@@ -46,7 +46,8 @@
 |`requestHeadersInserted[].name`|`http_request.http_headers[].name`|
 |`requestHeadersInserted[].value`|`http_request.http_headers[].value`|
 |`responseCodeSent`|`firewall_rule.status_code`|
-|`timestamp`|`time`|
+|_concat_|
+|`httpRequest.headers[].value.Host;httpRequest.uri;httpRequest.args`|`http_request.url.hostname`|
 
 
 
@@ -55,16 +56,21 @@
 
 | OCSF                       | Raw             | Notes             |
 | -------------------------- | ----------------| ------------------|
-|`activity_name`|`action`|
-|`activity_id`|`action`|
-|`type_uid`|`action`|
-|`type_name`|`action`|
+|`activity_name`|`httpRequest.httpMethod`|
+|`activity_id`|`httpRequest.httpMethod`|
+|`type_uid`|`httpRequest.httpMethod`|
+|`type_name`|`httpRequest.httpMethod`|
+|`action`|`http_response.code`|
 |`disposition`|`action`|
 |`disposition_id`|`action`|
-|`connection_info.boundary_id`|`traffic_path`|
-|`connection_info.boundary`|`traffic_path`|
-|`connection_info.direction`|`flow_direction`|
-|`connection_info.direction_id`|`flow_direction`|
+
+
+|`httpRequest.headers[].name.User-Agent`|`http_request.user_agent`|
+|`httpRequest.headers[].name.X-Forwarded-For`|`http_request.x_forwarded_for`|
+|`ttpRequest.headers[].name.referer`|`http_request.referrer`|
+|`httpRequest.headers[].name.X-Forwarded-Port`|`http_request.url.port`|
+|`httpRequest.headers[].name`|`http_request.http_headers[].name`|
+
 |Subject to evaluation, _if `pkt_dstaddr` equals `dstaddr`_ - |
 |`dst_endpoint.ip`|`dstaddr`| 
 |_else_|
