@@ -22,7 +22,7 @@
 
  - Any fields not present in an explicit mapping will be mapped to the unmapped object. 
 
-| OCSF                       | Raw             |
+| Raw                       | OCSF             |
 | -------------------------- | ----------------|
 |`webaclId`|`metadata.product.feature.uid`|
 |`formatVersion`|`metadata.product.version`|
