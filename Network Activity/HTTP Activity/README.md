@@ -7,12 +7,12 @@
  ### OCSF Version: 1.0.0-rc.2
  - `category_uid`: `4`
  - `category_name`: `Network Activity`
- - `class_uid`: `4001`
- - `class_name`: `Network Activity`
+ - `class_uid`: `4002`
+ - `class_name`: `HTTP Activity`
  - `cloud.provider`: `AWS`
- - `metadata.profiles`: `[cloud, security_control]`
- - `metadata.product.name`: `Amazon VPC`
- - `metadata.product.feature.name`: `Flowlogs`
+ - `metadata.profiles`: `[cloud, firewall]`
+ - `metadata.product.name`: `Amazon WAF`
+ - `metadata.product.feature.name`: `WAF`
  - `metadata.product.vendor_name`: `AWS`
  - `severity`: `Informational`
  - `severity_id`: `1`
@@ -24,14 +24,17 @@
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
-|`metadata.product.version`|`version`|
-|`cloud.account_uid`|`account_id`    |
-|`cloud.region`| `region`|
-|`cloud.zone`|`az_id`|
-|`src_endpoint.port`|`srcport`|
-|`dst_endpoint.port`|`dstport`|
-|`connection_info.protocol_num`|`protocol`|
-|`traffic.packets`|`packets`|
+|`webaclId`|`metadata.product.feature.uid`|
+|`formatVersion`|`metadata.product.version`|
+|`labels[]`| `metadata.labels[]`|
+|`httpSourceName`|`src_endpoint.svc_name`|
+
+|`httpSourceId`|`src_endpoint.uid`|
+|`httpRequest.clientIp`|`src_endpoint.ip`|
+|`httpRequest.country`|`src_endpoint.location.country`|
+
+|`httpRequest.uri`|`http_request.url.path`|
+
 |`traffic.bytes`|`bytes`|
 |`time`|`start`|
 |`start_time`|`start`|
