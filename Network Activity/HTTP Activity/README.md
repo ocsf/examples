@@ -65,16 +65,15 @@
 |`ttpRequest.headers[].name.referer`|`http_request.referrer`|
 |`httpRequest.headers[].name.X-Forwarded-Port`|`http_request.url.port`|
 |`httpRequest.headers[].name`|`http_request.http_headers[].name`|
-|_if `httpRequest.headers[].name` equals `User-Agent`_ - |
+|_if `httpRequest.headers[].name` equals `User-Agent`_|
 |`httpRequest.headers[].name.value`|`http_request.user_agent`|
-|_elseif `httpRequest.headers[].name` equals `Host`_ - |
-|_concat_|
-|`httpRequest.headers[].value;httpRequest.uri;httpRequest.args`|`http_request.url.hostname`|
-|_elseif `httpRequest.headers[].name` equals `X-Forwarded-Fort`_ - |
+|_elseif `httpRequest.headers[].name` equals `Host`_|
+|_concat_ - `httpRequest.headers[].value;httpRequest.uri;httpRequest.args`|`http_request.url.hostname`|
+|_elseif `httpRequest.headers[].name` equals `X-Forwarded-Fort`_|
 |`httpRequest.headers[].name.value`|`http_request.x_forwarded_for`|
-|_elseif `httpRequest.headers[].name` equals `referer`_ - |
+|_elseif `httpRequest.headers[].name` equals `referer`_|
 |`httpRequest.headers[].name.value`|`http_request.referrer`|
-|_elseif `httpRequest.headers[].name` equals `X-Forwarded-Port`_ - |
+|_elseif `httpRequest.headers[].name` equals `X-Forwarded-Port`_|
 |`httpRequest.headers[].name.value`|`http_request.url.port`|
 |_else_|
 |`httpRequest.headers[].name.value`|`http_request.http_headers[].name`|
