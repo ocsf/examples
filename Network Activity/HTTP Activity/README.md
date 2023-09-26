@@ -28,22 +28,27 @@
 |`formatVersion`|`metadata.product.version`|
 |`labels[]`| `metadata.labels[]`|
 |`httpSourceName`|`src_endpoint.svc_name`|
-
 |`httpSourceId`|`src_endpoint.uid`|
 |`httpRequest.clientIp`|`src_endpoint.ip`|
 |`httpRequest.country`|`src_endpoint.location.country`|
-
 |`httpRequest.uri`|`http_request.url.path`|
+|`httpRequest.uri`|`dst_endpoint.domain`|
+|`httpRequest.httpVersion`|`http_request.version`|
+|`httpRequest.httpMethod`|`http_request.http_method`|
+|`httpRequest.requestId`|`http_request.uid`|
+|`terminatingRuleId`|`firewall_rule.uid`|
+|`terminatingRuleType`|`firewall_rule.type`|
+|`httpRequest.args`|`http_request.args`|
+|`terminatingRuleMatchDetails[].conditionType`|`firewall_rule.condition`|
+|`terminatingRuleMatchDetails[].location`|`firewall_rule.match_location`|
+|`terminatingRuleMatchDetails[].matchedData[]`|`firewall_rule.match_details[]`|
+|`rateBasedRuleList[].maxRateAllowed`|`firewall_rule.rate_limit`|
+|`requestHeadersInserted[].name`|`http_request.http_headers[].name`|
+|`requestHeadersInserted[].value`|`http_request.http_headers[].value`|
+|`responseCodeSent`|`firewall_rule.status_code`|
+|`timestamp`|`time`|
 
-|`traffic.bytes`|`bytes`|
-|`time`|`start`|
-|`start_time`|`start`|
-|`end_time`|`end`|
-|`connection_info.tcp_flags`|`tcp_flags`|
-|`connection_info.protocol_ver`|`protocol_ver`|
-|`src_endpoint.svc_name`|`pkt_src_aws_service`|
-|`dst_endpoint.svc_name`|`pkt_dst_aws_service`|
-|`status_code`|`log_status`|
+
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
