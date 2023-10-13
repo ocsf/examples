@@ -1,0 +1,71 @@
+{
+	"timestamp": 1683355579981,
+	"formatVersion": 1,
+	"webaclId": "...",
+	"terminatingRuleId": "RateBasedRule",
+	"terminatingRuleType": "RATE_BASED",
+	"action": "BLOCK",
+	"terminatingRuleMatchDetails": [],
+	"httpSourceName": "APIGW",
+	"httpSourceId": "EXAMPLE11:rjvegx5guh:CanaryTest",
+	"ruleGroupList": [],
+	"rateBasedRuleList": [
+		{
+			"rateBasedRuleId": "...",
+			"rateBasedRuleName": "RateBasedRule",
+			"limitKey": "CUSTOMKEYS",
+			"maxRateAllowed": 100,
+			"customValues": [
+				{
+					"key": "HEADER",
+					"name": "dogname",
+					"value": "ella"
+				}
+			]
+		}
+	],
+	"nonTerminatingMatchingRules": [],
+	"httpRequest": {
+		"clientIp": "52.46.82.45",
+		"country": "FR",
+		"headers": [
+			{
+				"name": "X-Forwarded-For",
+				"value": "52.46.82.45"
+			},
+			{
+				"name": "X-Forwarded-Proto",
+				"value": "https"
+			},
+			{
+				"name": "X-Forwarded-Port",
+				"value": "443"
+			},
+			{
+				"name": "Host",
+				"value": "rjvegx5guh.execute-api.eu-west-3.amazonaws.com"
+			},
+			{
+				"name": "X-Amzn-Trace-Id",
+				"value": "Root=1-645566cf-7cb058b04d9bb3ee01dc4036"
+			},
+			{
+				"name": "dogname",
+				"value": "ella"
+			},
+			{
+				"name": "User-Agent",
+				"value": "RateBasedRuleTestKoipOneKeyModulePV2"
+			},
+			{
+				"name": "Accept-Encoding",
+				"value": "gzip,deflate"
+			}
+		],
+		"uri": "/CanaryTest",
+		"args": "",
+		"httpVersion": "HTTP/1.1",
+		"httpMethod": "GET",
+		"requestId": "Ed0AiHF_CGYF-DA="
+	}
+}

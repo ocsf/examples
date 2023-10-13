@@ -1,0 +1,92 @@
+{
+	"activity_id": 3,
+	"activity_name": "Get",
+	"category_name": "Network Activitys",
+	"category_uid": 4,
+	"class_name": "HTTP Activity",
+	"class_uid": 4002,
+	"cloud": {
+		"provider": "AWS"
+	},
+	"dst_endpoint": {
+		"domain": "/CanaryTest"
+	},
+	"firewall_rule": {
+		"type": "RATE_BASED",
+		"uid": "RateBasedRule"
+	},
+	"http_request": {
+		"args": "",
+		"http_method": "GET",
+		"uid": "Ed0AiHF_CGYF-DA=",
+		"url": {
+			"path": "/CanaryTest"
+		},
+		"version": "HTTP/1.1"
+	},
+	"http_response": {
+		"code": 403
+	},
+	"metadata": {
+		"labels": null,
+		"product": {
+			"feature": {
+				"uid": "..."
+			},
+			"name": "AWS WAF",
+			"vendor_name": "AWS",
+			"version": "1"
+		},
+		"version": "1.1.0-dev"
+	},
+	"severity_id": 1,
+	"src_endpoint": {
+		"ip": "52.46.82.45",
+		"location": {
+			"country": "FR"
+		},
+		"svc_name": "APIGW",
+		"uid": "EXAMPLE11:rjvegx5guh:CanaryTest"
+	},
+	"time": 0,
+	"type_name": "HTTP Activity: Get",
+	"type_uid": 400203,
+	"unmapped": [
+		[
+			"rateBasedRuleList[].rateBasedRuleId",
+			"..."
+		],
+		[
+			"rateBasedRuleList[].customValues[].value",
+			"ella"
+		],
+		[
+			"rateBasedRuleList[].customValues[].name",
+			"dogname"
+		],
+		[
+			"rateBasedRuleList[].limitKey",
+			"CUSTOMKEYS"
+		],
+		[
+			"rateBasedRuleList[].customValues[].key",
+			"HEADER"
+		],
+		[
+			"httpRequest.headers[].value",
+			"52.46.82.45,https,443,rjvegx5guh.execute-api.eu-west-3.amazonaws.com,Root=1-645566cf-7cb058b04d9bb3ee01dc4036,ella,RateBasedRuleTestKoipOneKeyModulePV2,gzip,deflate"
+		],
+		[
+			"rateBasedRuleList[].rateBasedRuleName",
+			"RateBasedRule"
+		],
+		[
+			"rateBasedRuleList[].maxRateAllowed",
+			"100"
+		],
+		[
+			"httpRequest.headers[].name",
+			"X-Forwarded-For,X-Forwarded-Proto,X-Forwarded-Port,Host,X-Amzn-Trace-Id,dogname,User-Agent,Accept-Encoding"
+		]
+	]
+}
