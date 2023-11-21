@@ -16,6 +16,7 @@
   - `metadata.product.name`: `AWS EKS`
   - `metadata.product.vendor_name`: `AWS`
   - `metadata.profiles`: `[cloud]`
+  - `actor.user.type_id`: `0`
 
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
@@ -41,18 +42,24 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`resources[].namespace`|`objectRef.namespace`|
 |`resources[].name`|`objectRef.name`|
 
-|`api.operation`|`eventName`|
-|`cloud.region`|`awsRegion`|
-|`http_request.user_agent`|`userAgent`|
-|`metadata.product.version`|`eventVersion`|
-|`metadata.uid`|`eventID`|
-|`metadata.version`|`eventVersion`|
-|`time`|`eventTime`|
-|`api.response.error`|`errorCode`|
-|`api.response.message`|`errorMessage`|
-|`resources[].uid`|`resources[].ARN`|
-|`resources[].account_uid`|`resources[].accountId`|
-|`resources[].type`|`resources[].type`|
+|`resources[].uid`|`objectRef.uid`|
+|`resources[].version`|`objectRef.resourceVersion`|
+|`api.version`|`objectRef.apiVersion`|
+|`api.response.code`|`responseStatus.code`|
+|`api.response.message`|`responseStatus.message`|
+|`api.response.error`|`responseStatus.reason`|
+|`api.response.error_message`|`responseStatus.status`|
+|`api.group.name`|`objectRef.apiGroup`|
+|`api.response.containers[].name`|`responseObject.spec.containers[].name`|
+|`api.response.containers[].image.name`|`responseObject.spec.containers[].image`|
+|`api.response.containers[].image.path`|`responseObject.spec.containers[].volumeMounts[].mountPath`|
+|`api.response.containers[].image.uid`|`responseObject.spec.containers[].volumeMounts[].name`|
+|`api.request.containers[].name`|`requestObject.spec.containers[].name`|
+|`api.request.containers[].image.name`|`requestObject.spec.containers[].image`|
+|`api.request.containers[].image.path`|`requestObject.spec.containers[].volumeMounts[].mountPath`|
+|`api.request.containers[].image.uid`|`requestObject.spec.containers[].volumeMounts[].name`|
+|`start_time`|`requestReceivedTimestamp`|
+|`time`|`stageTimestamp`|
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
