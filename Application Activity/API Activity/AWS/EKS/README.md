@@ -59,6 +59,8 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`api.request.containers[].image.path`|`requestObject.spec.containers[].volumeMounts[].mountPath`|
 |`api.request.containers[].image.uid`|`requestObject.spec.containers[].volumeMounts[].name`|
 |`start_time`|`requestReceivedTimestamp`|
+|`resources[].type`|`concat(objectRef.resource;objectRef.subresource)`|
+|`time`|`stageTimestamp`|
 |`time`|`stageTimestamp`|
 
  ### Conditional Mapping:
@@ -66,12 +68,7 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
-|`status`|`errorCode`|
-|`status_id`|`errorCode`|
-|`metadata.product.feature.name`|`eventCategory`|
-|`api.request.uid`|`requestID`|
-|`src_endpoint.ip/src_endpoint.domain`|`sourceIPAddress`|
-|`activity_name`|`eventName`|
-|`activity_id`|`eventName`|
-|`type_uid`|`eventName`|
-|`type_name`|`eventName`|
+|`activity_name`|`verb`|
+|`activity_id`|`verb`|
+|`type_uid`|`verb`|
+|`type_name`|`verb`|
