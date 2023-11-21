@@ -41,7 +41,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`http_request.user_agent`|`userAgent`|
 |`resources[].namespace`|`objectRef.namespace`|
 |`resources[].name`|`objectRef.name`|
-
 |`resources[].uid`|`objectRef.uid`|
 |`resources[].version`|`objectRef.resourceVersion`|
 |`api.version`|`objectRef.apiVersion`|
@@ -58,9 +57,8 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`api.request.containers[].image.name`|`requestObject.spec.containers[].image`|
 |`api.request.containers[].image.path`|`requestObject.spec.containers[].volumeMounts[].mountPath`|
 |`api.request.containers[].image.uid`|`requestObject.spec.containers[].volumeMounts[].name`|
-|`start_time`|`requestReceivedTimestamp`|
 |`resources[].type`|`concat(objectRef.resource;objectRef.subresource)`|
-|`time`|`stageTimestamp`|
+|`start_time`|`requestReceivedTimestamp`|
 |`time`|`stageTimestamp`|
 
  ### Conditional Mapping:
