@@ -1,19 +1,19 @@
-# Event Dossier: Amazon CloudTrail Generic API Activity
+# Event Dossier: Amazon EKS control plane Logging
 
-### A CloudTrail event for DescribeDirectConnectGateways API
-- **Description**: Translates a DescribeDirectConnectGateways Event to OCSF.
+### A generic EKS control plane event
+- **Description**: A generic EKS control plane event to OCSF.
 - **Event References**:
-  - https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html
+  - [https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 
- ### OCSF Version: 1.0.0-rc.2
+ ### OCSF Version: 1.1.0-dev
   - `class_name`: `API Activity`
-  - `class_uid`: `3005`
-  - `category_name`: `Audit Activity`
-  - `category_uid`: `3`
+  - `class_uid`: `6003`
+  - `category_name`: `Application Activity`
+  - `category_uid`: `6`
   - `cloud.provider`: `AWS`
   - `severity_id`: `1`
   - `severity`: `Informational`
-  - `metadata.product.name`: `CloudTrail`
+  - `metadata.product.name`: `AWS EKS`
   - `metadata.product.vendor_name`: `AWS`
   - `metadata.profiles`: `[cloud]`
 
@@ -24,22 +24,23 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
-|`actor.user.account_uid`|`userIdentity.accountId`|
-|`actor.user.credential_uid`|`userIdentity.accessKeyId`|
-|`actor.user.name`|`userIdentity.userName`|
-|`actor.user.type`|`userIdentity.type`|
-|`actor.user.uid`|`userIdentity.principalId`|
-|`actor.user.uuid`|`userIdentity.arn`|
-|`actor.session.created_time`|`userIdentity.sessionContext.attributes.creationDate`|
-|`actor.session.mfa`|`userIdentity.sessionContext.attributes.mfaAuthenticated`|
-|`actor.session.issuer`|`userIdentity.sessionContext.sessionIssuer.arn`|
-|`actor.invoked_by`|`userIdentity.invokedBy`|
-|`actor.idp.name`|`userIdentity.webIdFederationData.federatedProvider`|
-|`actor.idp.name`|`userIdentity.identityProvider`|
-|`src_endpoint.uid`|`vpcEndpointId`|
-|`api.request.uid`|`requestID`|
-|`api.service.name`|`eventSource`|
-|`api.version`|`apiVersion`|
+|`metadata.log_level`|`level`|
+|`metadata.product.version`|`apiVersion`|
+|`api.request.uid`|`auditID`|
+|`message`|`stage`|
+|`http_request.url.path`|`requestURI`|
+|`api.operation`|`verb`|
+|`actor.user.name`|`user.username`|
+|`actor.user.uid`|`user.uid`|
+|`actor.user.groups[].name`|`user.groups[]`|
+|`actor.session.credential_uid`|`user.extra.accessKeyId[]`|
+|`actor.session.uid`|`user.extra.sessionName[]`|
+|`cloud.account.uid`|`sourceIPs[0]`|
+|`src_endpoint.intermediate_ips[]`|`sourceIPs[:1]`|
+|`http_request.user_agent`|`userAgent`|
+|`resources[].namespace`|`objectRef.namespace`|
+|`resources[].name`|`objectRef.name`|
+
 |`api.operation`|`eventName`|
 |`cloud.region`|`awsRegion`|
 |`http_request.user_agent`|`userAgent`|
