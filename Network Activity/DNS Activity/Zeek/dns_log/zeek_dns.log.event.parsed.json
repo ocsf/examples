@@ -1,6 +1,6 @@
 {
     "time": 1591367999.305988,
-    "actor.user.uuid": "CMdzit1AMNsmfAIiQc",
+    "metadata.uid": "CMdzit1AMNsmfAIiQc",
     "src_endpoint.ip": "192.168.4.76",
     "src_endpoint.port": 36844,
     "dst_endpoint.ip": "192.168.4.1",
@@ -12,18 +12,17 @@
     "query.class": "C_INTERNET",
     "query.type": "A",
     "rcode": "NOERROR",
-    "answers.rdata": [
-        "31.3.245.133"
-    ],
-    "answers.ttl": [
-        3600
-    ],
+    "answers": [
+        { "flag_ids": [
+              3, 
+              4
+           ],
+           "packet_uid": 19671,
+           "rdata": "31.3.245.133",
+           "ttl": "3600" 
+        }
+    ]
     "activity_id": false,
-    "answers.flag_ids.1": false,
-    "answers.flag_ids.2": false,
-    "answers.flag_ids.3": true,
-    "answers.flag_ids.4": true,
-    "answers.flag_ids.99": 0,
     "category_uid": 4,
     "category_name": "Network Activity",
     "class_uid": 4003,
