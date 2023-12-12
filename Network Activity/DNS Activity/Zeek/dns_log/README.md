@@ -33,7 +33,7 @@
 |'query.class'                  |'qclass_name'    |
 |'rcode'                        |'rcode_name'     |
 |'rcode_id'                     |'rcode_name'     |
-|'answers.rdata'                 |'answers'        |
+|'answers.rdata'                 |'answers'       |
 |'dst_endpoint.ip'              |'id.resp_h'      |
 |'dst_endpoint.port'            |'id.resp_p'      |
 |'connection_info.protocol_name'|'proto'          |
