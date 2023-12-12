@@ -1,1 +1,0 @@
-# Scheduled Job Activity Examples

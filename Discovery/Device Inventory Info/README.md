@@ -1,1 +1,0 @@
-# Device Inventory Info Examples
