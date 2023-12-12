@@ -1,1 +1,0 @@
-# SMB Activity Examples

@@ -1,0 +1,131 @@
+# Benthos Mapping for AWS route53 Dns event
+# this is a metadata tag with no whitespace so we can split the data into the correct topic later 
+meta ocsf_topic = "dns_activity"
+
+root.category_uid = 4
+root.category_name = "Network Activity"
+root.class_uid = 4003
+root.class_name = "DNS Activity"
+root.severity_id = 0        
+root.severity = "Unknown"
+root.status_id = 1  
+root.status = "Success"
+#Conditional Mapping for activity_id
+root.activity_id = match this.rcode {
+    "NOERROR" => 2
+    "FormError" => 4
+    "ServError" => 4
+    "NXDomain" => 4
+    "NotImp" => 4
+    "Refused" => 5
+    "YXDomain" => 4
+    "YXRRSet" => 4
+    "NXRRSet" => 4
+    "NotAuth" => 5
+    "NotZone" => 4
+    "DSOTYPENI" => 4
+    "BADSIG_VERS" => 4
+    "BADKEY" => 4
+    "BADTIME" => 4
+    "BADMODE" => 4
+    "BADNAME" => 4
+    "BADALG" => 4
+    "BADTRUNC" => 4
+    "BADCOOKIE" => 4
+    "Unassigned" => 4
+    "Reserved" => 4
+    "Other" => 99
+}
+    #Conditional Mapping for activity_name
+    root.activity_name = match this.rcode {
+    "NOERROR" => "Response"
+    "FormError" => "Fail"
+    "ServError" => "Fail"
+    "NXDomain" => "Fail"
+    "NotImp" => "Fail"
+    "Refused" => "Refuse"
+    "YXDomain" => "Fail"
+    "YXRRSet" => "Fail"
+    "NXRRSet" => "Fail"
+    "NotAuth" => "Refuse"
+    "NotZone" => "Fail"
+    "DSOTYPENI" => "Fail"
+    "BADSIG_VERS" => "Fail"
+    "BADKEY" => "Fail"
+    "BADTIME" => "Fail"
+    "BADMODE" => "Fail"
+    "BADNAME" => "Fail"
+    "BADALG" => "Fail"
+    "BADTRUNC" => "Fail"
+    "BADCOOKIE" => "Fail"
+    "Unassigned" => "Fail"
+    "Reserved" => "Fail"
+    "Other" => 99
+}
+root.metadata.profiles = ["cloud", "security_control"]
+root.metadata.product.version = this.version
+root.metadata.version = "1.0.0"
+root.metadata.product.name = "Route 53"
+root.metadata.product.feature.name = "Query Logs"
+root.cloud.account_uid = this.account_id
+root.cloud.region = this.region
+root.cloud.provider = "AWS"
+root.src_endpoint.vpc_uid = this.vpc_id
+root.time = this.query_timestamp
+root.query.hostname = this.query_name
+root.query.type = this.query_type
+root.query."class" = this.query_class
+root.rcode = this.rcode
+    #Conditional Mapping for rcode_id
+root.rcode_id = match this.rcode {
+    "NOERROR" => 0
+    "FormError" => 1
+    "ServError" => 2
+    "NXDomain" => 3
+    "NotImp" => 4
+    "Refused" => 5
+    "YXDomain" => 6
+    "YXRRSet" => 7
+    "NXRRSet" => 8
+    "NotAuth" => 9
+    "NotZone" => 10
+    "DSOTYPENI" => 11
+    "BADSIG_VERS" => 16
+    "BADKEY" => 17
+    "BADTIME" => 18
+    "BADMODE" => 19
+    "BADNAME" => 20
+    "BADALG" => 21
+    "BADTRUNC" => 22
+    "BADCOOKIE" => 23
+    "Unassigned" => 24
+    "Reserved" => 25
+    "Other" => 99
+}
+root.answers.type = this.answers.0.Type
+root.answers.rdata = this.answers.0.Rdata
+root.answers.class = this.answers.0.Class
+root.src_endpoint.ip = this.srcaddr
+root.src_endpoint.port = this.srcport
+root.connection_info.protocol_name = this.transport
+root.src_endpoint.instance_uid = this.srcids.instance
+root.dst_endpoint.instance_uid = this.srcids.resolver_endpoint
+root.dst_endpoint.interface_uid = this.srcids.resolver_network_interface
+root.unmapped = this.without(
+    "version", 
+    "account_id", 
+    "region", 
+    "vpc_id", 
+    "query_timestamp", 
+    "query_name", 
+    "query_type", 
+    "query_class", 
+    "rcode", 
+    "srcaddr", 
+    "srcport", 
+    "transport", 
+    "answers", 
+    "instance", 
+    "resolver_endpoint", 
+    "resolver_network_interface"
+    )

@@ -1,1 +1,0 @@
-# DNS Activity Examples

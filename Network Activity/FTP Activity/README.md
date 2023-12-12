@@ -1,1 +1,0 @@
-# FTP Activity Examples

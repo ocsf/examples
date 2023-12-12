@@ -1,0 +1,186 @@
+# this is a metadata tag with no whitespace so we can split the data into the correct topic later 
+meta ocsf_topic = "api_activity"
+
+root.class_uid = 6003
+root.class_name = "API Activity" 
+root.category_uid = 6
+root.category = "Application Activity"
+root.cloud.provider = "AWS"
+root.severity_id = 1
+root.severity = "Informational"
+#Conditional Mapping for status_id
+root.status_id = match this.errorCode {
+        "Unknown" => 0
+        "Null" => 1
+        "AccessDenied" => 2
+        "IncompleteSignature" => 2
+        "InternalFailure" => 2
+        "InvalidAction" => 2
+        "InvalidClientTokenId" => 2
+        "NotAuthorized" => 2
+        "OptInRequired" => 2
+        "RequestExpired" => 2
+        "ServiceUnavailable" => 2
+        "ThrottlingException" => 2
+        "ValidationError" => 2
+       	"Other" => 99
+    }
+#Conditional Mapping for status
+root.status = match this.errorCode {
+        "Unknown" => "Unknown"
+        "Null" => "Success"
+        "AccessDenied" => "Failure"
+        "IncompleteSignature" => "Failure"
+        "InternalFailure" => "Failure"
+        "InvalidAction" => "Failure"
+        "InvalidClientTokenId" => "Failure"
+        "NotAuthorized" => "Failure"
+        "OptInRequired" => "Failure"
+        "RequestExpired" => "Failure"
+        "ServiceUnavailable" => "Failure"
+        "ThrottlingException" => "Failure"
+        "ValidationError" => "Failure"
+       	"Other" => "Other"
+    }
+#Conditional Mapping for activity_id
+root.activity_id = match {
+        this.eventName.contains("Unknown") => 1 
+        #Create
+        this.eventName.contains("Create") => 1
+        this.eventName.contains("Run") => 1
+        this.eventName.contains("Generate") => 1
+        #Read
+        this.eventName.contains("Get") => 2
+        this.eventName.contains("List") => 2
+        this.eventName.contains("Describe") => 2
+        this.eventName.contains("Search") => 2
+        this.eventName.contains("Lookup") => 2
+        #Update
+        this.eventName.contains("Update") => 3
+        this.eventName.contains("Put") => 3
+        this.eventName.contains("Modify") => 3
+        this.eventName.contains("Add") => 3
+        this.eventName.contains("Remove") => 3
+        this.eventName.contains("Start") => 3
+        this.eventName.contains("Stop") => 3
+        this.eventName.contains("Attach") => 3
+        this.eventName.contains("Detach") => 3
+        this.eventName.contains("Associate") => 3
+        this.eventName.contains("Disassociate") => 3
+        this.eventName.contains("Tag") => 3
+        this.eventName.contains("Untag") => 3
+        this.eventName.contains("Enable") => 3
+        this.eventName.contains("Disable") => 3
+        this.eventName.contains("Register") => 3
+        this.eventName.contains("Deregister") => 3
+        this.eventName.contains("Disassociate") => 3
+        #Delete
+        this.eventName.contains("Delete") => 4
+        this.eventName.contains("Terminate") => 4 
+        #Other
+        _ => 99
+        
+    }
+#Conditional Mapping for activity_name
+root.activity_name = match {
+        this.eventName.contains("Unknown") => "Unknown" 
+        #Create
+        this.eventName.contains("Create") => "Create"
+        this.eventName.contains("Run") => "Create"
+        this.eventName.contains("Generate") => "Create"
+        #Read
+        this.eventName.contains("Get") => "Read"
+        this.eventName.contains("List") => "Read"
+        this.eventName.contains("Describe") => "Read"
+        this.eventName.contains("Search") => "Read"
+        this.eventName.contains("Lookup") => "Read"
+        #Update
+        this.eventName.contains("Update") => "Update"
+        this.eventName.contains("Put") => "Update"
+        this.eventName.contains("Modify") => "Update"
+        this.eventName.contains("Add") => "Update"
+        this.eventName.contains("Remove") => "Update"
+        this.eventName.contains("Start") => "Update"
+        this.eventName.contains("Stop") => "Update"
+        this.eventName.contains("Attach") => "Update"
+        this.eventName.contains("Detach") => "Update"
+        this.eventName.contains("Associate") => "Update"
+        this.eventName.contains("Disassociate") => "Update"
+        this.eventName.contains("Tag") => "Update"
+        this.eventName.contains("Untag") => "Update"
+        this.eventName.contains("Enable") => "Update"
+        this.eventName.contains("Disable") => "Update"
+        this.eventName.contains("Register") => "Update"
+        this.eventName.contains("Deregister") => "Update"
+        this.eventName.contains("Disassociate") => "Update"
+        #Delete
+        this.eventName.contains("Delete") => "Delete"
+        this.eventName.contains("Terminate") => "Delete" 
+        #others
+        _ => "Other"   
+    }
+root.type_name = this.eventName  
+root.time = this.eventTime
+root.metadata.version = this.eventVersion
+root.metadata.product.version = this.eventVersion
+root.metadata.uid = this.eventID
+root.metadata.product.name = "CloudTrail"
+root.metadata.product.vendor_name = "AWS"
+root.metadata.product.feature.name = this.eventCategory 
+root.metadata.profiles = ["cloud"]
+root.actor.user.account_uid = this.userIdentity.accountId
+root.actor.user.credential_uid = this.userIdentity.accessKeyId
+root.actor.user.name = this.userIdentity.userName
+root.actor.user.type = this.userIdentity.type
+root.actor.user.uid = this.userIdentity.principalId
+root.actor.user.uuid = this.userIdentity.arn
+root.actor.session.created_time = this.userIdentity.sessionContext.attributes.creationDate
+root.actor.session.mfa = this.userIdentity.sessionContext.attributes.mfaAuthenticated
+root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
+root.actor.invoked_by = this.userIdentity.invokedBy
+root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider | identityProvider) #ask aws if this is typo : https://github.com/ocsf/examples/tree/main/Application%20Activity/API%20Activity/AWS/CloudTrail --> "actor.idp.name"
+root.src_endpoint.uid = this.vpcEndpointId
+root.src_endpoint.ip = this.sourceIPAddress
+root.api.request.uid = this.requestID 
+root.api.service.name = this.eventSource
+root.api.version = this.apiVersion
+root.api.operation = this.eventName
+root.api.response.error = this.errorCode
+root.api.response.message = this.errorMessage
+root.resources.uid = this.resources.0.ARN          
+root.resources.account_uid = this.resources.0.accountId
+root.resources.type = this.resources.0.type
+root.cloud.region = this.awsRegion
+root.http_request.user_agent = this.userAgent
+#benthos will return the original field key and value if not specified in the root.unmapped below
+root.unmapped = this.without(
+    "userIdentity.accountId",
+    "userIdentity.accessKeyId",
+    "userIdentity.userName",
+    "userIdentity.type",
+    "userIdentity.principalId",
+    "userIdentity.arn",
+    "userIdentity.sessionContext.attributes.creationDate",
+    "userIdentity.sessionContext.attributes.mfaAuthenticated",
+    "userIdentity.sessionContext.sessionIssuer.arn",
+    "userIdentity.invokedBy",
+    "userIdentity.webIdFederationData.federatedProvider",
+    "userIdentity.identityProvider",
+    "vpcEndpointId",
+    "requestID",
+    "eventSource",
+    "apiVersion",
+    "eventName",
+    "awsRegion",
+    "userAgent",
+    "eventVersion",
+    "eventID",
+    "eventTime",
+    "errorCode",
+    "errorMessage",
+    "resources[].ARN", 
+    "resources[].accountId", 
+    "resources[].type",
+    "eventCategory",
+    "sourceIPAddress",
+    ) 

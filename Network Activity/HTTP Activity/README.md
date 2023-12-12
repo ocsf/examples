@@ -1,1 +1,0 @@
-# HTTP Activity Examples
