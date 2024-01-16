@@ -1,1 +1,0 @@
-# Web Resources Activity Examples
