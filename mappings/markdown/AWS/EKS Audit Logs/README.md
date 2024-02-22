@@ -73,7 +73,7 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`type_name`|`verb`|
 
  ### Observables:
- - Any fields also present in the mapping as an observable are outlined in the section below.
+ - Any fields also present in the mapping as an observable is outlined in the section below.
 
 
 | OCSF                       | Raw             | Observable Type           |
