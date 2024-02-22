@@ -81,7 +81,7 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`api.request.containers[].image.uid`|`concat(requestObject.spec.containers[].image;requestObject.spec.containers[].volumeMounts[].name)`|`Resource UID`|
 |`api.response.containers[].image.uid`|`concat(responseObject.spec.containers[].image;responseObject.spec.containers[].volumeMounts[].name)`|`Resource UID`|
 |`http_request.url.path`|`requestURI`|`URL String`|
-|`actor.user.name`|`user.username`|`User`|
+|`actor.user.name`|`user.username`|`User Name`|
 |`src_endpoint.ip`|`sourceIPs[0]`|`IP Address`|
 |`src_endpoint.intermediate_ips[]`|`sourceIPs[:1]`|`IP Address`|
 |`resources[].uid`|`objectRef.uid`|`Resource UID`|
