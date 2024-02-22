@@ -79,3 +79,7 @@
 |`src_endpoint.vpc_uid`|`vpc_id`|
 |`src_endpoint.instance_uid`|`instance_id`|
 |`src_endpoint.subnet_uid`|`subnet_id`|
+
+### Observables:
+
+- All IP Addresses, EC2 Instance IDs will be populated as observables in each record. These will conform to the observable types mentioned described in [OCSF](https://schema.ocsf.io/1.1.0/objects/observable).
