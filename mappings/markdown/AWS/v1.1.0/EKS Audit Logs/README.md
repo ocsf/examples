@@ -5,7 +5,7 @@
 - **Event References**:
   - [https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 
- ### OCSF Version: 1.1.0-dev
+ ### OCSF Version: 1.1.0
   - `class_name`: `API Activity`
   - `class_uid`: `6003`
   - `category_name`: `Application Activity`

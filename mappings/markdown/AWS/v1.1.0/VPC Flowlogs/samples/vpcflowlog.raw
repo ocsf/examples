@@ -1,0 +1,2 @@
+account_id,action,az_id,bytes,dstaddr,dstport,end,flow_direction,instance_id,interface_id,log_status,packets,pkt_dst_aws_service,pkt_dstaddr,pkt_src_aws_service,pkt_srcaddr,protocol,region,srcaddr,srcport,start,sublocation_type,sublocation_id,subnet_id,tcp_flags,traffic_path,type,version,vpc_id
+123456789012,REJECT,use1-az1,40,172.31.2.52,39938,1649721788,ingress,i-000000000000000000,eni-0000000000000000,OK,1,-,172.31.2.52,-,1.2.3.4,6,us-east-1,1.2.3.4,56858,1649721732,-,-,subnet-000000000000000000,2,-,IPv4,5,vpc-00000000
