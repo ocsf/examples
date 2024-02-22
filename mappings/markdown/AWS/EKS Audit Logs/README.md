@@ -57,7 +57,7 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`api.request.containers[].name`|`requestObject.spec.containers[].name`|
 |`api.request.containers[].image.name`|`requestObject.spec.containers[].image`|
 |`api.request.containers[].image.path`|`requestObject.spec.containers[].volumeMounts[].mountPath`|
-|`api.request.containers[].image.uid`|`requestObject.spec.containers[].volumeMounts[].name`|
+|`api.request.containers[].image.uid`|`concat(requestObject.spec.containers[].image;requestObject.spec.containers[].volumeMounts[].name)`|
 |`resources[].type`|`concat(objectRef.resource;objectRef.subresource)`|
 |`start_time`|`requestReceivedTimestamp`|
 |`time`|`stageTimestamp`|
