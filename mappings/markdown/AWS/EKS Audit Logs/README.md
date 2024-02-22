@@ -5,7 +5,7 @@
 - **Event References**:
   - [https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-log-file-examples.html](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 
- ### OCSF Version: 1.1.0-dev
+ ### OCSF Version: 1.1.0
   - `class_name`: `API Activity`
   - `class_uid`: `6003`
   - `category_name`: `Application Activity`
@@ -71,3 +71,15 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`activity_id`|`verb`|
 |`type_uid`|`verb`|
 |`type_name`|`verb`|
+
+ ### Observables:
+ - Any fields also present in the mapping as an observable are outlined in the section below.
+| OCSF                       | Raw             | Observable Type           |
+| -------------------------- | ----------------| ---------------------------
+|`api.request.containers[].image.uid`|`concat(requestObject.spec.containers[].image;requestObject.spec.containers[].volumeMounts[].name)`|`Resource UID`|
+|`http_request.url.path`|`requestURI`|`URL String`|
+|`actor.user.name`|`user.username`|`User`|
+|`actor.user.name`|`user.username`|`User`|
+|`src_endpoint.ip`|`sourceIPs[0]`|`IP Address`|
+|`src_endpoint.intermediate_ips[]`|`sourceIPs[:1]`|`IP Address`|
+|`resources[].uid`|`objectRef.uid`|`Resource UID`|
