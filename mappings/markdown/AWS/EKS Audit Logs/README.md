@@ -74,6 +74,8 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 
  ### Observables:
  - Any fields also present in the mapping as an observable are outlined in the section below.
+
+
 | OCSF                       | Raw             | Observable Type           |
 | -------------------------- | ----------------| ---------------------------
 |`api.request.containers[].image.uid`|`concat(requestObject.spec.containers[].image;requestObject.spec.containers[].volumeMounts[].name)`|`Resource UID`|
