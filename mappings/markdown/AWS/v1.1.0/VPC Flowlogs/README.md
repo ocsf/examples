@@ -14,6 +14,7 @@
  - `metadata.product.name`: `Amazon VPC`
  - `metadata.product.feature.name`: `Flowlogs`
  - `metadata.product.vendor_name`: `AWS`
+ - `metadata.version`: `1.1.0`
  - `severity`: `Informational`
  - `severity_id`: `1`
 

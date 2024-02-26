@@ -17,6 +17,7 @@
   - `metadata.product.feature.name`: `Elastic Kubernetes Service`
   - `metadata.product.vendor_name`: `AWS`
   - `metadata.profiles`: `[cloud, datetime]`
+  - `metadata.version`: `1.1.0`
   - `actor.user.type_id`: `0`
 
  ### Mapping:
