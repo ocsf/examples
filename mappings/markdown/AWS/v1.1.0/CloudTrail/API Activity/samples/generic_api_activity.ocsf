@@ -1,66 +1,83 @@
 {
-	"activity_id": 2,
-	"activity_name": "Read",
-	"actor": {
-		"idp": {},
-		"session": {},
-		"user": {
-			"account_uid": "811596193553",
-			"credential_uid": "AKIA3Z2XBVUDFQ9TU4MD",
-			"name": "Level6",
-			"type": "IAMUser",
-			"uid": "AIDADO2GQD0K8TEF7KW1V",
-			"uuid": "arn:aws:iam::811596193553:user/Level6"
-		}
-	},
-	"api": {
-		"operation": "DescribeDirectConnectGateways",
-		"request": {
-			"uid": "1c8a6220-4263-4763-b526-20c1d1dd012c"
-		},
-		"response": {},
-		"service": {
-			"name": "directconnect.amazonaws.com"
-		}
-	},
-	"category_name": "Audit Activity",
-	"category_uid": 3,
-	"class_name": "API Activity",
-	"class_uid": 3005,
-	"cloud": {
-		"provider": "AWS",
-		"region": "us-east-1"
-	},
-	"http_request": {
-		"user_agent": "Boto3/1.15.2 Python/3.8.2 Linux/5.6.3-arch1-1 Botocore/1.18.2"
-	},
-	"metadata": {
-		"product": {
-			"feature": {
-				"name": "Management, Data, and Insights"
-			},
-			"name": "CloudTrail",
-			"vendor_name": "AWS",
-			"version": "1.05"
-		},
-		"profiles": [
-			"cloud"
-		],
-		"uid": "71c88be9-ea5c-43c7-8c82-02ecb5ec7f09",
-		"version": "1.0.0-rc.2"
-	},
-	"severity": "Informational",
-	"severity_id": 1,
-	"src_endpoint": {
-		"ip": "205.8.181.128"
-	},
-	"status": "Success",
-	"status_id": 1,
-	"time": 1600726972000,
-	"type_name": "API Activity: Read",
-	"type_uid": 300502,
-	"unmapped": {
-		"eventType": "AwsApiCall",
-		"recipientAccountId": "811596193553"
-	}
+    "activity_id": 2,
+    "activity_name": "Read",
+    "actor": {
+        "user": {
+            "account": {
+                "uid": "1111111111111"
+            },
+            "credential_uid": "AKIA3Z2XBVEXAMPLE",
+            "name": "Level6",
+            "type": "IAMUser",
+            "uid": "arn:aws:iam::1111111111111:user/Level6",
+            "uid_alt": "AIDADO2GQEXAMPLE"
+        }
+    },
+    "api": {
+        "operation": "DescribeDirectConnectGateways",
+        "request": {
+            "uid": "1c8a6220-4263-4763-b526-example"
+        },
+        "response": {
+            "data": "{\"directConnectGateways\":[]}"
+        },
+        "service": {
+            "name": "directconnect.amazonaws.com"
+        }
+    },
+    "category_name": "Application Activity",
+    "category_uid": 6,
+    "class_name": "API Activity",
+    "class_uid": 6003,
+    "cloud": {
+        "provider": "AWS",
+        "region": "us-east-1"
+    },
+    "http_request": {
+        "user_agent": "Boto3/1.15.2 Python/3.8.2 Linux/5.6.3-arch1-1 Botocore/1.18.2"
+    },
+    "metadata": {
+        "event_code": "AwsApiCall",
+        "product": {
+            "feature": {
+                "name": "Management, Data, and Insights"
+            },
+            "name": "CloudTrail",
+            "vendor_name": "AWS",
+            "version": "1.05"
+        },
+        "profiles": [
+            "cloud",
+            "datetime"
+        ],
+        "uid": "71c88be9-ea5c-43c7-8c82-example",
+        "version": "1.1.0"
+    },
+    "observables": [
+        {
+            "name": "actor.user.name",
+            "type": "User Name",
+            "type_id": 4,
+            "value": "Level6"
+        },
+        {
+            "name": "src_endpoint.ip",
+            "type": "IP Address",
+            "type_id": 2,
+            "value": "205.8.181.128"
+        }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+        "ip": "205.8.181.128"
+    },
+    "status": "Success",
+    "time": 1695334972000,
+    "time_dt": "2023-09-21T18:22:52.000-04:00",
+    "type_name": "API Activity: Read",
+    "type_uid": 600302,
+    "unmapped": {
+        "recipientAccountId": "1111111111111"
+    }
 }

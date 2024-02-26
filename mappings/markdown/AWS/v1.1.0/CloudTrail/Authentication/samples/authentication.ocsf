@@ -2,14 +2,14 @@
     "activity_id": 1,
     "activity_name": "Logon",
     "actor": {
-        "idp": {},
-        "session": {},
         "user": {
-            "account_uid": "111122223333",
+            "account": {
+                "uid": "111122223333"
+            },
             "name": "anaya",
             "type": "IAMUser",
-            "uid": "AIDACKCEVSQ6C2EXAMPLE",
-            "uuid": "arn:aws:iam::111122223333:user/anaya"
+            "uid": "arn:aws:iam::111122223333:user/anaya",
+            "uid_alt": "AIDACKCEVSQ6C2EXAMPLE"
         }
     },
     "api": {
@@ -17,12 +17,14 @@
         "request": {
             "uid": "''"
         },
-        "response": {},
+        "response": {
+            "data": "{\"ConsoleLogin\":\"Success\"}"
+        },
         "service": {
             "name": "signin.amazonaws.com"
         }
     },
-    "category_name": "Audit Activity",
+    "category_name": "Identity & Access Management",
     "category_uid": 3,
     "class_name": "Authentication",
     "class_uid": 3002,
@@ -36,7 +38,9 @@
     "http_request": {
         "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36"
     },
+    "is_mfa": true,
     "metadata": {
+        "event_code": "AwsConsoleSignIn",
         "product": {
             "feature": {
                 "name": "Management"
@@ -46,30 +50,43 @@
             "version": "1.08"
         },
         "profiles": [
-            "cloud"
+            "cloud",
+            "datetime"
         ],
-        "uid": "fed06f42-cb12-4764-8c69-121063dc79b9",
-        "version": "1.0.0-rc.2"
+        "uid": "fed06f42-cb12-4764-8c69-example",
+        "version": "1.1.0"
     },
-    "mfa": true,
+    "observables": [
+        {
+            "name": "src_endpoint.ip",
+            "type": "IP Address",
+            "type_id": 2,
+            "value": "192.0.2.0"
+        },
+        {
+            "name": "actor.user.name",
+            "type": "User Name",
+            "type_id": 4,
+            "value": "anaya"
+        }
+    ],
     "severity": "Informational",
     "severity_id": 1,
     "src_endpoint": {
         "ip": "192.0.2.0"
     },
     "status": "Success",
-    "status_id": 1,
-    "time": 1668097474000,
+    "time": 1699633474000,
+    "time_dt": "2023-11-10T11:24:34.000-05:00",
     "type_name": "Authentication: Logon",
     "type_uid": 300201,
     "unmapped": {
         "additionalEventData.MFAIdentifier": "arn:aws:iam::111122223333:u2f/user/anaya/default-AAAAAAAABBBBBBBBCCCCCCCCDD",
         "additionalEventData.MobileVersion": "No",
-        "eventType": "AwsConsoleSignIn",
         "recipientAccountId": "111122223333"
     },
     "user": {
-        "uid": "AIDACKCEVSQ6C2EXAMPLE",
-        "uuid": "arn:aws:iam::111122223333:user/anaya"
+        "uid": "arn:aws:iam::111122223333:user/anaya",
+        "uid_alt": "AIDACKCEVSQ6C2EXAMPLE"
     }
 }
