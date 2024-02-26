@@ -76,4 +76,4 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 
 ### Observables:
 
-- All Hostnames, IP Addresses, User Names, Resource ARNs will be populated as observables in each record. These will conform to the observable types mentioned described in [OCSF](https://schema.ocsf.io/1.1.0/objects/observable).
+- All Hostnames, IP Addresses, User Names, Resource ARNs will be populated as observables in each record. These will conform to the observable types described in [OCSF](https://schema.ocsf.io/1.1.0/objects/observable).
