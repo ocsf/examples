@@ -83,4 +83,4 @@
 
 ### Observables:
 
-- All IP Addresses, EC2 Instance IDs will be populated as observables in each record. These will conform to the observable types mentioned described in [OCSF](https://schema.ocsf.io/1.1.0/objects/observable).
+- All IP Addresses, EC2 Instance IDs will be populated as observables in each record. These will conform to the observable types described in [OCSF](https://schema.ocsf.io/1.1.0/objects/observable).
