@@ -1,0 +1,101 @@
+{
+    "activity_id": 2,
+    "activity_name": "Update",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_name": "Compliance Finding",
+    "class_uid": 2003,
+    "cloud": {
+        "account": {
+            "uid": "111111111111"
+        },
+        "provider": "AWS",
+        "region": "us-east-2"
+    },
+    "compliance": {
+        "control": "Config.1",
+        "requirements": [
+            "PCI DSS 10.5.2",
+            "PCI DSS 11.5"
+        ],
+        "standards": [
+            "standards/pci-dss/v/3.2.1"
+        ],
+        "status": "FAILED"
+    },
+    "finding_info": {
+        "created_time_dt": "2023-01-13T15:08:44.967-05:00",
+        "desc": "This AWS control checks whether AWS Config is enabled in current account and region.",
+        "first_seen_time_dt": "2023-01-13T15:08:44.967-05:00",
+        "last_seen_time_dt": "2023-07-21T14:12:05.693-04:00",
+        "modified_time_dt": "2023-07-21T14:11:53.060-04:00",
+        "title": "PCI.Config.1 AWS Config should be enabled",
+        "types": [
+            "Software and Configuration Checks/Industry and Regulatory Standards/PCI-DSS"
+        ],
+        "uid": "arn:aws:securityhub:us-east-2:111111111111:subscription/pci-dss/v/3.2.1/PCI.Config.1/finding/7d619054-6f0d-456b-aa75-23b20f74fae6"
+    },
+    "metadata": {
+        "log_version": "2018-10-08",
+        "processed_time_dt": "2023-07-21T14:12:08.489-04:00",
+        "product": {
+            "feature": {
+                "uid": "pci-dss/v/3.2.1/PCI.Config.1"
+            },
+            "name": "Security Hub",
+            "uid": "arn:aws:securityhub:us-east-2::product/aws/securityhub",
+            "vendor_name": "AWS"
+        },
+        "profiles": [
+            "cloud",
+            "datetime"
+        ],
+        "version": "1.1.0"
+    },
+    "observables": [
+        {
+            "name": "resource.uid",
+            "type": "Resource UID",
+            "type_id": 10,
+            "value": "AWS::::Account:111111111111"
+        }
+    ],
+    "remediation": {
+        "desc": "For information on how to correct this issue, consult the AWS Security Hub controls documentation.",
+        "references": [
+            "https://docs.aws.amazon.com/console/securityhub/Config.1/remediation"
+        ]
+    },
+    "resource": {
+        "cloud_partition": "aws",
+        "region": "us-east-2",
+        "type": "AwsAccount",
+        "uid": "AWS::::Account:111111111111"
+    },
+    "severity": "Medium",
+    "severity_id": 3,
+    "status": "New",
+    "time": 1689963113060,
+    "time_dt": "2023-07-21T14:11:53.060-04:00",
+    "type_name": "Compliance Finding: Update",
+    "type_uid": 200302,
+    "unmapped": {
+        "FindingProviderFields.Severity.Label": "MEDIUM",
+        "FindingProviderFields.Severity.Original": "MEDIUM",
+        "FindingProviderFields.Types[]": "Software and Configuration Checks/Industry and Regulatory Standards/PCI-DSS",
+        "ProductFields.ControlId": "PCI.Config.1",
+        "ProductFields.RecommendationUrl": "https://docs.aws.amazon.com/console/securityhub/Config.1/remediation",
+        "ProductFields.Resources:0/Id": "arn:aws:iam::111111111111:root",
+        "ProductFields.StandardsArn": "arn:aws:securityhub:::standards/pci-dss/v/3.2.1",
+        "ProductFields.StandardsControlArn": "arn:aws:securityhub:us-east-2:111111111111:control/pci-dss/v/3.2.1/PCI.Config.1",
+        "ProductFields.StandardsSubscriptionArn": "arn:aws:securityhub:us-east-2:111111111111:subscription/pci-dss/v/3.2.1",
+        "ProductFields.aws/securityhub/CompanyName": "AWS",
+        "ProductFields.aws/securityhub/FindingId": "arn:aws:securityhub:us-east-2::product/aws/securityhub/arn:aws:securityhub:us-east-2:111111111111:subscription/pci-dss/v/3.2.1/PCI.Config.1/finding/7d619054-6f0d-456b-aa75-23b20f74fae6",
+        "ProductFields.aws/securityhub/ProductName": "Security Hub",
+        "RecordState": "ACTIVE",
+        "Severity.Normalized": "40",
+        "Severity.Original": "MEDIUM",
+        "Severity.Product": "40",
+        "WorkflowState": "NEW"
+    }
+}
