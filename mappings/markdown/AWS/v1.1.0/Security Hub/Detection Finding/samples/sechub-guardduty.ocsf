@@ -1,0 +1,131 @@
+{
+    "activity_id": 1,
+    "activity_name": "Create",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_name": "Detection Finding",
+    "class_uid": 2004,
+    "cloud": {
+        "account": {
+            "uid": "111111111111"
+        },
+        "provider": "AWS",
+        "region": "us-east-2"
+    },
+    "evidences": [
+        {
+            "api": {
+                "operation": "DeleteTrail",
+                "service": {
+                    "name": "cloudtrail.amazonaws.com"
+                }
+            },
+            "data": "",
+            "src_endpoint": {
+                "ip": "52.94.133.131",
+                "location": {
+                    "city": "",
+                    "coordinates": [
+                        -100.821999,
+                        37.751
+                    ],
+                    "country": "United States"
+                }
+            }
+        }
+    ],
+    "finding_info": {
+        "created_time_dt": "2023-09-19T11:05:22.487-04:00",
+        "desc": "AWS CloudTrail trail arn:aws:cloudtrail:us-east-2:111111111111:trail/delete-me was disabled by Admin calling DeleteTrail under unusual circumstances. This can be attackers attempt to cover their tracks by eliminating any trace of activity performed while they accessed your account.",
+        "first_seen_time_dt": "2023-09-19T10:55:09.000-04:00",
+        "last_seen_time_dt": "2023-09-19T10:55:09.000-04:00",
+        "modified_time_dt": "2023-09-19T11:05:22.487-04:00",
+        "src_url": "https://us-east-2.console.aws.amazon.com/guardduty/home?region=us-east-2#/findings?macros=current&fId=a6c556fcbc9bea427a19f8b787099a0b",
+        "title": "AWS CloudTrail trail arn:aws:cloudtrail:us-east-2:111111111111:trail/delete-me was disabled.",
+        "types": [
+            "TTPs/Defense Evasion/Stealth:IAMUser-CloudTrailLoggingDisabled"
+        ],
+        "uid": "arn:aws:guardduty:us-east-2:111111111111:detector/1ac1bfceda6679698215d5d0EXAMPLE/finding/a6c556fcbc9bea427a19f8b787099a0b"
+    },
+    "metadata": {
+        "extensions": [
+            {
+                "name": "linux",
+                "uid": "1",
+                "version": "1.1.0"
+            }
+        ],
+        "log_version": "2018-10-08",
+        "product": {
+            "feature": {
+                "uid": "arn:aws:guardduty:us-east-2:111111111111:detector/1ac1bfceda6679698215d5d0EXAMPLE"
+            },
+            "name": "GuardDuty",
+            "uid": "arn:aws:securityhub:us-east-2::product/aws/guardduty",
+            "vendor_name": "Amazon"
+        },
+        "profiles": [
+            "cloud",
+            "datetime",
+            "linux"
+        ],
+        "version": "1.1.0"
+    },
+    "observables": [
+        {
+            "name": "evidences[].src_endpoint.ip",
+            "type": "IP Address",
+            "type_id": 2,
+            "value": "52.94.133.131"
+        },
+        {
+            "name": "resources[].uid",
+            "type": "Resource UID",
+            "type_id": 10,
+            "value": "AWS::IAM::AccessKey:ASIATMJPC7EXAMPLE"
+        }
+    ],
+    "resources": [
+        {
+            "cloud_partition": "aws",
+            "data": "{\"AwsIamAccessKey\":{\"PrincipalId\":\"AROATMJPC7YEXAMPLE:example\",\"PrincipalName\":\"Admin\",\"PrincipalType\":\"AssumedRole\"}}",
+            "region": "us-east-2",
+            "type": "AwsIamAccessKey",
+            "uid": "AWS::IAM::AccessKey:ASIATMJPC7EXAMPLE"
+        }
+    ],
+    "severity": "Low",
+    "severity_id": 2,
+    "status": "New",
+    "time": 1695135922487,
+    "time_dt": "2023-09-19T11:05:22.487-04:00",
+    "type_name": "Detection Finding: Create",
+    "type_uid": 200401,
+    "unmapped": {
+        "FindingProviderFields.Severity.Label": "LOW",
+        "FindingProviderFields.Types[]": "TTPs/Defense Evasion/Stealth:IAMUser-CloudTrailLoggingDisabled",
+        "ProductFields.aws/guardduty/service/action/actionType": "AWS_API_CALL",
+        "ProductFields.aws/guardduty/service/action/awsApiCallAction/affectedResources/AWS::CloudTrail::Trail": "arn:aws:cloudtrail:us-east-2:111111111111:trail/delete-me",
+        "ProductFields.aws/guardduty/service/action/awsApiCallAction/callerType": "Remote IP",
+        "ProductFields.aws/guardduty/service/action/awsApiCallAction/remoteIpDetails/organization/asn": "16509",
+        "ProductFields.aws/guardduty/service/action/awsApiCallAction/remoteIpDetails/organization/asnOrg": "AMAZON-02",
+        "ProductFields.aws/guardduty/service/action/awsApiCallAction/remoteIpDetails/organization/isp": "Amazon Office",
+        "ProductFields.aws/guardduty/service/action/awsApiCallAction/remoteIpDetails/organization/org": "Amazon Office",
+        "ProductFields.aws/guardduty/service/additionalInfo/type": "default",
+        "ProductFields.aws/guardduty/service/archived": "false",
+        "ProductFields.aws/guardduty/service/count": "1",
+        "ProductFields.aws/guardduty/service/detectorId": "1ac1bfceda6679698215d5d0EXAMPLE",
+        "ProductFields.aws/guardduty/service/eventFirstSeen": "2023-09-19T14:55:09.000Z",
+        "ProductFields.aws/guardduty/service/eventLastSeen": "2023-09-19T14:55:09.000Z",
+        "ProductFields.aws/guardduty/service/resourceRole": "TARGET",
+        "ProductFields.aws/guardduty/service/serviceName": "guardduty",
+        "ProductFields.aws/securityhub/CompanyName": "Amazon",
+        "ProductFields.aws/securityhub/FindingId": "arn:aws:securityhub:us-east-2::product/aws/guardduty/arn:aws:guardduty:us-east-2:111111111111:detector/1ac1bfceda6679698215d5d0EXAMPLE/finding/a6c556fcbc9bea427a19f8b787099a0b",
+        "ProductFields.aws/securityhub/ProductName": "GuardDuty",
+        "RecordState": "ACTIVE",
+        "Sample": "false",
+        "Severity.Normalized": "40",
+        "Severity.Product": "2",
+        "WorkflowState": "NEW"
+    }
+}
