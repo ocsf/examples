@@ -1,0 +1,78 @@
+{
+    "AwsAccountId": "111111111111",
+    "CompanyName": "AWS",
+    "Compliance": {
+        "AssociatedStandards": [
+            {
+                "StandardsId": "standards/pci-dss/v/3.2.1"
+            }
+        ],
+        "RelatedRequirements": [
+            "PCI DSS 10.5.2",
+            "PCI DSS 11.5"
+        ],
+        "SecurityControlId": "Config.1",
+        "Status": "FAILED"
+    },
+    "CreatedAt": "2023-01-13T20:08:44.967Z",
+    "Description": "This AWS control checks whether AWS Config is enabled in current account and region.",
+    "FindingProviderFields": {
+        "Severity": {
+            "Label": "MEDIUM",
+            "Original": "MEDIUM"
+        },
+        "Types": [
+            "Software and Configuration Checks/Industry and Regulatory Standards/PCI-DSS"
+        ]
+    },
+    "FirstObservedAt": "2023-01-13T20:08:44.967Z",
+    "GeneratorId": "pci-dss/v/3.2.1/PCI.Config.1",
+    "Id": "arn:aws:securityhub:us-east-2:111111111111:subscription/pci-dss/v/3.2.1/PCI.Config.1/finding/7d619054-6f0d-456b-aa75-23b20f74fae6",
+    "LastObservedAt": "2023-07-21T18:12:05.693Z",
+    "ProcessedAt": "2023-07-21T18:12:08.489Z",
+    "ProductArn": "arn:aws:securityhub:us-east-2::product/aws/securityhub",
+    "ProductFields": {
+        "ControlId": "PCI.Config.1",
+        "RecommendationUrl": "https://docs.aws.amazon.com/console/securityhub/Config.1/remediation",
+        "Resources:0/Id": "arn:aws:iam::111111111111:root",
+        "StandardsArn": "arn:aws:securityhub:::standards/pci-dss/v/3.2.1",
+        "StandardsControlArn": "arn:aws:securityhub:us-east-2:111111111111:control/pci-dss/v/3.2.1/PCI.Config.1",
+        "StandardsSubscriptionArn": "arn:aws:securityhub:us-east-2:111111111111:subscription/pci-dss/v/3.2.1",
+        "aws/securityhub/CompanyName": "AWS",
+        "aws/securityhub/FindingId": "arn:aws:securityhub:us-east-2::product/aws/securityhub/arn:aws:securityhub:us-east-2:111111111111:subscription/pci-dss/v/3.2.1/PCI.Config.1/finding/7d619054-6f0d-456b-aa75-23b20f74fae6",
+        "aws/securityhub/ProductName": "Security Hub"
+    },
+    "ProductName": "Security Hub",
+    "RecordState": "ACTIVE",
+    "Region": "us-east-2",
+    "Remediation": {
+        "Recommendation": {
+            "Text": "For information on how to correct this issue, consult the AWS Security Hub controls documentation.",
+            "Url": "https://docs.aws.amazon.com/console/securityhub/Config.1/remediation"
+        }
+    },
+    "Resources": [
+        {
+            "Id": "AWS::::Account:111111111111",
+            "Partition": "aws",
+            "Region": "us-east-2",
+            "Type": "AwsAccount"
+        }
+    ],
+    "SchemaVersion": "2018-10-08",
+    "Severity": {
+        "Label": "MEDIUM",
+        "Normalized": 40,
+        "Original": "MEDIUM",
+        "Product": 40
+    },
+    "Title": "PCI.Config.1 AWS Config should be enabled",
+    "Types": [
+        "Software and Configuration Checks/Industry and Regulatory Standards/PCI-DSS"
+    ],
+    "UpdatedAt": "2023-07-21T18:11:53.060Z",
+    "Workflow": {
+        "Status": "NEW"
+    },
+    "WorkflowState": "NEW"
+}
