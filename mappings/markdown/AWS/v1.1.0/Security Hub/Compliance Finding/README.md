@@ -8,7 +8,7 @@
  ### OCSF Version: 1.1.0
  - `category_uid`: `2`
  - `category_name`: `Findings`
- - `class_uid`: `2002`
+ - `class_uid`: `2003`
  - `class_name`: `Compliance Finding`
  - `cloud.provider`: `AWS`
  - `metadata.profiles`: `[cloud, datetime]`
@@ -51,13 +51,13 @@
 |||
 |`message`|`Note.Text`|
 |||
-|`resources.type`|`Resources[].Type`|
-|`resources.uid`|`Resources[].Id`|
-|`resources.cloud_partition`|`Resources[].Partition`|
-|`resources.region`|`Resources[].Region`|
-|`resources.labels`|`Resources[].Tags`|
-|`resources.data`|`Resources[].Details`|
-|`resources.criticality`|`Criticality`|
+|`resource.type`|`Resources[].Type`|
+|`resource.uid`|`Resources[].Id`|
+|`resource.cloud_partition`|`Resources[].Partition`|
+|`resource.region`|`Resources[].Region`|
+|`resource.labels`|`Resources[].Tags`|
+|`resource.data`|`Resources[].Details`|
+|`resource.criticality`|`Criticality`|
 |||
 |`remediation.desc`|`Remediation.Recommendation.Text`|
 |`remediation.references`|`Remediation.Recommendation.Url`|
