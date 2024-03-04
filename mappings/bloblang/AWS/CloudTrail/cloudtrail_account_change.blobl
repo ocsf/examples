@@ -4,7 +4,7 @@ meta ocsf_topic = "account_change"
 root.class_uid = 3001
 root.class_name = "Account Change"
 root.category_uid = 3
-root.category = "Identity & Access Management Category"
+root.category_name = "Identity & Access Management"
 root.cloud.provider = "AWS"
 root.severity_id = 1
 root.severity = "Informational"
@@ -44,7 +44,7 @@ root.activity_id = match {
         this.eventName.contains("DeleteService") => 99
         #6 Delete this is placed last in the list so if the others do not match it will (keep this at the end of the match statement)
         this.eventName.contains("Delete") => 6
-        _=> 99
+        _ => 99
     }
 root.activity_name = match {
         # "Delete"
@@ -72,9 +72,61 @@ root.activity_name = match {
         this.eventName.contains("DeleteService") => "Other"
         # "Delete" this is placed last in the list so if the others do not match it will (keep this at the end of the match statement)
         this.eventName.contains("Delete") => "Delete"
-        _=> "Other"
+        _ => "Other"
     }
-root.time = this.eventTime
+root.type_uid = match {
+        #1
+        this.eventName.contains("Create") => 300101
+        this.eventName == "ResyncMFADevice" => 300101
+        this.eventName == "EnableMFADevice" => 300101
+        #3
+        this.eventName == "ChangePassword" => 300103
+        this.eventName == "PasswordUpdated" => 300103
+        #7
+        this.eventName.contains("Attach") => 300107
+        this.eventName.contains("Put") => 300107
+        this.eventName == "AddUserToGroup" => 300107
+        #8
+        this.eventName.contains("Detach") => 300108
+        this.eventName.contains("Remove") => 300108
+        #99
+        this.eventName.contains("DeleteSSH") => 300199
+        this.eventName.contains("DeleteServer") => 300199
+        this.eventName.contains("DeleteSign") => 300199
+        this.eventName.contains("DeleteAccount") => 300199
+        this.eventName.contains("DeleteCloudFront") => 300199
+        this.eventName.contains("DeleteService") => 300199
+        #6 Delete this is placed last in the list so if the others do not match it will (keep this at the end of the match statement)
+        this.eventName.contains("Delete") => 300106
+        _ => 300199
+    }
+root.type_name = match {
+        #1
+        this.eventName.contains("Create") => "Account Change: Create"
+        this.eventName == "ResyncMFADevice" => "Account Change: Create"
+        this.eventName == "EnableMFADevice" => "Account Change: Create"
+        #3
+        this.eventName == "ChangePassword" => "Account Change: Password Change"
+        this.eventName == "PasswordUpdated" => "Account Change: Password Change"
+        #7
+        this.eventName.contains("Attach") => "Account Change: Attach Policy"
+        this.eventName.contains("Put") => "Account Change: Attach Policy"
+        this.eventName == "AddUserToGroup" => "Account Change: Attach Policy"
+        #8
+        this.eventName.contains("Detach") => "Account Change: Detach Policy"
+        this.eventName.contains("Remove") => "Account Change: Detach Policy"
+        #99
+        this.eventName.contains("DeleteSSH") => "Account Change: Other"
+        this.eventName.contains("DeleteServer") => "Account Change: Other"
+        this.eventName.contains("DeleteSign") => "Account Change: Other"
+        this.eventName.contains("DeleteAccount") => "Account Change: Other"
+        this.eventName.contains("DeleteCloudFront") => "Account Change: Other"
+        this.eventName.contains("DeleteService") => "Account Change: Other"
+        #6 Delete this is placed last in the list so if the others do not match it will (keep this at the end of the match statement)
+        this.eventName.contains("Delete") => "Account Change: Delete"
+        _ => "Account Change: Other"
+    }
+root.time = this.eventTime.ts_unix_milli()
 root.metadata.version = this.eventVersion
 root.metadata.product.version = this.eventVersion
 root.metadata.uid = this.eventID
@@ -88,7 +140,7 @@ root.actor.user.credential_uid = this.userIdentity.accessKeyId.roleName
 root.actor.user.type = this.userIdentity.type
 root.actor.user.uid = this.userIdentity.principalId
 root.actor.user.uuid = this.userIdentity.arn
-root.actor.session.created_time = this.userIdentity.sessionContext.attributes.creationDate
+root.actor.session.created_time = this.userIdentity.sessionContext.attributes.creationDate.ts_unix_milli()
 root.actor.session.mfa = this.userIdentity.sessionContext.attributes.mfaAuthenticated
 root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
 root.actor.invoked_by = this.userIdentity.invokedBy
