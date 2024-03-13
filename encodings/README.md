@@ -125,3 +125,25 @@ TODO
 - tools or libraries to support translating or validating OCSF events
   (instances of classes)
   
+
+## Proposed Changes
+
+### Calling out encoding issues
+
+We will make it explicit (somewhere... TODO where?) that there is an
+additional layer to get from a formal OCSF schema to a particular
+encoding, and call out that there is at least one common encoding for
+JSON that can be called upon as a least common denominator for
+interchanging of events.
+
+### Decoupling JSON from OCSF
+
+We will refactor how constraints are expressed, to make it explicit
+that some of the constraints present in the OCSF Schema, notably
+string regex constraints, are specific to the context of the JSON
+encoding.
+
+The server will be updated appropriately to output the same or
+compatible JSON Schema that it currently does.
+
+
