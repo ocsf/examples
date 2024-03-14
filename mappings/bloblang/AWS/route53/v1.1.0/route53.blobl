@@ -1,6 +1,4 @@
-# Benthos Mapping for AWS route53 Dns event
-# this is a metadata tag with no whitespace so we can split the data into the correct topic later 
-meta ocsf_topic = "dns_activity"
+
 root.category_uid = 4
 root.category_name = "Network Activity"
 root.class_uid = 4003
@@ -23,7 +21,7 @@ root.answers = this.answers.map_each(this.map_each_key(this.lowercase()))
 root.cloud.account.uid = this.account_id
 root.cloud.region = this.region
 root.cloud.provider = "AWS"
-#root.firewall_rule.uid = this.firewall_rule_group_id
+#root.firewall_rule.uid = this.firewall_rule_group_id use this and security_control profile if you have DNS firewall enabled 
 root.metadata.log_provider = "Route 53"
 root.metadata.log_name = "DNS"
 root.metadata.profiles = ["cloud", "datetime"]

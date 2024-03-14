@@ -96,13 +96,5 @@ pipeline:
         - check: true
           processors:        
             - mapping: from "cloudtrail_api_activity.blobl"
-    # This switch checks for the ocsf_topic metadata and if it exists applies additional mapping if not it deletes the log.
-    - switch:    
-        - check: '@.exists("ocsf_topic")'
-          processors:
-             - mapping: from "ocsf_default.blobl"
-             #this second processor deletes anything left that did not match the first processor check
-        - processors:
-             - mapping: root = deleted()   
 output:
   resource: ocsf_kafka_output

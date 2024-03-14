@@ -1,5 +1,3 @@
-# this is a metadata tag with no whitespace so we can split the data into the correct topic later 
-meta ocsf_topic = "api_activity"
 
 root.class_uid = 6003
 root.class_name = "API Activity" 
