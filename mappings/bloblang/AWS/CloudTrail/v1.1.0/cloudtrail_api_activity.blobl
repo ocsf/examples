@@ -6,6 +6,7 @@ root.category_name = "Application Activity"
 root.cloud.region = this.awsRegion
 root.severity_id = 1
 root.severity = "Informational"
+
 root.activity_id = match {
         this.eventName.contains("Unknown") => 1 
         #Create
@@ -123,9 +124,7 @@ status = match root.status_id {
         2 => "Failure"
        	99 => this.errorCode
     }
-root.type_name = this.eventName
 root.time = this.eventTime.ts_unix_milli()
-
 root.time_dt = this.eventTime
 
 type_uid = root.class_uid.number() * 100 + root.activity_id.number()

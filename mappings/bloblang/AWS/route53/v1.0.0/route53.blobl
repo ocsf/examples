@@ -9,7 +9,7 @@ root.severity_id = 0
 root.severity = "Unknown"
 root.status_id = 1  
 root.status = "Success"
-#Conditional Mapping for activity_id
+
 root.activity_id = match this.rcode {
     "NOERROR" => 2
     "FormError" => 4

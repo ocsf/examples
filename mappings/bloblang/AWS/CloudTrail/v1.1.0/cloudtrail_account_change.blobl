@@ -1,0 +1,183 @@
+
+
+root.class_uid = 3001
+root.class_name = "Account Change"
+root.category_uid = 3
+root.category_name = "Identity & Access Management Category"
+root.severity_id = 1
+root.severity = "Informational"
+root.status_id = match this.ConsoleLogin.responseElements.ConsoleLogin {
+        "Unknown" => 0
+	    "Success" => 1
+	    "Failure" => 2
+	    "Other" => 99
+    }
+root.status = match this.ConsoleLogin.responseElements.ConsoleLogin {
+        "Unknown" => "Unknown"
+	    "Success" => "Success"
+	    "Failure" => "Failure"
+	    "Other" => "Other"
+    }
+root.activity_id = match {
+        #1
+        this.eventName.contains("Create") => 1
+        this.eventName == "ResyncMFADevice" => 1
+        this.eventName == "EnableMFADevice" => 1
+        #3
+        this.eventName == "ChangePassword" => 3
+        this.eventName == "PasswordUpdated" => 3
+        #7
+        this.eventName.contains("Attach") => 7
+        this.eventName.contains("Put") => 7
+        this.eventName == "AddUserToGroup" => 7
+        #8
+        this.eventName.contains("Detach") => 8
+        this.eventName.contains("Remove") => 8
+        #99
+        this.eventName.contains("DeleteSSH") => 99
+        this.eventName.contains("DeleteServer") => 99
+        this.eventName.contains("DeleteSign") => 99
+        this.eventName.contains("DeleteAccount") => 99
+        this.eventName.contains("DeleteCloudFront") => 99
+        this.eventName.contains("DeleteService") => 99
+        #6 Delete this is placed last in the list so if the others do not match it will (keep this at the end of the match statement)
+        this.eventName.contains("Delete") => 6
+        _=> 99
+    }
+root.activity_name = match {
+        # "Delete"
+        #this.eventName.contains("Delete") => "Delete"
+        # "Attach Policy"
+        this.eventName.contains("Attach") => "Attach Policy"
+        this.eventName.contains("Put") => "Attach Policy"
+        this.eventName == "AddUserToGroup" => "Attach Policy"
+        # "Create"
+        this.eventName.contains("Create") => "Create"
+        this.eventName == "ResyncMFADevice" => "Create"
+        this.eventName == "EnableMFADevice" => "Create"
+        # "Detach Policy"
+        this.eventName.contains("Detach") => "Detach Policy"
+        this.eventName.contains("Remove") => "Detach Policy"
+        # "Password Change"
+        this.eventName == "ChangePassword" => "Password Change"
+        this.eventName == "PasswordUpdated" => "Password Change"
+        # "Other" this probably needs to be reviewed over time  
+        this.eventName.contains("DeleteSSH") => "Other"
+        this.eventName.contains("DeleteServer") => "Other"
+        this.eventName.contains("DeleteSign") => "Other"
+        this.eventName.contains("DeleteAccount") => "Other"
+        this.eventName.contains("DeleteCloudFront") => "Other"
+        this.eventName.contains("DeleteService") => "Other"
+        # "Delete" this is placed last in the list so if the others do not match it will (keep this at the end of the match statement)
+        this.eventName.contains("Delete") => "Delete"
+        _=> "Other"
+    }
+root.actor.user.account.uid = this.userIdentity.accountId
+root.actor.user.credential_uid = this.userIdentity.accessKeyId.roleName
+root.actor.user.type = this.userIdentity.type
+root.actor.user.uid = this.userIdentity.principalId
+root.actor.user.name = if this.userIdentity.exists("userName") {this.userIdentity.userName} else {deleted()}
+root.actor.user.type_id = match {
+        this.userIdentity.arn == null => 0
+        this.userIdentity.arn.contains("-sysadmin") => 2
+        this.userIdentity.arn.contains("admin") => 2
+        this.userIdentity.arn.contains("-service") => 3
+        this.userIdentity.arn.contains("-user") => 1
+        _=> 0
+    }
+
+root.actor.session.created_time = match {
+        this.userIdentity.sessionContext.attributes.creationDate == null => 0
+         _=> this.userIdentity.sessionContext.attributes.creationDate.ts_unix_milli()
+    }
+
+root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
+root.actor.invoked_by = this.userIdentity.invokedBy
+root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider|identityProvider)
+
+root.api.request.uid = this.requestID 
+root.api.service.name = this.eventSource
+root.api.version = this.apiVersion
+root.api.operation = this.eventName
+root.api.response.error = this.errorCode
+root.api.response.message = this.errorMessage
+
+root.cloud.provider = "AWS"
+root.cloud.region = this.awsRegion
+
+root.http_request.user_agent = this.userAgent
+
+root.is_mfa = match this.additionalEventData.MFAUsed {
+        "No" => false
+        "Yes" => true
+    }
+
+root.metadata.log_provider = "CloudTrail"
+root.metadata.log_name = this.eventType
+root.metadata.product.version = this.eventVersion
+root.metadata.uid = this.eventID
+root.metadata.product.name = "CloudTrail"
+root.metadata.product.vendor_name = "AWS"
+root.metadata.version = "1.1.0"
+root.metadata.product.feature.name = this.eventCategory 
+root.metadata.profiles = ["cloud","datetime"]
+#root.metadata.labels = this.env.re_find_all(".*") TODO: check Atlassian only enrichment
+root.src_endpoint.uid = this.vpcEndpointId 
+root.src_endpoint.ip = this.sourceIPAddress
+
+root.time = this.eventTime.ts_unix_milli()
+root.time_dt = this.eventTime
+
+root.user.uid = this.userIdentity.principalId
+
+root.user.name = match {
+        this.AssumeRole.requestParameters.exists("roleSessionName") => this.AssumeRole.requestParameters.roleSessionName
+        this.userIdentity.exists("arn") => userIdentity.arn.split("/").index(-1)
+        _=> "Unknown"
+    }
+root.user.type_id = match {
+        this.userIdentity.sessionContext.sessionIssuer.userName == null => 0
+        this.userIdentity.sessionContext.sessionIssuer.userName.contains("-sysadmin") => 2
+        this.userIdentity.sessionContext.sessionIssuer.userName.contains("admin") => 2
+        this.userIdentity.sessionContext.sessionIssuer.userName.contains("-service") =>3
+        this.userIdentity.sessionContext.sessionIssuer.userName.contains("-user") => 1
+        _=> 0
+    }
+
+root.unmapped = this.without(
+    "awsRegion",
+    "eventName",
+    "userIdentity.accountId",
+    "userIdentity.accessKeyId",
+    "userIdentity.userName",
+    "userIdentity.type",
+    "userIdentity.principalId",
+    "userIdentity.arn",
+    "userIdentity.sessionContext.attributes.creationDate",
+    "userIdentity.sessionContext.sessionIssuer.arn",
+    "userIdentity.invokedBy",
+    "userIdentity.webIdFederationData.federatedProvider",
+    "userIdentity.identityProvider",
+    "requestID",
+    "eventSource",
+    "apiVersion",
+    "errorCode",
+    "errorMessage",
+    "eventVersion",
+    "eventID",
+    "eventCategory",
+    "additionalEventData.MFAUsed",
+    "vpcEndpointId",
+    "sourceIPAddress",
+    "ConsoleLogin.responseElements.ConsoleLogin",
+    "eventTime",
+    "userAgent",
+    "AssumeRole.requestParameters.roleSessionName",
+    "userIdentity.arn",
+    "userIdentity.sessionContext.sessionIssuer.userName",
+    )
+    
+observables = root.without("unmapped").with("user.name", "src_endpoint.ip").( item -> { 
+    "a": match {item.user.exists("name") => {"name": "user.name", "type": "User", "type_id": 4, "value": item.user.name}},
+    "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}}
+    }).values()
