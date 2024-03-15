@@ -25,7 +25,7 @@
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
-|`actor.user.account_uid`|`userIdentity.accountId`|
+|`actor.user.account.uid`|`userIdentity.accountId`|
 |`actor.user.credential_uid`|`userIdentity.accessKeyId`|
 |`actor.user.name`|`userIdentity.userName`|
 |`actor.user.type`|`userIdentity.type`|
