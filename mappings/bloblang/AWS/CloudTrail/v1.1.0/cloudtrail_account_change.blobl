@@ -1,5 +1,4 @@
 
-
 root.class_uid = 3001
 root.class_name = "Account Change"
 root.category_uid = 3
@@ -44,53 +43,29 @@ root.activity_id = match {
         this.eventName.contains("Delete") => 6
         _=> 99
     }
-root.activity_name = match {
-        # "Delete"
-        #this.eventName.contains("Delete") => "Delete"
-        # "Attach Policy"
-        this.eventName.contains("Attach") => "Attach Policy"
-        this.eventName.contains("Put") => "Attach Policy"
-        this.eventName == "AddUserToGroup" => "Attach Policy"
-        # "Create"
-        this.eventName.contains("Create") => "Create"
-        this.eventName == "ResyncMFADevice" => "Create"
-        this.eventName == "EnableMFADevice" => "Create"
-        # "Detach Policy"
-        this.eventName.contains("Detach") => "Detach Policy"
-        this.eventName.contains("Remove") => "Detach Policy"
-        # "Password Change"
-        this.eventName == "ChangePassword" => "Password Change"
-        this.eventName == "PasswordUpdated" => "Password Change"
-        # "Other" this probably needs to be reviewed over time  
-        this.eventName.contains("DeleteSSH") => "Other"
-        this.eventName.contains("DeleteServer") => "Other"
-        this.eventName.contains("DeleteSign") => "Other"
-        this.eventName.contains("DeleteAccount") => "Other"
-        this.eventName.contains("DeleteCloudFront") => "Other"
-        this.eventName.contains("DeleteService") => "Other"
-        # "Delete" this is placed last in the list so if the others do not match it will (keep this at the end of the match statement)
-        this.eventName.contains("Delete") => "Delete"
-        _=> "Other"
-    }
+activity_name = match root.activity_id {    
+       1 => "Create"
+       3 => "Password Change"
+       6 => "Delete"
+       7 => "Attach Policy"
+       8 => "Detach Policy"
+       5 => "Other"
+}
 root.actor.user.account.uid = this.userIdentity.accountId
+root.actor.user.uid_alt = this.userIdentity.principalId
 root.actor.user.credential_uid = this.userIdentity.accessKeyId.roleName
 root.actor.user.type = this.userIdentity.type
-root.actor.user.uid = this.userIdentity.principalId
+root.actor.user.uid = this.userIdentity.arn
 root.actor.user.name = if this.userIdentity.exists("userName") {this.userIdentity.userName} else {deleted()}
-root.actor.user.type_id = match {
-        this.userIdentity.arn == null => 0
-        this.userIdentity.arn.contains("-sysadmin") => 2
-        this.userIdentity.arn.contains("admin") => 2
-        this.userIdentity.arn.contains("-service") => 3
-        this.userIdentity.arn.contains("-user") => 1
-        _=> 0
-    }
-
 root.actor.session.created_time = match {
         this.userIdentity.sessionContext.attributes.creationDate == null => 0
          _=> this.userIdentity.sessionContext.attributes.creationDate.ts_unix_milli()
     }
-
+root.actor.session.created_time_dt = match {
+        this.userIdentity.sessionContext.attributes.creationDate == null => 0
+         _=> this.userIdentity.sessionContext.attributes.creationDate
+    }
+root.actor.session.is_mfa = this.userIdentity.sessionContext.attributes.mfaAuthenticated
 root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
 root.actor.invoked_by = this.userIdentity.invokedBy
 root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider|identityProvider)
@@ -101,6 +76,8 @@ root.api.version = this.apiVersion
 root.api.operation = this.eventName
 root.api.response.error = this.errorCode
 root.api.response.message = this.errorMessage
+root.api.request.data = this.requestParameters
+root.api.response.data = this.responseElements
 
 root.cloud.provider = "AWS"
 root.cloud.region = this.awsRegion
@@ -128,21 +105,9 @@ root.src_endpoint.ip = this.sourceIPAddress
 root.time = this.eventTime.ts_unix_milli()
 root.time_dt = this.eventTime
 
-root.user.uid = this.userIdentity.principalId
+root.user.uid = this.(userIdentity.principalId|responseElements.role.roleId|responseElements.user.userId)
 
-root.user.name = match {
-        this.AssumeRole.requestParameters.exists("roleSessionName") => this.AssumeRole.requestParameters.roleSessionName
-        this.userIdentity.exists("arn") => userIdentity.arn.split("/").index(-1)
-        _=> "Unknown"
-    }
-root.user.type_id = match {
-        this.userIdentity.sessionContext.sessionIssuer.userName == null => 0
-        this.userIdentity.sessionContext.sessionIssuer.userName.contains("-sysadmin") => 2
-        this.userIdentity.sessionContext.sessionIssuer.userName.contains("admin") => 2
-        this.userIdentity.sessionContext.sessionIssuer.userName.contains("-service") =>3
-        this.userIdentity.sessionContext.sessionIssuer.userName.contains("-user") => 1
-        _=> 0
-    }
+root.user.name = this.(responseElements.role.path|responseElements.role.description|requestParameters.userName|responseElements.role.roleName|responseElements.user.userName|requestParameters.roleName)
 
 root.unmapped = this.without(
     "awsRegion",
@@ -181,3 +146,6 @@ observables = root.without("unmapped").with("user.name", "src_endpoint.ip").( it
     "a": match {item.user.exists("name") => {"name": "user.name", "type": "User", "type_id": 4, "value": item.user.name}},
     "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}}
     }).values()
+
+type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+type_name = root.class_name + ": " + root.activity_name

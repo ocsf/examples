@@ -65,10 +65,6 @@ root.actor.session.created_time = match {
     _=> this.userIdentity.sessionContext.attributes.creationDate.ts_unix_milli()
 }
 root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
-root.actor.session.is_mfa =  match this.additionalEventData.MFAUsed {
-    "No" => false
-    "Yes" => true
-}
 root.actor.invoked_by = this.userIdentity.invokedBy
 root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider | identityProvider)
     
@@ -86,6 +82,11 @@ root.cloud.provider = "AWS"
 root.cloud.region = this.awsRegion
 
 root.http_request.user_agent = this.userAgent
+
+root.is_mfa = match this.additionalEventData.MFAUsed {
+        "No" => false
+        "Yes" => true
+    }
 
 root.metadata.log_provider = "CloudTrail"
 root.metadata.log_name = this.eventType
@@ -127,8 +128,6 @@ status = match root.status_id {
 root.time = this.eventTime.ts_unix_milli()
 root.time_dt = this.eventTime
 
-type_uid = root.class_uid.number() * 100 + root.activity_id.number()
-type_name = root.class_name + ": " + root.activity_name
 root.unmapped = this.without(
     "awsRegion",
     "eventName",
@@ -165,3 +164,6 @@ observables = root.without("unmapped").with("actor.user.name", "src_endpoint.ip"
     "a": match {item.actor.user.exists("name") => {"name": "actor.user.name", "type": "User", "type_id": 4, "value": item.actor.user.name}},
     "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}},
     }).values()
+
+type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+type_name = root.class_name + ": " + root.activity_name

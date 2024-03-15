@@ -14,11 +14,8 @@ root.activity_id = match {
         this.eventName.contains("AssumeRole") => 1
         _ => 99
     }
-root.activity_name = match {
-        this.eventName == "ConsoleLogin" => "Logon"
-        this.eventName == "ExternalIdPDirectoryLogin" => "Logon"
-        this.eventName.contains("AssumeRole") => "Logon"
-        this.eventName == "UserAuthentication" => "Logon"
+activity_name = match root.activity_id {
+        1 => "Logon"
         _ => "Other"
     }
     
@@ -38,10 +35,6 @@ root.actor.session.created_time_dt = match {
     _=> this.userIdentity.sessionContext.attributes.creationDate
 }
 root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
-root.actor.session.is_mfa = match this.additionalEventData.MFAUsed {
-    "No" => false
-    "Yes" => true
-}
 root.actor.invoked_by = this.userIdentity.invokedBy
 root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider|identityProvider) 
 
@@ -61,6 +54,10 @@ root.dst_endpoint.svc_name = this.additionalEventData.LoginTo
 
 root.http_request.user_agent = this.userAgent
 
+root.is_mfa = match this.additionalEventData.MFAUsed {
+        "No" => false
+        "Yes" => true
+    }
 root.metadata.log_provider = "CloudTrail"
 #root.metadata.log_name = this.eventName check with AWS on this 
 root.metadata.event_code = this.eventType
@@ -128,10 +125,10 @@ root.unmapped = this.without(
     "userIdentity.sessionContext.sessionIssuer.userName",
     )
 
-type_uid = root.class_uid.number() * 100 + root.activity_id.number()
-type_name = root.class_name + ": " + root.activity_name
-
 observables = root.without("unmapped").with("user.name", "src_endpoint.ip").( item -> { 
     "a": match {item.user.exists("name") => {"name": "user.name", "type": "User", "type_id": 4, "value": item.user.name}},
     "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}}
     }).values()
+
+type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+type_name = root.class_name + ": " + root.activity_name
