@@ -83,12 +83,12 @@ root.actor.session.created_time_dt = match {
         this.userIdentity.sessionContext.attributes.creationDate == null => 0
          _=> this.userIdentity.sessionContext.attributes.creationDate
     }
-root.actor.session.is_mfa = this.userIdentity.sessionContext.attributes.mfaAuthenticated
+root.actor.session.is_mfa = this.userIdentity.sessionContext.attributes.mfaAuthenticated.bool()
 root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
 root.actor.invoked_by = this.userIdentity.invokedBy
 root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider|identityProvider)
 
-root.api.request.uid = this.requestID 
+root.api.request.uid = this.requestID|""
 root.api.service.name = this.eventSource
 root.api.version = this.apiVersion
 root.api.operation = this.eventName
@@ -101,11 +101,6 @@ root.cloud.provider = "AWS"
 root.cloud.region = this.awsRegion
 
 root.http_request.user_agent = this.userAgent
-
-root.is_mfa = match this.additionalEventData.MFAUsed {
-        "No" => false
-        "Yes" => true
-    }
 
 root.metadata.log_provider = "CloudTrail"
 root.metadata.log_name = this.eventType
@@ -124,7 +119,6 @@ root.time = this.eventTime.ts_unix_milli()
 root.time_dt = this.eventTime
 
 root.user.uid = this.(userIdentity.principalId|responseElements.role.roleId|responseElements.user.userId)
-
 root.user.name = this.(responseElements.role.path|responseElements.role.description|requestParameters.userName|responseElements.role.roleName|responseElements.user.userName|requestParameters.roleName)
 
 root.unmapped = this.without(

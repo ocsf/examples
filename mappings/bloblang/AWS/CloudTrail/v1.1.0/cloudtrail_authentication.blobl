@@ -29,18 +29,18 @@ root.actor.user.uid = this.userIdentity.arn
 root.actor.user.uid_alt = this.userIdentity.principalId
 
 root.actor.session.created_time = match {
-    this.userIdentity.sessionContext.attributes.creationDate == null => 0
+    this.userIdentity.sessionContext.attributes.creationDate == null => deleted()
     _=> this.userIdentity.sessionContext.attributes.creationDate.ts_unix_milli()
 }
 root.actor.session.created_time_dt = match {
-    this.userIdentity.sessionContext.attributes.creationDate == null => 0
+    this.userIdentity.sessionContext.attributes.creationDate == null => deleted()
     _=> this.userIdentity.sessionContext.attributes.creationDate
 }
 root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
 root.actor.invoked_by = this.userIdentity.invokedBy
 root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider|identityProvider) 
 
-root.api.request.uid = this.requestID
+root.api.request.uid = this.requestID|""
 root.api.service.name = this.eventSource
 root.api.version = this.apiVersion
 root.api.operation = this.eventName
@@ -72,8 +72,12 @@ root.metadata.version = "1.1.0"
 root.metadata.product.feature.name = this.eventCategory 
 root.metadata.profiles = ["cloud","datetime"]
 
-root.src_endpoint.uid = this.vpcEndpointId
-root.src_endpoint.ip = this.sourceIPAddress
+root.session.expiration_time = this.responseElements.credentials.expiration.ts_strptime("%b %d, %Y, %I:%M:%S %p").ts_unix_milli()|null
+root.src_endpoint = if this.sourceIPAddress.re_find_all_object("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$").length() > 0 {
+    {"ip": this.sourceIPAddress}
+} else {
+    {"domain": this.sourceIPAddress}
+}
 
 root.status_id = match this.responseElements.ConsoleLogin {
         "Unknown" => 0
@@ -86,12 +90,8 @@ root.status = this.responseElements.ConsoleLogin
 root.time = this.eventTime.ts_unix_milli()
 root.time_dt = this.eventTime
 
-root.user.uid = this.userIdentity.principalId
-root.user.name = match {
-    this.requestParameters.exists("roleSessionName") => this.requestParameters.roleSessionName
-    this.userIdentity.exists("arn") => userIdentity.arn.split("/").index(-1)
-    _=> "Unknown"
-}
+root.user.uid = this.(requestParameters.roleArn|userIdentity.arn)
+root.user.name = if this.requestParameters.exists("roleSessionName"){this.requestParameters} else {deleted()}
 root.user.uid_alt = this.userIdentity.principalId
 
 root.unmapped = this.without(

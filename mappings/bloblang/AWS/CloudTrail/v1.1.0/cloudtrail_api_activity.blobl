@@ -97,7 +97,7 @@ root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
 root.actor.invoked_by = this.userIdentity.invokedBy
 root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider | identityProvider)
     
-root.api.request.uid = this.requestID 
+root.api.request.uid = this.requestID|""
 root.api.service.name = this.eventSource
 root.api.version = this.apiVersion
 root.api.operation = this.eventName
@@ -128,8 +128,11 @@ root.metadata.product.feature.name = this.eventCategory
 root.metadata.profiles = ["cloud","datetime"]
 
 root.src_endpoint.uid = this.vpcEndpointId
-root.src_endpoint.ip =  if this.sourceIPAddress.re_match("[0-9]") {this.sourceIPAddress} else {deleted()}
-root.src_endpoint.domain =  if this.sourceIPAddress.re_match(".*") {this.sourceIPAddress} else {deleted()}   
+root.src_endpoint = if this.sourceIPAddress.re_find_all_object("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$").length() > 0 {
+    {"ip": this.sourceIPAddress}
+} else {
+    {"domain": this.sourceIPAddress}
+}
    
 root.status_id = match this.errorCode {
         "Unknown" => 0
