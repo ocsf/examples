@@ -14,8 +14,10 @@ root.activity_id = match {
         this.eventName.contains("AssumeRole") => 1
         _ => 99
     }
-activity_name = match root.activity_id {
-        1 => "Logon"
+root.activity_name = match {
+        this.eventName == "ConsoleLogin" => "Logon"
+        this.eventName == "ExternalIdPDirectoryLogin" => "Logon"
+        this.eventName.contains("AssumeRole") => "Logon"
         _ => "Other"
     }
     

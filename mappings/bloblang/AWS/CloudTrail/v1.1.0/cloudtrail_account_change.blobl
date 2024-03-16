@@ -43,14 +43,32 @@ root.activity_id = match {
         this.eventName.contains("Delete") => 6
         _=> 99
     }
-activity_name = match root.activity_id {    
-       1 => "Create"
-       3 => "Password Change"
-       6 => "Delete"
-       7 => "Attach Policy"
-       8 => "Detach Policy"
-       5 => "Other"
-}
+root.activity_name = match {
+        # "Attach Policy"
+        this.eventName.contains("Attach") => "Attach Policy"
+        this.eventName.contains("Put") => "Attach Policy"
+        this.eventName == "AddUserToGroup" => "Attach Policy"
+        # "Create"
+        this.eventName.contains("Create") => "Create"
+        this.eventName == "ResyncMFADevice" => "Create"
+        this.eventName == "EnableMFADevice" => "Create"
+        # "Detach Policy"
+        this.eventName.contains("Detach") => "Detach Policy"
+        this.eventName.contains("Remove") => "Detach Policy"
+        # "Password Change"
+        this.eventName == "ChangePassword" => "Password Change"
+        this.eventName == "PasswordUpdated" => "Password Change"
+        # "Other" this probably needs to be reviewed over time  
+        this.eventName.contains("DeleteSSH") => "Other"
+        this.eventName.contains("DeleteServer") => "Other"
+        this.eventName.contains("DeleteSign") => "Other"
+        this.eventName.contains("DeleteAccount") => "Other"
+        this.eventName.contains("DeleteCloudFront") => "Other"
+        this.eventName.contains("DeleteService") => "Other"
+        # "Delete" this is placed last in the list so if the others do not match it will (keep this at the end of the match statement)
+        this.eventName.contains("Delete") => "Delete"
+        _=> "Other"
+    }
 root.actor.user.account.uid = this.userIdentity.accountId
 root.actor.user.uid_alt = this.userIdentity.principalId
 root.actor.user.credential_uid = this.userIdentity.accessKeyId.roleName
