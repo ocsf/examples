@@ -1,4 +1,4 @@
-# this is a metadata tag with no whitespace so we can split the data into the correct topic later 
+
 root.class_uid = 6003
 root.class_name = "API Activity" 
 root.category_uid = 6
