@@ -10,3 +10,4 @@ A variety of sample mappings can be found in the `/mappings` directory of this r
 2. Within a platform/DSL dir, all the mappings are organized in a `Vendor > OCSF Version > Product > _mappings_` structure. Whenever missing, create your sub directories accordingly.
 3. Each mapping example, must be accompanied by a sample input log record and it's corresponding OCSF transformed record. In your `product` dir, create a `samples` dir to store your sample input record as `*.raw` and its OCSF transformed version as `*.ocsf` files.
 4. Ensure the transformed OCSF record is a valid OCSF file by utilizing the validation endpoint available [here](https://schema.ocsf.io/doc/index.html#/Tools/SchemaWeb_SchemaController_validate).
+5. A reference of the structure outlined above can be found [here](https://github.com/ocsf/examples/tree/main/mappings/markdown/AWS).
