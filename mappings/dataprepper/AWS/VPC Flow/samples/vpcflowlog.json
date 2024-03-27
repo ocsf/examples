@@ -30,11 +30,7 @@
 		"protocol_num": 17,
 		"protocol_name": "UDP",
 		"protocol_ver": "IPv6",
-<<<<<<< HEAD:mappings/dataprepper/AWS/VPC Flow/samples/vpcflowlog.json
 		"tcp_flags": "vpn",
-=======
-		"tcp_flags": null,
->>>>>>> 6538f442fa0bdc5f2fc4257fee91df94b4a6f069:mappings/dataprepper/AWS/VPC Flow/samples/vpcflowlog.ocsf
 		"direction": "egress",
 		"direction_id": 2,
 		"boundary_id": 6,
@@ -44,13 +40,9 @@
 	},
 	"time": 1653200100,
 	"type_name": "Network Activity: Traffic",
-<<<<<<< HEAD:mappings/dataprepper/AWS/VPC Flow/samples/vpcflowlog.json
 	"type_uid": 400105,
 	"activity_id": 5,
-=======
-	"type_uid": 400106,
 	"activity_id": 6,
->>>>>>> 6538f442fa0bdc5f2fc4257fee91df94b4a6f069:mappings/dataprepper/AWS/VPC Flow/samples/vpcflowlog.ocsf
 	"activity_name": "Traffic",
 	"class_uid": 4001,
 	"category_uid": 4,
