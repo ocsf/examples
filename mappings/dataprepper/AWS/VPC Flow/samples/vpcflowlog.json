@@ -1,0 +1,63 @@
+{
+	"cloud": {
+		"account_uid": "987654321098",
+		"region": "us-west-2",
+		"zone": "use2-az2"
+	},
+	"action": "Allowed",
+	"action_id": 1,
+	"status_code": "OK",
+	"traffic": {
+		"bytes": 85,
+		"packets": 10
+	},
+	"src_endpoint": {
+		"ip": "192.168.1.10",
+		"port": 8080,
+		"svc_name": "amazon-s3",
+		"subnet_uid": "subnet-33333333333333333",
+		"vpc_uid": "vpc-44444444444444444"
+	},
+	"dst_endpoint": {
+		"ip": "192.168.1.20",
+		"port": 443,
+		"svc_name": "amazon-ec2",
+		"interface_uid": "eni-22222222222222222",
+		"instance_uid": "i-111111111111111111"
+	},
+	"connection_info": {
+		"protocol_num": 17,
+		"protocol_ver": "IPv6",
+		"boundary_id": 6,
+		"direction_id": 2,
+		"direction": "egress"
+	},
+	"flow_direction": "egress",
+	"time": 1653200100,
+	"type_name": "Network Activity: Traffic",
+	"activity_id": 6,
+	"activity_name": "Traffic",
+	"class_uid": 4001,
+	"category_uid": 4,
+	"category_name": "Network Activity",
+	"type_uid": 400106,
+	"metadata": {
+		"product": {
+			"name": "Amazon VPC",
+			"feature": {
+				"name": "Flowlogs"
+			},
+			"vendor_name": "AWS"
+		},
+		"profiles": [
+			"cloud",
+			"security_control"
+		],
+		"version": "1.1.0"
+	},
+	"cloud": {
+		"provider": "AWS"
+	},
+	"severity_id": 1,
+	"severity": "Informational"
+}
