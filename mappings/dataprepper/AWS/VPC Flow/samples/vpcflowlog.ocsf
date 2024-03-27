@@ -28,13 +28,12 @@
 	},
 	"connection_info": {
 		"protocol_num": 17,
-		"protocol_name": "UDP",
 		"protocol_ver": "IPv6",
-		"tcp_flags": "vpn",
+		"tcp_flags": 6,
 		"direction": "egress",
 		"direction_id": 2,
-		"boundary_id": 6,
-		"boundary": "Internet/VPC Gateway",
+		"boundary_id": 99,
+		"boundary": "vpn",
 		"start_time": 1653200123,
 		"end_time": 1653200100
 	},
