@@ -42,7 +42,6 @@
 	"type_name": "Network Activity: Traffic",
 	"type_uid": 400105,
 	"activity_id": 5,
-	"activity_id": 6,
 	"activity_name": "Traffic",
 	"class_uid": 4001,
 	"category_uid": 4,
