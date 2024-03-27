@@ -67,8 +67,4 @@
 	"pkt_dst_aws_service": "amazon-ec2",
 	"sublocation_type": "subnet",
 	"sublocation_id": "subnet-33333333333333333"
-<<<<<<< HEAD:mappings/dataprepper/AWS/VPC Flow/samples/vpcflowlog.json
 }
-=======
-}
->>>>>>> 6538f442fa0bdc5f2fc4257fee91df94b4a6f069:mappings/dataprepper/AWS/VPC Flow/samples/vpcflowlog.ocsf
