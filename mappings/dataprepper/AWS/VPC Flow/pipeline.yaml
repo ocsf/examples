@@ -21,8 +21,6 @@ test-lab-pipeline:
             value: Traffic
           - key: activity_id
             value: 5
-          - key: type_uid
-            value: 400105
           - key: metadata/product/name
             value: "Amazon VPC"
           - key: metadata/product/feature/name
