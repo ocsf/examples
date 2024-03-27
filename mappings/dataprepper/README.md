@@ -10,9 +10,7 @@ Data Prepper follows the ETL (Extract, Transform, Load) paradigm:
 - **Transform**: The extracted data is transformed using configurable processors to enrich, filter, or modify it.
 - **Load**: The transformed data is loaded into sinks such as Elasticsearch, Kafka, or files for storage, analysis, or further processing.
 
-## Inputs
-
-# OpenSearch Data Prepper - Basic Processors Syntax Examples
+## Processors
 
 Processors perform an action on your data, such as filtering, transforming, or enriching.
 
