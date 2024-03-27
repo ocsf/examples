@@ -57,11 +57,11 @@ Processors perform an action on your data, such as filtering, transforming, or e
 
 Data Prepper supports various input sources for ingesting data into the pipeline. Some of the supported input types are:
 
-### 1. [Kafka Input]([https://link-to-kafka-input-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sources/kafka/))
+### 1. Kafka Input
 
 You can use the Apache Kafka source (kafka) in Data Prepper to read records from one or more Kafka topics. These records hold events that your Data Prepper pipeline can ingest. The kafka source uses Kafka’s Consumer API to consume messages from the Kafka broker, which then creates Data Prepper events for further processing by the Data Prepper pipeline.
 
-### 2. [HTTP Input]([https://link-to-http-input-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sources/http-source/))
+### 2. HTTP Input
 
 http_source is a source plugin that supports HTTP. Currently, http_source only supports the JSON UTF-8 codec for incoming requests, such as [{"key1": "value1"}, {"key2": "value2"}]. The following table describes options you can use to configure the http_source source.
 
@@ -69,15 +69,15 @@ http_source is a source plugin that supports HTTP. Currently, http_source only s
 
 Data Prepper supports multiple sink types for storing or forwarding processed data. Some of the available sink options include:
 
-### 1. [Opensearch Sink]([https://link-to-elasticsearch-sink-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sinks/opensearch/))
+### 1. Opensearch Sink
 
 You can use the opensearch sink plugin to send data to an OpenSearch cluster, a legacy Elasticsearch cluster, or an Amazon OpenSearch Service domain.
 
-### 2. [S3 Sink]([https://link-to-kafka-sink-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sinks/s3/))
+### 2. S3 Sink
 
 The s3 sink saves and writes batches of Data Prepper events to Amazon Simple Storage Service (Amazon S3) objects. The configured codec determines how the s3 sink serializes the data into Amazon S3.
 
-### 3. [File Sink]([https://link-to-file-sink-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sinks/file/))
+### 3. File Sink
 
 Use the file sink to create a flat file output, usually a .log file.
 
