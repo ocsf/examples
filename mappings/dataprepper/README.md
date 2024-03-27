@@ -2,7 +2,7 @@
 
 Data Prepper is a data ingestion and transformation framework designed to streamline the process of preparing data for analysis and consumption. It offers a flexible architecture with various processors, inputs, and sinks to accommodate a wide range of data sources and destinations.
 
-For instructions on getting started with Data Prepper, please visit the [OpenSearch Data Prepper documentation](https://opensearch.org/docs/latest/data-prepper/getting-started/).
+For more specific instructions on getting started with Data Prepper, please visit the [OpenSearch Data Prepper documentation](https://opensearch.org/docs/latest/data-prepper/getting-started/).
 
 
 ## Overview
