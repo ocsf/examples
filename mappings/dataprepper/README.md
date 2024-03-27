@@ -16,45 +16,43 @@ Data Prepper follows the ETL (Extract, Transform, Load) paradigm:
 
 Below are examples of syntax for basic processors in OpenSearch Data Prepper:
 
-## Append Processor
-
-```
-### processors:
-  - append:
-      field: "new_field"
-      value: "example_value"
+### Append Processor
+    processors:
+      - append:
+          field: "new_field"
+          value: "example_value"
 
 ### Convert Processor
-processors:
-  - convert:
-      field: "field_name"
-      type: "integer"
+    processors:
+      - convert:
+          field: "field_name"
+          type: "integer"
 
 ### Date Processor
-processors:
-  - date:
-      field: "date_field"
-      target_field: "new_date_field"
-      formats:
-        - "ISO8601"
+    processors:
+      - date:
+          field: "date_field"
+          target_field: "new_date_field"
+          formats:
+            - "ISO8601"
 
 ### Grok Processor
-processors:
-  - grok:
-      field: "message"
-      patterns:
-        - "%{IP:client_ip} %{USER:client_user}"
+    processors:
+      - grok:
+          field: "message"
+          patterns:
+            - "%{IP:client_ip} %{USER:client_user}"
 
 ### Remove Processor
-processors:
-  - remove:
-      field: "field_name"
+    processors:
+      - remove:
+          field: "field_name"
 
 ### Rename Processor
-processors:
-  - rename:
-      field: "old_field"
-      target_field: "new_field"
+    processors:
+      - rename:
+          field: "old_field"
+          target_field: "new_field"
 
 
 ## Inputs
