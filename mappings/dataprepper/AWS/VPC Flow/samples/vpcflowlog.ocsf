@@ -2,7 +2,8 @@
 	"cloud": {
 		"account_uid": "987654321098",
 		"region": "us-west-2",
-		"zone": "use2-az2"
+		"zone": "use2-az2",
+		"provider": "AWS"
 	},
 	"action": "Allowed",
 	"action_id": 1,
@@ -27,20 +28,24 @@
 	},
 	"connection_info": {
 		"protocol_num": 17,
+		"protocol_name": "UDP",
 		"protocol_ver": "IPv6",
-		"boundary_id": 6,
+		"tcp_flags": null,
+		"direction": "egress",
 		"direction_id": 2,
-		"direction": "egress"
+		"boundary_id": 6,
+		"boundary": "Internet/VPC Gateway",
+		"start_time": 1653200123,
+		"end_time": 1653200100
 	},
-	"flow_direction": "egress",
 	"time": 1653200100,
 	"type_name": "Network Activity: Traffic",
+	"type_uid": 400106,
 	"activity_id": 6,
 	"activity_name": "Traffic",
 	"class_uid": 4001,
 	"category_uid": 4,
 	"category_name": "Network Activity",
-	"type_uid": 400106,
 	"metadata": {
 		"product": {
 			"name": "Amazon VPC",
@@ -55,9 +60,11 @@
 		],
 		"version": "1.1.0"
 	},
-	"cloud": {
-		"provider": "AWS"
-	},
 	"severity_id": 1,
-	"severity": "Informational"
+	"severity": "Informational",
+	"disposition": "Allowed",
+	"pkt_src_aws_service": "amazon-s3",
+	"pkt_dst_aws_service": "amazon-ec2",
+	"sublocation_type": "subnet",
+	"sublocation_id": "subnet-33333333333333333"
 }
