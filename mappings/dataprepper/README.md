@@ -14,13 +14,13 @@ Data Prepper follows the ETL (Extract, Transform, Load) paradigm:
 
 Data Prepper provides several processors to perform transformations and enrichment on ingested data. Some of the key processors include:
 
-### 1. [Filter Processor]([https://link-to-filter-processor-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/processors/processors/))
+### 1. [Filter Processor]([https://link-to-filter-processor-docs]([https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/processors/processors/](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sources/sources/)))
+
+Sources define where your data comes from within a Data Prepper pipeline.
+
+### 2. [Filter Processor]([https://link-to-filter-processor-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/processors/processors/))
 
 The Filter Processor allows users to specify conditions for filtering out unwanted data records before they are sent to sinks.
-
-### 2. [Enrichment Processor](https://link-to-enrichment-processor-docs)
-
-The Enrichment Processor enriches incoming data records with additional information from external sources, enhancing the data's context and value.
 
 ### 3. [Transformation Processor](https://link-to-transformation-processor-docs)
 
