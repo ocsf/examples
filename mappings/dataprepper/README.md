@@ -12,51 +12,78 @@ Data Prepper follows the ETL (Extract, Transform, Load) paradigm:
 
 ## Processors
 
-Data Prepper provides several processors to perform transformations and enrichment on ingested data. Some of the key processors include:
+# OpenSearch Data Prepper - Basic Processors Syntax Examples
 
-### 1. [Filter Processor]([https://link-to-filter-processor-docs]([https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/processors/processors/](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sources/sources/)))
+Below are examples of syntax for basic processors in OpenSearch Data Prepper:
 
-Sources define where your data comes from within a Data Prepper pipeline.
+## Append Processor
 
-### 2. [Filter Processor]([https://link-to-filter-processor-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/processors/processors/))
+```
+### processors:
+  - append:
+      field: "new_field"
+      value: "example_value"
 
-The Filter Processor allows users to specify conditions for filtering out unwanted data records before they are sent to sinks.
+### Convert Processor
+processors:
+  - convert:
+      field: "field_name"
+      type: "integer"
 
-### 3. [Transformation Processor](https://link-to-transformation-processor-docs)
+### Date Processor
+processors:
+  - date:
+      field: "date_field"
+      target_field: "new_date_field"
+      formats:
+        - "ISO8601"
 
-The Transformation Processor facilitates data format conversion, schema normalization, and other transformations to make the data suitable for downstream analysis.
+### Grok Processor
+processors:
+  - grok:
+      field: "message"
+      patterns:
+        - "%{IP:client_ip} %{USER:client_user}"
+
+### Remove Processor
+processors:
+  - remove:
+      field: "field_name"
+
+### Rename Processor
+processors:
+  - rename:
+      field: "old_field"
+      target_field: "new_field"
+
 
 ## Inputs
 
 Data Prepper supports various input sources for ingesting data into the pipeline. Some of the supported input types are:
 
-### 1. [Kafka Input](https://link-to-kafka-input-docs)
+### 1. [Kafka Input]([https://link-to-kafka-input-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sources/kafka/))
 
-The Kafka Input allows Data Prepper to consume data from Apache Kafka topics, enabling real-time data ingestion and processing.
+You can use the Apache Kafka source (kafka) in Data Prepper to read records from one or more Kafka topics. These records hold events that your Data Prepper pipeline can ingest. The kafka source uses Kafka’s Consumer API to consume messages from the Kafka broker, which then creates Data Prepper events for further processing by the Data Prepper pipeline.
 
-### 2. [File Input](https://link-to-file-input-docs)
+### 2. [HTTP Input]([https://link-to-http-input-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sources/http-source/))
 
-With the File Input, users can ingest data from files stored in local directories or remote file systems, providing flexibility in data source selection.
-
-### 3. [HTTP Input](https://link-to-http-input-docs)
-
-The HTTP Input enables data ingestion from HTTP endpoints, making it convenient to integrate with web services and APIs.
+http_source is a source plugin that supports HTTP. Currently, http_source only supports the JSON UTF-8 codec for incoming requests, such as [{"key1": "value1"}, {"key2": "value2"}]. The following table describes options you can use to configure the http_source source.
 
 ## Sinks
 
 Data Prepper supports multiple sink types for storing or forwarding processed data. Some of the available sink options include:
 
-### 1. [Elasticsearch Sink](https://link-to-elasticsearch-sink-docs)
+### 1. [Opensearch Sink]([https://link-to-elasticsearch-sink-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sinks/opensearch/))
 
-The Elasticsearch Sink sends processed data to Elasticsearch for indexing and analysis, making it ideal for log processing and search applications.
+You can use the opensearch sink plugin to send data to an OpenSearch cluster, a legacy Elasticsearch cluster, or an Amazon OpenSearch Service domain.
 
-### 2. [Kafka Sink](https://link-to-kafka-sink-docs)
+### 2. [S3 Sink]([https://link-to-kafka-sink-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sinks/s3/))
 
-With the Kafka Sink, Data Prepper can publish processed data to Kafka topics, facilitating seamless integration with downstream Kafka consumers.
+The s3 sink saves and writes batches of Data Prepper events to Amazon Simple Storage Service (Amazon S3) objects. The configured codec determines how the s3 sink serializes the data into Amazon S3.
 
-### 3. [File Sink](https://link-to-file-sink-docs)
+### 3. [File Sink]([https://link-to-file-sink-docs](https://opensearch.org/docs/latest/data-prepper/pipelines/configuration/sinks/file/))
 
-The File Sink writes processed data to files stored in local directories or remote file systems, providing a simple yet versatile storage option.
+Use the file sink to create a flat file output, usually a .log file.
 
 ## Getting Started
 
