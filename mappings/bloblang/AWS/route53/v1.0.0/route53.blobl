@@ -1,6 +1,5 @@
 # Benthos Mapping for AWS route53 Dns event
 # this is a metadata tag with no whitespace so we can split the data into the correct topic later 
-meta ocsf_topic = "dns_activity"
 
 root.category_uid = 4
 root.category_name = "Network Activity"
@@ -10,7 +9,7 @@ root.severity_id = 0
 root.severity = "Unknown"
 root.status_id = 1  
 root.status = "Success"
-#Conditional Mapping for activity_id
+
 root.activity_id = match this.rcode {
     "NOERROR" => 2
     "FormError" => 4
@@ -62,19 +61,30 @@ root.activity_id = match this.rcode {
     "Reserved" => "Fail"
     "Other" => 99
 }
-root.metadata.profiles = ["cloud", "security_control"]
+
+root.answers.type = this.answers.0.Type
+root.answers.rdata = this.answers.0.Rdata
+root.answers.class = this.answers.0.Class
+
+root.cloud.account_uid = this.account_id
+root.cloud.region = this.region
+root.cloud.provider = "AWS"
+
+root.connection_info.protocol_name = this.transport
+
+root.dst_endpoint.instance_uid = this.srcids.resolver_endpoint
+root.dst_endpoint.interface_uid = this.srcids.resolver_network_interface
+
+root.metadata.profiles = ["cloud"]
 root.metadata.product.version = this.version
 root.metadata.version = "1.0.0"
 root.metadata.product.name = "Route 53"
 root.metadata.product.feature.name = "Query Logs"
-root.cloud.account_uid = this.account_id
-root.cloud.region = this.region
-root.cloud.provider = "AWS"
-root.src_endpoint.vpc_uid = this.vpc_id
-root.time = this.query_timestamp
+
 root.query.hostname = this.query_name
 root.query.type = this.query_type
 root.query."class" = this.query_class
+
 root.rcode = this.rcode
     #Conditional Mapping for rcode_id
 root.rcode_id = match this.rcode {
@@ -102,15 +112,13 @@ root.rcode_id = match this.rcode {
     "Reserved" => 25
     "Other" => 99
 }
-root.answers.type = this.answers.0.Type
-root.answers.rdata = this.answers.0.Rdata
-root.answers.class = this.answers.0.Class
+root.src_endpoint.vpc_uid = this.vpc_id
 root.src_endpoint.ip = this.srcaddr
 root.src_endpoint.port = this.srcport
-root.connection_info.protocol_name = this.transport
 root.src_endpoint.instance_uid = this.srcids.instance
-root.dst_endpoint.instance_uid = this.srcids.resolver_endpoint
-root.dst_endpoint.interface_uid = this.srcids.resolver_network_interface
+
+root.time = this.query_timestamp
+
 root.unmapped = this.without(
     "version", 
     "account_id", 

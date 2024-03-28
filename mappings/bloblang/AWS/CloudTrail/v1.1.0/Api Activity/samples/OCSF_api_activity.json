@@ -1,0 +1,106 @@
+{
+    "activity_id": 2,
+    "activity_name": "Read",
+    "actor": {
+      "idp": {
+        "name": null
+      },
+      "invoked_by": null,
+      "session": {
+        "created_time": 0,
+        "created_time_dt": null,
+        "issuer": null
+      },
+      "user": {
+        "account": {
+          "uid": "1111111111111"
+        },
+        "credential_uid": "AKIA3Z2XBVEXAMPLE",
+        "name": "Level6",
+        "type": "IAMUser",
+        "uid": "arn:aws:iam::1111111111111:user/Level6",
+        "uid_alt": "AIDADO2GQEXAMPLE"
+      }
+    },
+    "api": {
+      "operation": "DescribeDirectConnectGateways",
+      "request": {
+        "data": null,
+        "uid": "1c8a6220-4263-4763-b526-example"
+      },
+      "response": {
+        "data": {
+          "directConnectGateways": []
+        },
+        "error": null,
+        "message": null
+      },
+      "service": {
+        "name": "directconnect.amazonaws.com"
+      },
+      "version": null
+    },
+    "category_name": "Application Activity",
+    "category_uid": 6,
+    "class_name": "API Activity",
+    "class_uid": 6003,
+    "cloud": {
+      "provider": "AWS",
+      "region": "us-east-1"
+    },
+    "http_request": {
+      "user_agent": "Boto3/1.15.2 Python/3.8.2 Linux/5.6.3-arch1-1 Botocore/1.18.2"
+    },
+    "metadata": {
+      "log_name": "AwsApiCall",
+      "log_provider": "CloudTrail",
+      "product": {
+        "feature": {
+          "name": null
+        },
+        "name": "CloudTrail",
+        "vendor_name": "AWS",
+        "version": "1.05"
+      },
+      "profiles": [
+        "cloud",
+        "datetime"
+      ],
+      "uid": "71c88be9-ea5c-43c7-8c82-example",
+      "version": "1.1.0"
+    },
+    "observables": [
+      {
+        "name": "actor.user.name",
+        "type": "User",
+        "type_id": 4,
+        "value": "Level6"
+      },
+      {
+        "name": "src_endpoint.ip",
+        "type": "IP Address",
+        "type_id": 2,
+        "value": "205.8.181.128"
+      }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+      "ip": "205.8.181.128"
+    },
+    "status": null,
+    "status_id": 99,
+    "time": 1695334972000,
+    "time_dt": "2023-09-21T22:22:52Z",
+    "type_name": "API Activity: Read",
+    "type_uid": 600302,
+    "unmapped": {
+      "eventType": "AwsApiCall",
+      "recipientAccountId": "1111111111111",
+      "requestParameters": null,
+      "responseElements": {
+        "directConnectGateways": []
+      },
+      "userIdentity": {}
+    }
+  }

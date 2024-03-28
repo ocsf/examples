@@ -1,0 +1,201 @@
+
+root.class_uid = 6003
+root.class_name = "API Activity" 
+root.category_uid = 6
+root.category_name = "Application Activity"
+root.cloud.region = this.awsRegion
+root.severity_id = 1
+root.severity = "Informational"
+
+root.activity_id = match {
+        this.eventName.contains("Unknown") => 1 
+        #Create
+        this.eventName.contains("Create") => 1
+        this.eventName.contains("Run") => 1
+        this.eventName.contains("Generate") => 1
+        #Read
+        this.eventName.contains("Get") => 2
+        this.eventName.contains("List") => 2
+        this.eventName.contains("Describe") => 2
+        this.eventName.contains("Search") => 2
+        this.eventName.contains("Lookup") => 2
+        #Update
+        this.eventName.contains("Update") => 3
+        this.eventName.contains("Put") => 3
+        this.eventName.contains("Modify") => 3
+        this.eventName.contains("Add") => 3
+        this.eventName.contains("Remove") => 3
+        this.eventName.contains("Start") => 3
+        this.eventName.contains("Stop") => 3
+        this.eventName.contains("Attach") => 3
+        this.eventName.contains("Detach") => 3
+        this.eventName.contains("Associate") => 3
+        this.eventName.contains("Disassociate") => 3
+        this.eventName.contains("Tag") => 3
+        this.eventName.contains("Untag") => 3
+        this.eventName.contains("Enable") => 3
+        this.eventName.contains("Disable") => 3
+        this.eventName.contains("Register") => 3
+        this.eventName.contains("Deregister") => 3
+        this.eventName.contains("Disassociate") => 3
+        #Delete
+        this.eventName.contains("Delete") => 4
+        this.eventName.contains("Terminate") => 4 
+        #Other
+        _ => 99
+    }
+root.activity_name = match {
+        this.eventName.contains("Unknown") => "Unknown" 
+        #Create
+        this.eventName.contains("Create") => "Create"
+        this.eventName.contains("Run") => "Create"
+        this.eventName.contains("Generate") => "Create"
+        #Read
+        this.eventName.contains("Get") => "Read"
+        this.eventName.contains("List") => "Read"
+        this.eventName.contains("Describe") => "Read"
+        this.eventName.contains("Search") => "Read"
+        this.eventName.contains("Lookup") => "Read"
+        #Update
+        this.eventName.contains("Update") => "Update"
+        this.eventName.contains("Put") => "Update"
+        this.eventName.contains("Modify") => "Update"
+        this.eventName.contains("Add") => "Update"
+        this.eventName.contains("Remove") => "Update"
+        this.eventName.contains("Start") => "Update"
+        this.eventName.contains("Stop") => "Update"
+        this.eventName.contains("Attach") => "Update"
+        this.eventName.contains("Detach") => "Update"
+        this.eventName.contains("Associate") => "Update"
+        this.eventName.contains("Disassociate") => "Update"
+        this.eventName.contains("Tag") => "Update"
+        this.eventName.contains("Untag") => "Update"
+        this.eventName.contains("Enable") => "Update"
+        this.eventName.contains("Disable") => "Update"
+        this.eventName.contains("Register") => "Update"
+        this.eventName.contains("Deregister") => "Update"
+        this.eventName.contains("Disassociate") => "Update"
+        #Delete
+        this.eventName.contains("Delete") => "Delete"
+        this.eventName.contains("Terminate") => "Delete" 
+        #others
+        _ => "Other"   
+    }
+    
+root.actor.user.account.uid = this.userIdentity.accountId
+root.actor.user.credential_uid = this.userIdentity.accessKeyId
+root.actor.user.name = if this.userIdentity.exists("userName") {this.userIdentity.userName} else {deleted()}
+root.actor.user.type = this.userIdentity.type
+root.actor.user.uid_alt = this.userIdentity.principalId
+root.actor.user.uid = this.userIdentity.arn
+root.actor.session.created_time_dt =  this.userIdentity.sessionContext.attributes.creationDate
+root.actor.session.created_time = match {
+    this.userIdentity.sessionContext.attributes.creationDate == null => 0
+    _=> this.userIdentity.sessionContext.attributes.creationDate.ts_unix_milli()
+}
+root.actor.session.issuer = this.userIdentity.sessionContext.sessionIssuer.arn
+root.actor.invoked_by = this.userIdentity.invokedBy
+root.actor.idp.name = this.userIdentity.(sessionContext.webIdFederationData.federatedProvider | identityProvider)
+    
+root.api.request.uid = this.requestID|""
+root.api.service.name = this.eventSource
+root.api.version = this.apiVersion
+root.api.operation = this.eventName
+root.api.response.error = this.errorCode
+root.api.response.message = this.errorMessage
+root.api.response.data = this.responseElements
+root.api.request.uid = this.requestID
+root.api.request.data = this.requestParameters
+
+root.cloud.provider = "AWS"
+root.cloud.region = this.awsRegion
+
+root.http_request.user_agent = this.userAgent
+
+root.is_mfa = match this.additionalEventData.MFAUsed {
+        "No" => false
+        "Yes" => true
+    }
+
+root.metadata.log_provider = "CloudTrail"
+root.metadata.log_name = this.eventType
+root.metadata.version = "1.1.0"
+root.metadata.product.version = this.eventVersion
+root.metadata.uid = this.eventID
+root.metadata.product.name = "CloudTrail"
+root.metadata.product.vendor_name = "AWS"
+root.metadata.product.feature.name = this.eventCategory 
+root.metadata.profiles = ["cloud","datetime"]
+
+root.src_endpoint.uid = this.vpcEndpointId
+root.src_endpoint = if this.sourceIPAddress.re_find_all_object("^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$").length() > 0 {
+    {"ip": this.sourceIPAddress}
+} else {
+    {"domain": this.sourceIPAddress}
+}
+   
+root.status_id = match this.errorCode {
+        "Unknown" => 0
+        "Null" => 1
+        "AccessDenied" => 2
+        "IncompleteSignature" => 2
+        "InternalFailure" => 2
+        "InvalidAction" => 2
+        "InvalidClientTokenId" => 2
+        "NotAuthorized" => 2
+        "OptInRequired" => 2
+        "RequestExpired" => 2
+        "ServiceUnavailable" => 2
+        "ThrottlingException" => 2
+        "ValidationError" => 2
+       	"Other" => 99
+       	_=> 99
+    }
+status = match root.status_id {
+        0 => "Unknown"
+        1 => "Success"
+        2 => "Failure"
+       	99 => this.errorCode
+    }
+root.time = this.eventTime.ts_unix_milli()
+root.time_dt = this.eventTime
+
+root.unmapped = this.without(
+    "awsRegion",
+    "eventName",
+    "userIdentity.accountId",
+    "userIdentity.accessKeyId",
+    "userIdentity.userName",
+    "userIdentity.type",
+    "userIdentity.principalId",
+    "userIdentity.arn",
+    "userIdentity.sessionContext.attributes.creationDate",
+    "userIdentity.sessionContext.sessionIssuer.arn",
+    "userIdentity.invokedBy",
+    "userIdentity.webIdFederationData.federatedProvider",
+    "userIdentity.identityProvider",
+    "requestID",
+    "eventSource",
+    "apiVersion",
+    "errorCode",
+    "errorMessage",
+    "eventVersion",
+    "eventID",
+    "eventCategory",
+    "additionalEventData.MFAUsed",
+    "vpcEndpointId",
+    "sourceIPAddress",
+    "ConsoleLogin.responseElements.ConsoleLogin",
+    "eventTime",
+    "userAgent",
+    "AssumeRole.requestParameters.roleSessionName",
+    "userIdentity.arn",
+    "userIdentity.sessionContext.sessionIssuer.userName",
+    )
+observables = root.without("unmapped").with("actor.user.name", "src_endpoint.ip").( item -> { 
+    "a": match {item.actor.user.exists("name") => {"name": "actor.user.name", "type": "User", "type_id": 4, "value": item.actor.user.name}},
+    "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}},
+    }).values()
+
+type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+type_name = root.class_name + ": " + root.activity_name

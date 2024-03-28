@@ -1,0 +1,100 @@
+
+root.category_uid = 4
+root.category_name = "Network Activity"
+root.class_uid = 4003
+root.class_name = "DNS Activity"
+root.severity_id = 1       
+root.severity = "Informational"
+root.status_id = 1 
+root.status = "Success"
+root.activity_id = match this.answers {
+    "null" => 1
+    [] => 1
+    _=> 6
+}
+activity_name = match root.activity_id {
+    1 => "Query"
+    6 => "Traffic"
+    _=> "Unknown"
+}
+root.answers = this.answers.map_each(this.map_each_key(this.lowercase()))
+root.cloud.account.uid = this.account_id
+root.cloud.region = this.region
+root.cloud.provider = "AWS"
+#root.firewall_rule.uid = this.firewall_rule_group_id use this and security_control profile if you have DNS firewall enabled 
+root.metadata.log_provider = "Route 53"
+root.metadata.log_name = "DNS"
+root.metadata.profiles = ["cloud", "datetime"]
+root.metadata.product.version = this.version
+root.metadata.version = "1.1.0"
+root.metadata.product.name = "Route 53"
+root.metadata.product.feature.name = "Resolver Query Logs"
+root.metadata.product.vendor_name = "AWS"
+
+root.rcode = this.rcode
+root.rcode_id = match this.rcode {
+    "NOERROR" => 0
+    "FormError" => 1
+    "ServError" => 2
+    "NXDomain" => 3
+    "NotImp" => 4
+    "Refused" => 5
+    "YXDomain" => 6
+    "YXRRSet" => 7
+    "NXRRSet" => 8
+    "NotAuth" => 9
+    "NotZone" => 10
+    "DSOTYPENI" => 11
+    "BADSIG_VERS" => 16
+    "BADKEY" => 17
+    "BADTIME" => 18
+    "BADMODE" => 19
+    "BADNAME" => 20
+    "BADALG" => 21
+    "BADTRUNC" => 22
+    "BADCOOKIE" => 23
+    "Unassigned" => 24
+    "Reserved" => 25
+    "Other" => 99
+}
+root.query_time = this.query_timestamp.ts_unix_milli()
+root.query.type = this.query_type
+root.query.class = this.query_class
+root.query.hostname = this.query_name
+
+root.time = this.query_timestamp.ts_unix_milli()
+root.time_dt = this.query_timestamp
+
+root.src_endpoint.vpc_uid = this.vpc_id
+root.src_endpoint.ip = this.srcaddr
+root.src_endpoint.port = this.srcport.number()
+root.src_endpoint.instance_uid = this.srcids.instance
+
+root.dst_endpoint.instance_uid = this.srcids.resolver_endpoint
+root.dst_endpoint.interface_uid = this.srcids.resolver_network_interface 
+
+root.unmapped = this.without(
+    "version",
+    "vpc_id",
+    "account_id", 
+    "region", 
+    "vpc_id", 
+    "query_timestamp", 
+    "query_name", 
+    "query_type", 
+    "query_class", 
+    "rcode", 
+    "srcaddr", 
+    "srcport", 
+    "transport", 
+    "answers",
+    "srcids",
+    "srcids.instance", 
+    "resolver_endpoint", 
+    "resolver_network_interface",
+    "timestamp",
+    )
+observables = root.without("unmapped").with("query.hostname", "src_endpoint.ip").( item -> { 
+    "a": match {item.query.exists("hostname") => {"name": "query.hostname", "type": "IP Address", "type_id": 1, "value": item.query.hostname}},
+    "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}},
+    }).values()
