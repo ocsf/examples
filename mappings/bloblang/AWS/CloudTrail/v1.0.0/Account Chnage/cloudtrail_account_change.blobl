@@ -8,13 +8,13 @@ root.category = "Identity & Access Management Category"
 root.cloud.provider = "AWS"
 root.severity_id = 1
 root.severity = "Informational"
-root.status_id = match this.ConsoleLogin.responseElements.ConsoleLogin {
+root.status_id = match this.responseElements.ConsoleLogin {
         "Unknown" => 0
 	    "Success" => 1
 	    "Failure" => 2
 	    "Other" => 99
     }
-root.status = match this.ConsoleLogin.responseElements.ConsoleLogin {
+root.status = match this.responseElements.ConsoleLogin {
         "Unknown" => "Unknown"
 	    "Success" => "Success"
 	    "Failure" => "Failure"
