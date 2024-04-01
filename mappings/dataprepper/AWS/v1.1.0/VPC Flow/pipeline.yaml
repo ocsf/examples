@@ -1,0 +1,305 @@
+test-lab-pipeline:
+  source:
+    file:
+        path: path/to/input-file
+  processor:
+  - grok:
+        match:
+          message: ['%{NUMBER:account_id},%{WORD:action},%{WORD:az_id},%{NUMBER:bytes},%{IP:dstaddr},%{NUMBER:dstport},%{NUMBER:end},%{WORD:flow_direction},%{DATA:instance_id},%{DATA:interface_id},%{DATA:log_status},%{NUMBER:packets},%{DATA:pkt_dst_aws_service},%{IP:pkt_dstaddr},%{DATA:pkt_src_aws_service},%{IP:pkt_srcaddr},%{NUMBER:protocol},%{DATA:region},%{IP:srcaddr},%{NUMBER:srcport},%{NUMBER:start},%{DATA:sublocation_type},%{NUMBER:sublocation_id},%{DATA:subnet_id},%{NUMBER:tcp_flags},%{DATA:traffic_path},%{DATA:type},%{DATA:version},%{DATA:vpc_id}']
+    - convert_entry_type:
+        key: "version"
+        type: "string"
+    - add_entries:
+        entries:
+          - key: category_name
+            value: Network Activity
+          - key: class_uid
+            value: 4001
+          - key: class_name
+            value: Network Activity
+          - key: category_uid
+            value: 4
+          - key: activity_name
+            value: Traffic
+          - key: activity_id
+            value: 5
+          - key: metadata/product/name
+            value: "Amazon VPC"
+          - key: metadata/product/feature/name
+            value: Flowlogs
+          - key: metadata/product/vendor_name
+            value: AWS
+          - key: cloud/provider
+            value: AWS
+          - key: metadata/profiles
+            value: [cloud, security_control]
+          - key: metadata/version
+            value: 1.1.0
+          - key: severity_id
+            value: 1
+          - key: severity
+            value: Informational
+    - rename_keys:
+        entries:
+          - from_key: "version"
+            to_key: "metadata/product/version"
+            overwrite_if_to_key_exists: true
+          - from_key: "account_id"
+            to_key: "cloud/account_uid"
+            overwrite_if_to_key_exists: true
+          - from_key: "region"
+            to_key: "cloud/region"
+            overwrite_if_to_key_exists: true
+          - from_key: "az_id"
+            to_key: "cloud/zone"
+            overwrite_if_to_key_exists: true
+          - from_key: "srcport"
+            to_key: "src_endpoint/port"
+            overwrite_if_to_key_exists: true
+          - from_key: "dstport"
+            to_key: "dst_endpoint/port"
+            overwrite_if_to_key_exists: true
+          - from_key: "protocol"
+            to_key: "connection_info/protocol_num"
+            overwrite_if_to_key_exists: true
+          - from_key: "packets"
+            to_key: "traffic/packets"
+            overwrite_if_to_key_exists: true
+          - from_key: "bytes"
+            to_key: "traffic/bytes"
+            overwrite_if_to_key_exists: true
+          - from_key: "tcp_flags"
+            to_key: "connection_info/tcp_flags"
+            overwrite_if_to_key_exists: true
+          - from_key: "protocol_ver"
+            to_key: "connection_info/protocol_ver"
+            overwrite_if_to_key_exists: true
+          - from_key: "pkt_src_aws_service"
+            to_key: "src_endpoint/svc_name"
+          - from_key: "pkt_dst_aws_service"
+            to_key: "dst_endpoint/svc_name"
+          - from_key: "log_status"
+            to_key: "status_code"
+          - from_key: "traffic_path"
+            to_key: "boundary_id"
+          - from_key: "interface_id"
+            to_key: "dst_endpoint/interface_uid"
+          - from_key: "vpc_id"
+            to_key: "dst_endpoint/vpc_uid"
+          - from_key: "instance_id"
+            to_key: "dst_endpoint/instance_uid"
+          - from_key: "subnet_id"
+            to_key: "dst_endpoint/subnet_uid"
+          - from_key: "start"
+            to_key: "time"
+          - from_key: "start"
+            to_key: "start_time"
+          - from_key: "end"
+            to_key: "end_time"
+    - add_entries:
+        entries:
+          - key: "activity_name"
+            add_when: '/action == "ACCEPT"'
+            value: "Traffic"
+          - key: "activity_name"
+            add_when: '/action == "REJECT"'
+            value: "Refuse"      
+    - add_entries:
+        entries:
+          - key: "activity_id"
+            add_when: '/action == "ACCEPT"'
+            value: 6
+          - key: "activity_id"
+            add_when: '/action == "REJECT"'
+            value: 5 
+    - add_entries:
+        entries:
+          - key: "action"
+            add_when: '/action == "ACCEPT"'
+            value: "Allowed"
+          - key: "action"
+            add_when: '/action == "REJECT"'
+            value: "Denied"  
+    - add_entries:
+        entries:
+          - key: "action_id"
+            add_when: '/action == "ACCEPT"'
+            value: 1
+          - key: "action_id"
+            add_when: '/action == "REJECT"'
+            value: 2
+    - add_entries:
+        entries:
+          - key: "status"
+            add_when: '/action == "ACCEPT"'
+            value: "Success"
+          - key: "status"
+            add_when: '/action == "REJECT"'
+            value: "Failure"
+    - add_entries:
+        entries:
+          - key: "status_id"
+            add_when: '/action == "ACCEPT"'
+            value: 1
+          - key: "status_id"
+            add_when: '/action == "REJECT"'
+            value: 2
+    - add_entries:
+        entries:
+          - key: "disposition"
+            add_when: '/action == "ACCEPT"'
+            value: "Allowed"
+          - key: "disposition"
+            add_when: '/action == "REJECT"'
+            value: "Blocked"
+    - add_entries:
+        entries:
+          - key: "type_uid"
+            add_when: '/action == "ACCEPT"'
+            value: 400106
+          - key: "type_uid"
+            add_when: '/action == "REJECT"'
+            value: 400106
+    - add_entries:
+        entries:
+          - key: "type_name"
+            add_when: '/action == "ACCEPT"'
+            value: "Network Activity: Traffic"
+          - key: "type_uid"
+            add_when: '/action == "REJECT"'
+            value: "Network Activity: Refuse"
+    - add_entries:
+        entries:
+          - key: "connection_info/boundary_id"
+            add_when: '/traffic_path == 1'
+            value: 4
+          - key: "connection_info/boundary_id"
+            add_when: '/traffic_path == 2'
+            value: 5
+          - key: "connection_info/boundary_id"
+            add_when: '/traffic_path == 3'
+            value: 6
+          - key: "connection_info/boundary_id"
+            add_when: '/traffic_path == 4'
+            value: 7
+          - key: "connection_info/boundary_id"
+            add_when: '/traffic_path == 5'
+            value: 8
+          - key: "connection_info/boundary_id"
+            add_when: '/traffic_path == 6'
+            value: 9
+          - key: "connection_info/boundary_id"
+            add_when: '/traffic_path == 7'
+            value: 10
+          - key: "connection_info/boundary_id"
+            add_when: '/traffic_path == 8'
+            value: 11
+    - add_entries:
+        entries:
+          - key: "connection_info/boundary"
+            add_when: '/traffic_path == 1'
+            value: "Same VPC"
+          - key: "connection_info/boundary"
+            add_when: '/traffic_path == 2'
+            value: "Internet/VPC Gateway"
+          - key: "connection_info/boundary"
+            add_when: '/traffic_path == 3'
+            value: "Virtual Private Gateway"
+          - key: "connection_info/boundary"
+            add_when: '/traffic_path == 4'
+            value: "Intra-region VPC"
+          - key: "connection_info/boundary"
+            add_when: '/traffic_path == 5'
+            value: "Inter-region VPC"
+          - key: "connection_info/boundary"
+            add_when: '/traffic_path == 6'
+            value: "Local Gateway"
+          - key: "connection_info/boundary"
+            add_when: '/traffic_path == 7'
+            value: "Gateway VPC"
+          - key: "connection_info/boundary"
+            add_when: '/traffic_path == 8'
+            value: "Internet Gateway"
+    - add_entries:
+        entries:
+          - key: "connection_info/direction_id"
+            add_when: '/flow_direction == "ingress"'
+            value: 1
+          - key: "connection_info/direction_id"
+            add_when: '/flow_direction == "egress"'
+            value: 2
+    - add_entries:
+        entries:
+          - key: "connection_info/direction"
+            add_when: '/flow_direction == "ingress"'
+            value: "Inbound"
+          - key: "connection_info/direction"
+            add_when: '/flow_direction == "egress"'
+            value: "Outbound"
+    - rename_keys:
+        entries:
+          - from_key: "dstaddr"
+            rename_when: '/pkt_dstaddr == /dstaddr'
+            to_key: "dst_endpoint/ip"
+    - rename_keys:
+        entries:
+          - from_key: "pkt_dstaddr"
+            rename_when: '/pkt_dstaddr != /dstaddr'
+            to_key: "dst_endpoint/ip"
+    - rename_keys:
+        entries:
+          - from_key: "srcaddr"
+            rename_when: '/pkt_srcaddr == /srcaddr'
+            to_key: "src_endpoint/ip"
+    - rename_keys:
+        entries:
+          - from_key: "pkt_srcaddr"
+            rename_when: '/pkt_dstaddr != /dstaddr'
+            to_key: "src_endpoint/ip"
+          - from_key: "srcaddr"
+            rename_when: '/pkt_dstaddr != /dstaddr'
+            to_key: "src_endpoint/intermediate_ips"
+    - rename_keys:
+        entries:
+          - from_key: "interface_id"
+            rename_when: '/flow_direction == "ingress"'
+            to_key: "dst_endpoint/interface_uid"
+    - rename_keys:
+        entries:
+          - from_key: "vpc_id"
+            rename_when: '/flow_direction == "ingress"'
+            to_key: "dst_endpoint/vpc_uid"
+    - rename_keys:
+        entries:
+        - from_key: "instance_id"
+          rename_when: '/flow_direction == "ingress"'
+          to_key: "dst_endpoint/instance_uid"
+    - rename_keys:
+        entries:
+        - from_key: "subnet_id"
+          rename_when: '/flow_direction == "ingress"'
+          to_key: "dst_endpoint/subnet_uid"
+    - rename_keys:
+        entries:
+          - from_key: "interface_id"
+            rename_when: '/flow_direction != "ingress"'
+            to_key: "src_endpoint/interface_uid"
+    - rename_keys:
+        entries:
+          - from_key: "vpc_id"
+            rename_when: '/flow_direction != "ingress"'
+            to_key: "src_endpoint/vpc_uid"
+    - rename_keys:
+        entries:
+        - from_key: "instance_id"
+          rename_when: '/flow_direction != "ingress"'
+          to_key: "src_endpoint/instance_uid"
+    - rename_keys:
+        entries:
+        - from_key: "instance_id"
+          rename_when: '/flow_direction != "ingress"'
+          to_key: "src_endpoint/instance_uid" 
+    - delete_entries:
+        with_keys: ["s3","message"]
+  sink:
+    - stdout:
