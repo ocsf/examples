@@ -43,6 +43,7 @@
 	"activity_id": 5,
 	"activity_name": "Traffic",
 	"class_uid": 4001,
+        "class_name": "Network Activity",
 	"category_uid": 4,
 	"category_name": "Network Activity",
 	"metadata": {
@@ -61,6 +62,8 @@
 	},
 	"severity_id": 1,
 	"severity": "Informational",
+	"status_id": 1,
+	"status": "Success",
 	"disposition": "Allowed",
 	"pkt_src_aws_service": "amazon-s3",
 	"pkt_dst_aws_service": "amazon-ec2",
