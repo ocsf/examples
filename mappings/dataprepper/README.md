@@ -29,7 +29,7 @@ Processors perform an action on your data, such as filtering, transforming, or e
           field: ip
           target_field: "src_endpoint/ip"
 
-### Date Processor
+### Date Processor Example
     processors:
       - date:
           field: "timestamp"
@@ -37,20 +37,19 @@ Processors perform an action on your data, such as filtering, transforming, or e
           formats:
             - "ISO8601"
 
-### Grok Processor
+### Grok Processor Example
     processors:
       - grok:
-          field: "message"
-          patterns:
-            - "%{IP:client_ip} %{USER:client_user}"
+          match: 
+            message: '%{IP:client_ip} %{USER:client_user}'
 
-### Convert Processor
+### Convert Processor Example
     processors:
       - convert:
           field: "src_endpoint/port"
           type: "integer"
 
-### Remove Processor
+### Remove Processor Example
     processors:
       - remove:
           field: "field_name"
