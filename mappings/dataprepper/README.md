@@ -17,43 +17,42 @@ Data Prepper follows the ETL (Extract, Transform, Load) paradigm:
 
 Processors perform an action on your data, such as filtering, transforming, or enriching.
 
-### Append Processor
-    processors:
-      - append:
-          field: "new_field"
-          value: "example_value"
+### Add Entry Processor Example
+      - add_entries:
+          entries:
+            - key: category_uid
+              value: 4
 
-### Convert Processor
+### Rename Processor Example
     processors:
-      - convert:
-          field: "field_name"
-          type: "integer"
+      - rename:
+          field: ip
+          target_field: "src_endpoint/ip"
 
-### Date Processor
+### Date Processor Example
     processors:
       - date:
-          field: "date_field"
-          target_field: "new_date_field"
+          field: "timestamp"
+          target_field: "time_dt"
           formats:
             - "ISO8601"
 
-### Grok Processor
+### Grok Processor Example
     processors:
       - grok:
-          field: "message"
-          patterns:
-            - "%{IP:client_ip} %{USER:client_user}"
+          match: 
+            message: '%{IP:client_ip} %{USER:client_user}'
 
-### Remove Processor
+### Convert Processor Example
+    processors:
+      - convert:
+          field: "src_endpoint/port"
+          type: "integer"
+
+### Remove Processor Example
     processors:
       - remove:
           field: "field_name"
-
-### Rename Processor
-    processors:
-      - rename:
-          field: "old_field"
-          target_field: "new_field"
 
 
 ## Inputs
@@ -83,22 +82,3 @@ The s3 sink saves and writes batches of Data Prepper events to Amazon Simple Sto
 ### 3. File Sink
 
 Use the file sink to create a flat file output, usually a .log file.
-
-## Getting Started
-
-To get started with Data Prepper, follow these steps:
-
-1. Clone the Data Prepper repository.
-2. Install any necessary dependencies.
-3. Configure your inputs, processors, and sinks in the Data Prepper configuration file.
-4. Run Data Prepper with your configuration to start ingesting and processing data.
-
-For detailed installation instructions and usage guidelines, refer to the official documentation.
-
-## Contributing
-
-Contributions to Data Prepper are welcome! Whether you want to report a bug, request a feature, or submit a pull request, please follow the contribution guidelines outlined in the repository.
-
-## License
-
-Data Prepper is licensed under the Apache License 2.0. See the LICENSE file for more details.
