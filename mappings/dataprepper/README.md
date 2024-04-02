@@ -17,23 +17,23 @@ Data Prepper follows the ETL (Extract, Transform, Load) paradigm:
 
 Processors perform an action on your data, such as filtering, transforming, or enriching.
 
-### Add Entry Processor
+### Add Entry Processor Example
       - add_entries:
           entries:
             - key: category_uid
               value: 4
 
-### Rename Processor
+### Rename Processor Example
     processors:
       - rename:
-          field: "old_field"
-          target_field: "new_field"
+          field: ip
+          target_field: "src_endpoint/ip"
 
 ### Date Processor
     processors:
       - date:
-          field: "date_field"
-          target_field: "new_date_field"
+          field: "timestamp"
+          target_field: "time_dt"
           formats:
             - "ISO8601"
 
@@ -44,24 +44,16 @@ Processors perform an action on your data, such as filtering, transforming, or e
           patterns:
             - "%{IP:client_ip} %{USER:client_user}"
 
-### Append Processor
-    processors:
-      - append:
-          field: "new_field"
-          value: "example_value"
-
 ### Convert Processor
     processors:
       - convert:
-          field: "field_name"
+          field: "src_endpoint/port"
           type: "integer"
 
 ### Remove Processor
     processors:
       - remove:
           field: "field_name"
-
-
 
 
 ## Inputs
