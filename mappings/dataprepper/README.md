@@ -83,22 +83,3 @@ The s3 sink saves and writes batches of Data Prepper events to Amazon Simple Sto
 ### 3. File Sink
 
 Use the file sink to create a flat file output, usually a .log file.
-
-## Getting Started
-
-To get started with Data Prepper, follow these steps:
-
-1. Clone the Data Prepper repository.
-2. Install any necessary dependencies.
-3. Configure your inputs, processors, and sinks in the Data Prepper configuration file.
-4. Run Data Prepper with your configuration to start ingesting and processing data.
-
-For detailed installation instructions and usage guidelines, refer to the official documentation.
-
-## Contributing
-
-Contributions to Data Prepper are welcome! Whether you want to report a bug, request a feature, or submit a pull request, please follow the contribution guidelines outlined in the repository.
-
-## License
-
-Data Prepper is licensed under the Apache License 2.0. See the LICENSE file for more details.
