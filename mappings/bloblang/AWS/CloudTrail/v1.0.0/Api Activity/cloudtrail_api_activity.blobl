@@ -184,3 +184,5 @@ root.unmapped = this.without(
     "eventCategory",
     "sourceIPAddress",
     ) 
+type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+type_name = root.class_name + ": " + root.activity_name

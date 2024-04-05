@@ -1,0 +1,66 @@
+
+{
+  "activity_id": 2,
+  "activity_name": "Response",
+  "answers": {
+    "class": "IN",
+    "rdata": "127.0.0.62",
+    "type": "A"
+  },
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "DNS Activity",
+  "class_uid": 4003,
+  "cloud": {
+    "account_uid": "123456789012",
+    "provider": "AWS",
+    "region": "us-east-1"
+  },
+  "connection_info": {
+    "protocol_name": "UDP"
+  },
+  "dst_endpoint": {
+    "instance_uid": "rslvr-in-0000000000000000",
+    "interface_uid": "rni-0000000000000000"
+  },
+  "metadata": {
+    "product": {
+      "feature": {
+        "name": "Query Logs"
+      },
+      "name": "Route 53",
+      "version": "1.100000"
+    },
+    "profiles": [
+      "cloud"
+    ],
+    "version": "1.0.0"
+  },
+  "query": {
+    "class": "IN",
+    "hostname": "ip-127-0-0-62.alert.firewall.canary.",
+    "type": "A"
+  },
+  "rcode": "NOERROR",
+  "rcode_id": 0,
+  "severity": "Unknown",
+  "severity_id": 0,
+  "src_endpoint": {
+    "instance_uid": null,
+    "ip": "10.200.21.100",
+    "port": "15083",
+    "vpc_uid": "vpc-00000000000000000"
+  },
+  "status": "Success",
+  "status_id": 1,
+  "time": "2022-10-13T21:02:36Z",
+  "unmapped": {
+    "firewall_domain_list_id": "rslvr-fdl-0000000000000",
+    "firewall_rule_action": "ALERT",
+    "firewall_rule_group_id": "rslvr-frg-000000000000000",
+    "srcids": {
+      "resolver_endpoint": "rslvr-in-0000000000000000",
+      "resolver_network_interface": "rni-0000000000000000"
+    }
+  }
+}
