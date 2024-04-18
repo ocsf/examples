@@ -39,10 +39,17 @@ This is the current list of all primitive types:
 | ----------- | -------------------------------- |
 | `boolean_t` | `true` or `false`                |
 | `float_t`   | possibly non-integer number      |
-| `integer_t` | smallish (~32 bit) integer       |
-| `long_t`    | bigish (~64 bit) integer         |
+| `integer_t` | ~smallish signed integer[^1]     |
+| `long_t`    | big (64 bit) signed integer      |
 | `string_t`  | a string of unicode characters   |
 | `json_t`    | arbitrary JSON                   |
+
+[^1]: "Smallish" in this context simply means that there is a specific
+primitive data type documented for 8-byte signed integer, _i.e._,
+`long_t`.  The formal schema does not given any specific limits on
+values of type `integer_t` at the primitive type level, although some
+attributes do constrain the range (_e.g._, `port_t` has a range
+constraint of [0, 65535]).
 
 ### Non-primitive scalar types
 
