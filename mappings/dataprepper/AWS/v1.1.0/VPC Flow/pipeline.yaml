@@ -45,7 +45,7 @@ test-lab-pipeline:
             to_key: "metadata/product/version"
             overwrite_if_to_key_exists: true
           - from_key: "account_id"
-            to_key: "cloud/account_uid"
+            to_key: "cloud/account/uid"
             overwrite_if_to_key_exists: true
           - from_key: "region"
             to_key: "cloud/region"
