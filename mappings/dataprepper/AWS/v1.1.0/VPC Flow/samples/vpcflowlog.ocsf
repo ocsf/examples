@@ -26,7 +26,8 @@
 		"port": 443,
 		"svc_name": "amazon-ec2",
 		"interface_uid": "eni-22222222222222222",
-		"instance_uid": "i-111111111111111111"
+		"instance_uid": "i-111111111111111111",
+                "subnet_uid": "subnet-33333333333333333",
 	},
 	"connection_info": {
 		"protocol_num": 17,
@@ -52,7 +53,8 @@
 			"feature": {
 				"name": "Flowlogs"
 			},
-			"vendor_name": "AWS"
+			"vendor_name": "AWS",
+			"version": 10
 		},
 		"profiles": [
 			"cloud",
