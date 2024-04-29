@@ -53,7 +53,7 @@
 				"name": "Flowlogs"
 			},
 			"vendor_name": "AWS",
-			"version": 10
+			"version": "10"
 		},
 		"profiles": [
 			"cloud",
