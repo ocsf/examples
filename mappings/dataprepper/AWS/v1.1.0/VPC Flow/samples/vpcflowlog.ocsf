@@ -19,15 +19,14 @@
 		"port": 8080,
 		"svc_name": "amazon-s3",
 		"subnet_uid": "subnet-33333333333333333",
-		"vpc_uid": "vpc-44444444444444444"
+		"vpc_uid": "vpc-44444444444444444",
+		"instance_uid": "i-111111111111111111",
+		"interface_uid": "eni-22222222222222222"
 	},
 	"dst_endpoint": {
 		"ip": "192.168.1.20",
 		"port": 443,
-		"svc_name": "amazon-ec2",
-		"interface_uid": "eni-22222222222222222",
-		"instance_uid": "i-111111111111111111",
-                "subnet_uid": "subnet-33333333333333333",
+		"svc_name": "amazon-ec2"
 	},
 	"connection_info": {
 		"protocol_num": 17,
