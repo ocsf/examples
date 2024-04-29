@@ -261,6 +261,11 @@ test-lab-pipeline:
             to_key: "src_endpoint/intermediate_ips"
     - rename_keys:
         entries:
+        - from_key: "subnet_id"
+          rename_when: '/flow_direction == "ingress"'
+          to_key: "dst_endpoint/subnet_uid"
+    - rename_keys:
+        entries:
           - from_key: "interface_id"
             rename_when: '/flow_direction == "ingress"'
             to_key: "dst_endpoint/interface_uid"
@@ -277,28 +282,23 @@ test-lab-pipeline:
     - rename_keys:
         entries:
         - from_key: "subnet_id"
-          rename_when: '/flow_direction == "ingress"'
-          to_key: "dst_endpoint/subnet_uid"
+          rename_when: '/flow_direction == "egress"'
+          to_key: "src_endpoint/subnet_uid"
     - rename_keys:
         entries:
           - from_key: "interface_id"
-            rename_when: '/flow_direction != "ingress"'
+            rename_when: '/flow_direction != "egress"'
             to_key: "src_endpoint/interface_uid"
     - rename_keys:
         entries:
           - from_key: "vpc_id"
-            rename_when: '/flow_direction != "ingress"'
+            rename_when: '/flow_direction != "egress"'
             to_key: "src_endpoint/vpc_uid"
     - rename_keys:
         entries:
         - from_key: "instance_id"
-          rename_when: '/flow_direction != "ingress"'
+          rename_when: '/flow_direction != "egress"'
           to_key: "src_endpoint/instance_uid"
-    - rename_keys:
-        entries:
-        - from_key: "instance_id"
-          rename_when: '/flow_direction != "ingress"'
-          to_key: "src_endpoint/instance_uid" 
     - delete_entries:
         with_keys: ["s3","message"]
   sink:
