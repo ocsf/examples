@@ -1,6 +1,8 @@
 {
 	"cloud": {
-		"account_uid": "987654321098",
+		"account": {
+			"uid": "987654321098"
+		},
 		"region": "us-west-2",
 		"zone": "use2-az2",
 		"provider": "AWS"
@@ -33,9 +35,7 @@
 		"direction": "egress",
 		"direction_id": 2,
 		"boundary_id": 99,
-		"boundary": "vpn",
-		"start_time": 1653200123,
-		"end_time": 1653200100
+		"boundary": "vpn"
 	},
 	"time": 1653200100,
 	"type_name": "Network Activity: Traffic",
@@ -43,7 +43,7 @@
 	"activity_id": 5,
 	"activity_name": "Traffic",
 	"class_uid": 4001,
-        "class_name": "Network Activity",
+	"class_name": "Network Activity",
 	"category_uid": 4,
 	"category_name": "Network Activity",
 	"metadata": {
@@ -64,9 +64,5 @@
 	"severity": "Informational",
 	"status_id": 1,
 	"status": "Success",
-	"disposition": "Allowed",
-	"pkt_src_aws_service": "amazon-s3",
-	"pkt_dst_aws_service": "amazon-ec2",
-	"sublocation_type": "subnet",
-	"sublocation_id": "subnet-33333333333333333"
+	"disposition": "Allowed"
 }
