@@ -46,3 +46,67 @@ does for the `unmapped` attribute on `BaseEvent`), then the
 expectation is that it will be populated with properties not defined
 by the schema.  In this sense it behaves similarly to `json_t`, except
 that the former permits non-object values.
+
+## Bundling
+
+To support encoding multiple OCSF events into a single message, we
+recommend a JSON-encoded _frame_ around multiple events.
+
+The frame should itself be a JSON object, and contain some properties:
+
+| Property        | Requirement | Notes                                                       |
+| --------------- | ----------- | ----------------------------------------------------------- |
+| `bundle_events` | required    | These are the actual events and the whole point of bundling |
+| `bundle_index`  | recommended | Summary information about the included events               |
+| `start_time`    | optional    | The earliest timestamp_t of any bundled events              |
+| `end_time`      | optional    | The latest timestamp_t of any bundled events                |
+| `start_time_dt` | optional    | The earliest datetime_t of any bundled events               |
+| `end_time_dt`   | optional    | The latest datetime_t of any bundled events                 |
+
+The `bundle_events` and `bundle_index` are both JSON objects with keys
+that are the unique event ids.  This structure highlights the intended
+semantics that:
+
+1. Each contained event both _has_ an event identifier, and that it is
+   unique across the set of bundled events.
+2. There is no intrinsic ordering to the bundled events.  Any
+   sequential semantics are to be inferred from the content of the
+   data itself.
+
+and furthermore, in many (most?) language bindings for JSON, decoding
+into an object, map or dict makes it easy to resolve an event by it's
+id, which is how the events in the bundle should reference each other
+when that is useful.
+
+The purpose of the `bundle_index` is to make it easier to parse the
+bundle in some contexts; some languages are more efficient if the
+structure of an object being decoded is known before attempting to
+decode it (e.g., Golang has this property).  The bundle index provides
+enough information to know what type of object is present.
+
+```
+{
+    "start_time_dt": "2024-04-20T17:05:01.123456Z",
+    "end_time_dt": "2024-04-20T17:30:57.678912304Z",
+    "bundle_index": {
+        "88adeca9-c15c-4d7a-837a-1615c26c4f82": {
+            "class_uid": 5001
+        },
+        "7c2a9eeb-706b-4cc4-be7c-0807b6fb8867": {
+            "class_uid": 2002
+        }
+     },
+    "bundle_events": {
+        "88adeca9-c15c-4d7a-837a-1615c26c4f82": {
+            "class_uid": 5001,
+            "type_uid": 500102,
+            ... details about the discovery event ...
+        },
+        "7c2a9eeb-706b-4cc4-be7c-0807b6fb8867": {
+            "class_uid": 2002,
+            "type_uid": 200201,
+            ... details about the vuln finding event ...
+        }
+    }
+}
+```

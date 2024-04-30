@@ -27,6 +27,10 @@ target.  This will not only help guide choices in the encoding mapping
 process, but also inform others as to when a particular encoding might
 be useful to adopt.
 
+One use case to be sure to cover is _bundling_; primarily a transport
+encoding, bundling is the mechanism by which multiple OCSF events are
+encoded into a single message at the underlying transport layer.
+
 ### Primitive Data Types
 
 Map the OCSF primitive data types to those available in the encoding.
