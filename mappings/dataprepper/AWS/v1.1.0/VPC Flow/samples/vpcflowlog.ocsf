@@ -1,51 +1,13 @@
 {
-	"cloud": {
-		"account": {
-			"uid": "987654321098"
-		},
-		"region": "us-west-2",
-		"zone": "use2-az2",
-		"provider": "AWS"
-	},
-	"action": "Allowed",
-	"action_id": 1,
-	"status_code": "OK",
-	"traffic": {
-		"bytes": 85,
-		"packets": 10
-	},
-	"src_endpoint": {
-		"ip": "192.168.1.10",
-		"port": 8080,
-		"svc_name": "amazon-s3",
-		"subnet_uid": "subnet-33333333333333333",
-		"vpc_uid": "vpc-44444444444444444",
-		"instance_uid": "i-111111111111111111",
-		"interface_uid": "eni-22222222222222222"
-	},
-	"dst_endpoint": {
-		"ip": "192.168.1.20",
-		"port": 443,
-		"svc_name": "amazon-ec2"
-	},
-	"connection_info": {
-		"protocol_num": 17,
-		"protocol_ver": "IPv6",
-		"tcp_flags": 6,
-		"direction": "egress",
-		"direction_id": 2,
-		"boundary_id": 99,
-		"boundary": "vpn"
-	},
-	"time": 1653200100,
-	"type_name": "Network Activity: Traffic",
-	"type_uid": 400105,
-	"activity_id": 5,
-	"activity_name": "Traffic",
+	"action": "REJECT",
+	"time_dt": "2022-04-12T00:02:12.000Z",
+	"end_time_dt": "2022-04-12T00:03:08.000Z",
+	"category_name": "Network Activity",
 	"class_uid": 4001,
 	"class_name": "Network Activity",
 	"category_uid": 4,
-	"category_name": "Network Activity",
+	"activity_name": "Traffic",
+	"activity_id": 5,
 	"metadata": {
 		"product": {
 			"name": "Amazon VPC",
@@ -53,17 +15,60 @@
 				"name": "Flowlogs"
 			},
 			"vendor_name": "AWS",
-			"version": "10"
+			"version": "5"
 		},
 		"profiles": [
 			"cloud",
-			"security_control"
+			"security_control",
+			"datetime"
 		],
 		"version": "1.1.0"
 	},
+	"cloud": {
+		"provider": "AWS",
+		"account": {
+			"uid": "123456789012"
+		},
+		"region": "us-east-1",
+		"zone": "use1-az1"
+	},
 	"severity_id": 1,
 	"severity": "Informational",
-	"status_id": 1,
-	"status": "Success",
-	"disposition": "Allowed"
+	"src_endpoint": {
+		"port": 56858,
+		"svc_name": "-",
+		"ip": "1.2.3.4"
+	},
+	"dst_endpoint": {
+		"port": 39938,
+		"svc_name": "-",
+		"ip": "172.31.2.52",
+		"subnet_uid": "subnet-000000000000000000",
+		"interface_uid": "eni-000000000000000000",
+		"vpc_uid": "vpc-00000000",
+		"instance_uid": "i-000000000000000000"
+	},
+	"connection_info": {
+		"protocol_num": 6,
+		"tcp_flags": 2,
+		"protocol_ver": "IPv4",
+		"direction_id": 1,
+		"direction": "Inbound"
+	},
+	"traffic": {
+		"packets": 1,
+		"bytes": 40
+	},
+	"status_code": "OK",
+	"time": 1649721732,
+	"end_time": 1649721788,
+	"unmapped": {
+		"sublocation_id": "-",
+		"sublocation_type": "-"
+	},
+	"action_id": 2,
+	"status": "Failure",
+	"status_id": 2,
+	"disposition": "Blocked",
+	"type_uid": 400106
 }

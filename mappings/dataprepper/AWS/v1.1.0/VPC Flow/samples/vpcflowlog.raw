@@ -1,2 +1,33 @@
-account_id,action,az_id,bytes,dstaddr,dstport,end,flow_direction,instance_id,interface_id,log_status,packets,pkt_dst_aws_service,pkt_dstaddr,pkt_src_aws_service,pkt_srcaddr,protocol,region,srcaddr,srcport,start,sublocation_type,sublocation_id,subnet_id,tcp_flags,traffic_path,type,version,vpc_id
-987654321098,ALLOW,use2-az2,85,192.168.1.10,8080,1653200123,egress,i-111111111111111111,eni-22222222222222222,OK,10,amazon-s3,192.168.1.20,amazon-ec2,192.168.1.30,17,us-west-2,192.168.1.40,443,1653200100,internal,123456,subnet-33333333333333333,6,vpn,IPv6,10,vpc-44444444444444444
+[
+	{
+		"account_id": "123456789012",
+		"action": "REJECT",
+		"az_id": "use1-az1",
+		"bytes": 40,
+		"dstaddr": "172.31.2.52",
+		"dstport": 39938,
+		"end": 1649721788,
+		"flow_direction": "ingress",
+		"instance_id": "i-000000000000000000",
+		"interface_id": "eni-000000000000000000",
+		"log_status": "OK",
+		"packets": 1,
+		"pkt_dst_aws_service": "-",
+		"pkt_dstaddr": "172.31.2.52",
+		"pkt_src_aws_service": "-",
+		"pkt_srcaddr": "1.2.3.4",
+		"protocol": 6,
+		"region": "us-east-1",
+		"srcaddr": "1.2.3.4",
+		"srcport": 56858,
+		"start": 1649721732,
+		"sublocation_type": "-",
+		"sublocation_id": "-",
+		"subnet_id": "subnet-000000000000000000",
+		"tcp_flags": 2,
+		"traffic_path": "-",
+		"type": "IPv4",
+		"version": 5,
+		"vpc_id": "vpc-00000000"
+	}
+]
