@@ -32,6 +32,7 @@ pipeline:
             value:
               - cloud
               - security_control
+              - datetime
           - key: metadata/version
             value: 1.1.0
           - key: severity_id
