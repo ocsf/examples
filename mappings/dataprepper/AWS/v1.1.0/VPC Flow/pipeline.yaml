@@ -89,6 +89,18 @@ pipeline:
             to_key: unmapped/sublocation_id
           - from_key: sublocation_type
             to_key: unmapped/sublocation_type
+    - date:
+        match:
+          - key: start
+            patterns: [ "epoch_milli" ]
+        destination: time_dt
+        output_format: "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+    - date:
+        match:
+          - key: end
+            patterns: [ "epoch_milli" ]
+        destination: end_time_dt
+        output_format: "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
     - add_entries:
         entries:
           - key: activity_name
