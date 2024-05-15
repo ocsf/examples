@@ -50,31 +50,45 @@ that the former permits non-object values.
 ## Bundling
 
 To support encoding multiple OCSF events into a single message, we
-recommend a JSON-encoded _frame_ around multiple events.
+recommend a JSON-encoded _frame_ around multiple events.  This allows
+additional properties to be included where that is helpful, and
+supports easier future extensibility.
 
 The frame should itself be a JSON object, and contain some properties:
 
 | Property        | Requirement | Notes                                                       |
 | --------------- | ----------- | ----------------------------------------------------------- |
-| `bundle_events` | required    | These are the actual events and the whole point of bundling |
+| `events`        | required    | These are the actual events and the whole point of bundling |
 | `start_time`    | optional    | The earliest timestamp_t of any bundled events              |
 | `end_time`      | optional    | The latest timestamp_t of any bundled events                |
 | `start_time_dt` | optional    | The earliest datetime_t of any bundled events               |
 | `end_time_dt`   | optional    | The latest datetime_t of any bundled events                 |
+| `count`         | optional    | The number of bundled events                                |
 
-The `bundle_events` is a JSON objects with keys that are the unique
-event ids.  This structure highlights the intended semantics that:
+The `events` property is a just a JSON array of JSON-encoded OCSF
+events.  It is the only required field, and is the whole point of
+bundling.
 
-1. Each contained event both _has_ an event identifier, and that it is
-   unique across the set of bundled events.
-2. There is no intrinsic ordering to the bundled events.  Any
-   sequential semantics are to be inferred from the content of the
-   data itself.
+Note that the bundle itself _is not_ an OCSF event.  In cases where
+bundles and events may both be present, distinguishing between bundles
+and OCSF events can be done either by inspecting the object and noting
+the presence of lack of a `class_uid`, or by making use of out-of-band
+metadata.
 
-and furthermore, in many (most?) language bindings for JSON, decoding
-into an object, map or dict makes it easy to resolve an event by it's
-id, which is how the events in the bundle should reference each other
-when that is useful.
+The rationale for using an array is that it is a simple JSON data type
+to model a set of objects.  Despite the use of an array, it should be
+noted that there is no intended ordering semantics of the events in
+the bundle.
+
+Some of the principal use cases considered include:
+
+1. Bundling together multiple, unrelated events for transport in a
+   batch to reduce transport overhead.
+2. Bundling together related events, such as a detection finding
+   being bundled together with some underlying events that led
+   to the detection firing.
+
+Here is a sketch of an example bundle:
 
 ```
 {
@@ -82,17 +96,17 @@ when that is useful.
     "start_time_dt": "2024-04-20T17:05:01.123456Z",
     "end_time": 1713634257679,
     "end_time_dt": "2024-04-20T17:30:57.678912304Z",
-    "bundle_events": {
-        "88adeca9-c15c-4d7a-837a-1615c26c4f82": {
+    "events": [
+        {
             "class_uid": 5001,
             "type_uid": 500102,
             ... details about the discovery event ...
         },
-        "7c2a9eeb-706b-4cc4-be7c-0807b6fb8867": {
+        {
             "class_uid": 2002,
             "type_uid": 200201,
             ... details about the vuln finding event ...
         }
-    }
+    ]
 }
 ```
