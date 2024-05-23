@@ -72,7 +72,7 @@ bundling.
 Note that the bundle itself _is not_ an OCSF event.  In cases where
 bundles and events may both be present, distinguishing between bundles
 and OCSF events can be done either by inspecting the object and noting
-the presence of lack of a `class_uid`, or by making use of out-of-band
+the presence or lack of a `class_uid`, or by making use of out-of-band
 metadata.
 
 The rationale for using an array is that it is a simple JSON data type
