@@ -1,0 +1,423 @@
+{
+    "activity_id": 1,
+    "activity_name": "Create",
+    "actor": {
+      "session": {
+        "credential_uid": "EXAMPLEUIDTEST",
+        "issuer": "arn:aws:iam::123456789012:role/example-test-161366663-NodeInstanceRole-abc12345678912",
+        "uid": "i-12345678901"
+      },
+      "user": {
+        "groups": [
+          {
+            "name": "system:bootstrappers"
+          },
+          {
+            "name": "system:nodes"
+          },
+          {
+            "name": "system:authenticated"
+          }
+        ],
+        "name": "system:node:ip-192-001-02-03.ec2.internal",
+        "type_id": 0,
+        "uid": "heptio-authenticator-aws:123456789012:ABCD1234567890EXAMPLE"
+      }
+    },
+    "api": {
+      "operation": "create",
+      "request": {
+        "uid": "f47c68f2-d3ac-4f96-b2f4-5d497bf79b64"
+      },
+      "response": {
+        "code": 201
+      },
+      "version": "v1"
+    },
+    "category_name": "Application Activity",
+    "category_uid": 6,
+    "class_name": "API Activity",
+    "class_uid": 6003,
+    "cloud": {
+      "account": {
+        "uid": "arn:aws:sts::123456789012:assumed-role/example-test-161366663-NodeInstanceRole-abc12345678912/i-12345678901"
+      },
+      "provider": "AWS"
+    },
+    "http_request": {
+      "url": {
+        "path": "/api/v1/nodes"
+      },
+      "user_agent": "kubelet/v1.21.2 (linux/amd64) kubernetes/729bdfc"
+    },
+    "message": "ResponseComplete",
+    "metadata": {
+      "log_level": "RequestResponse",
+      "product": {
+        "feature": {
+          "name": "Elastic Kubernetes Service"
+        },
+        "name": "Amazon EKS",
+        "vendor_name": "AWS",
+        "version": "audit.k8s.io/v1"
+      },
+      "profiles": [
+        "cloud",
+        "datetime"
+      ],
+      "version": "1.2.0"
+    },
+    "observables": [
+      {
+        "name": "actor.user.name",
+        "type": "User Name",
+        "type_id": 4,
+        "value": "system:node:ip-192-001-02-03.ec2.internal"
+      },
+      {
+        "name": "src_endpoint.ip",
+        "type": "IP Address",
+        "type_id": 2,
+        "value": "12.000.22.33"
+      },
+      {
+        "name": "http_request.url.path",
+        "type": "URL String",
+        "type_id": 6,
+        "value": "/api/v1/nodes"
+      }
+    ],
+    "resources": [
+      {
+        "name": "ip-192-001-02-03.ec2.internal",
+        "namespace": null,
+        "type": "nodes",
+        "uid": null,
+        "version": null
+      }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+      "ip": "12.000.22.33"
+    },
+    "start_time": 1631047050502680,
+    "start_time_dt": "2021-09-07T20:37:30.502680Z",
+    "time": 1631047050642854,
+    "time_dt": "2021-09-07T20:37:30.642854Z",
+    "type_name": "API Activity: Create",
+    "type_uid": 600301,
+    "unmapped": {
+      "annotations": {
+        "authorization.k8s.io/decision": "allow",
+        "authorization.k8s.io/reason": ""
+      },
+      "kind": "Event",
+      "objectRef": {},
+      "requestObject": {
+        "apiVersion": "v1",
+        "kind": "Node",
+        "metadata": {
+          "annotations": {
+            "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+          },
+          "creationTimestamp": null,
+          "labels": {
+            "alpha.eksctl.io/cluster-name": "ABCD1234567890EXAMPLE",
+            "alpha.eksctl.io/nodegroup-name": "ng-5fe434eb",
+            "beta.kubernetes.io/arch": "amd64",
+            "beta.kubernetes.io/instance-type": "m5.xlarge",
+            "beta.kubernetes.io/os": "linux",
+            "eks.amazonaws.com/capacityType": "ON_DEMAND",
+            "eks.amazonaws.com/nodegroup": "ng-5fe434eb",
+            "eks.amazonaws.com/nodegroup-image": "ami-0193ebf9573ebc9f7",
+            "eks.amazonaws.com/sourceLaunchTemplateId": "lt-0f20d6f901007611e",
+            "eks.amazonaws.com/sourceLaunchTemplateVersion": "1",
+            "failure-domain.beta.kubernetes.io/region": "us-east-1",
+            "failure-domain.beta.kubernetes.io/zone": "us-east-1f",
+            "kubernetes.io/arch": "amd64",
+            "kubernetes.io/hostname": "ip-192-001-02-03.ec2.internal",
+            "kubernetes.io/os": "linux",
+            "node.kubernetes.io/instance-type": "m5.xlarge",
+            "topology.kubernetes.io/region": "us-east-1",
+            "topology.kubernetes.io/zone": "us-east-1f"
+          },
+          "name": "ip-192-001-02-03.ec2.internal"
+        },
+        "spec": {
+          "providerID": "aws:///us-east-1f/i-12345678901"
+        },
+        "status": {
+          "addresses": [
+            {
+              "address": "192.000.22.33",
+              "type": "InternalIP"
+            },
+            {
+              "address": "12.000.22.33",
+              "type": "ExternalIP"
+            },
+            {
+              "address": "ip-192-001-02-03.ec2.internal",
+              "type": "Hostname"
+            },
+            {
+              "address": "ip-192-001-02-03.ec2.internal",
+              "type": "InternalDNS"
+            },
+            {
+              "address": "ec2-12.000.22.33.compute-1.amazonaws.com",
+              "type": "ExternalDNS"
+            }
+          ],
+          "allocatable": {
+            "attachable-volumes-aws-ebs": "25",
+            "cpu": "3920m",
+            "hugepages-1Gi": "0",
+            "hugepages-2Mi": "0",
+            "memory": "15076868Ki",
+            "pods": "58"
+          },
+          "capacity": {
+            "attachable-volumes-aws-ebs": "25",
+            "cpu": "4",
+            "hugepages-1Gi": "0",
+            "hugepages-2Mi": "0",
+            "memory": "16093700Ki",
+            "pods": "58"
+          },
+          "conditions": [
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has sufficient memory available",
+              "reason": "KubeletHasSufficientMemory",
+              "status": "False",
+              "type": "MemoryPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has no disk pressure",
+              "reason": "KubeletHasNoDiskPressure",
+              "status": "False",
+              "type": "DiskPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has sufficient PID available",
+              "reason": "KubeletHasSufficientPID",
+              "status": "False",
+              "type": "PIDPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "[container runtime status check may not have completed yet, container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized, CSINode is not yet initialized, missing node capacity for resources: ephemeral-storage]",
+              "reason": "KubeletNotReady",
+              "status": "False",
+              "type": "Ready"
+            }
+          ],
+          "daemonEndpoints": {
+            "kubeletEndpoint": {
+              "Port": 10250
+            }
+          },
+          "nodeInfo": {
+            "architecture": "amd64",
+            "bootID": "0d0dd4f2-8829-4b03-9f29-794f4908281b",
+            "containerRuntimeVersion": "docker://19.3.13",
+            "kernelVersion": "5.4.141-67.229.amzn2.x86_64",
+            "kubeProxyVersion": "v1.21.2-eks-55daa9d",
+            "kubeletVersion": "v1.21.2-eks-55daa9d",
+            "machineID": "ec2483c633b0e271f36ce14e45a361b8",
+            "operatingSystem": "linux",
+            "osImage": "Amazon Linux 2",
+            "systemUUID": "ec2483c6-33b0-e271-f36c-e14e45a361b8"
+          }
+        }
+      },
+      "responseObject": {
+        "apiVersion": "v1",
+        "kind": "Node",
+        "metadata": {
+          "annotations": {
+            "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+          },
+          "creationTimestamp": "2021-09-07T20:37:30Z",
+          "labels": {
+            "alpha.eksctl.io/cluster-name": "ABCD1234567890EXAMPLE",
+            "alpha.eksctl.io/nodegroup-name": "ng-5fe434eb",
+            "beta.kubernetes.io/arch": "amd64",
+            "beta.kubernetes.io/instance-type": "m5.xlarge",
+            "beta.kubernetes.io/os": "linux",
+            "eks.amazonaws.com/capacityType": "ON_DEMAND",
+            "eks.amazonaws.com/nodegroup": "ng-5fe434eb",
+            "eks.amazonaws.com/nodegroup-image": "ami-0193ebf9573ebc9f7",
+            "eks.amazonaws.com/sourceLaunchTemplateId": "lt-0f20d6f901007611e",
+            "eks.amazonaws.com/sourceLaunchTemplateVersion": "1",
+            "failure-domain.beta.kubernetes.io/region": "us-east-1",
+            "failure-domain.beta.kubernetes.io/zone": "us-east-1f",
+            "kubernetes.io/arch": "amd64",
+            "kubernetes.io/hostname": "ip-192-001-02-03.ec2.internal",
+            "kubernetes.io/os": "linux",
+            "node.kubernetes.io/instance-type": "m5.xlarge",
+            "topology.kubernetes.io/region": "us-east-1",
+            "topology.kubernetes.io/zone": "us-east-1f"
+          },
+          "managedFields": [
+            {
+              "apiVersion": "v1",
+              "fieldsType": "FieldsV1",
+              "fieldsV1": {
+                "f:metadata": {
+                  "f:annotations": {
+                    ".": {},
+                    "f:volumes.kubernetes.io/controller-managed-attach-detach": {}
+                  },
+                  "f:labels": {
+                    ".": {},
+                    "f:alpha.eksctl.io/cluster-name": {},
+                    "f:alpha.eksctl.io/nodegroup-name": {},
+                    "f:beta.kubernetes.io/arch": {},
+                    "f:beta.kubernetes.io/instance-type": {},
+                    "f:beta.kubernetes.io/os": {},
+                    "f:eks.amazonaws.com/capacityType": {},
+                    "f:eks.amazonaws.com/nodegroup": {},
+                    "f:eks.amazonaws.com/nodegroup-image": {},
+                    "f:eks.amazonaws.com/sourceLaunchTemplateId": {},
+                    "f:eks.amazonaws.com/sourceLaunchTemplateVersion": {},
+                    "f:failure-domain.beta.kubernetes.io/region": {},
+                    "f:failure-domain.beta.kubernetes.io/zone": {},
+                    "f:kubernetes.io/arch": {},
+                    "f:kubernetes.io/hostname": {},
+                    "f:kubernetes.io/os": {},
+                    "f:node.kubernetes.io/instance-type": {},
+                    "f:topology.kubernetes.io/region": {},
+                    "f:topology.kubernetes.io/zone": {}
+                  }
+                },
+                "f:spec": {
+                  "f:providerID": {}
+                }
+              },
+              "manager": "kubelet",
+              "operation": "Update",
+              "time": "2021-09-07T20:37:30Z"
+            }
+          ],
+          "name": "ip-192-001-02-03.ec2.internal",
+          "resourceVersion": "67933403",
+          "uid": "4ecf628a-1b50-47ed-932c-bb1df89dad10"
+        },
+        "spec": {
+          "providerID": "aws:///us-east-1f/i-12345678901",
+          "taints": [
+            {
+              "effect": "NoSchedule",
+              "key": "node.kubernetes.io/not-ready"
+            }
+          ]
+        },
+        "status": {
+          "addresses": [
+            {
+              "address": "192.000.22.33",
+              "type": "InternalIP"
+            },
+            {
+              "address": "12.000.22.33",
+              "type": "ExternalIP"
+            },
+            {
+              "address": "ip-192-001-02-03.ec2.internal",
+              "type": "Hostname"
+            },
+            {
+              "address": "ip-192-001-02-03.ec2.internal",
+              "type": "InternalDNS"
+            },
+            {
+              "address": "ec2-12.000.22.33.compute-1.amazonaws.com",
+              "type": "ExternalDNS"
+            }
+          ],
+          "allocatable": {
+            "attachable-volumes-aws-ebs": "25",
+            "cpu": "3920m",
+            "hugepages-1Gi": "0",
+            "hugepages-2Mi": "0",
+            "memory": "15076868Ki",
+            "pods": "58"
+          },
+          "capacity": {
+            "attachable-volumes-aws-ebs": "25",
+            "cpu": "4",
+            "hugepages-1Gi": "0",
+            "hugepages-2Mi": "0",
+            "memory": "16093700Ki",
+            "pods": "58"
+          },
+          "conditions": [
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has sufficient memory available",
+              "reason": "KubeletHasSufficientMemory",
+              "status": "False",
+              "type": "MemoryPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has no disk pressure",
+              "reason": "KubeletHasNoDiskPressure",
+              "status": "False",
+              "type": "DiskPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has sufficient PID available",
+              "reason": "KubeletHasSufficientPID",
+              "status": "False",
+              "type": "PIDPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "[container runtime status check may not have completed yet, container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized, CSINode is not yet initialized, missing node capacity for resources: ephemeral-storage]",
+              "reason": "KubeletNotReady",
+              "status": "False",
+              "type": "Ready"
+            }
+          ],
+          "daemonEndpoints": {
+            "kubeletEndpoint": {
+              "Port": 10250
+            }
+          },
+          "nodeInfo": {
+            "architecture": "amd64",
+            "bootID": "0d0dd4f2-8829-4b03-9f29-794f4908281b",
+            "containerRuntimeVersion": "docker://19.3.13",
+            "kernelVersion": "5.4.141-67.229.amzn2.x86_64",
+            "kubeProxyVersion": "v1.21.2-eks-55daa9d",
+            "kubeletVersion": "v1.21.2-eks-55daa9d",
+            "machineID": "ec2483c633b0e271f36ce14e45a361b8",
+            "operatingSystem": "linux",
+            "osImage": "Amazon Linux 2",
+            "systemUUID": "ec2483c6-33b0-e271-f36c-e14e45a361b8"
+          }
+        }
+      },
+      "responseStatus": {
+        "metadata": {}
+      },
+      "user": {
+        "extra": {}
+      }
+    }
+  }
