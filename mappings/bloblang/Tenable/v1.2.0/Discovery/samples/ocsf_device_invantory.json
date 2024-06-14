@@ -1,0 +1,100 @@
+{
+    "activity_id": 1,
+    "activity_name": "Log",
+    "category_name": "Discovery",
+    "category_uid": 5,
+    "class_name": "Device Inventory Info",
+    "class_uid": 5001,
+    "cloud": {
+      "provider": "AWS",
+      "region": "adev-west2"
+    },
+    "device": {
+      "domain": "ip-10-176-78-1111",
+      "first_seen_time": 1717815754855000,
+      "first_seen_time_dt": "2024-06-08T03:02:34.855Z",
+      "hostname": "i-04ca47edc1111111",
+      "instance_uid": "111111111dcbd4319fe",
+      "ip": "10.222.222.222",
+      "last_seen_time": 1717819502686000,
+      "last_seen_time_dt": "2024-06-08T04:05:02.686Z",
+      "mac": "e2:3f:83:aa:aa:aa",
+      "network_interfaces": [
+        {
+          "ip": "10.111.111.1",
+          "type": "ipv4",
+          "type_id": 0
+        },
+        {
+          "ip": "10.222.222.222",
+          "type": "ipv4",
+          "type_id": 0
+        }
+      ],
+      "type_id": 0,
+      "uid": "11111-50c0-4562-8636-111111"
+    },
+    "message": "Raw ExportAsset Output",
+    "metadata": {
+      "log_name": "Raw ExportAsset Output",
+      "log_provider": "Tenable",
+      "logged_time": 1717974139971890,
+      "logged_time_dt": "2024-06-09T23:02:19.971890876Z",
+      "product": {
+        "vendor_name": "Tenable"
+      },
+      "profiles": [
+        "host",
+        "datetime",
+        "cloud"
+      ],
+      "uid": null,
+      "version": "1.2.0"
+    },
+    "observables": [
+      {
+        "name": "device.hostname",
+        "type": "User",
+        "type_id": 1,
+        "value": "i-04ca47edc1111111"
+      },
+      {
+        "name": "device.ip",
+        "type": "IP Address",
+        "type_id": 2,
+        "value": "10.222.222.222"
+      },
+      {
+        "name": "device.ip",
+        "type": "IP Address",
+        "type_id": 2,
+        "value": "10.222.222.222"
+      },
+      {
+        "name": "device.mac",
+        "type": "MAC Address",
+        "type_id": 3,
+        "value": "e2:3f:83:aa:aa:aa"
+      }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "status": "Unknown",
+    "status_id": 0,
+    "time": 1717822122354000,
+    "time_dt": "2024-06-08T04:48:42.354Z",
+    "unmapped": {
+      "component": "pluginexporterclient",
+      "level": "INFO",
+      "micros_container": "microservice",
+      "output": {
+        "created_at": "2024-06-08T04:23:36.496Z",
+        "has_agent": true
+      },
+      "source": {
+        "file": "/source/internal/handler/v1/tenable_handler.go",
+        "function": "FetchVulnerabilityResults",
+        "line": 228
+      }
+    }
+  }
