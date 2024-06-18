@@ -1,0 +1,83 @@
+- System 
+
+  - ProviderName  Microsoft-Windows-Windows Defender 
+   Guid  {11cd958a-c507-4ef3-b3f2-5fd9dfbd2c78} 
+ 
+   EventID 1116 
+ 
+   Version 0 
+ 
+   Level 3 
+ 
+   Task 0 
+ 
+   Opcode 0 
+ 
+   Keywords 0x8000000000000000 
+ 
+  - TimeCreated 
+
+   [ SystemTime]  2024-02-10T05:45:10.1399723Z 
+ 
+   EventRecordID 40629 
+ 
+   Correlation 
+ 
+  - Execution 
+
+   [ ProcessID]  4732 
+   [ ThreadID]  6620 
+ 
+   Channel Microsoft-Windows-Windows Defender/Operational 
+ 
+   Computer DESKTOP-AAABBBB
+ 
+  - Security 
+
+   [ UserID]  S-1-5-18 
+ 
+
+- EventData 
+
+  Product Name Microsoft Defender Antivirus 
+  Product Version 4.18.23110.3 
+  Detection ID {D9268072-4BD9-4784-A983-AB07A3D3DC18} 
+  Detection Time 2024-02-10T05:45:09.829Z 
+  Unused  
+  Unused2  
+  Threat ID 2147757185 
+  Threat Name Trojan:Win32/Ymacco.AA4E 
+  Severity ID 5 
+  Severity Name Severe 
+  Category ID 8 
+  Category Name Trojan 
+  FWLink https://go.microsoft.com/fwlink/?linkid=37020&name=Trojan:Win32/Ymacco.AA4E&threatid=2147757185&enterprise=0 
+  Status Code 1 
+  Status Description  
+  State 1 
+  Source ID 3 
+  Source Name Real-Time Protection 
+  Process Name C:\Windows\explorer.exe 
+  Detection User DESKTOP-AAABBBB\User
+  Unused3  
+  Path file:_D:\New folder\mal.exe 
+  Origin ID 1 
+  Origin Name Local machine 
+  Execution ID 1 
+  Execution Name Suspended 
+  Type ID 8 
+  Type Name FastPath 
+  Pre Execution Status 0 
+  Action ID 9 
+  Action Name Not Applicable 
+  Unused4  
+  Error Code 0x00000000 
+  Error Description The operation completed successfully.  
+  Unused5  
+  Post Clean Status 0 
+  Additional Actions ID 0 
+  Additional Actions String No additional actions required 
+  Remediation User  
+  Unused6  
+  Security intelligence Version AV: 1.403.3482.0, AS: 1.403.3482.0, NIS: 1.403.3482.0 
+  Engine Version AM: 1.1.23110.2, NIS: 1.1.23110.2 
