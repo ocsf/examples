@@ -1,8 +1,9 @@
 # Event Dossier: Amazon WAF
-### Amazon WAF Connection Refused
-- **Description**: Translates Amazon WAF event where a connection was refused to OCSF. The source might be in csv or parquet. The source field names may vary with a `-` compared to a `_` depending on the source type. This file has been anonymized and contains only 1 record showing version 5 fields in alphabetical order.
+### Amazon WAF WebACL logs
+- **Description**: Translates Amazon WAF logs to HTTP Activity event class with Security Control Profile in OCSF.
 - **Event References**:
-  - [https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html](https://docs.aws.amazon.com/waf/latest/developerguide/logging-examples.html)
+  - https://docs.aws.amazon.com/waf/latest/developerguide/logging-fields.html 
+  - https://docs.aws.amazon.com/waf/latest/developerguide/logging-examples.html
 
  ### OCSF Version: 1.1.0
  - `category_uid`: `4`
@@ -10,7 +11,7 @@
  - `class_uid`: `4002`
  - `class_name`: `HTTP Activity`
  - `cloud.provider`: `AWS`
- - `metadata.profiles`: `[cloud, firewall]`
+ - `metadata.profiles`: `[cloud,security_control,datetime]`
  - `metadata.product.name`: `Amazon WAF`
  - `metadata.product.feature.name`: `WAF`
  - `metadata.product.vendor_name`: `AWS`
@@ -32,47 +33,42 @@
 |`httpRequest.clientIp`|`src_endpoint.ip`|
 |`httpRequest.country`|`src_endpoint.location.country`|
 |`httpRequest.uri`|`http_request.url.path`|
-|`httpRequest.uri`|`dst_endpoint.domain`|
 |`httpRequest.httpVersion`|`http_request.version`|
 |`httpRequest.httpMethod`|`http_request.http_method`|
 |`httpRequest.requestId`|`http_request.uid`|
+|`httpRequest.args`|`http_request.args`|
 |`terminatingRuleId`|`firewall_rule.uid`|
 |`terminatingRuleType`|`firewall_rule.type`|
-|`httpRequest.args`|`http_request.args`|
 |`terminatingRuleMatchDetails[].conditionType`|`firewall_rule.condition`|
 |`terminatingRuleMatchDetails[].location`|`firewall_rule.match_location`|
 |`terminatingRuleMatchDetails[].matchedData[]`|`firewall_rule.match_details[]`|
 |`rateBasedRuleList[].maxRateAllowed`|`firewall_rule.rate_limit`|
-|`requestHeadersInserted[].name`|`http_request.http_headers[].name`|
-|`requestHeadersInserted[].value`|`http_request.http_headers[].value`|
-|`responseCodeSent`|`firewall_rule.status_code`|
-
-
+|`responseCodeSent`|`status_code`|
 
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
 
-| OCSF                       | Raw             | Notes             |
+| Raw                       | OCSF             | Notes             |
 | -------------------------- | ----------------| ------------------|
-|`activity_name`|`httpRequest.httpMethod`|
-|`activity_id`|`httpRequest.httpMethod`|
-|`type_uid`|`httpRequest.httpMethod`|
-|`type_name`|`httpRequest.httpMethod`|
-|`action`|`http_response.code`|
-|`disposition`|`action`|
-|`disposition_id`|`action`|
+|`httpRequest.httpMethod`|`activity_name`|
+|`httpRequest.httpMethod`|`activity_id`|
+|`httpRequest.httpMethod`|`type_uid`|
+|`httpRequest.httpMethod`|`type_name`|
+|`action`|`action`|
+|`action`|`action_id`|
+|`action`|`disposition`|
+|`action`|`disposition_id`|
 |_if `httpRequest.headers[].name` equals `User-Agent`_|
-|`httpRequest.headers[].name.value`|`http_request.user_agent`|
+|`httpRequest.headers[].value`|`http_request.user_agent`| 
 |_elseif `httpRequest.headers[].name` equals `Host`_|
-|_concat_ - `httpRequest.headers[].value;httpRequest.uri;httpRequest.args`|`http_request.url.hostname`|
-|_elseif `httpRequest.headers[].name` equals `X-Forwarded-Fort`_|
-|`httpRequest.headers[].name.value`|`http_request.x_forwarded_for`|
+|`httpRequest.headers[].value`|`http_request.url.hostname`|
+|_elseif `httpRequest.headers[].name` equals `X-Forwarded-For`_|
+|`httpRequest.headers[].value`|`http_request.x_forwarded_for`|
 |_elseif `httpRequest.headers[].name` equals `referer`_|
-|`httpRequest.headers[].name.value`|`http_request.referrer`|
-|_elseif `httpRequest.headers[].name` equals `X-Forwarded-Port`_|
-|`httpRequest.headers[].name.value`|`http_request.url.port`|
+|`httpRequest.headers[].value`|`http_request.referrer`|
 |_else_|
-|`httpRequest.headers[].name.value`|`http_request.http_headers[].name`|
+|`httpRequest.headers[].name`|`http_request.http_headers[].name`|
+|`httpRequest.headers[].value`|`http_request.http_headers[].value`|
 
 
