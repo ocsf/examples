@@ -58,7 +58,7 @@ The frame should itself be a JSON object, and contain some properties:
 
 | Property        | Data Type      | Requirement | Notes                                                       |
 | --------------- | -------------- | ----------- | ----------------------------------------------------------- |
-| `events`        | array of event | required    | These are the actual events and the whole point of bundling |
+| `events`        | array of OCSF events | required    | These are the actual events and the whole point of bundling |
 | `start_time`    | `timestamp_t`  | optional    | The earliest `time` of any bundled events                   |
 | `end_time`      | `timestamp_t`  | optional    | The latest `time` of any bundled events                     |
 | `start_time_dt` | `datetime_t`   | optional    | The earliest `time_dt` of any bundled events                |
