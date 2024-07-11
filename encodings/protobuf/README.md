@@ -10,26 +10,35 @@ encoding.
 
 ## Semantic Type Considerations
 
-### Primitive Types
+### Type Mappings
 
-The primitive types are mapped as follows
+Types are mapped as follows:
 
-| OCSF Type   | Protobuf Type           |
-| ----------- | ----------------------- |
-| `boolean_t` | `bool`                  |
-| `float_t`   | `float`                 |
-| `integer_t` | `int32`                 |
-| `long_t`    | `int64`                 |
-| `string_t`  | `string`                |
-| `json_t`    | `google.protobuf.Value` |
+| OCSF Type    | Protobuf Type               |
+| ------------ | --------------------------- |
+| `boolean_t`  | `bool`                      |
+| `float_t`    | `double`                    |
+| `integer_t`  | `int32`                     |
+| `long_t`     | `int64`                     |
+| `string_t`   | `string`                    |
+| `json_t`     | `google.protobuf.Value`     |
+| `datetime_t` | `google.protobuf.Timestamp` |
 
-The mapping is straightforward, except to note that `json_t` and the
-bare (un-extended) `object` type are represented by well-known
-protobuf types that model JSON, specifically
-[Value](https://protobuf.dev/reference/protobuf/google.protobuf/#value)
-and
-[Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct)
-respectively.
+Types not mentioned above are mapped to the protobuf type of their
+underlying type.
+
+This mapping is straightforward, with the following appendices:
+
+`json_t` is represented by the well-known protobuf type that models a
+JSON value.  Note that JSON values include both primitives (e.g.,
+strings and numbers) as well as objects and arrays.
+
+`datetime_t` type is mapped to the well-known
+[Timestamp](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp)
+protobuf object to capture the intended semantics.
+
+Note that the Protobuf JSON encoding for the well-known `Timestamp`
+matches the OCSF JSON representation.
 
 ### Optionality
 
@@ -47,18 +56,47 @@ example, `class_id` is required and non-zero; if the application finds
 it to have a zero value, the distinction between missing and invalid
 is not significant because missing _is_ invalid for required types.
 
-### Other Types
+(Note that OCSF's JSON encoding does not distinguish between `null`
+and missing values, since null is not a type in OCSF)
 
-Non-primitive types are mapped to the appropriate underlying
-primitive type, with the following exceptions:
+### Structured Types
 
-#### Date Time
+Structured types in OCSF include objects, events (or classes), and
+arrays.
 
-The `datetime_t` type is mapped to the well-known
-[Timestamp](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp)
-protobuf object.
+### Object and Event Types
 
-#### Enumerated Values
+Objects and Events are mapped to Protobuf `message` objects in the
+straightforward way, preserving the OCSF name of the field (e.g.,
+`status_id` instead of the more conventional Protobuf `statusId`).
+This is so that the JSON encoding (with the option **Use proto field
+name instead of lowerCamelCase name** enabled) matches the OCSF JSON
+encoding.
+
+### The Un-extended Object
+
+The one exception to how objects are mapped, is the _unextended_
+`object`.  This is used in a few places in the schema (such as the
+`unmapped` attribute) to represent a schema-free JSON object.  For the
+Protobuf encoding, `object` is mapped to the well-known
+[Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct)
+type.
+
+This has the desirable property that the native protobuf JSON encoding
+knows how to serialize and deserialize these types into plain JSON.
+
+Note that primitive JSON values such as string and number, and JSON
+arrays, are **NOT** valid values for an `object`.
+
+#### Field IDs
+
+The Protobuf wire encoding requires consistent field ids for message
+objects.  To facilitate interoperation and schema evolution, a
+separate control file (the canonical version of which is included in
+this repo in `control.json`) is used "remember" the field ids assigned
+to fields in messages.
+
+### Enumerated Values
 
 Enumerated **integer** values are built using protobuf's `enum`
 declaration.  Because OCSF often (not always) refines the set of
@@ -116,47 +154,42 @@ required in proto3, so in cases where the 0 value is missing, an
 No special treatment is given for enumerated **string** values in
 OCSF, they are just treated as strings by the protobuf encoding.
 
-### Object and Event Types
-
-Objects and Events are mapped to Protobuf `message` objects in the
-straightforward way, preserving the OCSF name of the field (e.g.,
-`status_id` instead of the more conventional Protobuf `statusId`)
-
-#### Un-extended Object
-
-The one exception, as mentioned previously, is the unextended `object`
-in Protobuf is mapped to the well-known
-[Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct)
-type.
-
-This has the desirable property that the native protobuf JSON encoding
-(`protojson`) knows how to serialize and deserialize these types into
-plain JSON.
-
-#### Field IDs
-
-The Protobuf wire encoding requires consistent field ids for message
-objects.  To facilitate interoperation and schema evolution, a
-separate control file (the canonical version of which is included in
-this repo in `control.json`) is used "remember" the field ids assigned
-to fields in messages.
-
 ## Protobuf JSON Encoding
 
-This encoding concerns itself primarily with the protobuf wire
-representation.  Although protobuf defines a JSON encoding as well,
-that JSON encoding always represents longs as strings (per the [I-JSON
-recommendation](https://datatracker.ietf.org/doc/html/rfc7493#section-2.2))
-so there is not direct interoperability between JSON-encoded protobof
-and the OCSF JSON encoding.  However, despite that, this encoding
-strives to preserve compability where possible (_i.e._, in field names)
+This encoding concerns itself primarily with the protobuf descriptor
+files (`.proto`) and wire representation.
+
+Protobuf defines a JSON encoding as well, but that JSON encoding can
+be tricky to line up (see notes on 64-bit integers for example).
+Thus, we do not specifically claim interoperability between
+JSON-encoded protobof and the OCSF JSON encoding, since that is
+achievable only using non-standard protobuf mods .  However, despite
+that, this encoding strives to preserve compability where possible
+(_e.g._, in field names)
 
 In addition, by default the protobuf JSON encoding uses strings to
 encode enumerations and converts to `lowerCamelCase` identifiers,
 both of which are inconsistent with OCSF JSON encoding.
 
 To obtain the closest representation of OCSF JSON, disable these
-features.  In the protojson encoder for Go,
+features.  See the [Protobuf programming
+guide](https://protobuf.dev/programming-guides/proto3/#json) section
+on JSON mapping for notes, specifically **Emit enum values as integers
+instead of strings** and **Use proto field name instead of
+lowerCamelCase name**.
+
+### SDK specific notes
+
+Protobuf's JSON encoding represents `int64` and `uint64` as strings by
+default (per the [I-JSON
+recommendation](https://datatracker.ietf.org/doc/html/rfc7493#section-2.2)).
+Some SDKs have workarounds or configurations that support unwrapping,
+which are described here to facilitated use cases where
+interoperability between Protobuf JSON and OCSF JSON is important.
+
+#### Go
+
+In the protojson encoder for Go,
 `google.golang.org/protobuf/encoding/protojson`, this can be
 accomplished using non-default marshal options like so:
 
@@ -176,3 +209,17 @@ func EncodeToJSON(item *proto.FileActivity) ([]byte, error) {
 	return opt.Marshal(&item)
 }
 ```
+
+#### C++
+
+In **C++**, a configuration option supports bare-JSON 64-bit integers.
+See [this
+commit](https://github.com/protocolbuffers/protobuf/commit/330e10d53fe1c12757f1cdd7293d0881eac4d01e).
+
+#### Java
+
+In **Java**, the key functionality for ProtoJSON encoding is in the utils
+package.  This package could be forked without forking the core
+Protobuf library itself, and [this
+line](https://github.com/protocolbuffers/protobuf/blob/8434c12d160fcf2f6adc572f4e94947fb57c82c3/java/util/src/main/java/com/google/protobuf/util/JsonFormat.java#L1149)
+changed appropriately.
