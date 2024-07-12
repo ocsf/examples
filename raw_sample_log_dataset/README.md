@@ -13,4 +13,6 @@
 * Windows Event Log
     * Security
         * xml
+    * Sysmon 
+        * xml    
 
