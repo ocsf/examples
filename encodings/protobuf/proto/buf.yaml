@@ -1,0 +1,9 @@
+# buf linting rules
+# https://buf.build/docs/lint/overview#key-concepts
+
+version: v2
+lint:
+  use:
+    - DEFAULT
+  enum_zero_value_suffix: _UNKNOWN
+  
