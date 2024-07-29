@@ -1,92 +1,155 @@
 {
+	"action": "Denied",
+	"action_id": 2,
 	"activity_id": 3,
 	"activity_name": "Get",
-	"category_name": "Network Activitys",
+	"category_name": "Network Activity",
 	"category_uid": 4,
 	"class_name": "HTTP Activity",
 	"class_uid": 4002,
 	"cloud": {
 		"provider": "AWS"
 	},
-	"dst_endpoint": {
-		"domain": "/CanaryTest"
-	},
+	"disposition": "Blocked",
+      "disposition_id": 2,
 	"firewall_rule": {
-		"type": "RATE_BASED",
-		"uid": "RateBasedRule"
+		"condition": "SQL_INJECTION",
+		"match_details": [
+			"10",
+			"AND",
+			"1"
+		],
+		"match_location": "HEADER",
+		"rate_limit": 100,
+		"type": "REGULAR",
+		"uid": "captcha-rule"
 	},
 	"http_request": {
 		"args": "",
+		"http_headers": [
+			{
+				"name": "X-Forwarded-For",
+				"value": "1.2.3.4"
+			},
+			{
+				"name": "X-Forwarded-Proto",
+				"value": "https"
+			},
+			{
+				"name": "X-Forwarded-Port",
+				"value": "443"
+			},
+			{
+				"name": "Host",
+				"value": "example.com"
+			},
+			{
+				"name": "sec-ch-ua",
+				"value": "\"Chromium\";v=\"94\", \"Google Chrome\";v=\"94\", \";Not A Brand\";v=\"99\""
+			},
+			{
+				"name": "sec-ch-ua-mobile",
+				"value": "?0"
+			},
+			{
+				"name": "sec-ch-ua-platform",
+				"value": "\"Windows\""
+			},
+			{
+				"name": "upgrade-insecure-requests",
+				"value": "1"
+			},
+			{
+				"name": "user-agent",
+				"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36"
+			},
+			{
+				"name": "accept",
+				"value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+			}
+		],
 		"http_method": "GET",
-		"uid": "Ed0AiHF_CGYF-DA=",
+		"referrer": null,
+		"uid": "GINKHEssoAMFsrg=",
 		"url": {
-			"path": "/CanaryTest"
+			"hostname": "example.com",
+			"path": "/pen-test/pets"
 		},
-		"version": "HTTP/1.1"
+		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36",
+		"version": "HTTP/1.1",
+		"x_forwarded_for": [
+			"1.2.3.4"
+		]
 	},
-	"http_response": {
-		"code": 403
-	},
+	"http_status": 405,
 	"metadata": {
 		"labels": null,
 		"product": {
 			"feature": {
-				"uid": "..."
+				"uid": "arn:aws:wafv2:us-east-1:123456789012:regional/webacl/captcha-web-acl/585e38b5-afce-4d2a-b417-14fb08b66c67"
 			},
 			"name": "AWS WAF",
 			"vendor_name": "AWS",
 			"version": "1"
 		},
-		"version": "1.1.0-dev"
+		"profiles": [
+			"cloud",
+			"security_control",
+			"datetime"
+		],
+		"version": "1.1.0"
 	},
+	"observables": [
+		{
+			"name": "httpRequest.headers[].value",
+			"type": "Hostname",
+			"type_id": 1,
+			"value": "example.com"
+		},
+		{
+			"name": "src_endpoint.ip",
+			"type": "IP Address",
+			"type_id": 2,
+			"value": "1.2.3.4"
+		},
+		{
+			"name": "firewall_rule.uid",
+			"type": "Resource UID",
+			"type_id": 2,
+			"value": "captcha-rule"
+		},
+		{
+			"name": "src_endpoint.uid",
+			"type": "Resource UID",
+			"type_id": 2,
+			"value": "123456789012:b34myvfw0b:pen-test"
+		}
+	],
 	"severity_id": 1,
+	"severity": "Informational",
 	"src_endpoint": {
-		"ip": "52.46.82.45",
+		"ip": "1.2.3.4",
 		"location": {
-			"country": "FR"
+			"country": "US"
 		},
 		"svc_name": "APIGW",
-		"uid": "EXAMPLE11:rjvegx5guh:CanaryTest"
+		"uid": "123456789012:b34myvfw0b:pen-test"
 	},
-	"time": 0,
+	"time": 1632420416512,
+	"time_dt": "2021-09-23 18:06:56.512000",
 	"type_name": "HTTP Activity: Get",
 	"type_uid": 400203,
-	"unmapped": [
-		[
-			"rateBasedRuleList[].rateBasedRuleId",
-			"..."
-		],
-		[
-			"rateBasedRuleList[].customValues[].value",
-			"ella"
-		],
-		[
-			"rateBasedRuleList[].customValues[].name",
-			"dogname"
-		],
-		[
-			"rateBasedRuleList[].limitKey",
-			"CUSTOMKEYS"
-		],
-		[
-			"rateBasedRuleList[].customValues[].key",
-			"HEADER"
-		],
-		[
-			"httpRequest.headers[].value",
-			"52.46.82.45,https,443,rjvegx5guh.execute-api.eu-west-3.amazonaws.com,Root=1-645566cf-7cb058b04d9bb3ee01dc4036,ella,RateBasedRuleTestKoipOneKeyModulePV2,gzip,deflate"
-		],
-		[
-			"rateBasedRuleList[].rateBasedRuleName",
-			"RateBasedRule"
-		],
-		[
-			"rateBasedRuleList[].maxRateAllowed",
-			"100"
-		],
-		[
-			"httpRequest.headers[].name",
-			"X-Forwarded-For,X-Forwarded-Proto,X-Forwarded-Port,Host,X-Amzn-Trace-Id,dogname,User-Agent,Accept-Encoding"
-		]
-	]
+	"unmapped": {
+        "captchaResponse.failureReason": "TOKEN_MISSING",
+        "captchaResponse.responseCode": "405",
+        "captchaResponse.solveTimestamp": "0",
+        "rateBasedRuleList[].customValues[].key": "HEADER",
+        "rateBasedRuleList[].customValues[].name": "dogname",
+        "rateBasedRuleList[].customValues[].value": "ella",
+        "rateBasedRuleList[].evaluationWindowSec": "120",
+        "rateBasedRuleList[].limitKey": "CUSTOMKEYS",
+        "rateBasedRuleList[].rateBasedRuleId": "example",
+        "rateBasedRuleList[].rateBasedRuleName": "RateBasedRule",
+        "terminatingRuleMatchDetails[].sensitivityLevel": "HIGH"
+    }
 }

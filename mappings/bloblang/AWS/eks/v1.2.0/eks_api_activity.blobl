@@ -1,0 +1,137 @@
+
+root.class_name = "API Activity"
+root.class_uid = 6003
+root.category_name = "Application Activity"
+root.category_uid = 6
+root.cloud.provider = "AWS"
+root.severity_id = 1
+root.severity = "Informational"
+
+activity_name =  match this.verb {
+"unknown" => "Unknown"
+"create" => "Create"
+"get" => "Read"
+"watch" => "Read"
+"update" => "Update"
+"patch" => "Update"
+"delete" => "Delete"
+"other" =>"Other"
+}
+
+activity_id =  match this.verb {
+"Unknown" => 0
+"create" => 1
+"get" => 2
+"watch" => 2
+"update" => 3
+"patch" => 3
+"delete" => 4
+"Other" => 99
+}
+root.actor.user.type_id = 0
+root.actor.user.name = this.user.username
+root.actor.user.uid = this.user.uid
+
+root.actor.user.groups = this.user.groups.collapse().key_values().map_each(item -> {
+    "name": match {
+        item.exists("key") => item.value
+    }})
+    
+root.actor.session.credential_uid = this.user.extra.accessKeyId.0
+root.actor.session.uid = this.user.extra.sessionName.0
+root.actor.session.issuer = this.user.extra.canonicalArn.0
+
+root.api.request.uid = this.auditID
+root.api.operation = this.verb
+root.api.version = this.objectRef.apiVersion
+root.api.response.code = this.responseStatus.code
+root.api.response.message = this.responseStatus.message | deleted()
+root.api.response.error = this.responseStatus.reason | deleted()
+root.api.response.error_message = this.responseStatus.status | deleted()
+root.api.group.name = this.objectRef.apiGroup | deleted()
+root.api.response.containers.name = this.responseObject.spec.containers.name | deleted()
+root.api.response.containers.image.name = this.responseObject.spec.containers.0.image | deleted()
+root.api.response.containers.image.path = this.responseObject.spec.containers.0.volumeMounts.0.mountPath | deleted()
+root.api.response.containers.image.uid = this.responseObject.spec.containers.0.image | this.responseObject.spec.containers.0.volumeMounts.name | deleted()
+root.api.request.containers.name = this.requestObject.spec.containers.name | deleted()
+root.api.request.containers.image.name = this.requestObject.spec.containers.image | deleted()
+root.api.request.containers.image.path = this.requestObject.spec.containers.0.volumeMounts.mountPath | deleted()
+root.api.request.containers.image.uid = this.requestObject.spec.containers.0.image | this.requestObject.spec.containers.0.volumeMounts.name | deleted()
+
+root.cloud.account.uid = this.user.extra.arn.0
+
+root.metadata.product.name = "Amazon EKS"
+root.metadata.product.feature.name = "Elastic Kubernetes Service"
+root.metadata.product.vendor_name = "AWS"
+root.metadata.profiles = ["cloud", "datetime"]
+root.metadata.version = "1.2.0"
+root.metadata.log_level = this.level
+root.metadata.product.version = this.apiVersion
+
+root.message = this.stage
+
+root.http_request.url.path = this.requestURI
+root.http_request.user_agent = this.userAgent
+
+root.resources.namespace = this.objectRef.namespace
+root.resources.name = this.objectRef.name
+root.resources.uid = this.objectRef.uid
+root.resources.version = this.objectRef.resourceVersion
+root.resources.type = this.objectRef.resource | this.objectRef.subresource
+root.resources = [root.resources]
+root.src_endpoint.ip = this.sourceIPs.0
+root.src_endpoint.intermediate_ips = this.sourceIPs.1 | deleted()
+
+root.start_time = this.requestReceivedTimestamp.ts_unix_micro()
+root.start_time_dt = this.requestReceivedTimestamp
+root.time = this.stageTimestamp.ts_unix_micro()
+root.time_dt = this.stageTimestamp
+root.unmapped = this.without(
+    "@lass",
+    "user.username",
+    "user.uid",
+    "user.groups",
+    "user.extra.accessKeyId",
+    "user.extra.sessionName",
+    "user.extra.arn",
+    "user.extra.canonicalArn",
+    "auditID",
+    "verb",
+    "objectRef.apiVersion",
+    "responseStatus.code",
+    "responseStatus.message",
+    "responseStatus.reason",
+    "responseStatus.status",
+    "objectRef.apiGroup",
+    "responseObject.spec.containers.name",
+    "responseObject.spec.containers.image",
+    "responseObject.spec.containers.volumeMounts.mountPath",
+    "responseObject.spec.containers.volumeMounts.name",
+    "requestObject.spec.containers.name",
+    "requestObject.spec.containers.image",
+    "requestObject.spec.containers.volumeMounts.mountPath",
+    "sourceIPs",
+    "level",
+    "apiVersion",
+    "stage",
+    "requestURI",
+    "userAgent",
+    "objectRef.namespace",
+    "objectRef.name",
+    "objectRef.uid",
+    "objectRef.resourceVersion",
+    "objectRef.resource",
+    "objectRef.subresource",
+    "sourceIPs.1",
+    "requestReceivedTimestamp",
+    "stageTimestamp"
+   )
+
+root.type_uid = root.class_uid * 100 + root.activity_id
+root.type_name = root.class_name + ": " + root.activity_name
+
+   observables = root.without("unmapped").with("actor.user.name", "src_endpoint.ip", "http_request.url.path").( item -> { 
+    "a": match {item.actor.user.exists("name") => {"name": "actor.user.name", "type": "User Name", "type_id": 4, "value": item.actor.user.name}},
+    "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}},
+    "c": match {item.http_request.url.exists("path") => {"name": "http_request.url.path", "type": "URL String", "type_id": 6, "value": item.http_request.url.path}},
+    }).values()
