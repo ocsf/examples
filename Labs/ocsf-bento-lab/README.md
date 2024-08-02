@@ -42,7 +42,7 @@ curl -s -XPUT http://localhost:9200/ocsf-3002-authentication/_settings  -H 'Cont
 curl -s -XPUT http://localhost:9200/ocsf-3001-account_change/_settings  -H 'Content-Type: application/json' -d '{"index.mapping.total_fields.limit": 10000}'
 curl -s -XPUT http://localhost:9200/ocsf-6003-api_activity/_settings  -H 'Content-Type: application/json' -d '{"index.mapping.total_fields.limit": 10000}'
 ```
-index is set to ocsf-<class_uid>-<ocsf_bucket varrable>  
+FYI index is set to ocsf-<class_uid>-<ocsf_bucket varrable>  
 so ocsf-3002-authentication would be a class name.
 ```
 3. proceed to Open search dashboard server and enjoy 
