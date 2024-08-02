@@ -1,0 +1,11 @@
+
+
+    # used to add fields to filter on 
+  processor_resources:
+    - label: pre_processor
+      mapping: |
+                root = this 
+                root.logsource = match {
+                this.exists("account") && this.exists("eventType")  => "Okta"  
+                this.exists("awsRegion") && this.exists("eventType") => "AWS"
+                }

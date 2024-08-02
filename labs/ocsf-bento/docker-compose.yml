@@ -1,0 +1,123 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+---
+version: "3"
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=password
+      - MINIO_DOMAIN=minio
+    networks:
+      iceberg_net:
+        aliases:
+          - warehouse.minio
+    ports:
+      - 9001:9001
+      - 9000:9000
+    command: ["server", "/data", "--console-address", ":9001"]
+ 
+  mc:
+    depends_on:
+      - minio
+    image: minio/mc
+    container_name: mc
+    networks:
+      iceberg_net:
+    environment:
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password
+      - AWS_REGION=us-east-1
+    entrypoint: >
+      /bin/sh -c "
+      until (/usr/bin/mc config host add minio http://minio:9000 admin password) do echo '...waiting...' && sleep 1; done;
+      /usr/bin/mc rm -r --force minio/aws;
+      /usr/bin/mc mb minio/aws;
+      /usr/bin/mc anonymous set public minio/aws;
+      /usr/bin/mc rm -r --force minio/ocsf;
+      /usr/bin/mc mb minio/ocsf;
+      /usr/bin/mc anonymous set public minio/ocsf;
+      /usr/bin/mc rm -r --force minio/ocsf-error;
+      /usr/bin/mc mb minio/ocsf-error;
+      /usr/bin/mc anonymous set public minio/ocsf-error;
+      /usr/bin/mc rm -r --force minio/okta;
+      /usr/bin/mc mb minio/okta;
+      /usr/bin/mc anonymous set public minio/okta;        
+      tail -f /dev/null
+      "
+
+  #bento
+  bento:
+    image: ghcr.io/warpstreamlabs/bento
+    container_name: bento
+    restart: unless-stopped
+    command: |
+      -c /config/bento.yml
+      -r "/resources/*.yml"
+      -r "/resources/parsers/*.yml"
+    volumes:
+      - ./config/:/config
+      - ./resources/:/resources
+      - ./blobl_mappings/:/blobl_mappings
+    networks:
+       iceberg_net:
+    depends_on: 
+      mc:
+        condition: service_started      
+
+  opensearch:
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch
+    environment:
+      - cluster.name=opensearch
+      - node.name=opensearch
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "DISABLE_INSTALL_DEMO_CONFIG=true"
+      - "DISABLE_SECURITY_PLUGIN=true"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    ports:
+      - 9200:9200
+      - 9600:9600
+    networks:
+      - iceberg_net
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:latest # Make sure the version of opensearch-dashboards matches the version of opensearch installed on other nodes
+    container_name: opensearch-dashboards
+    ports:
+      - 5601:5601 # Map host port 5601 to container port 5601
+    expose:
+      - "5601" # Expose port 5601 for web access to OpenSearch Dashboards
+    environment:
+      OPENSEARCH_HOSTS: '["http://opensearch:9200"]' # Define the OpenSearch nodes that OpenSearch Dashboards will query
+      DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true" # disables security dashboards plugin in OpenSearch Dashboards
+    networks:
+      - iceberg_net
+
+volumes:
+  opensearch_data:
+           
+networks:
+  iceberg_net:
