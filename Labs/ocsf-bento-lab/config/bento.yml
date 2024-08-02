@@ -1,0 +1,26 @@
+http:
+  address: 0.0.0.0:8080
+  enabled: true
+  root_path: /bento
+  debug_endpoints: false
+
+input:
+  resource: input_bucket
+
+pipeline:
+  processors:
+    - resource: pre_processor
+    - resource: processor_ocsf
+    # Catch errors with transforms.
+    - resource: processor_error_log
+output:
+  resource: output_bucket
+  processors:
+     - resource: output_error_log
+
+logger:
+  level: INFO
+  format: json
+  add_timestamp: false
+  static_fields:
+    '@service': bento

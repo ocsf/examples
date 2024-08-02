@@ -1,0 +1,18 @@
+processor_resources:
+  - label: processor_error_log
+    catch:
+      - metric:
+          type: counter
+          name: failed_transform
+          labels:
+            transform: ${! meta("transform_name") }
+      - log:
+          level: ERROR
+          message: "Transform failed"
+          fields_mapping: | 
+            root.reason = error()
+            root.topic = meta("ocsf_bucket")
+            root.transform_name = meta("transform_name")
+            root.raw_message = this
+          
+          
