@@ -62,7 +62,14 @@ services:
       tail -f /dev/null
       "
 
-  #bento
+  # bento web interface for testing transformations 
+  bento-server:
+    ports:
+     - 4195:4195
+    image: ghcr.io/warpstreamlabs/bento
+    container_name: bento-server
+    command: blobl server --no-open --host 0.0.0.0
+  # bento transfomer node 
   bento:
     image: ghcr.io/warpstreamlabs/bento
     container_name: bento
