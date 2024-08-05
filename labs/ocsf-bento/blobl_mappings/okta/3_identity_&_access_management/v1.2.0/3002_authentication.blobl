@@ -1,0 +1,227 @@
+
+meta ocsf_bucket = "authentication"
+meta vendor = "Okta"
+
+root.class_uid = 3002
+root.class_name = "Authentication"
+root.category_uid = 3
+root.category_name = "Identity & Access Management Category"
+root.severity_id = 1
+root.severity = "Informational"
+
+root.activity_id = if this.exists("displayMessage") {match this.displayMessage {
+    "A push was sent to a user for verification" => 6
+    "system.push.send_factor_verify_push" => 6
+    "policy.evaluate_sign_on" => 1
+    "Evaluation of sign-on policy" => 1
+    "User attempted unauthorized access to app" => 1
+    "app.generic.unauth_app_access_attempt" => 1
+    "OIDC authorization code request" => 1
+    "OIDC authorization request" => 1
+    "Access has been denied because the policy requirements could not be satisfied by the users’ current set of available authenticator enrollments" => 1
+    "Authentication of user via MFA" => 1
+    "Authenticate user with social login" => 1
+    "Verify user identity" => 1
+    "Authenticate user with AD agent" => 1
+    "User single sign on to app" => 1
+    "User login to Okta" => 1
+    "Authenticate user via IDP" => 1
+    "User accessing Okta admin app" => 1
+    "Clear user session" => 2
+    this.contains("logout") => 2
+    _ => 99
+}} else {1}
+
+root.activity_name = if this.exists("displayMessage") { match this.displayMessage {
+    "A push was sent to a user for verification" => "Preauth"
+    "system.push.send_factor_verify_push" => "Preauth"
+    "Evaluation of sign-on policy" => "Logon"
+    "policy.evaluate_sign_on" => "Logon"
+    "User attempted unauthorized access to app" => "Logon"
+    "app.generic.unauth_app_access_attempt" => "Logon"
+    "OIDC authorization request" => "Logon"
+    "OIDC authorization code request" => "Logon"
+    "Access has been denied because the policy requirements could not be satisfied by the users’ current set of available authenticator enrollments" => 1
+    "Authentication of user via MFA" => "Logon"
+    "Authenticate user with social login" => "Logon"
+    "Verify user identity" => "Logon"
+    "Authenticate user with AD agent" => "Logon"
+    "User single sign on to app" => "Logon"
+    "User login to Okta" => "Logon"
+    "Authenticate user via IDP" => "Logon"
+    "User accessing Okta admin app" => "Logon"
+    "Clear user session" => "Logoff"
+    this.contains("logout") => "Logoff"
+    _ => "Unknown"
+}} else {"Logon"}
+# Actor
+root.actor.user.name = if this.actor.alternateId.contains("@") {this.actor.alternateId.split("@").index(0)} else {this.actor.alternateId}
+root.actor.user.domain = if this.actor.alternateId.contains("@") {this.actor.alternateId.split("@").index(1)} else {this.actor.alternateId}
+root.actor.user.full_name = this.actor.displayName
+root.actor.user.email_addr = this.actor.alternateId
+root.actor.user.type = match this.actor.type {
+    "User" => "User" 
+    "SystemPrincipal" => "Admin"
+    _=> "Other"
+}
+root.actor.user.type_id = match this.actor.type {
+    "User" => 1 
+    "SystemPrincipal" => 2
+    _=> 99
+}
+root.actor.user.uid = this.actor.id  
+
+root.auth_protocol_id = if this.debugContext.debugData.exists("signOnMode") { match { 
+    this.debugContext.debugData.signOnMode.contains("OpenID") => 4
+    this.debugContext.debugData.signOnMode.contains("SAML") => 5}} else { match { 
+    this.eventType == "user.authentication.auth_via_radius" => 10 
+    _=> 99
+    }}
+    
+root.auth_protocol = if this.debugContext.debugData.exists("signOnMode") { match { 
+    this.debugContext.debugData.signOnMode.contains("OpenID") => "OpenID"
+    this.debugContext.debugData.signOnMode.contains("SAML") => "SAML"}} else { match { 
+    this.eventType == "user.authentication.auth_via_radius" => "RADIUS" 
+    _=> "Other"
+    }}
+    
+#Http    
+root.http_request.uid = this.debugContext.debugData.requestId | deleted()
+root.http_request.url.hostname = this.debugContext.debugData.authnRequestId | this.debugContext.debugData.origin | deleted()
+root.http_request.url.path = this.debugContext.debugData.url
+root.http_request.user_agent = this.client.userAgent.rawUserAgent
+
+root.logon_process.uid = this.uuid
+
+root.message = 	this.displayMessage
+#Metadata
+root.metadata.product.name = "Okta"
+root.metadata.version = "1.2.0"
+root.metadata.product.vendor_name = "Okta"
+root.metadata.product.version = this.version | deleted()
+root.metadata.log_name = this.eventType
+root.metadata.log_provider = "Okta"
+root.metadata.profiles = ["datetime"]
+root.metadata.logged_time = this.time.ts_unix_micro()
+root.metadata.logged_time_dt = this.time
+root.metadata.uid = this.uuid
+
+root.session.uid = this.authenticationContext.externalSessionId
+
+root.severity_id = if this.debugContext.debugData.exists("risk") {match this.debugContext.debugData.risk {
+    this == null => 2
+    this.contains("HIGH") => 4
+    this.contains("MEDIUM") => 3
+    this.contains("LOW") => 2
+    _=> 99
+}} else {2}
+
+root.severity = if this.debugContext.debugData.exists("risk") {match this.debugContext.debugData.risk {
+    this == null => "Low"
+    this.contains("HIGH") => "High"
+    this.contains("MEDIUM") => "Medium"
+    this.contains("LOW") => "Low"
+    _=> this.debugContext.debugData.risk
+}} else {"Low"}
+#src_endpoint
+root.src_endpoint.domain = this.securityContext.domain
+root.src_endpoint.ip = this.client.ipAddress
+root.src_endpoint.os.name = match this.client.userAgent.os {
+     
+    this.contains("Windows") => "Windows"
+    this.contains("Linux") => "Linux"
+    this.contains("Ubuntu") => "Ubuntu"
+    this.contains("Mac") => "Mac"
+    _=> "Other"
+} 
+root.src_endpoint.os.type = this.client.userAgent.os
+root.src_endpoint.os.type_id = match this.client.userAgent.os {
+    this.contains("Windows") => 100
+    this.contains("Linux") => 200
+    this.contains("Ubuntu") => 200
+    this.contains("Mac") => 300
+    _=> 99
+}
+
+root.src_endpoint.uid = this.client.id
+root.src_endpoint.type = this.client.device
+root.src_endpoint.location.city = this.client.geographicalContext.city
+root.src_endpoint.location.lat = this.client.geographicalContext.geolocation.lat
+root.src_endpoint.location.long = this.client.geographicalContext.geolocation.lon
+root.src_endpoint.location.country = this.client.geographicalContext.country
+root.src_endpoint.location.isp = this.securityContext.isp
+root.src_endpoint.location.postal_code = this.client.geographicalContext.postalCode
+root.src_endpoint.owner.org.name = this.securityContext.asOrg
+root.src_endpoint.autonomous_system.number = this.securityContext.asNumber
+
+root.status_id = match {
+    this.eventType == "application.policy.sign_on.deny_access" && this.outcome.result == "SUCCESS" => 2
+    this.outcome.result == "SUCCESS" => 1
+    this.outcome.result == "FAILURE" => 2
+}
+root.status_detail = this.outcome.reason
+
+root.time = this.published.ts_unix_micro()
+root.time_dt = this.published
+#User
+root.user.name = this.actor.alternateId.split("@").index(0)
+root.user.full_name = this.actor.displayName
+root.user.email_addr = this.actor.alternateId
+root.user.type = match this.actor.type {
+    "User" => "User" 
+    "SystemPrincipal" => "Admin"
+    _=> "Other"
+}
+root.user.type_id = match this.actor.type {
+    "User" => 1 
+    "SystemPrincipal" => 2
+    _=> 99
+}
+root.user.uid = this.actor.id  
+
+root.unmapped = this.without(
+    "time",
+    "time.ts",
+    "outcome.reason",
+    "outcome.result",
+    "securityContext.asOrg",
+    "client.geographicalContext.postalCode",
+    "securityContext.isp",
+    "client.geographicalContext.country",
+    "client.geographicalContext.geolocation.lon",
+    "client.geographicalContext.geolocation.lat",
+    "client.geographicalContext.city",
+    "client.device",
+    "client.id",
+    "client.userAgent.os",
+    "client.ipAddress",
+    "securityContext.domain",
+    "debugContext.debugData.risk",
+    "authenticationContext.externalSessionId",
+    "eventType",
+    "version",
+    "displayMessage",
+    "uuid",
+    "client.userAgent.rawUserAgent",
+    "debugContext.debugData.url",
+    "debugContext.debugData.origin",
+    "debugContext.debugData.authnRequestId",
+    "debugContext.debugData.requestId",
+    "debugContext.debugData.signOnMode",
+    "actor.id",
+    "actor.type",
+    "actor.alternateId",
+    "actor.displayName",
+    "displayMessage"
+    )
+    
+observables = root.without("unmapped").with("actor.user.name", "src_endpoint.ip", "device.ip", "src_endpoint.location.country", "actor.user.name", "actor.user.email_addr").( item -> { 
+    "a": match {item.actor.user.exists("name") => {"name": "actor.user.name", "type": "User", "type_id": 4, "value": item.actor.user.name}},
+    "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}},
+    "c": match {item.src_endpoint.location.exists("country") => {"name": "src_endpoint.location.country", "type": "Country", "type_id": 14, "value": item.src_endpoint.location.country}},
+    "d": match {item.actor.user.exists("name") => {"name": "actor.user.name", "type": "User Name", "type_id": 4, "value": item.actor.user.name}},
+    "e": match {item.actor.user.exists("email_addr") => {"name": "actor.user.email_addr", "type": "Email Address", "type_id": 5, "value": item.actor.user.email_addr}},
+    }).values()
+    
+root.type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+root.type_name = root.class_name + ": " + root.activity_name
