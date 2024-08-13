@@ -1,0 +1,17 @@
+processor_resources:
+  - label: okta
+    switch:    
+      ## IAM
+      # Authentication
+      - check: |
+                this.eventType.contains("user.authentication") || 
+                this.eventType.contains("user.session") ||
+                this.eventType.contains("app.oauth2.as.authorize") ||
+                this.eventType == "application.policy.sign_on.deny_access" ||
+                this.eventType == "app.access_request.expire" ||
+                this.eventType == "app.generic.unauth_app_access_attempt" ||
+                this.eventType == "policy.evaluate_sign_on" ||
+                this.eventType == "system.push.send_factor_verify_push"
+        processors:
+          - mapping: meta transform_name = "okta_authentication"
+          - mapping: from "./blobl_mappings/okta/3_identity_&_access_management/v1.2.0/3002_authentication.blobl"

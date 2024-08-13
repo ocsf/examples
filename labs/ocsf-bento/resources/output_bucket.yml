@@ -1,0 +1,39 @@
+output_resources:
+  - label: output_bucket
+    switch:
+      cases:
+        - check: '@.exists("ocsf_bucket")'
+          output:
+            broker:
+              pattern: fan_out
+              outputs:
+                - aws_s3:
+                    bucket: "minio"
+                    path: ocsf-${!this.class_uid}-${!this.metadata.product.name}-${!this.class_name}-${!timestamp_unix_nano()}.json
+                    region: "us-east-1"
+                    endpoint: "http://:9000/ocsf"
+                    credentials:
+                      id: "admin"
+                      secret: "password"
+                
+                - opensearch:
+                    urls: [http://opensearch:9200] # No default (required)
+                    index: 'ocsf-${!this.class_uid}-${! meta("ocsf_bucket")}' # No default (required)
+                    action: "index" # No default (required)
+                    id: "" # No default (required)
+                    max_in_flight: 64
+                    batching:
+                      count: 1000
+                      byte_size: 0
+                      period: ""
+                      check: ""
+      
+        - output:       
+            aws_s3:
+              bucket: "minio"
+              path: ${!meta("ocsf_bucket")}-${!meta("vendor")}-${!this.metadata.uid}-${!timestamp_unix_nano()}.json
+              region: "us-east-1"
+              endpoint: "http://:9000/ocsf-error"
+              credentials:
+                id: "admin"
+                secret: "password"
