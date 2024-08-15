@@ -57,7 +57,7 @@ it to have a zero value, the distinction between missing and invalid
 is not significant because missing _is_ invalid for required types.
 
 (Note that OCSF's JSON encoding does not distinguish between `null`
-and missing values, since null is not a type in OCSF)
+and missing values, since null is not a type in OCSF.)
 
 ### Structured Types
 
@@ -111,30 +111,31 @@ For example:
 ```
 message FileActivity {
     enum ActionId {
-        UNKNOWN_ActionId = 0;  // The action was unknown. The <code>disposition_id</code>
-                               // attribute may still be set to a non-unknown value, for
-                               // example 'Count', 'Uncorrected', 'Isolated',
-                               // 'Quarantined' or 'Exonerated'.
-        ALLOWED_ActionId = 1;  // The activity was allowed. The
-                               // <code>disposition_id</code> attribute should be set to a
-                               // value that conforms to this action, for example
-                               // 'Allowed', 'Approved', 'Delayed', 'No Action', 'Count'
-                               // etc.
-        DENIED_ActionId  = 2;  // The attempted activity was denied. The
-                               // <code>disposition_id</code> attribute should be set to a
-                               // value that conforms to this action, for example
-                               // 'Blocked', 'Rejected', 'Quarantined', 'Isolated',
-                               // 'Dropped', 'Access Revoked, etc.
-        OTHER_ActionId   = 99; // The action was not mapped. See the <code>action</code>
-                               // attribute, which contains a data source specific value.
+        ACTION_ID_UNKNOWN = 0;  // The action was unknown. The <code>disposition_id</code>
+                                // attribute may still be set to a non-unknown value, for
+                                // example 'Count', 'Uncorrected', 'Isolated',
+                                // 'Quarantined' or 'Exonerated'.
+        ACTION_ID_ALLOWED = 1;  // The activity was allowed. The
+                                // <code>disposition_id</code> attribute should be set to
+                                // a value that conforms to this action, for example
+                                // 'Allowed', 'Approved', 'Delayed', 'No Action', 'Count'
+                                // etc.
+        ACTION_ID_DENIED  = 2;  // The attempted activity was denied. The
+                                // <code>disposition_id</code> attribute should be set to
+                                // a value that conforms to this action, for example
+                                // 'Blocked', 'Rejected', 'Quarantined', 'Isolated',
+                                // 'Dropped', 'Access Revoked, etc.
+        ACTION_ID_OTHER   = 99; // The action was not mapped. See the <code>action</code>
+                                // attribute, which contains a data source specific value.
     }
+
     enum ActivityId {
-        UNKNOWN_ActivityId        = 0; 
-        CREATE_ActivityId         = 1;  // A request to create a new file on a file
-                                        // system.
-        READ_ActivityId           = 2;  // A request to read data from a file on a file
-                                        // system.
-        ...
+        ACTIVITY_ID_UNKNOWN        = 0;
+        ACTIVITY_ID_CREATE         = 1;  // A request to create a new file on a file
+                                         // system.
+        ACTIVITY_ID_READ           = 2;  // A request to read data from a file on a file
+                                         // system.
+        ... etc ...
     }
     ...
     ActionId action_id = 3;
