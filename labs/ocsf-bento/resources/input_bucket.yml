@@ -1,0 +1,33 @@
+input_resources:
+    - label: input_bucket
+      broker:
+        copies: 1
+        inputs:
+          - aws_s3:
+              bucket: "minio"
+              #prefix: "AWS"
+              region: "us-east-1"
+              endpoint: "http://:9000/aws"
+              credentials:
+                id: "admin"
+                secret: "password"
+              delete_objects: true
+              scanner:
+                json_documents: {}
+            processors:
+                  - mapping: |
+                      root = this.Records
+                  - unarchive:
+                      format: json_array
+                     
+          - aws_s3:
+              bucket: "minio"
+              #prefix: "Okta"
+              region: "us-east-1"
+              endpoint: "http://:9000/okta"
+              credentials:
+                id: "admin"
+                secret: "password"
+              delete_objects: true
+              scanner:
+                json_documents: {}     

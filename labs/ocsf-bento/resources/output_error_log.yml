@@ -1,0 +1,16 @@
+processor_resources:
+  - label: output_error_log
+    catch:
+      - metric:
+          type: counter
+          name: failed_output
+          labels: 
+            transform: ${! meta("transform_name") }       
+      - log:
+          level: ERROR
+          message: "Output failed: "
+          fields_mapping: | 
+            root.reason = error()            
+            root.ocsf_bucket = meta("ocsf_bucket")               
+            root.transform_name = meta("transform_name")
+

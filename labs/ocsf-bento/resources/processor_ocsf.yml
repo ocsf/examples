@@ -1,0 +1,15 @@
+processor_resources:
+  - label: processor_ocsf
+    switch:
+      # Okta
+      - check: this.logsource == "Okta"
+        processors:
+          - resource: okta
+      
+      - check: this.logsource == "AWS"
+        processors:
+          - resource: aws_cloudtrail  
+
+      # drop unmatched logs
+      # - processors:
+      #     - mapping: root = deleted()
