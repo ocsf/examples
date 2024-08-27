@@ -165,7 +165,7 @@ pipeline:
             value: 400106
           - key: type_uid
             add_when: /action == "REJECT"
-            value: 400106
+            value: 400105
     - add_entries:
         entries:
           - key: type_name
