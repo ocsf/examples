@@ -10,10 +10,10 @@
     },
     "severity_id": 4,
     "severity": "High",
-    "status": "Other",
+    "status": "New",
     "status_code": "PASS",
     "status_detail": "ACM Certificate c5872ce2-4a85-4486-91bc-be28a01f9ad5 for *.example.com expires in 202 days.",
-    "status_id": 99,
+    "status_id": 1,
     "unmapped": {
         "check_type": "Data Protection",
         "related_url": "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html",
