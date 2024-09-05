@@ -15,7 +15,6 @@
     "status_detail": "ACM Certificate c5872ce2-4a85-4486-91bc-be28a01f9ad5 for *.example.com expires in 202 days.",
     "status_id": 1,
     "unmapped": {
-        "check_type": "Data Protection",
         "related_url": "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html",
         "categories": "",
         "depends_on": "",
@@ -84,7 +83,8 @@
         "desc": "Check if ACM Certificates are about to expire in specific days or less",
         "product_uid": "prowler",
         "title": "Check if ACM Certificates are about to expire in specific days or less",
-        "uid": "prowler-aws-acm_certificates_expiration_check-111122223333-eu-west-1-c5872ce2-4a85-4486-91bc-be28a01f9ad5"
+        "uid": "prowler-aws-acm_certificates_expiration_check-111122223333-eu-west-1-c5872ce2-4a85-4486-91bc-be28a01f9ad5",
+        "types": ["Data Protection"],
     },
     "resources": [
         {
