@@ -8,9 +8,9 @@
   - https://github.com/prowler-cloud/py-ocsf-models
 
 ## OCSF Version 1.2.0
- - `activity_id`: `1` (`Generate`)
+ - `activity_id`: `1` (`Create`)
  - `category_uid`: `2` `(Findings)`
- - `class_uid`: `2004` `(DetectionFinding)`
+ - `class_uid`: `2004` `(Detection Finding)`
  - `metadata.product.name`: `Prowler`
  - `metadata.product.vendor_name`: `Prowler`
 
