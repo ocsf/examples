@@ -1,143 +1,151 @@
 {
-    "metadata": {
-        "event_code": "acm_certificates_expiration_check",
-        "product": {
-            "name": "Prowler",
-            "vendor_name": "Prowler",
-            "version": "4.4.0"
-        },
-        "version": "1.2.0"
-    },
-    "severity_id": 4,
-    "severity": "High",
-    "status": "New",
-    "status_code": "PASS",
-    "status_detail": "ACM Certificate c5872ce2-4a85-4486-91bc-be28a01f9ad5 for *.example.com expires in 202 days.",
-    "status_id": 1,
-    "unmapped": {
-        "related_url": "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html",
-        "categories": "",
-        "depends_on": "",
-        "related_to": "",
-        "notes": "",
-        "compliance": {
-            "CISA": [
-                "your-data-2"
-            ],
-            "SOC2": [
-                "cc_6_7"
-            ],
-            "MITRE-ATTACK": [
-                "T1040"
-            ],
-            "GDPR": [
-                "article_32"
-            ],
-            "HIPAA": [
-                "164_308_a_4_ii_a",
-                "164_312_e_1"
-            ],
-            "AWS-Well-Architected-Framework-Security-Pillar": [
-                "SEC09-BP01"
-            ],
-            "NIST-800-171-Revision-2": [
-                "3_13_1",
-                "3_13_2",
-                "3_13_8",
-                "3_13_11"
-            ],
-            "NIST-800-53-Revision-4": [
-                "ac_4",
-                "ac_17_2",
-                "sc_12"
-            ],
-            "NIST-800-53-Revision-5": [
-                "sc_7_12",
-                "sc_7_16"
-            ],
-            "NIST-CSF-1.1": [
-                "ac_5",
-                "ds_2"
-            ],
-            "RBI-Cyber-Security-Framework": [
-                "annex_i_1_3"
-            ],
-            "FFIEC": [
-                "d3-pc-im-b-1"
-            ],
-            "FedRamp-Moderate-Revision-4": [
-                "ac-4",
-                "ac-17-2",
-                "sc-12"
-            ],
-            "FedRAMP-Low-Revision-4": [
-                "ac-17",
-                "sc-12"
-            ]
-        }
-    },
-    "activity_name": "Create",
-    "activity_id": 1,
-    "finding_info": {
-        "created_time": "2024-09-02T10:26:53.234148",
-        "desc": "Check if ACM Certificates are about to expire in specific days or less",
-        "product_uid": "prowler",
-        "title": "Check if ACM Certificates are about to expire in specific days or less",
-        "uid": "prowler-aws-acm_certificates_expiration_check-111122223333-eu-west-1-c5872ce2-4a85-4486-91bc-be28a01f9ad5",
-        "types": ["Data Protection"],
-    },
-    "resources": [
-        {
-            "cloud_partition": "aws",
-            "region": "eu-west-1",
-            "data": {
-                "details": "*.example.com"
-            },
-            "group": {
-                "name": "acm"
-            },
-            "labels": [
-                "name:acm-example-wildcard-com",
-                "project:example",
-                "environment:dev",
-                "terraform:true",
-                "terraform_state:example"
-            ],
-            "name": "c5872ce2-4a85-4486-91bc-be28a01f9ad5",
-            "type": "AwsCertificateManagerCertificate",
-            "uid": "arn:aws:acm:eu-west-1:111122223333:certificate/c5872ce2-4a85-4486-91bc-be28a01f9ad5"
-        }
-    ],
-    "category_name": "Findings",
-    "category_uid": 2,
-    "class_name": "DetectionFinding",
-    "class_uid": 2004,
-    "cloud": {
-        "account": {
-            "name": "example-aws-account",
-            "type": "AWS_Account",
-            "type_id": 10,
-            "uid": "111122223333",
-            "labels": [
-                "Test:test",
-                "Name:dev"
-            ]
-        },
-        "org": {
-            "name": "o-aaaa222212z",
-            "uid": "arn:aws:organizations::999988887777:organization/o-aaaa222212z"
-        },
-        "provider": "aws",
-        "region": "eu-west-1"
-    },
-    "event_time": "2024-09-02T10:26:53.234148",
-    "remediation": {
-        "desc": "Monitor certificate expiration and take automated action to renew, replace or remove. Having shorter TTL for any security artifact is a general recommendation, but requires additional automation in place. If not longer required delete certificate. Use AWS config using the managed rule: acm-certificate-expiration-check.",
-        "references": [
-            "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html"
-        ]
-    },
-    "risk_details": "Expired certificates can impact service availability.",
-    "type_uid": 200401,
-    "type_name": "Create"
+   "metadata":{
+      "event_code":"acm_certificates_expiration_check",
+      "product":{
+         "name":"Prowler",
+         "vendor_name":"Prowler",
+         "version":"4.4.0"
+      },
+      "version":"1.3.0",
+      "profiles":[
+         "cloud",
+         "datetime"
+      ]
+   },
+   "severity_id":4,
+   "severity":"High",
+   "status":"New",
+   "status_code":"PASS",
+   "status_detail":"ACM Certificate c5872ce2-4a85-4486-91bc-be28a01f9ad5 for *.example.com expires in 202 days.",
+   "status_id":1,
+   "unmapped":{
+      "related_url":"https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html",
+      "categories":"",
+      "depends_on":"",
+      "related_to":"",
+      "notes":"",
+      "compliance":{
+         "CISA":[
+            "your-data-2"
+         ],
+         "SOC2":[
+            "cc_6_7"
+         ],
+         "MITRE-ATTACK":[
+            "T1040"
+         ],
+         "GDPR":[
+            "article_32"
+         ],
+         "HIPAA":[
+            "164_308_a_4_ii_a",
+            "164_312_e_1"
+         ],
+         "AWS-Well-Architected-Framework-Security-Pillar":[
+            "SEC09-BP01"
+         ],
+         "NIST-800-171-Revision-2":[
+            "3_13_1",
+            "3_13_2",
+            "3_13_8",
+            "3_13_11"
+         ],
+         "NIST-800-53-Revision-4":[
+            "ac_4",
+            "ac_17_2",
+            "sc_12"
+         ],
+         "NIST-800-53-Revision-5":[
+            "sc_7_12",
+            "sc_7_16"
+         ],
+         "NIST-CSF-1.1":[
+            "ac_5",
+            "ds_2"
+         ],
+         "RBI-Cyber-Security-Framework":[
+            "annex_i_1_3"
+         ],
+         "FFIEC":[
+            "d3-pc-im-b-1"
+         ],
+         "FedRamp-Moderate-Revision-4":[
+            "ac-4",
+            "ac-17-2",
+            "sc-12"
+         ],
+         "FedRAMP-Low-Revision-4":[
+            "ac-17",
+            "sc-12"
+         ]
+      }
+   },
+   "activity_name":"Create",
+   "activity_id":1,
+   "finding_info":{
+      "created_time":1725605352,
+      "created_time_dt":"2024-09-06T06:49:12.234148",
+      "desc":"Check if ACM Certificates are about to expire in specific days or less",
+      "product_uid":"prowler",
+      "title":"Check if ACM Certificates are about to expire in specific days or less",
+      "uid":"prowler-aws-acm_certificates_expiration_check-111122223333-eu-west-1-c5872ce2-4a85-4486-91bc-be28a01f9ad5",
+      "types":[
+         "Data Protection"
+      ]
+   },
+   "resources":[
+      {
+         "cloud_partition":"aws",
+         "region":"eu-west-1",
+         "data":{
+            "details":"*.example.com"
+         },
+         "group":{
+            "name":"acm"
+         },
+         "labels":[
+            "name:acm-example-wildcard-com",
+            "project:example",
+            "environment:dev",
+            "terraform:true",
+            "terraform_state:example"
+         ],
+         "name":"c5872ce2-4a85-4486-91bc-be28a01f9ad5",
+         "type":"AwsCertificateManagerCertificate",
+         "uid":"arn:aws:acm:eu-west-1:111122223333:certificate/c5872ce2-4a85-4486-91bc-be28a01f9ad5"
+      }
+   ],
+   "category_name":"Findings",
+   "category_uid":2,
+   "class_name":"Detection Finding",
+   "class_uid":2004,
+   "cloud":{
+      "account":{
+         "name":"example-aws-account",
+         "type":"AWS Account",
+         "type_id":10,
+         "uid":"111122223333",
+         "labels":[
+            "Test:test",
+            "Name:dev"
+         ]
+      },
+      "org":{
+         "name":"o-aaaa222212z",
+         "uid":"arn:aws:organizations::999988887777:organization/o-aaaa222212z"
+      },
+      "provider":"aws",
+      "region":"eu-west-1"
+   },
+   "time":1725605352,
+   "time_dt":"2024-09-06T06:49:12.234148",
+   "remediation":{
+      "desc":"Monitor certificate expiration and take automated action to renew, replace or remove. Having shorter TTL for any security artifact is a general recommendation, but requires additional automation in place. If not longer required delete certificate. Use AWS config using the managed rule: acm-certificate-expiration-check.",
+      "references":[
+         "https://docs.aws.amazon.com/config/latest/developerguide/acm-certificate-expiration-check.html"
+      ]
+   },
+   "risk_details":"Expired certificates can impact service availability.",
+   "type_uid":200401,
+   "type_name":"Detection Finding: Create"
 }
