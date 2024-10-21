@@ -32,8 +32,8 @@
 |'query.type'                   |'qtype_name'     |
 |'query.class'                  |'qclass_name'    |
 |'rcode'                        |'rcode_name'     |
-|'rcode_id'                     |'rcode_name'     |
-|'answers.rdata'                 |'answers'       |
+|'rcode_id'                     |'rcode'          |
+|'answers.rdata'                |'answers'        |
 |'dst_endpoint.ip'              |'id.resp_h'      |
 |'dst_endpoint.port'            |'id.resp_p'      |
 |'connection_info.protocol_name'|'proto'          |
@@ -45,7 +45,6 @@
 |'answers.flag_ids.3`           |'RD'             | 
 |'answers.flag_ids.4`           |'RA'             | 
 |'answers.flag_ids.99`          |'Z'              |
-| ----------------------------- | --------------- |
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
@@ -66,4 +65,3 @@ Z (Reserved for future use): This field is reserved for future use. In current D
 | -------------------------- | ------------- |
 |'unmapped'                  |'rtt'          |
 |'unmapped'                  |'unmapped'     |
-| -------------------------- | ------------- |
