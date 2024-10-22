@@ -1,5 +1,5 @@
 # Event Dossier: Zeek ssl.log
-### Summary
+### Summary:
 - **Description**: Translates a Zeek ssl.log to OCSF. 
 - **Event References**:
   - https://schema.ocsf.io/1.3.0/classes/network_activity
