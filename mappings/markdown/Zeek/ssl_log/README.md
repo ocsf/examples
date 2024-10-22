@@ -40,11 +40,8 @@
 |'dst_endpoint.ip'               |'id.resp_h'        |
 |'dst_endpoint.port'             |'id.resp_p'        |
 |'network_activity.status_id':'1'|'established'      |
-|'network_connection_info.session.(history)' |'established ' && 'resumed' && 'ssl_history' |
 |'tls.alert'        |'last_alert' && 'sni_matches_cert'           |
 |'tls.cipher'                    |'cipher' && 'curve'|
-|'tls.certificate.fingerprints.value (client)'             |'client_cert_chain_fps'|
-|'tls.certificate.fingerprints.value (server)'             |'cert_chain_fps'|
 |'tls.certificate.is_self_signed'             |'validation_status'|
 |'tls.certificate.subject'       |'subject'          |
 |'tls.certificate.issuer'        |'issuer'           |
@@ -64,4 +61,7 @@
  - 
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
+|'network_connection_info.session.(history)' |'established ' && 'resumed' && 'ssl_history' |
+|'tls.certificate.fingerprints.value (client)'             |'client_cert_chain_fps'|
+|'tls.certificate.fingerprints.value (server)'             |'cert_chain_fps'|
 |'unmapped'                      |'next_protocol'    |
