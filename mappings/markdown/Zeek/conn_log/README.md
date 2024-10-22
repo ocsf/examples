@@ -25,20 +25,20 @@
 
 | OCSF                          | Raw           |
 | ----------------------------- | --------------|
-|'time'                         |'ts'           |
-|'uuid'                         |'uid'          |
-|'src_endpoint.port'            |'id.orig_p'    |
-|'dst_endpoint.ip'              |'id.resp_h'    |
-|'dst_endpoint.port'            |'id.resp_p'    |
-|'connection_info.protocol_name'|'proto'        |
-|'bytes_in'                     |'orig_bytes'   |
-|'packets_in'                   |'orig_pkts'    |
-|'orig_bytes.ip'                |'orig_ip_bytes'|
-|'bytes_out'                    |'resp_bytes'   |
-|'packets_out'                  |'resp_pkts'    |
-|'resp_bytes.ip'                |'resp_ip_bytes'|
-|'duration'                     |'duration'     |
-|'unmapped'                     |'conn_state'   |
+|`time`                         |`ts`           |
+|`uuid`                         |`uid`          |
+|`src_endpoint.port`            |`id.orig_p`    |
+|`dst_endpoint.ip`              |`id.resp_h`    |
+|`dst_endpoint.port`            |`id.resp_p`    |
+|`connection_info.protocol_name`|`proto`        |
+|`bytes_in`                     |`orig_bytes`   |
+|`packets_in`                   |`orig_pkts`    |
+|`orig_bytes.ip`                |`orig_ip_bytes`|
+|`bytes_out`                    |`resp_bytes`   |
+|`packets_out`                  |`resp_pkts`    |
+|`resp_bytes.ip`                |`resp_ip_bytes`|
+|`duration`                     |`duration`     |
+|`unmapped`                     |`conn_state`   |
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
@@ -50,6 +50,6 @@
  - 
 | OCSF                 | Raw             | Notes                       |
 | ---------------------| ----------------| ----------------------------|
-|'application_protocol'|'service'        |'propose new ocsf field name'|
-|'bytes_missed'        |'missed_bytes'   |'propose new ocsf field name'|
-|'connection_history'  |'history'        |'propose new ocsf field name'|
+|`application_protocol`|`service`        |`propose new ocsf field name`|
+|`bytes_missed`        |`missed_bytes`   |`propose new ocsf field name`|
+|`connection_history`  |`history`        |`propose new ocsf field name`|
