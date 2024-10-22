@@ -41,7 +41,7 @@
 |`app_name`                     |`service`      |
 |`connection_info.protocol_name`|`proto`        |
 |`duration`                     |`duration`     |
-|`network_endpoint.vlan_uid     |`vlan`         |
+|`network_endpoint.vlan_uid`    |`vlan`         |
 |`traffic.bytes_in`             |`resp_bytes`   |
 |`traffic.packets_in`           |`resp_pkts`    |
 |`traffic.bytes_out`            |`orig_bytes`   |
