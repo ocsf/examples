@@ -5,7 +5,8 @@
   - https://schema.ocsf.io/1.3.0/classes/network_activity
   - https://docs.zeek.org/en/master/logs/ssl.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/ssl/main.zeek.html#type-SSL::Info
-    
+
+
  ### OCSF Version: 1.3.0
  - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
@@ -23,10 +24,8 @@
  - `severity`: `Informational`
  - `severity_id`: `1`
 
- ### Mapping:
- - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
 
- - Any fields not present in an explicit mapping will be mapped to the unmapped object. 
+ ### Mapping:
 
 | OCSF                           | Raw               |
 | ------------------------------ | ----------------- |
@@ -49,12 +48,6 @@
 |`tls.ja3s_hash`                 |`ja3s`             |
 |`tls.sni`                       |`server_name`      |
 |`tls.version`                       |`version`          |
-
- ### Conditional Mapping:
- - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
-
-| OCSF                          | Raw               | Notes              |
-| ------------------------------| ------------------| -- ----------------|
 
 
  ### Proposed New OCSF attributes:
