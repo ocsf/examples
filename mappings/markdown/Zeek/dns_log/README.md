@@ -1,6 +1,6 @@
 # Event Dossier: Zeek dns.log
 ### Summary:
-- **Description**: Translates a Zeek DNS log to OCSF. 
+- **Description**: Translates a Zeek dns.log to OCSF. 
 - **Event References**:
   - https://schema.ocsf.io/1.3.0/classes/dns_activity
   - https://docs.zeek.org/en/master/logs/dns.html
