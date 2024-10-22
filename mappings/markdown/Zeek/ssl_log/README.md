@@ -31,21 +31,27 @@
 | OCSF                           | Raw               |
 | ------------------------------ | ----------------- |
 |'time'                          |'ts'               |
-|'uuid'                          |'uid'              |
+|'start_time'                    |'ts'               |
+|'metadata.loggers.logged_time'  |'_write_ts'        |
+|'metadata.loggers.name'         |'_system_name'     |
+|'metadata.uid'                  |'uid'              |
 |'src_endpoint.ip'               |'id.orig_h'        |
 |'src_endpoint.port'             |'id.orig_p'        |
 |'dst_endpoint.ip'               |'id.resp_h'        |
 |'dst_endpoint.port'             |'id.resp_p'        |
-|'version'                       |'version'          |
-|'cipher'                        |'cipher'           |
-|'certificate'                   |'curve'            |
-|'domain'                        |'server_name'      |
-|'certificate_chain'             |'cert_chain_fluids'|
-|'subject'                       |'subject'          |
-|'issuer'                        |'issuer'           |
-|'unmapped'                      |'next_protocol'    |
-|'unmapped'                      |'resumed'          |
 |'network_activity.status_id':'1'|'established'      |
+|'network_connection_info.session.(history)' |'established ' && 'resumed' && 'ssl_history' |
+|'tls.alert'        |'last_alert' && 'sni_matches_cert'           |
+|'tls.cipher'                    |'cipher' && 'curve'|
+|'tls.certificate.fingerprints.value (client)'             |'client_cert_chain_fps'|
+|'tls.certificate.fingerprints.value (server)'             |'cert_chain_fps'|
+|'tls.certificate.is_self_signed'             |'validation_status'|
+|'tls.certificate.subject'       |'subject'          |
+|'tls.certificate.issuer'        |'issuer'           |
+|'tls.ja3_hash'                  |'ja3'              |
+|'tls.ja3s_hash'                 |'ja3s'             |
+|'tls.sni'                       |'server_name'      |
+|'tls.version'                       |'version'          |
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
@@ -59,3 +65,5 @@
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
 |'client_certificate_chain'|'client_cert_chain_fluids'|
+|'unmapped'                      |'next_protocol'    |
+|'unmapped'                      |'resumed'          |
