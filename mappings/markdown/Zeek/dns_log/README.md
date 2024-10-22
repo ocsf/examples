@@ -18,7 +18,7 @@
  - `metadata.product.cpe_name`: `cpe:2.3:a:zeek:zeek`
  - `metadata.product.feature.name`: `dns.log`
  - `metadata.product.name`: `Zeek`
- - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/ssh.html`
+ - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/dns.html`
  - `metadata.product.vendor_name`: `Zeek`
  - `severity`: `Informational`
  - `severity_id`: `1`
