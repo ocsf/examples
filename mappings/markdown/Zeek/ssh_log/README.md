@@ -23,9 +23,9 @@
  - `severity`: `Informational`
  - `severity_id`: `1`
  - `dst_endpoint.agent_list.type`: `Remote Access`
- - `dst_endpoint.agent_list.type_id': '9'
+ - `dst_endpoint.agent_list.type_id`: `9`
  - `src_endpoint.agent_list.type`: `Remote Access`
- - `src_endpoint.agent_list.type_id': '9'
+ - `src_endpoint.agent_list.type_id`: `9`
 
  ### Mapping:
  - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
@@ -34,7 +34,7 @@
 
 | OCSF                           | Raw               |
 | ------------------------------ | ----------------- |
-|'time'                          |'ts'               |
+|`time`                          |`ts`               |
 |'start_time'                    |'ts'               |
 |'metadata.loggers.logged_time'  |'_write_ts'        |
 |'metadata.loggers.name'         |'_system_name'     |
