@@ -64,6 +64,4 @@
  - 
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
-|'client_certificate_chain'|'client_cert_chain_fluids'|
 |'unmapped'                      |'next_protocol'    |
-|'unmapped'                      |'resumed'          |
