@@ -2,17 +2,23 @@
 ### 
 - **Description**: Translates a Zeek ssl.log to OCSF. 
 - **Event References**:
+  - https://schema.ocsf.io/1.3.0/classes/network_activity
   - https://docs.zeek.org/en/master/logs/ssl.html
-  - https://schema.ocsf.io/1.0.0-rc.3/classes/network_activity
- 
- ### OCSF Version: 1.0.0-rc.3
- - `category_uid`: `4`
+  - https://docs.zeek.org/en/master/scripts/base/protocols/ssl/main.zeek.html#type-SSL::Info
+    
+ ### OCSF Version: 1.3.0
+ - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
- - `class_uid`: `4001`
+ - `category_uid`: `4`
  - `class_name`: `Network Activity`
- - `metadata.profiles`: `[security_control]`
- - `metadata.product.name`: `Zeek`
+ - `class_uid`: `4001`
+ - `metadata.log_name`: `ssl.log`
+ - `metadata.loggers.log_provider`: `Zeek`
+ - `metadata.loggers.product.name=`: `Zeek`
+ - `metadata.product.cpe_name`: `cpe:2.3:a:zeek:zeek`
  - `metadata.product.feature.name`: `ssl.log`
+ - `metadata.product.name`: `Zeek`
+ - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/ssl.html`
  - `metadata.product.vendor_name`: `Zeek`
  - `severity`: `Informational`
  - `severity_id`: `1`
