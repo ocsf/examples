@@ -1,12 +1,12 @@
-# Event Dossier: Zeek http.log
-### 
+# Event Dossier: Zeek smtp.log
+### Summary:
 - **Description**: Translates a Zeek smtp.log to OCSF. 
 - **Event References**:
   - https://schema.ocsf.io/1.3.0/classes/email_activity
   - https://docs.zeek.org/en/master/logs/smtp.html
-  - https://docs.zeek.org/en/master/scripts/base/protocols/smtp/main.zeek.html#type-smtp::Info
+  - https://docs.zeek.org/en/master/scripts/base/protocols/smtp/main.zeek.html#type-SMTP::Info
     
- ### OCSF Version: 1.3.0
+ ### Static mapping: OCSF Version 1.3.0
  - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
  - `category_uid`: `4`
@@ -48,7 +48,7 @@
 |`smtp_hello`                    |`helo`             |
 |`status_detail`                 |`last_reply`       |
 
- ### Unmapped fields:
+ ### Unmapped (proposed):
  
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
