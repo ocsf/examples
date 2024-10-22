@@ -30,33 +30,32 @@
 
 | OCSF                          | Raw             |
 | ----------------------------- | --------------- |
-|'time'                         |'ts'             |
-|'start_time'                   |'ts'             |
-|'metadata.loggers.logged_time' |'_write_ts'      |
-|'metadata.loggers.name'        |'_system_name'   |
-|'metadata.uid'                 |'uid'            |
-|'src_endpoint.ip'              |'id.orig_h'      |
-|'src_endpoint.port'            |'id.orig_p'      |
-|'dst_endpoint.ip'              |'id.resp_h'      |
-|'dst_endpoint.port'            |'id.resp_p'      |
-|'connection_info.protocol_name'|'proto'          |
-|'query.hostname'               |'query'          |
-|'query.type'                   |'qtype_name'     |
-|'query.class'                  |'qclass_name'    |
-|'rcode'                        |'rcode_name'     |
-|'rcode_id'                     |'rcode'          |
-|'response_time'                |'rtt'            |
-|'activity_id':'4'              |'rejected'       |
-|'answers.rdata'                |'answers'        |
-|'answers.ttl'                  |'TTLs'           |
-|'answers.flag_ids.1`           |'AA'             | 
-|'answers.flag_ids.2`           |'TC'             | 
-|'answers.flag_ids.3`           |'RD'             | 
-|'answers.flag_ids.4`           |'RA'             | 
-|'answers.flag_ids.99`          |'Z'              |
-|'answers.packet_uid'           |'trans_id'       |
-|'query.packet_uid`             |'trans_id'       |
-
+|`time`                         |`ts`             |
+|`start_time`                   |`ts`             |
+|`metadata.loggers.logged_time` |`_write_ts`      |
+|`metadata.loggers.name`        |`_system_name`   |
+|`metadata.uid`                 |`uid`            |
+|`src_endpoint.ip`              |`id.orig_h`      |
+|`src_endpoint.port`            |`id.orig_p`      |
+|`dst_endpoint.ip`              |`id.resp_h`      |
+|`dst_endpoint.port`            |`id.resp_p`      |
+|`connection_info.protocol_name`|`proto`          |
+|`query.hostname`               |`query`          |
+|`query.type`                   |`qtype_name`     |
+|`query.class`                  |`qclass_name`    |
+|`rcode`                        |`rcode_name`     |
+|`rcode_id`                     |`rcode`          |
+|`response_time`                |`rtt`            |
+|`activity_id`:`4`              |`rejected`       |
+|`answers.rdata`                |`answers`        |
+|`answers.ttl`                  |`TTLs`           |
+|`answers.flag_ids.1`           |`AA`             | 
+|`answers.flag_ids.2`           |`TC`             | 
+|`answers.flag_ids.3`           |`RD`             | 
+|`answers.flag_ids.4`           |`RA`             | 
+|`answers.flag_ids.99`          |`Z`              |
+|`answers.packet_uid`           |`trans_id`       |
+|`query.packet_uid`             |`trans_id`       |
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
@@ -75,9 +74,9 @@ Z (Reserved for future use): This field is reserved for future use. In current D
  ### Unmapped:
 | OCSF                       | Raw                       |
 | -------------------------- | ------------------------- |
-|'unmapped'                  |'icann_host_subdomain'     |
-|'unmapped'                  |'icann_domain'             |
-|'unmapped'                  |'icann_tld'                |
-|'unmapped'                  |'is_trusted_domain'        |
-|'unmapped'                  |'qclass'                   |
-|'unmapped'                  |'qtype'                    |
+|`unmapped`                  |`icann_host_subdomain`     |
+|`unmapped`                  |`icann_domain`             |
+|`unmapped`                  |`icann_tld`                |
+|`unmapped`                  |`is_trusted_domain`        |
+|`unmapped`                  |`qclass`                   |
+|`unmapped`                  |`qtype`                    |
