@@ -1,24 +1,24 @@
 # Event Dossier: Zeek http.log
 ### 
-- **Description**: Translates a Zeek http.log to OCSF. 
+- **Description**: Translates a Zeek smtp.log to OCSF. 
 - **Event References**:
-  - https://schema.ocsf.io/1.3.0/classes/http_activity
-  - https://docs.zeek.org/en/master/logs/http.html
-  - https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html#type-http::Info
+  - https://schema.ocsf.io/1.3.0/classes/email_activity
+  - https://docs.zeek.org/en/master/logs/smtp.html
+  - https://docs.zeek.org/en/master/scripts/base/protocols/smtp/main.zeek.html#type-smtp::Info
     
  ### OCSF Version: 1.3.0
  - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
  - `category_uid`: `4`
- - `class_name`: `HTTP Activity`
- - `class_uid`: `4002`
- - `metadata.log_name`: `http.log`
+ - `class_name`: `SMTP Activity`
+ - `class_uid`: `4009`
+ - `metadata.log_name`: `smtp.log`
  - `metadata.loggers.log_provider`: `Zeek`
  - `metadata.loggers.product.name=`: `Zeek`
  - `metadata.product.cpe_name`: `cpe:2.3:a:zeek:zeek`
- - `metadata.product.feature.name`: `rdp.log`
+ - `metadata.product.feature.name`: `smtp.log`
  - `metadata.product.name`: `Zeek`
- - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/http.html`
+ - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/smtp.html`
  - `metadata.product.vendor_name`: `Zeek`
  - `severity`: `Informational`
  - `severity_id`: `1`
