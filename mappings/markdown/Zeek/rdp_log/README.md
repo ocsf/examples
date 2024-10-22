@@ -1,12 +1,12 @@
 # Event Dossier: Zeek rdp.log
-### 
+### Summary:
 - **Description**: Translates a Zeek rdp.log to OCSF. 
 - **Event References**:
   - https://schema.ocsf.io/1.3.0/classes/rdp_activity
   - https://docs.zeek.org/en/master/logs/rdp.html
-  - https://docs.zeek.org/en/master/scripts/base/protocols/rdp/main.zeek.html#type-rdp::Info
+  - https://docs.zeek.org/en/master/scripts/base/protocols/rdp/main.zeek.html#type-RDP::Info
     
- ### OCSF Version: 1.3.0
+ ### Static mapping: OCSF Version: 1.3.0
  - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
  - `category_uid`: `4`
@@ -54,7 +54,7 @@
 |`remote_display.physical_height`|`desktop_height`     |
 |`remote_display.physical_width` |`desktop_width`      |
 
- ### Unmapped fields:
+ ### Unmapped:
  
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
