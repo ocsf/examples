@@ -33,11 +33,11 @@
 |`src_endpoint.ip`              |`id.orig_h`    |
 |`src_endpoint.port`            |`id.orig_p`    |
 |`src_endpoint.location.country`|`orig_cc`      |
-|`src_endpoint.mac`             |`orig_l2_addr  |
+|`src_endpoint.mac`             |`orig_l2_addr` |
 |`dst_endpoint.ip`              |`id.resp_h`    |
 |`dst_endpoint.port`            |`id.resp_p`    |
 |`dst_endpoint.location.country`|`resp_cc`      |
-|`dst_endpoint.mac`             |`resp_l2_addr  |
+|`dst_endpoint.mac`             |`resp_l2_addr` |
 |`app_name`                     |`service`      |
 |`connection_info.protocol_name`|`proto`        |
 |`duration`                     |`duration`     |
@@ -58,16 +58,16 @@
 |`(bytes_missed)`        |`missed_bytes` |
 |`(connection_info.history)`  |`history`      |
 |`(connection_info.state)`    |`conn_state`   |
-|`unmapped`                   |`app`           |
-|`unmapped`                   |`community_id`   |
+|`unmapped`                   |`app`          |
+|`unmapped`                   |`community_id` |
 |`unmapped`                   |`corelight_shunted`   |
-|`unmapped`                   |`pcr`   |
+|`unmapped`                   |`pcr`          |
 |`unmapped`                   |`spcap.rule`   |
-|`unmapped`                   |`spcap.trigger`   |
-|`unmapped`                   |`spcap.url`   |
-|`unmapped`                   |`suri_ids`   |
-|`unmapped`                   |`tunnel_parents`   |
+|`unmapped`                   |`spcap.trigger`|
+|`unmapped`                   |`spcap.url`    |
+|`unmapped`                   |`suri_ids`     |
+|`unmapped`                   |`tunnel_parents`|
 |`unmapped`                   |`local_orig`   |
 |`unmapped`                   |`local_resp`   |
-|`unmapped`                   |`orig_ip_bytes`   |
-|`unmapped`                   |`resp_ip_bytes`   |
+|`unmapped`                   |`orig_ip_bytes`|
+|`unmapped`                   |`resp_ip_bytes`|
