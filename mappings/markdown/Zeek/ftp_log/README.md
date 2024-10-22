@@ -1,6 +1,6 @@
 # Event Dossier: Zeek ftp.log
 ### Summary:
-- **Description**: Translates a Zeek FTP log to OCSF. 
+- **Description**: Translates a Zeek ftp.log to OCSF. 
 - **Event References**:
   - https://schema.ocsf.io/1.3.0/classes/ftp_activity
   - https://docs.zeek.org/en/master/logs/ftp.html
