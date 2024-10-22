@@ -35,29 +35,29 @@
 | OCSF                           | Raw               |
 | ------------------------------ | ----------------- |
 |`time`                          |`ts`               |
-|'start_time'                    |'ts'               |
-|'metadata.loggers.logged_time'  |'_write_ts'        |
-|'metadata.loggers.name'         |'_system_name'     |
-|'metadata.uid'                  |'uid'              |
-|'src_endpoint.ip'               |'id.orig_h'        |
-|'src_endpoint.port'             |'id.orig_p'        |
-|'src_endpoint.agent_list.name'  |'client'           |   
-|'src_endpoint.location.city'    |'remote_location.city'        |
-|'src_endpoint.location.country' |'remote_location.country_code'|
-|'src_endpoint.location.lat'     |'remote_location.latitude'    |
-|'src_endpoint.location.long'    |'remote_location.longitude'   | 
-|'src_endpoint.location.region'  |'remote_location.region'      |
-|'dst_endpoint.ip'               |'id.resp_h'        |
-|'dst_endpoint.port'             |'id.resp_p'        |
-|'dst_endpoint.agent_list.name'  |'server'           |
-|'client_hassh.algorithm'        |'hasshAlgorithms'  |
-|'client_hassh.fingerprint'      |'hassh'            |
-|'server_hassh.algorithm'        |'hasshServerAlgorithms'    |
-|'server_hassh.fingerprint'      |'hasshServer'      |
-|'count'                         |'auth_attempts'    |
-|'network_activity.connection_info.direction' |'direction' |
-|'protocol_ver'                  |'version'          |
-|'activity_id:4'                 |'auth_success'     |
+|`start_time`                    |`ts`               |
+|`metadata.loggers.logged_time`  |`_write_ts`        |
+|`metadata.loggers.name`         |`_system_name`     |
+|`metadata.uid`                  |`uid`              |
+|`src_endpoint.ip`               |`id.orig_h`        |
+|`src_endpoint.port`             |`id.orig_p`        |
+|`src_endpoint.agent_list.name`  |`client`           |   
+|`src_endpoint.location.city`    |`remote_location.city`        |
+|`src_endpoint.location.country` |`remote_location.country_code`|
+|`src_endpoint.location.lat`     |`remote_location.latitude`    |
+|`src_endpoint.location.long`    |`remote_location.longitude`   | 
+|`src_endpoint.location.region`  |`remote_location.region`      |
+|`dst_endpoint.ip`               |`id.resp_h`        |
+|`dst_endpoint.port`             |`id.resp_p`        |
+|`dst_endpoint.agent_list.name`  |`server`           |
+|`client_hassh.algorithm`        |`hasshAlgorithms`  |
+|`client_hassh.fingerprint`      |`hassh`            |
+|`server_hassh.algorithm`        |`hasshServerAlgorithms`    |
+|`server_hassh.fingerprint`      |`hasshServer`      |
+|`count`                         |`auth_attempts`    |
+|`network_activity.connection_info.direction` |`direction` |
+|`protocol_ver`                  |`version`          |
+|`activity_id:4`                 |`auth_success`     |
 
  ### Conditional Mapping:
  - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
@@ -70,13 +70,13 @@
  - 
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
-|'unmapped'                      |'inferences'    |
-|'unmapped'                      |'hasshVersion'    |
-|'unmapped'                      |'cipher_alg'    |
-|'unmapped'                      |'compression_alg'    |
-|'unmapped'                      |'host_key'    |
-|'unmapped'                      |'host_key_alg'    |
-|'unmapped'                      |'kex_alg'    |
-|'unmapped'                      |'mac_alg'    |
-|'unmapped'                      |'cshka'    |
-|'unmapped'                      |'sshka'    |
+|`unmapped`                      |`inferences`    |
+|`unmapped`                      |`hasshVersion`    |
+|`unmapped`                      |`cipher_alg`    |
+|`unmapped`                      |`compression_alg`    |
+|`unmapped`                      |`host_key`    |
+|`unmapped`                      |`host_key_alg`    |
+|`unmapped`                      |`kex_alg`    |
+|`unmapped`                      |`mac_alg`    |
+|`unmapped`                      |`cshka`    |
+|`unmapped`                      |`sshka`    |
