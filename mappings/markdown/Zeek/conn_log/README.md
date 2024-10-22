@@ -24,6 +24,7 @@
 | ----------------------------- | --------------|
 |`time`                         |`ts`           |
 |`uuid`                         |`uid`          |
+|`src_endpoint.ip`              |`id.orig_h`    |
 |`src_endpoint.port`            |`id.orig_p`    |
 |`dst_endpoint.ip`              |`id.resp_h`    |
 |`dst_endpoint.port`            |`id.resp_p`    |
