@@ -40,8 +40,8 @@
 
  ### Proposed New OCSF attributes:
 
-| OCSF                 | Raw             | Notes                       |
-| ---------------------| ----------------| ----------------------------|
-|`application_protocol`|`service`        |propose new ocsf field name|
-|`bytes_missed`        |`missed_bytes`   |propose new ocsf field name|
-|`connection_history`  |`history`        |propose new ocsf field name|
+| OCSF                 | Raw             |
+| ---------------------| ----------------| 
+|`application_protocol`|`service`        |
+|`bytes_missed`        |`missed_bytes`   |
+|`connection_history`  |`history`        |
