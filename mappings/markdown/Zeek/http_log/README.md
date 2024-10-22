@@ -64,12 +64,12 @@
  
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
-| `unmapped`               | `trans_depth`            |
-| `unmapped`               | `if_none_match`          |
-| `unmapped`               | `if_modified_since`      |
 | `file.name (src)`        | `orig_filenames`         |
 | `file.name (dst)`        | `resp_filenames`         |
 | `file.mime_type (src)`   | `orig_mime_types`        |
 | `file.mime_type (dst)`   | `resp_mime_types`        |
 | `file.uid (src)`         | `orig_fuids`             |
 | `file.uid (dst)`         | `resp_fuids`             |
+| `unmapped`               | `trans_depth`            |
+| `unmapped`               | `if_none_match`          |
+| `unmapped`               | `if_modified_since`      |
