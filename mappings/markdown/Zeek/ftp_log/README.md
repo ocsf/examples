@@ -1,12 +1,12 @@
 # Event Dossier: Zeek ftp.log
-### NOERROR Query Results
+### Summary:
 - **Description**: Translates a Zeek FTP log to OCSF. 
 - **Event References**:
   - https://schema.ocsf.io/1.3.0/classes/ftp_activity
   - https://docs.zeek.org/en/master/logs/ftp.html
   - https://docs.zeek.org/en/current/scripts/base/protocols/ftp/main.zeek.html
     
- ### OCSF Version: 1.3.0
+ ### Static mapping: OCSF Version 1.3.0
  - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
  - `category_uid`: `4`
