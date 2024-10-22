@@ -24,9 +24,6 @@
  - `severity_id`: `1`
 
  ### Mapping:
- - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
-
- - Any field not present in an explicit mapping will be moved to the unmapped object.
 
 | OCSF                          | Raw             |
 | ----------------------------- | --------------- |
@@ -57,8 +54,6 @@
 |`answers.packet_uid`           |`trans_id`       |
 |`query.packet_uid`             |`trans_id`       |
 
- ### Conditional Mapping:
- - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
 
 ### Notes regarding DNS Flags:
 AA (Authoritative Answer): This flag indicates if the DNS server believes the response is from an authoritative source for the specific domain. If "AA" is set to "true", this would indicate that the response is coming from a server that has authority over the queried domain. In your case, it's set to "false", which means the server doesn't claim authority over the queried domain.
