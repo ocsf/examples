@@ -58,7 +58,7 @@
 
 
  ### Proposed New OCSF attributes:
- - 
+
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
 |`network_connection_info.session.(history)` |`established ` && `resumed` && `ssl_history` |
