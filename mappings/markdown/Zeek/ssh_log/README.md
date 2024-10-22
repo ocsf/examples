@@ -1,12 +1,12 @@
 # Event Dossier: Zeek ssh.log
-### 
+### Summary:
 - **Description**: Translates a Zeek ssh.log to OCSF. 
 - **Event References**:
   - https://schema.ocsf.io/1.3.0/classes/ssh_activity
   - https://docs.zeek.org/en/master/logs/ssh.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/ssh/main.zeek.html#type-SSH::Info
     
- ### OCSF Version: 1.3.0
+ ### Static mapping: OCSF Version 1.3.0
  - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
  - `category_uid`: `4`
@@ -57,7 +57,7 @@
 |`activity_id:4`                 |`auth_success`     |
 
 
- ### Proposed New OCSF attributes:
+ ### Unmapped (proposed):
  
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
