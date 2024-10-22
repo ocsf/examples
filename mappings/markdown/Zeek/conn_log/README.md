@@ -19,9 +19,6 @@
  - `severity_id`: `1`
 
  ### Mapping:
- - This does not reflect any transformations or evaluations of the data. Some data evaluation and transformation will be necessary for a correct representation in OCSF that matches all requirements.
-
- - Any fields not present in an explicit mapping will be mapped to the unmapped object. 
 
 | OCSF                          | Raw           |
 | ----------------------------- | --------------|
@@ -40,14 +37,9 @@
 |`duration`                     |`duration`     |
 |`unmapped`                     |`conn_state`   |
 
- ### Conditional Mapping:
- - Any fields described within the conditional mappings are subject to dynamic mappings contingent on a conditional evaluation of source data. Fields which fail to meet a particular conditional are assigned a default value from the OCSF schema description.
-| OCSF                 | Raw             | Notes                       |
-| ---------------------| ----------------| ----------------------------|
-
 
  ### Proposed New OCSF attributes:
- - 
+
 | OCSF                 | Raw             | Notes                       |
 | ---------------------| ----------------| ----------------------------|
 |`application_protocol`|`service`        |propose new ocsf field name|
