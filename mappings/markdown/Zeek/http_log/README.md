@@ -1,12 +1,12 @@
 # Event Dossier: Zeek http.log
-### 
+### Summary:
 - **Description**: Translates a Zeek http.log to OCSF. 
 - **Event References**:
   - https://schema.ocsf.io/1.3.0/classes/http_activity
   - https://docs.zeek.org/en/master/logs/http.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html#type-HTTP::Info
     
- ### OCSF Version: 1.3.0
+ ### Static mapping: OCSF Version 1.3.0
  - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
  - `category_uid`: `4`
@@ -60,7 +60,7 @@
 |`observables.type_id:21`        |`username`         |
 
 
- ### Unmapped fields:
+ ### Unmapped (proposed):
  
 | OCSF                     | Raw                      |
 | -------------------------| -------------------------|
