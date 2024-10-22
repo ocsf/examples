@@ -42,6 +42,7 @@
 |`src_endpoint.agent_list.name`  |`client_build`     |
 |`src_endpoint.agent_list.version`|`client_dig_product_id`|   
 |`dst_endpoint.ip`               |`id.resp_h`        |
+|`dst_endpoint.port`             |`id.resp_p`        |
 |`identifier_cookie`             |`cookie`           |
 |`protocol_ver`                  |`security_protocol`|
 |`status_detail`                 |`result` && `encryption_level`|
