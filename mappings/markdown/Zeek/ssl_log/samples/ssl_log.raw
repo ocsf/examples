@@ -1,24 +1,35 @@
-{
-  "ts": 1598377391.921726,
-  "uid": "CsukF91Bx9mrqdEaH9",
-  "id.orig_h": "192.168.4.49",
-  "id.orig_p": 56718,
-  "id.resp_h": "13.32.202.10",
-  "id.resp_p": 443,
-  "version": "TLSv12",
-  "cipher": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
-  "curve": "secp256r1",
-  "server_name": "www.taosecurity.com",
-  "resumed": false,
-  "next_protocol": "h2",
-  "established": true,
-  "cert_chain_fuids": [
-    "F2XEvj1CahhdhtfvT4",
-    "FZ7ygD3ERPfEVVohG9",
-    "F7vklpOKI4yX9wmvh",
-    "FAnbnR32nIIr2j9XV"
-  ],
-  "client_cert_chain_fuids": [],
-  "subject": "CN=www.taosecurity.com",
-  "issuer": "CN=Amazon,OU=Server CA 1B,O=Amazon,C=US"
+{ 
+   _path: ssl
+   _system_name: sensor.cyberlab-20241015a.training.corelight.io
+   _write_ts: 2024-10-16T04:33:42.053783Z
+   cert_chain_fps: [ 
+     d1bc0966a69308872da997474aff6197476ce7ffb6911dbef6a81f8168c1e4d6
+     bea7ff8049472b1bd14117c085a0db4ad6a5dbac52334c243313d8a528ac58a8
+   ]
+   cipher: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+   client_cert_chain_fps: [ 
+     7b96d5a2dcbf6c0d35e31aa3fdefd150f02eb0b17bbf6563b9ce17b78dbbd497
+     0ac0d2c0906872cc4dbf50153788a5a3758ebaaca83481b80b545ff0bde62c0a
+     c86b9c79c08d0d370560333346215251594bb17dd3a7fa29f34334fa1708bead
+   ]
+   curve: secp256r1
+   established: true
+   id.orig_h: 192.168.1.254
+   id.orig_p: 54060
+   id.resp_h: 52.21.3.59
+   id.resp_p: 443
+   issuer: emailAddress=info@corelight.com,CN=Corelight Service CA,O=Corelight\, Inc.,C=US
+   ja3: e0fe397a5edfba9a6facc7c7b341f4eb
+   ja3s: 536a35adea9e8b31439428601285e9b4
+   last_alert: certificate_unknown
+   next_protocol: h2
+   resumed: false
+   server_name: release.api.corelight.io
+   sni_matches_cert: true
+   ssl_history: CsxkrnXGYIti
+   subject: emailAddress=info@corelight.com,CN=release.api.svc.corelight.io,O=Corelight\, Inc.,C=US
+   ts: 2024-10-16T04:33:41.908349Z
+   uid: CyslCc4IfjONaEZ6G6
+   validation_status: unable to get local issuer certificate
+   version: TLSv12
 }
