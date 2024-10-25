@@ -25,7 +25,7 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 
 | OCSF                       | Raw             |
 | -------------------------- | ----------------|
-|`actor.user.account_uid`|`userIdentity.accountId`|
+|`actor.user.account.uid`|`userIdentity.accountId`|
 |`actor.user.credential_uid`|`userIdentity.accessKeyId`|
 |`actor.user.name`|`userIdentity.userName`|
 |`actor.user.type`|`userIdentity.type`|
