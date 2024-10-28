@@ -37,7 +37,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`metadata.event_code`|`eventType`|
 |`metadata.product.version`|`version`|
 |`metadata.uid`|`uuid`|
-|`activity_name`|`eventType`|
 |`time`|`published`|
 |`http_request.uid`|`debugContext.debugData.requestId`|
 |`http_request.url.path`|`debugContext.debugData.url`|
@@ -63,5 +62,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`device.type/device.type_id`|`device.os_platform`|
 |`status_id/status`|`outcome.result`|
 |`entity.type/entity.type_id`|`target.type`|
+|`activity_name/activity_id`|`eventType/displayMessage`|
 
 

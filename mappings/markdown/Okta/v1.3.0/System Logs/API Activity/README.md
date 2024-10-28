@@ -34,7 +34,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`metadata.event_code/api.operation`|`eventType`|
 |`metadata.product.version`|`version`|
 |`metadata.uid`|`uuid`|
-|`activity_name`|`eventType`|
 |`time`|`published`|
 |`http_request.uid`|`debugContext.debugData.requestId`|
 |`http_request.user_agent`|`client.userAgent.rawUserAgent`|
@@ -58,5 +57,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`src_endpoint.os.name/src_endpoint.os.type/src_endpoint.os.type_id`|`client.userAgent.os`|
 |`device.type/device.type_id`|`device.os_platform`|
 |`status_id/status`|`outcome.result`|
+|`activity_name/activity_id`|`eventType/displayMessage`|
 
 
