@@ -36,7 +36,6 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`metadata.event_code`|`eventType`|
 |`metadata.product.version`|`version`|
 |`metadata.uid`|`uuid`|
-|`activity_name`|`eventType`|
 |`time`|`published`|
 |`http_request.uid`|`debugContext.debugData.requestId`|
 |`http_request.user_agent`|`client.userAgent.rawUserAgent`|
@@ -65,3 +64,4 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`actor.user.name/user.name`|`actor.displayName`|
 |`actor.user.email_addr/user.email_addr`|`actor.alternateId`|
 |`actor.user.uid/user.uid`|`actor.id`|
+|`activity_name/activity_id`|`eventType/displayMessage`|
