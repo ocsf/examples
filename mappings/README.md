@@ -23,6 +23,11 @@
 #### Zeek
 * conn_log
 * dns_log
+* ftp_log
+* http_log
+* rdp_log
+* smtp_log
+* ssh_log
 * ssl_log
 
 #### SiLK (CERT/NetSA at CMU)
