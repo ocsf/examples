@@ -1,0 +1,88 @@
+{
+   _path: smtp
+   _system_name: sensor
+   _write_ts: 2024-10-16T01:45:21.725898Z
+   date: Mon, 20 Apr 2020 23:53:46 +0300
+   domains: [
+     cimfl.com
+     www.w3.org
+     www.dinkumdunnies.com.au
+     gnxpublishers.ca
+     www.beenleighinterior.com.au
+     ns-hd.co.jp
+     schemas.microsoft.com
+   ]
+   from: info <richq@resultslifecoaching.com.au>
+   fuids: [
+     FiXeGk2NgUY1a8pbGd
+     FGK0ZMKFkbaCdD1Y6
+   ]
+   helo: localhost
+   id.orig_h: 10.4.20.103
+   id.orig_p: 49817
+   id.resp_h: 202.124.241.204
+   id.resp_p: 25
+   is_webmail: false
+   last_reply: 250 OK id=1jQdTE-00052K-Gx
+   mailfrom: richq@resultslifecoaching.com.au
+   msg_id: <0d64537c-c0aa-4573-b69a-aee01a03efc4@local>
+   path: [
+     202.124.241.204
+     10.4.20.103
+   ]
+   rcptto: [
+     estimating@beenleighinterior.com.au
+   ]
+   subject: RE: Lot 49 Green Road Estate, Regents Park
+   tls: false
+   to: [
+     Warren Lutze <estimating@beenleighinterior.com.au>
+   ]
+   trans_depth: 3
+   ts: 2024-10-16T01:45:13.466361Z
+   uid: CeeTpA1FJhH0qqvUsb
+   urls: [
+     http://www.beenleighinterior.com.au/
+     https://gnxpublishers.ca/wp-content/uploads/2020/04/vary/28506345.zip
+     http://www.dinkumdunnies.com.au
+     http://cimfl.com/wp-content/vary/100516985.zip
+     http://ns-hd.co.jp/wp-content/uploads/2020/04/vary/63223.zip
+     http://schemas.microsoft.com/office/2004/12/omml
+     http://www.w3.org/TR/REC-html40
+   ]
+}
+{
+   _path: smtp
+   _system_name: sensor
+   _write_ts: 2024-10-16T04:54:29.553109Z
+   date: Mon, 11 Mar 2013 22:10:34 -0000
+   from: "Fred Smith" <martin.tor@4salet.com>
+   fuids: [
+     FqsWrT3HKOPfML4gQh
+   ]
+   helo: napier
+   id.orig_h: 192.168.0.12
+   id.orig_p: 1713
+   id.resp_h: 192.168.0.13
+   id.resp_p: 25
+   is_webmail: false
+   last_reply: 250 2.6.0  <327D7B5223214259B3756468AFF23AAE@napier> Queued mail for delivery
+   mailfrom: martin.tor@4salet.com
+   msg_id: <327D7B5223214259B3756468AFF23AAE@napier>
+   path: [
+     192.168.0.13
+     192.168.0.12
+   ]
+   rcptto: [
+     bert.manly@five8nine.com
+   ]
+   subject: T2theS4gSSB0aGluayBpdCBpcyBhbGwgc2V0dXAgZm9yIHlvdS4gSnVzdCBjb25uZWN0IHRvIHRoZSBsaW5rLCBhbmQgaXQgc2hvdWxkIGJlIGZpbmUu
+   tls: false
+   to: [
+     <bert.manly@five8nine.com>
+   ]
+   trans_depth: 1
+   ts: 2024-10-16T04:54:29.341674Z
+   uid: CLBehalPxWB23iVu
+   user_agent: Microsoft Outlook Express 6.00.3790.3959
+}
