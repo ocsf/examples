@@ -1,0 +1,49 @@
+{
+  "activity_id": 3,
+  "activity_name": "Reset",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Network Activity",
+  "class_uid": 4001,
+  "time": 1539174896000,
+  "raw_data": "Oct 10 2018 12:34:56 localhost CiscoASA[999]: %ASA-6-302014: Teardown TCP connection 11749 for outside:100.66.211.242/80 to inside:172.31.98.44/1758 duration 0:01:07 bytes 38110 TCP Reset-I",
+  "src_endpoint": {
+    "ip": "100.66.211.242",
+    "port": 80,
+    "interface_name": "outside"
+  },
+  "dst_endpoint": {
+    "ip": "172.31.98.44",
+    "port": 1758,
+    "interface_name": "inside"
+  },
+  "connection_info": {
+    "boundary": "External",
+    "boundary_id": 3,
+    "direction": "Inbound",
+    "direction_id": 1,
+    "protocol_name": "TCP",
+    "uid": "11749"
+  },
+  "severity_id": 1,
+  "severity": "Informational",
+  "type_name": "Network Activity: Reset",
+  "type_uid": 400103,
+  "duration": 67000,
+  "status_id": 2,
+  "status": "Failure",
+  "status_detail": "TCP Reset-I",
+  "traffic": {
+    "bytes": 38110
+  },
+  "metadata": {
+    "event_code": "302014",
+    "original_time": "Oct 10 2018 12:34:56",
+    "product": {
+      "vendor_name": "Cisco",
+      "name": "Cisco ASA",
+      "version": "Unknown"
+    },
+    "version": "1.3.0"
+  }
+}
