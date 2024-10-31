@@ -1,20 +1,20 @@
 {
-  "activity_id": 3,
-  "activity_name": "Reset",
+  "activity_id": 2,
+  "activity_name": "Close",
   "category_name": "Network Activity",
   "category_uid": 4,
   "class_name": "Network Activity",
   "class_uid": 4001,
   "time": 1539174896000,
-  "raw_data": "Oct 10 2018 12:34:56 localhost CiscoASA[999]: %ASA-6-302014: Teardown TCP connection 11749 for outside:100.66.211.242/80 to inside:172.31.98.44/1758 duration 0:01:07 bytes 38110 TCP Reset-I",
+  "raw_data": "Oct 10 2018 12:34:56 localhost CiscoASA[999]: %ASA-6-302016: Teardown UDP connection 11758 for outside:100.66.80.32/53 to inside:172.31.98.44/56132 duration 0:00:00 bytes 148",
   "src_endpoint": {
-    "ip": "100.66.211.242",
-    "port": 80,
+    "ip": "100.66.80.32",
+    "port": 53,
     "interface_name": "outside"
   },
   "dst_endpoint": {
     "ip": "172.31.98.44",
-    "port": 1758,
+    "port": 56132,
     "interface_name": "inside"
   },
   "connection_info": {
@@ -22,22 +22,21 @@
     "boundary_id": 3,
     "direction": "Inbound",
     "direction_id": 1,
-    "protocol_name": "TCP",
-    "uid": "11749"
+    "protocol_name": "UDP",
+    "uid": "11758"
   },
   "severity_id": 1,
   "severity": "Informational",
-  "type_name": "Network Activity: Reset",
-  "type_uid": 400103,
-  "duration": 67000,
-  "status_id": 2,
-  "status": "Failure",
-  "status_detail": "TCP Reset-I",
+  "type_name": "Network Activity: Close",
+  "type_uid": 400102,
+  "duration": 0,
+  "status_id": 1,
+  "status": "Success",
   "traffic": {
-    "bytes": 38110
+    "bytes": 148
   },
   "metadata": {
-    "event_code": "302014",
+    "event_code": "302016",
     "original_time": "Oct 10 2018 12:34:56",
     "product": {
       "vendor_name": "Cisco",

@@ -1,15 +1,15 @@
-# Event Dossier: Cisco ASA 106023
+# Event Dossier: Cisco ASA 302015
 
-### A 106023 event
+### A 302015 event
 
-- **Description**: Translates a Cisco ASA 106023 Event to OCSF.
+- **Description**: Translates a Cisco ASA 302015 Event to OCSF.
 - **Event References**:
-    - https://www.cisco.com/c/en/us/td/docs/security/asa/syslog/b_syslog/syslog-messages-101001-to-199021.html#con_6482625
+    - https://www.cisco.com/c/en/us/td/docs/security/asa/syslog/b_syslog/syslog-messages-302003-to-342008.html#con_4770739
 
 ### OCSF Version: 1.3.0
 
-- `activity_id`: 5,
-- `activity_name`: `Refuse`,
+- `activity_id`: 1,
+- `activity_name`: `Open`,
 - `category_name`: `Network Activity`
 - `category_uid`: `4`
 - `class_name`: `Network Activity`
@@ -22,12 +22,12 @@
 - `metadata.product.vendor_name`: `Cisco`
 - `metadata.product.version`: `Unknown`
 - `metadata.version`: `1.3.0`
-- `severity`: `Critical`
-- `severity_id`: `5`
-- `status`: `Failure`
-- `status_id`: `2`
-- `type_name`: `Network Activity: Refuse`
-- `type_uid`: `400105`
+- `severity`: `Informational`
+- `severity_id`: `1`
+- `status`: `Success`
+- `status_id`: `1`
+- `type_name`: `Network Activity: Open`
+- `type_uid`: `400101`
 
 ### Parsing:
 
@@ -40,44 +40,48 @@
 This produces:
 
 ```json
-  {
+{
   "hostname": "localhost",
-  "message_text": "Deny tcp src outside:100.66.19.254/80 dst inside:172.31.98.44/8277 by access-group \"inbound\" [0x0, 0x0]",
-  "level": "4",
-  "message_number": "106023",
-  "__raw__": "Oct 10 2018 12:34:56 localhost CiscoASA[999]: %ASA-4-106023: Deny tcp src outside:100.66.19.254/80 dst inside:172.31.98.44/8277 by access-group \"inbound\" [0x0, 0x0]",
+  "message_text": "Built outbound UDP connection 11758 for outside:100.66.80.32/53 (100.66.80.32/53) to inside:172.31.98.44/56132 (172.31.98.44/56132)",
+  "level": "6",
+  "message_number": "302015",
+  "__raw__": "Oct 10 2018 12:34:56 localhost CiscoASA[999]: %ASA-6-302015: Built outbound UDP connection 11758 for outside:100.66.80.32/53 (100.66.80.32/53) to inside:172.31.98.44/56132 (172.31.98.44/56132)",
   "pid": "999",
   "program": "CiscoASA",
   "timestamp": "Oct 10 2018 12:34:56"
 }
 ```
 
-- Parsing the 106023 message text using `grok`
+- Parsing the 302015 message text using `grok`
 
 ```
-Deny %{WORD:protocol} src %{WORD:source_interface}:%{IP:source_ip}/%{NUMBER:source_port} dst %{WORD:dest_interface}:%{IP:dest_ip}/%{NUMBER:dest_port} by access-group %{DATA:access_group} \[%{DATA:rule_ids}\]
+Built %{WORD:direction} %{WORD:protocol} connection %{NUMBER:connection_id} for %{WORD:source_interface}:%{IP:source_ip}/%{NUMBER:source_port} \(%{IP:source_mapped_ip}/%{NUMBER:source_mapped_port}\) to %{WORD:dest_interface}:%{IP:dest_ip}/%{NUMBER:dest_port} \(%{IP:dest_mapped_ip}/%{NUMBER:dest_mapped_port}\)
 ```
 
 This produces:
 
 ```json
 {
-  "level": "4",
+  "level": "6",
   "dest_interface": "inside",
-  "message_number": "106023",
-  "__raw__": "Oct 10 2018 12:34:56 localhost CiscoASA[999]: %ASA-4-106023: Deny tcp src outside:100.66.19.254/80 dst inside:172.31.98.44/8277 by access-group \"inbound\" [0x0, 0x0]",
+  "message_number": "302015",
+  "__raw__": "Oct 10 2018 12:34:56 localhost CiscoASA[999]: %ASA-6-302015: Built outbound UDP connection 11758 for outside:100.66.80.32/53 (100.66.80.32/53) to inside:172.31.98.44/56132 (172.31.98.44/56132)",
   "pid": "999",
+  "source_mapped_port": "53",
   "program": "CiscoASA",
-  "source_ip": "100.66.19.254",
+  "source_ip": "100.66.80.32",
   "hostname": "localhost",
-  "protocol": "tcp",
-  "rule_ids": "0x0, 0x0",
+  "protocol": "UDP",
+  "connection_id": "11758",
+  "source_mapped_ip": "100.66.80.32",
   "source_interface": "outside",
-  "source_port": "80",
+  "source_port": "53",
   "dest_ip": "172.31.98.44",
-  "access_group": "\"inbound\"",
-  "dest_port": "8277",
-  "timestamp": "Oct 10 2018 12:34:56"
+  "dest_mapped_ip": "172.31.98.44",
+  "dest_mapped_port": "56132",
+  "dest_port": "56132",
+  "timestamp": "Oct 10 2018 12:34:56",
+  "direction": "outbound"
 }
 ```
 
@@ -99,11 +103,11 @@ This produces:
 | `dst_endpoint.port`             | `dest_port`                                            |
 | `dst_endpoint.interface_name`   | `dest_interface`                                       |
 | `connection_info.protocol_name` | `protocol`                                             |
+| `connection_info.uid`           | `connection_id`                                        |
 | `metadata.event_code`           | `message_number`                                       |
 | `metadata.original_time`        | `timestamp`                                            |
-| `unmapped.rule_ids`             | `rule_ids`                                             |
 | `unmapped.program`              | `program`                                              |
 | `unmapped.pid`                  | `pid`                                                  |
 
 > **_NOTE:_**\
-> `ts_str_to_epoch` parses given timestamp string into echo milliseconds
+> `ts_str_to_epoch` parses given timestamp string into echo milliseconds\

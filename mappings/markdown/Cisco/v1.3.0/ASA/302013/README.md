@@ -52,7 +52,7 @@ This produces:
 }
 ```
 
-- Parsing the 302013 message text using `gork`
+- Parsing the 302013 message text using `grok`
 
 ```
 %{WORD:action} %{WORD:direction} %{WORD:protocol} connection %{NUMBER:connection_id} for %{WORD:source_interface}:%{IP:source_ip}/%{NUMBER:source_port} \(%{IP:source_mapped_ip}/%{NUMBER:source_mapped_port}\) to %{WORD:dest_interface}:%{IP:dest_ip}/%{NUMBER:dest_port} \(%{IP:dest_mapped_ip}/%{NUMBER:dest_mapped_port}\)
@@ -99,10 +99,10 @@ This produces:
 | `raw_data`                      | `__raw__`                                              |
 | `src_endpoint.ip`               | `source_ip`                                            |
 | `src_endpoint.port`             | `source_port`                                          |
-| `src_endpoint.interface`        | `source_interface`                                     |
+| `src_endpoint.interface_name`   | `source_interface`                                     |
 | `dst_endpoint.ip`               | `dest_ip`                                              |
 | `dst_endpoint.port`             | `dest_port`                                            |
-| `dst_endpoint.interface`        | `dest_interface`                                       |
+| `dst_endpoint.interface_name`   | `dest_interface`                                       |
 | `connection_info.protocol_name` | `protocol`                                             |
 | `connection_info.uid`           | `connection_id`                                        |
 | `metadata.event_code`           | `message_number`                                       |
