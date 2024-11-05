@@ -1,0 +1,133 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "actor": {
+    "session": {
+      "uid": "idxBager62CSveUkTxvgRtonA"
+    },
+    "user": {
+      "email_addr": "john.doe@example.com",
+      "name": "John Doe",
+      "type": "User",
+      "type_id": 1,
+      "uid": "00uttidj01jqL21aM1d6"
+    }
+  },
+  "category_name": "Identity & Access Management",
+  "category_uid": 3,
+  "class_name": "Entity Management",
+  "class_uid": 3004,
+  "entity": {
+    "policy": {
+      "name": "Exclude MFA",
+      "uid": "00phjos6i2N0LcrqO1d7"
+    },
+    "type": "Policy",
+    "type_id": 5
+  },
+  "http_request": {
+    "uid": "ab609228fe84ce59cdcbfa690bcce016",
+    "url": {
+      "path": "/api/v1/policies?"
+    },
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+  },
+  "message": "Create policy",
+  "metadata": {
+    "event_code": "policy.lifecycle.create",
+    "product": {
+      "name": "Okta System Log",
+      "vendor_name": "Okta",
+      "version": "0"
+    },
+    "profiles": ["datetime", "host"],
+    "uid": "dc9fd3c0-598c-11ef-8478-2b7584bf8d5a",
+    "version": "1.3.0"
+  },
+  "observables": [
+    {
+      "name": "src_endpoint.ip",
+      "type": "IP Address",
+      "type_id": 2,
+      "value": "10.0.0.1"
+    },
+    {
+      "name": "http_request.user_agent",
+      "type": "HTTP User-Agent",
+      "type_id": 16,
+      "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "actor.user.name",
+      "type": "User Name",
+      "type_id": 4,
+      "value": "John Doe"
+    }
+  ],
+  "severity": "Informational",
+  "severity_id": 1,
+  "src_endpoint": {
+    "autonomous_system": {
+      "name": "ASN 0000",
+      "number": 394089
+    },
+    "ip": "10.0.0.1",
+    "location": {
+      "city": "New York",
+      "country": "United States",
+      "isp": "google",
+      "lat": 40.3157,
+      "long": -74.01,
+      "postal_code": "10013"
+    },
+    "os": {
+      "name": "Mac OS X",
+      "type": "macOS",
+      "type_id": 300
+    },
+    "type": "Mobile"
+  },
+  "status": "Success",
+  "status_id": 1,
+  "time": 1723564700,
+  "time_dt": "2024-08-13T15:58:20.000Z",
+  "type_name": "Entity Management: Create",
+  "type_uid": 300401,
+  "unmapped": {
+    "authenticationContext": {
+      "authenticationStep": 0,
+      "rootSessionId": "idxBager62CSveUkTxvgRtonA"
+    },
+    "securityContext": {
+      "isProxy": false
+    },
+    "debugContext": {
+      "debugData": {
+        "requestUri": "/api/v1/policies"
+      }
+    },
+    "transaction": {
+      "id": "ab609228fe84ce59cdcbfa690bgce016",
+      "type": "WEB"
+    },
+    "request": {
+      "ipChain": [
+        {
+          "ip": "10.0.0.1",
+          "geographicalContext": {
+            "city": "New York",
+            "state": "New York",
+            "country": "United States",
+            "postalCode": 10013,
+            "geolocation": {
+              "lat": 40.3157,
+              "lon": -74.01
+            }
+          },
+          "version": "V4",
+          "source": null
+        }
+      ]
+    }
+  }
+}

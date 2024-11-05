@@ -1,0 +1,86 @@
+{
+  "severity": "DEBUG",
+  "request": {
+    "ipChain": [
+      {
+        "ip": "1.1.1.1",
+        "geographicalContext": {
+          "country": "France",
+          "city": "Paris",
+          "postalCode": "0111",
+          "state": "Paris",
+          "geolocation": {
+            "lon": 2.33339,
+            "lat": 48.90654
+          }
+        },
+        "version": "V4"
+      }
+    ]
+  },
+  "eventType": "user.account.lock",
+  "displayMessage": "Max sign in attempts exceeded",
+  "authenticationContext": {
+    "rootSessionId": "idxEXAMPLE",
+    "externalSessionId": "idxEXAMPLE",
+    "authenticationStep": 0
+  },
+  "published": "2023-09-30T10:42:16.000Z",
+  "securityContext": {
+    "asNumber": 57119,
+    "isp": "NAITWAYS SAS",
+    "domain": "naitways.com",
+    "isProxy": false,
+    "asOrg": "NAITWAYS SAS"
+  },
+  "uuid": "a8daaacb-7f18-1111-1111-11111111",
+  "version": "0",
+  "debugContext": {
+    "debugData": {
+      "authnRequestId": "Zvpl28xuEXAMPLE",
+      "oktaUserAgentExtended": "okta-auth-js/1.8.0 okta-signin-widget-7.19.1",
+      "behaviors": "{New Geo-Location=NEGATIVE, New Device=NEGATIVE, New IP=NEGATIVE, New State=NEGATIVE, New Country=NEGATIVE, Velocity=NEGATIVE, New City=NEGATIVE}",
+      "dtHash": "5fEXAMPLE",
+      "risk": "{level=LOW}",
+      "requestUri": "/idp/idx/challenge/answer",
+      "requestId": "ZvqAhywEXAMPLE",
+      "threatSuspected": "false",
+      "url": "/idp/idx/challenge/answer?"
+    }
+  },
+  "actor": {
+	"alternateId": "okta@okta-test.com",
+	"displayName": "OKTA Test user",
+	"type": "User",
+	"id": "0123456789"
+  },
+  "client": {
+	"ipAddress": "1.1.1.1",
+    "zone": "null",
+    "userAgent": {
+      "os": "Android",
+      "browser": "CHROME",
+      "rawUserAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36"
+    },
+    "device": "Mobile",
+    "geographicalContext": {
+      "country": "France",
+      "city": "Paris",
+      "postalCode": "01111",
+      "state": "Paris",
+      "geolocation": {
+		"lon": 2.33339,
+		"lat": 48.90654
+      }
+    }
+  },
+  "legacyEventType": "core.user_auth.account_locked",
+  "outcome": {
+    "result": "FAILURE",
+    "reason": "LOCKED_OUT"
+  },
+  "transaction": {
+    "id": "ZvqAhyEXAMPLE",
+    "type": "WEB"
+  }
+}

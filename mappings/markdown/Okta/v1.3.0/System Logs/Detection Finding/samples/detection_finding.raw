@@ -1,0 +1,81 @@
+{
+  "actor": {
+    "id": "10.0.0.1",
+    "type": "IP address",
+    "alternateId": "unknown",
+    "displayName": "10.0.0.1"
+  },
+  "client": {
+    "userAgent": {
+      "rawUserAgent": "unknown",
+      "os": "unknown",
+      "browser": "unknown"
+    },
+    "zone": null,
+    "device": "Computer",
+    "id": null,
+    "ipAddress": "10.0.0.1",
+    "geographicalContext": {
+      "city": "New York",
+      "state": "New York",
+      "country": "United States",
+      "postalCode": "10013",
+      "geolocation": {
+        "lat": 40.3157,
+        "lon": -74.01
+      }
+    }
+  },
+  "authenticationContext": {
+    "authenticationStep": 0
+  },
+  "displayMessage": "Request from suspicious actor",
+  "eventType": "security.threat.detected",
+  "outcome": {
+    "result": "DENY",
+    "reason": "Login Failures"
+  },
+  "published": "2024-08-13T15:58:20.353Z",
+  "securityContext": {
+    "asNumber": 394089,
+    "asOrg": "ASN 0000",
+    "isp": "google",
+    "isProxy": false
+  },
+  "severity": "WARN",
+  "debugContext": {
+    "debugData": {
+      "dtHash": "11111111111111",
+      "requestUri": "/app/office365/1111111111/sso/wsfed/active",
+      "threatSuspected": "true",
+      "threatDetections": "{\"Login Failures\":\"HIGH\"}",
+      "url": "/app/office365/1111111111/sso/wsfed/active"
+    }
+  },
+  "legacyEventType": "security.threat.detected",
+  "transaction": {
+    "type": "WEB",
+    "id": "ab609228fe84ce59cdcbfa690bgce016"
+  },
+  "uuid": "dc9fd3c0-598c-11ef-8478-2b7584bf8d5a",
+  "version": 0,
+  "request": {
+    "ipChain": [
+      {
+        "ip": "10.0.0.1",
+        "geographicalContext": {
+          "city": "New York",
+          "state": "New York",
+          "country": "United States",
+          "postalCode": 10013,
+          "geolocation": {
+            "lat": 40.3157,
+            "lon": -74.01
+          }
+        },
+        "version": "V4",
+        "source": null
+      }
+    ]
+  }
+}
