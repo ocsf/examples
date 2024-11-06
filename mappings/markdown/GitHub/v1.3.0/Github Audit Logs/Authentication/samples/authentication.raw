@@ -1,0 +1,17 @@
+{
+  "external_id": "",
+  "action": "business.sso_response",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36",
+  "_document_id": "m-111111111111==",
+  "actor": "test_user",
+  "business": "acme-inc",
+  "external_identity_username": "",
+  "@timestamp": 1729176166108,
+  "user_id": 51111,
+  "actor_id": 51111,
+  "external_identity_nameid": "test_user@acme.com",
+  "business_id": 11,
+  "user": "test_user",
+  "issuer": "https://accounts.google.com/o/saml2",
+  "operation_type": "authentication"
+}

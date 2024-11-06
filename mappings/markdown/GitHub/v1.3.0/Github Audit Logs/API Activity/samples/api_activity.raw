@@ -1,0 +1,30 @@
+{
+  "repo": "acme/dynamite",
+  "external_id": "",
+  "repository": "acme/dynamite",
+  "token_id": 0,
+  "action": "git.push",
+  "transport_protocol_name": "ssh",
+  "repository_id": 383067938,
+  "user_agent": "git/2.41.5",
+  "_document_id": "m-111111111111==",
+  "repository_public": false,
+  "actor": "test_user",
+  "business": "acme-inc",
+  "org": "acme",
+  "external_identity_username": "",
+  "actor_ip": "1.1.1.1",
+  "hashed_token": "tO8qpNGhmNe8OMdEXAMPLE",
+  "@timestamp": 1729176166108,
+  "user_id": 0,
+  "org_id": 11111,
+  "programmatic_access_type": "Public Key (User/Deploy)",
+  "actor_location": {
+    "country_code": "US"
+  },
+  "actor_id": 51111,
+  "transport_protocol": 2,
+  "external_identity_nameid": "test_user@acme.com",
+  "business_id": 11,
+  "user": ""
+}
