@@ -5,8 +5,6 @@ Github audit logs are mapped to 5 different classes in OCSF according to the spe
 
 Useful resources:
 
-* Mappings in [Google sheets](https://docs.google.com/spreadsheets/d/1U1y5s8MA-xe1HIZt3n9qpJns5eSiyTR_S6dSRe-zL-0/edit?gid=1447247780#gid=1447247780)
-
 * [Audit log events](https://docs.github.com/en/enterprise-cloud@latest/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise)
 
 The following image should help visualize the flow.
