@@ -1,0 +1,41 @@
+{
+   _path: ssh
+   _system_name: sensor
+   _write_ts: 2024-10-16T04:54:04.950981Z
+   auth_attempts: 2
+   auth_success: true
+   cipher_alg: chacha20-poly1305@openssh.com
+   client: SSH-2.0-OpenSSH_8.1p1 Debian-1
+   compression_alg: none
+   cshka: ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa
+   direction: INBOUND
+   hassh: ec7378c1a92f5a8dde7e8b7a1ddf33d1
+   hasshAlgorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,ext-info-c;chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com;umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1;none,zlib@openssh.com,zlib
+   hasshServer: b12d2871a1189eff20364cf5333619ee
+   hasshServerAlgorithms: curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1;chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com;umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1;none,zlib@openssh.com
+   hasshVersion: 1.1
+   host_key: eb:ce:a8:7f:51:fe:32:ac:16:a0:f0:1d:9c:d8:db:54
+   host_key_alg: ecdsa-sha2-nistp256
+   id.orig_h: 3.18.161.242
+   id.orig_p: 52100
+   id.resp_h: 192.168.10.152
+   id.resp_p: 22
+   inferences: [
+     CTS
+     PKA
+     AUTO
+     LFD
+   ]
+   kex_alg: curve25519-sha256
+   mac_alg: umac-64-etm@openssh.com
+   remote_location.city: Columbus
+   remote_location.country_code: US
+   remote_location.latitude: 39.9625
+   remote_location.longitude: -83.0061
+   remote_location.region: OH
+   server: SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3
+   sshka: ssh-rsa,rsa-sha2-512,rsa-sha2-256,ecdsa-sha2-nistp256,ssh-ed25519
+   ts: 2024-10-16T04:54:04.474340Z
+   uid: CwjjT11TKp4IDDkiol
+   version: 2
+}
