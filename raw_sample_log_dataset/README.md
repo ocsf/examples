@@ -44,4 +44,4 @@
     * syslog.log
     * tunnel.log
     * weird.log
-    * x509.log
+    * x509.logh
