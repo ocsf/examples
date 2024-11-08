@@ -1,0 +1,1 @@
+{"ts":1461170590.745647,"uid":"CVSLkj4VcJyvAYuxPd","id.orig_h":"10.0.1.4","id.orig_p":49327,"id.resp_h":"198.41.30.241","id.resp_p":1883,"action":"MQTT::SUBSCRIBE","topics":["SampleTopic"],"qos_levels":[0],"granted_qos_level":0,"ack":true}
