@@ -1,33 +1,35 @@
 {
-   _path: ssl
-   _system_name: sensor
-   _write_ts: 2024-10-18T13:57:36.459547Z
-   cert_chain_fps: [
-     b0517ac6a5e27ca615398ccdb75dc376a8d7df3059f73c3f1d6b3bf6739513ed
-     67add1166b020ae61b8f5fd96813c04c2aa589960796865572a3c7e737613dfd
-     6d99fb265eb1c5b3844765fcbc648f3cd8e1bffafdc4c2f99b9d47cf7ff1c24f
-   ]
-   cipher: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-   client_cert_chain_fps: [
-   ]
-   curve: x25519
-   established: false
-   id.orig_h: 10.1.0.104
-   id.orig_p: 57335
-   id.resp_h: 172.241.1.68
-   id.resp_p: 443
-   issuer: CN=R3,O=Let's Encrypt,C=US
-   ja3: f0bb8fb38d017e359d2692a270974136
-   ja3s: 00447ab319e9d94ba2b4c1248e155917
-   last_alert: certificate_unknown
-   next_protocol: h2
-   resumed: false
-   server_name: code.yengo.com
-   sni_matches_cert: true
-   ssl_history: CsxknL
-   subject: CN=code.yengo.com
-   ts: 2024-10-18T13:57:30.489454Z
-   uid: CgwD6k3ViUYQLs49A4
-   validation_status: certificate has expired
-   version: TLSv12
+  "_path": "ssl",
+  "_system_name": "sensor",
+  "_write_ts": "2024-10-18T13:57:36.459547Z",
+  "cert_chain_fps": [
+    "b0517ac6a5e27ca615398ccdb75dc376a8d7df3059f73c3f1d6b3bf6739513ed",
+    "67add1166b020ae61b8f5fd96813c04c2aa589960796865572a3c7e737613dfd",
+    "6d99fb265eb1c5b3844765fcbc648f3cd8e1bffafdc4c2f99b9d47cf7ff1c24f"
+  ],
+  "cipher": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+  "client_cert_chain_fps": [
+    "b0517ac6a5e27ca615398ccdb75dc376a8d7df3059f73c3f1d6b3bf6739513ef",
+    "67add1166b020ae61b8f5fd96813c04c2aa589960796865572a3c7e737613dff"
+  ],
+  "curve": "x25519",
+  "established": false,
+  "id.orig_h": "10.1.0.104",
+  "id.orig_p": 57335,
+  "id.resp_h": "172.241.1.68",
+  "id.resp_p": 443,
+  "issuer": "CN=R3,O=Let's Encrypt,C=US",
+  "ja3": "f0bb8fb38d017e359d2692a270974136",
+  "ja3s": "00447ab319e9d94ba2b4c1248e155917",
+  "last_alert": "certificate_unknown",
+  "next_protocol": "h2",
+  "resumed": false,
+  "server_name": "code.yengo.com",
+  "sni_matches_cert": true,
+  "ssl_history": "CsxknL",
+  "subject": "CN=code.yengo.com",
+  "ts": "2024-10-18T13:57:30.489454Z",
+  "uid": "CgwD6k3ViUYQLs49A4",
+  "validation_status": "certificate has expired",
+  "version": "TLSv12"
 }
