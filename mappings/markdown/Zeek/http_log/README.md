@@ -29,14 +29,14 @@
 | ------------------------------ | ----------------- |
 |`time`                          |`ts`               |
 |`start_time`                    |`ts`               |
-|`metadata.loggers.logged_time`  |`_write_ts`        |
-|`metadata.loggers.name`         |`_system_name`     |
+|`metadata.loggers[].logged_time`|`_write_ts`        |
+|`metadata.loggers[].name`       |`_system_name`     |
 |`metadata.uid`                  |`uid`              |
 |`src_endpoint.ip`               |`id.orig_h`        |
 |`src_endpoint.port`             |`id.orig_p`        |
 |`dst_endpoint.ip`               |`id.resp_h`        |
 |`dst_endpoint.port`             |`id.resp_p`        |
-|`http_request.http_cookies.value`  |`cookie`        |
+|`http_request.http_cookies.value` |`cookie`         |
 |`http_request.http_headers.name`  |"Accept Language"|
 |`http_request.http_headers.value` |`accept_language`|
 |`http_request.http_headers.name`  |"Accept Encoding"| 
