@@ -28,6 +28,7 @@
 | OCSF                          | Raw             |
 | ----------------------------- | --------------- |
 |`time`                         |`ts`             |
+|`metadata.uid`                 |`uid`            |
 |`start_time`                   |`ts`             |
 |`metadata.loggers.logged_time` |`_write_ts`      |
 |`metadata.loggers.name`        |`_system_name`   |
