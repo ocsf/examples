@@ -29,7 +29,7 @@
 | OCSF                          | Raw           |
 | ----------------------------- | --------------|
 |`time`                         |`ts`           |
-|`uuid`                         |`uid`          |
+|`metadata.uid`                 |`uid`          |
 |`src_endpoint.ip`              |`id.orig_h`    |
 |`src_endpoint.port`            |`id.orig_p`    |
 |`src_endpoint.location.country`|`orig_cc`      |
