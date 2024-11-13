@@ -33,7 +33,7 @@
 | ------------------------------ | ----------------- |
 |`time`                          |`ts`               |
 |`start_time`                    |`ts`               |
-|`metadata.loggers[].logged_time`|`_write_ts`        |
+|`metadata.logged_time`          |`_write_ts`        |
 |`metadata.loggers[].name`       |`_system_name`     |
 |`metadata.uid`                  |`uid`              |
 |`src_endpoint.ip`               |`id.orig_h`        |
