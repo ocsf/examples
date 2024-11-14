@@ -26,40 +26,40 @@
 
  ### Mapping:
 
-| OCSF                          | Raw           |
-| ----------------------------- | --------------|
-|`time`                         |`ts`           |
-|`start_time`                   |`ts`           |
-|`metadata.logged_time`         |`_write_ts`    |
-|`metadata.loggers[].name`      |`_system_name` |
-|`metadata.uid`                 |`uid`          |
-|`src_endpoint.ip`              |`id.orig_h`    |
-|`src_endpoint.port`            |`id.orig_p`    |
-|`src_endpoint.location.country`|`orig_cc`      |
-|`src_endpoint.mac`             |`orig_l2_addr` |
-|`dst_endpoint.ip`              |`id.resp_h`    |
-|`dst_endpoint.port`            |`id.resp_p`    |
-|`dst_endpoint.location.country`|`resp_cc`      |
-|`dst_endpoint.mac`             |`resp_l2_addr` |
-|`app_name`                     |`service`      |
-|`connection_info.community_uid`|`community_id` |
-|`connection_info.protocol_name`|`proto`        |
-|`duration`                     |`duration`     |
-|`network_endpoint.vlan_uid`    |`vlan`         |
-|`status_code`                  |`conn_state`   |
-|`traffic.bytes_in`             |`resp_bytes`   |
-|`traffic.packets_in`           |`resp_pkts`    |
-|`traffic.bytes_out`            |`orig_bytes`   |
-|`traffic.packets_out`          |`orig_pkts`    |
-|`traffic.bytes`                |`resp_bytes` + `orig_bytes` |
-|`traffic.packets`              |`orig_pkts` + `resp_pkts`   |
+| OCSF                          | Raw           | Notes         |
+| ----------------------------- | --------------| --------------|
+|`time`                         |`ts`           | |
+|`start_time`                   |`ts`           | |
+|`metadata.logged_time`         |`_write_ts`    | |
+|`metadata.loggers[].name`      |`_system_name` | |
+|`metadata.uid`                 |`uid`          | |
+|`src_endpoint.ip`              |`id.orig_h`    | |
+|`src_endpoint.port`            |`id.orig_p`    | |
+|`src_endpoint.location.country`|`orig_cc`      | |
+|`src_endpoint.mac`             |`orig_l2_addr` | |
+|`dst_endpoint.ip`              |`id.resp_h`    | |
+|`dst_endpoint.port`            |`id.resp_p`    | |
+|`dst_endpoint.location.country`|`resp_cc`      | |
+|`dst_endpoint.mac`             |`resp_l2_addr` | |
+|`app_name`                     |`service`      | |
+|`connection_info.community_uid`|`community_id` | |
+|`connection_info.protocol_name`|`proto`        | |
+|`duration`                     |`duration`     | |
+|`network_endpoint.vlan_uid`    |`vlan`         | |
+|`status_code`                  |`conn_state`   | |
+|`traffic.bytes_in`             |`resp_bytes`   | |
+|`traffic.packets_in`           |`resp_pkts`    | |
+|`traffic.bytes_out`            |`orig_bytes`   | |
+|`traffic.packets_out`          |`orig_pkts`    | |
+|`traffic.bytes`                |`resp_bytes` + `orig_bytes` | Sum `resp_bytes` + `orig_bytes` |
+|`traffic.packets`              |`orig_pkts` + `resp_pkts`   | Sum `orig_pkts` + `resp_pkts` |
+|`src_endpoint.observables.type_id:1` |`id.orig_h_name.vals` | In a record where `src_endpoint.observables.reputation` = `id.orig_h_name.src` |
+|`dst_endpoint.observables.type_id:1` |`id.resp_h_name.vals` | In a record where `dst_endpoint.observables.reputation` = `id.resp_h_name.src` |
 
  ### Unmapped (proposed):
 
 | OCSF                 | Raw             |
 | ---------------------| ----------------| 
-|`src_endpoint.observables.type_id:1 && src_endpoint.observables.reputation = id.orig_h_name.src` |`id.orig_h_name.vals` |
-|`dst_endpoint.observables.type_id:1 && dst_endpoint.observables.reputation = id.orig_h_name.src` |`id.orig_h_name.vals` |
 |`(bytes_missed)`        |`missed_bytes` |
 |`(connection_info.history)`  |`history`      |
 |`unmapped`                   |`app`          |
