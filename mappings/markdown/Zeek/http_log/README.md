@@ -25,57 +25,51 @@
 
  ### Mapping:
 
-| OCSF                           | Raw               |
-| ------------------------------ | ----------------- |
-|`time`                          |`ts`               |
-|`start_time`                    |`ts`               |
-|`metadata.logged_time`          |`_write_ts`        |
-|`metadata.loggers[].name`       |`_system_name`     |
-|`metadata.uid`                  |`uid`              |
-|`src_endpoint.ip`               |`id.orig_h`        |
-|`src_endpoint.port`             |`id.orig_p`        |
-|`dst_endpoint.ip`               |`id.resp_h`        |
-|`dst_endpoint.port`             |`id.resp_p`        |
-|`http_request.http_cookies.value` |`cookie`         |
-|`http_request.http_headers.name`  |"Accept Language"|
-|`http_request.http_headers.value` |`accept_language`|
-|`http_request.http_headers.name`  |"Accept Encoding"| 
-|`http_request.http_headers.value` |`accept_encoding`|
-|`http_request.http_headers.name`  |"Accept"         |
-|`http_request.http_headers.value` |`accept`         |
-|`http_request.http_headers.name`  |"Body"           |
-|`http_request.http_headers.value` |`post_body`      |
-|`http_request.http_headers.name`  |"Origin"         |
-|`http_request.http_headers.value` |`origin`         |
-|`http_request.http_headers.name`  |"Client Headers" |
-|`http_request.http_headers.value` |`client_headers` |
-|`http_request.http_method`      |`method`           |
-|`http_request.length`           |`request_body_len` |
-|`http_request.referrer`         |`referrer`         |
-|`http_request.url.hostname`     |`dest_host`        |
-|`http_request.url.path`         |`uri`              |
-|`http_request.user_agent`       |`user_agent`       |
-|`http_request.version`          |`version`          |
-|`http_request.x_forwarded_for`  |`proxied`          |
-|`http_response.code`            |`status_code`      |
-|`http_response.http_cookies.value` |`resp_cookie`   |
-|`http_response.http_headers.value` |`server_headers`|
-|`http_response.length`          |`response_body_len`|
-|`http_response.status`          |`status_msg`       |
-|`message`                       |`tags`             |
-|`observables.type_id:21`        |`username`         |
+| OCSF                           | Raw               | Notes             |
+| ------------------------------ | ----------------- | ----------------- |
+|`time`                          |`ts`               | |
+|`start_time`                    |`ts`               | |
+|`metadata.logged_time`          |`_write_ts`        | |
+|`metadata.loggers[].name`       |`_system_name`     | |
+|`metadata.uid`                  |`uid`              | |
+|`src_endpoint.ip`               |`id.orig_h`        | |
+|`src_endpoint.port`             |`id.orig_p`        | |
+|`dst_endpoint.ip`               |`id.resp_h`        | |
+|`dst_endpoint.port`             |`id.resp_p`        | |
+|`http_request.http_cookies.value` |`cookie`         | |
+|`http_request.http_headers.value` |`accept_language`| In a record where `http_request.http_headers.name` = "Accept Language"|
+|`http_request.http_headers.value` |`accept_encoding`| In a record where `http_request.http_headers.name` = "Accept Encoding"| 
+|`http_request.http_headers.value` |`accept`         | In a record where `http_request.http_headers.name` = "Accept"         |
+|`http_request.http_headers.value` |`post_body`      | In a record where `http_request.http_headers.name` = "Body"           |
+|`http_request.http_headers.value` |`origin`         | In a record where `http_request.http_headers.name` = "Origin"         |
+|`http_request.http_headers.value` |`client_headers` | In a record where `http_request.http_headers.name` = "Client Headers" |
+|`http_request.http_method`      |`method`           | |
+|`http_request.length`           |`request_body_len` | |
+|`http_request.referrer`         |`referrer`         | |
+|`http_request.url.hostname`     |`dest_host`        | |
+|`http_request.url.path`         |`uri`              | |
+|`http_request.user_agent`       |`user_agent`       | |
+|`http_request.version`          |`version`          | |
+|`http_request.x_forwarded_for`  |`proxied`          | |
+|`http_response.code`            |`status_code`      | |
+|`http_response.http_cookies.value` |`resp_cookie`   | |
+|`http_response.http_headers.value` |`server_headers`| |
+|`http_response.length`          |`response_body_len`| |
+|`http_response.status`          |`status_msg`       | |
+|`message`                       |`tags`             | |
+|`observables.type_id:21`        |`username`         | |
 
 
  ### Unmapped (proposed):
  
-| OCSF                     | Raw                      |
-| -------------------------| -------------------------|
-| `file.name (src)`        | `orig_filenames`         |
-| `file.name (dst)`        | `resp_filenames`         |
-| `file.mime_type (src)`   | `orig_mime_types`        |
-| `file.mime_type (dst)`   | `resp_mime_types`        |
-| `file.uid (src)`         | `orig_fuids`             |
-| `file.uid (dst)`         | `resp_fuids`             |
-| `unmapped`               | `trans_depth`            |
-| `unmapped`               | `if_none_match`          |
-| `unmapped`               | `if_modified_since`      |
+| OCSF                              | Raw                      |
+| ----------------------------------| -------------------------|
+| `http_request.(file.name)`        | `orig_filenames`         |
+| `http_response.(file.name)`       | `resp_filenames`         |
+| `http_request.(file.mime_type[])` | `orig_mime_types`        |
+| `http_response.(file.mime_type[])`| `resp_mime_types`        |
+| `http_request.(file.uid)`         | `orig_fuids`             |
+| `http_response.(file.uid)`        | `resp_fuids`             |
+| `unmapped`                        | `trans_depth`            |
+| `unmapped`                        | `if_none_match`          |
+| `unmapped`                        | `if_modified_since`      |
