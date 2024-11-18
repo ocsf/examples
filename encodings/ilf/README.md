@@ -2,8 +2,6 @@
 
 For real-time analysis of cyber events, it is necessary to process event records from an event stream as quickly as possible to facilitate detection of adversary actions. Some techniques for speeding up the detection are partial interpretation of an event record, and applying regex to the event stream. MITRE developed Intermediate Log Format (ILF) format to enable such techniques. 
 
-
-
 ## ILF Record Structure
 
 1. An ILF record (referred to simply as as “record” below) MUST have the following structure.
@@ -53,23 +51,27 @@ For real-time analysis of cyber events, it is necessary to process event records
         - Enums can only contain alphanumeric characters, or ‘_’ and '.’.
 
 
-## OCSF Event Type Mapping
+## OCSF to ILF Event Type Mapping
 
 OCSF supports several event classes and type IDs within each event classes. Mapping 
 
 ```
-`Class__Activity` can be used for event type. For example `type_uid`:
+The ILF event_type is calculated  as: `OCSF_class_uid * 100 + activity_id`.
 
-The event/finding type ID. It identifies the event's semantics and structure. The value is calculated by the logging system as: `class_uid * 100 + activity_id`.
-
-- **100400** Memory Activity: Unknown
-- **100401** Memory Activity: Allocate Page
-- **100402** Memory Activity: Modify Page
+ **100400** Memory Activity: Unknown => OCSF_100400
+ **100401** Memory Activity: Allocate Page => OCSF_100401
+ **100402** Memory Activity: Modify Page => OCSF_100402
 ```
 
-## Semantic Type Considerations
+## ILF Sender and Receiver Fields Mapping
+TBD
+ 
+## ILF Timestamp
+ILF time stamp will be the time when the ILF record is created. 
 
-### Type Mappings
+### OCSF to ILF Attribute Fields Mapping
+
+Mapping from OCSF to ILF event records requires among other things to flatten the structs within OCSF because ILF does not support structs.
 
 ```markdown
 ## Rules for Flattening an OCSF Struct to an ILF
@@ -122,5 +124,4 @@ TODO: figure out which types are using "underlying types".
 
 TODO: discuss struct and array unpacking
 using JSON syntax (object.attribute)
-
 
