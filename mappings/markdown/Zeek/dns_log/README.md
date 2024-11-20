@@ -43,14 +43,8 @@
 |`rcode`                        |`rcode_name`     |
 |`rcode_id`                     |`rcode`          |
 |`response_time`                |`rtt`            |
-|`activity_id`:`4`              |`rejected`       |
 |`answers.rdata`                |`answers`        |
 |`answers.ttl`                  |`TTLs`           |
-|`answers.flag_ids.1`           |`AA`             | 
-|`answers.flag_ids.2`           |`TC`             | 
-|`answers.flag_ids.3`           |`RD`             | 
-|`answers.flag_ids.4`           |`RA`             | 
-|`answers.flag_ids.99`          |`Z`              |
 |`answers.packet_uid`           |`trans_id`       |
 |`query.packet_uid`             |`trans_id`       |
 
@@ -65,6 +59,17 @@ RD (Recursion Desired): This flag indicates if the client (i.e., the system maki
 RA (Recursion Available): This flag indicates if the DNS server can perform recursive queries. If it's "true", the server can perform recursion. Here it's "false", which means that the server does not have the capability to perform recursion.
 
 Z (Reserved for future use): This field is reserved for future use. In current DNS specifications, it should always be "0" in all queries and responses.
+
+ ### Complex mapping:
+| OCSF                          | Raw             | Notes           |
+| ----------------------------- | --------------- | --------------- |
+|`answers.flag_ids`             |`AA`             | `answers.flag_ids` = `1` when `AA` = `true` |
+|`answers.flag_ids`             |`TC`             | `answers.flag_ids` = `2` when `TC` = `true` |
+|`answers.flag_ids`             |`RD`             | `answers.flag_ids` = `3` when `RD` = `true` |
+|`answers.flag_ids`             |`RA`             | `answers.flag_ids` = `4` when `RA` = `true` |
+|`answers.flag_ids`             |`Z`              | `answers.flag_ids` = `99` when `Z` = `true` |
+|`status_id`                    |`rejected`       | `status_id` = `1` when `rejected` = `false`  OR   `status_id` = `2` when `rejected` = `true`   |
+
 
  ### Unmapped:
 | OCSF                       | Raw                       |
