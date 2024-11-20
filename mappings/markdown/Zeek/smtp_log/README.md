@@ -10,7 +10,7 @@
  - `metadata.version`: `1.3.0`
  - `category_name`: `Network Activity`
  - `category_uid`: `4`
- - `class_name`: `SMTP Activity`
+ - `class_name`: `Email Activity`
  - `class_uid`: `4009`
  - `metadata.log_name`: `smtp.log`
  - `metadata.loggers[].log_provider`: `Zeek`
