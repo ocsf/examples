@@ -48,7 +48,7 @@
 | ----------------------------------------- | --------- | --------------------------------------------------------------------------------------- |
 | `email_url_activity.url.hostname`         | `domains` | The domains seen in the email.                                                          |
 | `email_url_activity.url.url_string`       | `urls`    | The URLs seen in the email.                                                             |
-| `network_activity.proxy.intermediate_ips` | `path`    | The message transmission path, as extracted from the headers.                           |
+| `network_activity.proxy.intermediate_ips[]` | `path`  | The message transmission path, as extracted from the headers.                           |
 | `network_file_activity.file.uid`          | `fuids`   | An ordered vector of file unique IDs seen attached to the message.                      |
 
  ### Unmapped (proposed):
