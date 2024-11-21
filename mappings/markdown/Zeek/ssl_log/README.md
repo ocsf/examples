@@ -6,24 +6,24 @@
   - https://docs.zeek.org/en/master/logs/ssl.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/ssl/main.zeek.html#type-SSL::Info
 
-
- ### Static mapping: OCSF Version 1.3.0
- - `metadata.version`: `1.3.0`
- - `category_name`: `Network Activity`
- - `category_uid`: `4`
- - `class_name`: `Network Activity`
- - `class_uid`: `4001`
- - `metadata.log_name`: `ssl.log`
- - `metadata.loggers[].log_provider`: `Zeek`
- - `metadata.loggers[].product.name`: `Zeek`
- - `metadata.product.cpe_name`: `cpe:2.3:a:zeek:zeek`
- - `metadata.product.feature.name`: `ssl.log`
- - `metadata.product.name`: `Zeek`
- - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/ssl.html`
- - `metadata.product.vendor_name`: `Zeek`
- - `severity`: `Informational`
- - `severity_id`: `1`
-
+ ### Static mapping:
+| OCSF field                          | Value                                           |
+| ----------------------------------- | ----------------------------------------------- |
+| `metadata.version`                  | "1.3.0"                                         |
+| `category_name`                     | "Network Activity"                              |
+| `category_uid`                      | "4"                                             |
+| `class_name`                        | "Network Activity"                              |
+| `class_uid`                         | "4001"                                          |
+| `metadata.log_name`                 | "ssl.log"                                      |
+| `metadata.loggers[].log_provider`   | "Zeek"                                          |
+| `metadata.loggers[].product.name`   | "Zeek"                                          |
+| `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
+| `metadata.product.feature.name`     | "ssl.log"                                      |
+| `metadata.product.name`             | "Zeek"                                          |
+| `metadata.product.url_string`       | "https://docs.zeek.org/en/current/logs/ssl.html"|
+| `metadata.product.vendor_name`      | "Zeek"                                          |
+| `severity`                          | "Informational"                                 |
+| `severity_id`                       | "1"                                             |
 
  ### Mapping:
 | OCSF                           | Raw                         | Zeek Field Description                                                                  |
@@ -57,8 +57,8 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | OCSF                     | Raw                                      | Zeek Field Description                                                                 |
 | -------------------------| -----------------------------------------| --------------------------------------------------------------------------------------- |
 | `connection_info.session.(history)` | `ssl_history` && `established` && `resumed` | SSL history showing which types of packets we received in which order.                 |
-| `tls.certificate.fingerprints.value (client)` | `client_cert_chain_fps` | An ordered vector of all certificate fingerprints for the certificates offered by the client. |
-| `tls.certificate.fingerprints.value (server)` | `cert_chain_fps`        | An ordered vector of all certificate fingerprints for the certificates offered by the server. |
+| `tls.certificate(s[]).fingerprints[].value (client)` | `client_cert_chain_fps` | An ordered vector of all certificate fingerprints for the certificates offered by the client. |
+| `tls.certificate(s[]).fingerprints[].value (server)` | `cert_chain_fps`        | An ordered vector of all certificate fingerprints for the certificates offered by the server. |
 | `unmapped`               | `curve`                                  | Elliptic curve the server chose when using ECDH/ECDHE.                                 |
 | `unmapped`               | `next_protocol`                          | Next protocol the server chose using the application layer next protocol extension, if present. |
 | `unmapped`               | `sni_matches_cert`                       | Set to true if the hostname sent in the SNI matches the certificate.                   |
