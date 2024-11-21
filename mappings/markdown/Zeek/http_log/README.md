@@ -24,52 +24,54 @@
  - `severity_id`: `1`
 
  ### Mapping:
+| OCSF                           | Raw               | Zeek Field Description                                                                  |
+| ------------------------------ | ----------------- | --------------------------------------------------------------------------------------- |
+| `time`                         | `ts`              | Timestamp indicating when the event occurred.                                           |
+| `start_time`                   | `ts`              | Timestamp indicating when the event occurred.                                           |
+| `metadata.logged_time`         | `_write_ts`       | Timestamp indicating when the log entry was written to disk.                            |
+| `metadata.loggers[].name`      | `_system_name`    | Name of the system or logging subsystem generating the log entry.                       |
+| `metadata.uid`                 | `uid`             | Unique ID for the connection.                                                           |
+| `src_endpoint.ip`              | `id.orig_h`       | The originator’s IP address.                                                            |
+| `src_endpoint.port`            | `id.orig_p`       | The originator’s port number.                                                           |
+| `dst_endpoint.ip`              | `id.resp_h`       | The responder’s IP address.                                                             |
+| `dst_endpoint.port`            | `id.resp_p`       | The responder’s port number.                                                            |
+| `http_request.http_method`     | `method`          | Verb used in the HTTP request (GET, POST, HEAD, etc.).                                  |
+| `http_request.length`          | `request_body_len`| Actual uncompressed content size of the data transferred from the client.               |
+| `http_request.referrer`        | `referrer`        | Value of the “referrer” header.                                                         |
+| `http_request.url.hostname`    | `dest_host`       | (No description available)                                                              |
+| `http_request.url.path`        | `uri`             | URI used in the request.                                                                |
+| `http_request.user_agent`      | `user_agent`      | Value of the User-Agent header from the client.                                         |
+| `http_request.version`         | `version`         | Value of the version portion of the reply.                                              |
+| `http_request.x_forwarded_for` | `proxied`         | All of the headers that may indicate if the request was proxied.                        |
+| `http_response.code`           | `status_code`     | Status code returned by the server.                                                     |
+| `http_response.length`         | `response_body_len`| Actual uncompressed content size of the data transferred from the server.              |
+| `http_response.status`         | `status_msg`      | Status message returned by the server.                                                  |
+| `message`                      | `tags`            | A set of indicators of various attributes discovered and related to a particular request/response pair. |
 
-| OCSF                           | Raw               | Notes             |
-| ------------------------------ | ----------------- | ----------------- |
-|`time`                          |`ts`               | |
-|`start_time`                    |`ts`               | |
-|`metadata.logged_time`          |`_write_ts`        | |
-|`metadata.loggers[].name`       |`_system_name`     | |
-|`metadata.uid`                  |`uid`              | |
-|`src_endpoint.ip`               |`id.orig_h`        | |
-|`src_endpoint.port`             |`id.orig_p`        | |
-|`dst_endpoint.ip`               |`id.resp_h`        | |
-|`dst_endpoint.port`             |`id.resp_p`        | |
-|`http_request.http_cookies.value` |`cookie`         | |
-|`http_request.http_headers.value` |`accept_language`| In a record where `http_request.http_headers.name` = "Accept Language"|
-|`http_request.http_headers.value` |`accept_encoding`| In a record where `http_request.http_headers.name` = "Accept Encoding"| 
-|`http_request.http_headers.value` |`accept`         | In a record where `http_request.http_headers.name` = "Accept"         |
-|`http_request.http_headers.value` |`post_body`      | In a record where `http_request.http_headers.name` = "Body"           |
-|`http_request.http_headers.value` |`origin`         | In a record where `http_request.http_headers.name` = "Origin"         |
-|`http_request.http_headers.value` |`client_headers` | In a record where `http_request.http_headers.name` = "Client Headers" |
-|`http_request.http_method`      |`method`           | |
-|`http_request.length`           |`request_body_len` | |
-|`http_request.referrer`         |`referrer`         | |
-|`http_request.url.hostname`     |`dest_host`        | |
-|`http_request.url.path`         |`uri`              | |
-|`http_request.user_agent`       |`user_agent`       | |
-|`http_request.version`          |`version`          | |
-|`http_request.x_forwarded_for`  |`proxied`          | |
-|`http_response.code`            |`status_code`      | |
-|`http_response.http_cookies.value` |`resp_cookie`   | |
-|`http_response.http_headers.value` |`server_headers`| |
-|`http_response.length`          |`response_body_len`| |
-|`http_response.status`          |`status_msg`       | |
-|`message`                       |`tags`             | |
-|`observables.type_id:21`        |`username`         | |
-
+ ### Conditional mapping:
+Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
+| OCSF                              | Raw               | Evaluation Conditions                                                                                     | Zeek Field Description                                                                  |
+| --------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `http_request.http_cookies.value` | `cookie`          | Where `http_request.http_cookies.name` = "Request Cookie"                                                 | Cookie value used by the client machine.                                                |
+| `http_request.http_headers.value` | `accept_language` | Where `http_request.http_headers.name` = "Accept Language"                                                | (No description available)                                                              |
+| `http_request.http_headers.value` | `accept_encoding` | Where `http_request.http_headers.name` = "Accept Encoding"                                                | (No description available)                                                              |
+| `http_request.http_headers.value` | `accept`          | Where `http_request.http_headers.name` = "Accept"                                                         | (No description available)                                                              |
+| `http_request.http_headers.value` | `post_body`       | Where `http_request.http_headers.name` = "Body"                                                           | The post_body information.                                                              |
+| `http_request.http_headers.value` | `origin`          | Where `http_request.http_headers.name` = "Origin"                                                         | Value of the Origin header from the client.                                             |
+| `http_request.http_headers.value` | `client_headers`  | Where `http_request.http_headers.name` = "Client Headers"                                                 | (No description available)                                                              |
+| `http_response.http_cookies.value`| `resp_cookie`     | Where `http_response.http_cookies.name` = "Response Cookie"                                               | (No description available)                                                              |
+| `http_response.http_headers.value`| `server_headers`  | Where `http_response.http_headers.name` = "Server Headers"                                                | (No description available)                                                              |
+| `observables.value`               | `username`        | Where `observables.type_id` = `4`                                                                         | Username if basic-auth is performed for the request.                                    |
 
  ### Unmapped (proposed):
- 
-| OCSF                              | Raw                      |
-| ----------------------------------| -------------------------|
-| `http_request.(file.name)`        | `orig_filenames`         |
-| `http_response.(file.name)`       | `resp_filenames`         |
-| `http_request.(file.mime_type[])` | `orig_mime_types`        |
-| `http_response.(file.mime_type[])`| `resp_mime_types`        |
-| `http_request.(file.uid)`         | `orig_fuids`             |
-| `http_response.(file.uid)`        | `resp_fuids`             |
-| `unmapped`                        | `trans_depth`            |
-| `unmapped`                        | `if_none_match`          |
-| `unmapped`                        | `if_modified_since`      |
+| OCSF                              | Raw                      | Zeek Field Description                                                                  |
+| ----------------------------------| -------------------------| --------------------------------------------------------------------------------------- |
+| `http_request.(file.names[])`     | `orig_filenames`         | An ordered vector of filenames from the client.                                         |
+| `http_response.(file.names[])`    | `resp_filenames`         | An ordered vector of filenames from the server.                                         |
+| `http_request.(file.mime_types[])`| `orig_mime_types`        | An ordered vector of mime types.                                                        |
+| `http_response.(file.mime_types[])`| `resp_mime_types`       | An ordered vector of mime types.                                                        |
+| `http_request.(file.uids[])`      | `orig_fuids`             | An ordered vector of file unique IDs.                                                   |
+| `http_response.(file.uids[])`     | `resp_fuids`             | An ordered vector of file unique IDs.                                                   |
+| `unmapped`                        | `trans_depth`            | Represents the pipelined depth into the connection of this request/response transaction.|
+| `unmapped`                        | `if_none_match`          | (No description available)                                                              |
+| `unmapped`                        | `if_modified_since`      | (No description available)                                                              |
