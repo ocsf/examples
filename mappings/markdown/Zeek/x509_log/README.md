@@ -6,22 +6,24 @@
   - https://docs.zeek.org/en/master/logs/x509.html
   - https://docs.zeek.org/en/master/scripts/base/files/x509/main.zeek.html#type-X509::Info
     
- ### Static mapping: OCSF Version 1.3.0
- - `metadata.version`: `1.3.0`
- - `category_name`: `Identity & Access Management`
- - `category_uid`: `3`
- - `class_name`: `Authentication`
- - `class_uid`: `3002`
- - `metadata.log_name`: `x509.log`
- - `metadata.loggers[].log_provider`: `Zeek`
- - `metadata.loggers[].product.name`: `Zeek`
- - `metadata.product.cpe_name`: `cpe:2.3:a:zeek:zeek`
- - `metadata.product.feature.name`: `x509.log`
- - `metadata.product.name`: `Zeek`
- - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/x509.html`
- - `metadata.product.vendor_name`: `Zeek`
- - `severity`: `Informational`
- - `severity_id`: `1`
+ ### Static mapping:
+| OCSF field                          | Value                                           |
+| ----------------------------------- | ----------------------------------------------- |
+| `metadata.version`                  | "1.3.0"                                         |
+| `category_name`                     | "Identity & Access Management"                  |
+| `category_uid`                      | "3"                                             |
+| `class_name`                        | "Authentication"                                |
+| `class_uid`                         | "3002"                                          |
+| `metadata.log_name`                 | "x509.log"                                      |
+| `metadata.loggers[].log_provider`   | "Zeek"                                          |
+| `metadata.loggers[].product.name`   | "Zeek"                                          |
+| `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
+| `metadata.product.feature.name`     | "x509.log"                                      |
+| `metadata.product.name`             | "Zeek"                                          |
+| `metadata.product.url_string`       | "https://docs.zeek.org/en/current/logs/x509.html"|
+| `metadata.product.vendor_name`      | "Zeek"                                          |
+| `severity`                          | "Informational"                                 |
+| `severity_id`                       | "1"                                             |
 
  ### Mapping:
 | OCSF                          | Raw                       | Zeek Field Description                                                                  |
@@ -37,14 +39,12 @@
 | `certificate.subject`         | `certificate.subject`     | Subject of the certificate.                                                             |
 | `certificate.version`         | `certificate.version`     | Version number of the certificate.                                                      |
 
-
  ### Conditional mapping:
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                               | Raw              | Evaluation Conditions                                                               | Zeek Field Description                                                                 |
 | ---------------------------------- | ---------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `certificate.fingerprints[].value` | `fingerprint`    | Where `certificate.fingerprints[].algorithm` = `certificate.sig_alg`                | Fingerprint of the certificate using the specified signature algorithm.                |
 | `observables[].value`              | `san.dns{}`      | Where `observables[].type_id` = "1" AND `observables[].type` = "Hostname"           | List of DNS entries in the Subject Alternative Name (SAN) field.                       |
-
 
  ### Unmapped:
 | OCSF            | Raw                        | Zeek Field Description                                                                  |
