@@ -13,13 +13,13 @@
 | `metadata.version`                  | "1.3.0"                                         |
 | `category_name`                     | "Network Activity"                              |
 | `category_uid`                      | "4"                                             |
-| `class_name`                        | "DNS Activity"                              |
+| `class_name`                        | "DNS Activity"                                  |
 | `class_uid`                         | "4003"                                          |
-| `metadata.log_name`                 | "dns.log"                                      |
+| `metadata.log_name`                 | "dns.log"                                       |
 | `metadata.loggers[].log_provider`   | "Zeek"                                          |
 | `metadata.loggers[].product.name`   | "Zeek"                                          |
 | `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
-| `metadata.product.feature.name`     | "dns.log"                                      |
+| `metadata.product.feature.name`     | "dns.log"                                       |
 | `metadata.product.name`             | "Zeek"                                          |
 | `metadata.product.url_string`       | "https://docs.zeek.org/en/current/logs/dns.html"|
 | `metadata.product.vendor_name`      | "Zeek"                                          |
@@ -47,9 +47,9 @@
 | `rcode`                       | `rcode_name`    | A descriptive name for the response code value.                                         |
 | `rcode_id`                    | `rcode`         | The response code value in DNS response messages.                                       |
 | `response_time`               | `rtt`           | Round trip time for the query and response.                                             |
-| `answers.rdata`               | `answers`       | The set of resource descriptions in the query answer.                                   |
-| `answers.ttl`                 | `TTLs`          | The caching intervals of the associated RRs described by the answers field.             |
-| `answers.packet_uid`          | `trans_id`      | A 16-bit identifier assigned by the program that generated the DNS query.               |
+| `answers[].rdata`             | `answers`       | The set of resource descriptions in the query answer.                                   |
+| `answers[].ttl`               | `TTLs`          | The caching intervals of the associated RRs described by the answers field.             |
+| `answers[].packet_uid`        | `trans_id`      | A 16-bit identifier assigned by the program that generated the DNS query.               |
 | `query.packet_uid`            | `trans_id`      | A 16-bit identifier assigned by the program that generated the DNS query.               |
 
 
@@ -57,11 +57,11 @@
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                          | Raw             | Evaluation Conditions           | Zeek Field Description                                                                 | Notes |
 | ----------------------------- | --------------- | ------------------------------- | ---------------------------------------------------------------------------------------| --------- |
-| `answers.flag_ids`            | `AA`            | `answers.flag_ids` = "1" when `AA` = "true" | The Authoritative Answer bit for response messages specifies that the responding name server is an authority for the domain. | AA (Authoritative Answer): This flag indicates if the DNS server believes the response is from an authoritative source for the specific domain. If "AA" is set to "true", this would indicate that the response is coming from a server that has authority over the queried domain. In your case, it's set to "false", which means the server doesn't claim authority over the queried domain. |
-| `answers.flag_ids`            | `TC`            | `answers.flag_ids` = "2" when `TC` = "true" | The Truncation bit specifies that the message was truncated.                           | TC (TrunCation): This flag indicates if the message was truncated because it was too long for the UDP transmission. If the message exceeds the maximum size (usually 512 bytes for UDP), it will be truncated and this flag will be set to "true". In your case, it's "false", which means the message wasn't truncated. |
-| `answers.flag_ids`            | `RD`            | `answers.flag_ids` = "3" when `RD` = "true" | The Recursion Desired bit in a request message indicates that the client wants recursive service for this query. | RD (Recursion Desired): This flag indicates if the client (i.e., the system making the request) wants the server to perform recursion to resolve a query. Recursion involves the server querying other DNS servers on behalf of the client. Here it's "true", so the client requested recursion. |
-| `answers.flag_ids`            | `RA`            | `answers.flag_ids` = "4" when `RA` = "true" | The Recursion Available bit in a response message indicates that the name server supports recursive queries. | RA (Recursion Available): This flag indicates if the DNS server can perform recursive queries. If it's "true", the server can perform recursion. Here it's "false", which means that the server does not have the capability to perform recursion. |
-| `answers.flag_ids`            | `Z`             | `answers.flag_ids` = "99" when `Z` = "true" | A reserved field that is zero in queries and responses unless using DNSSEC.            | Z (Reserved for future use): This field is reserved for future use. In current DNS specifications, it should always be "0" in all queries and responses. |
+| `answers[].flag_ids[]`            | `AA`            | `answers.flag_ids` = "1" when `AA` = "true" | The Authoritative Answer bit for response messages specifies that the responding name server is an authority for the domain. | AA (Authoritative Answer): This flag indicates if the DNS server believes the response is from an authoritative source for the specific domain. If "AA" is set to "true", this would indicate that the response is coming from a server that has authority over the queried domain. In your case, it's set to "false", which means the server doesn't claim authority over the queried domain. |
+| `answers[].flag_ids[]`            | `TC`            | `answers.flag_ids` = "2" when `TC` = "true" | The Truncation bit specifies that the message was truncated.                           | TC (TrunCation): This flag indicates if the message was truncated because it was too long for the UDP transmission. If the message exceeds the maximum size (usually 512 bytes for UDP), it will be truncated and this flag will be set to "true". In your case, it's "false", which means the message wasn't truncated. |
+| `answers[].flag_ids[]`            | `RD`            | `answers.flag_ids` = "3" when `RD` = "true" | The Recursion Desired bit in a request message indicates that the client wants recursive service for this query. | RD (Recursion Desired): This flag indicates if the client (i.e., the system making the request) wants the server to perform recursion to resolve a query. Recursion involves the server querying other DNS servers on behalf of the client. Here it's "true", so the client requested recursion. |
+| `answers[].flag_ids[]`            | `RA`            | `answers.flag_ids` = "4" when `RA` = "true" | The Recursion Available bit in a response message indicates that the name server supports recursive queries. | RA (Recursion Available): This flag indicates if the DNS server can perform recursive queries. If it's "true", the server can perform recursion. Here it's "false", which means that the server does not have the capability to perform recursion. |
+| `answers[].flag_ids[]`            | `Z`             | `answers.flag_ids` = "99" when `Z` = "true" | A reserved field that is zero in queries and responses unless using DNSSEC.            | Z (Reserved for future use): This field is reserved for future use. In current DNS specifications, it should always be "0" in all queries and responses. |
 | `status_id`                   | `rejected`      | `status_id` = "1" when `rejected` = "false" OR `status_id` = "2" when `rejected` = "true" | The DNS query was rejected by the server.   |
 
  ### Unmapped:
