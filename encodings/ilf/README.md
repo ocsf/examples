@@ -63,7 +63,7 @@ OCSF supports several event classes and type IDs within each event classes. The 
 
 
 ## ILF Sender and Receiver Fields Mapping
-Currently, ILF sender/from field is `*` and receiver/to field is `*`
+Currently, ILF sender field is `*` and receiver field is `*`
  
 ## ILF Timestamp
 ILF time stamp will be the time when the ILF record is created. The other time mesurements are available as attribute fields in ILF, if necessary.
