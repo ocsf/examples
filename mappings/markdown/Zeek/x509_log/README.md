@@ -24,31 +24,37 @@
  - `severity_id`: `1`
 
  ### Mapping:
+| OCSF                          | Raw                       | Zeek Field Description                                                                  |
+| ----------------------------- | ------------------------- | --------------------------------------------------------------------------------------- |
+| `time`                        | `ts`                      | Timestamp indicating when the event occurred.                                           |
+| `start_time`                  | `ts`                      | Timestamp indicating when the event occurred.                                           |
+| `metadata.logged_time`        | `_write_ts`               | Timestamp indicating when the log entry was written to disk.                            |
+| `metadata.loggers[].name`     | `_system_name`            | Name of the system or logging subsystem generating the log entry.                       |
+| `certificate.issuer`          | `certificate.issuer`      | Issuer of the certificate.                                                              |
+| `certificate.not_valid_after` | `certificate.expiration_time` | Timestamp after which the certificate is not valid.                                 |
+| `certificate.not_valid_before`| `certificate.created_time`| Timestamp before which the certificate is not valid.                                    |
+| `certificate.serial_number`   | `certificate.serial`      | Serial number of the certificate.                                                       |
+| `certificate.subject`         | `certificate.subject`     | Subject of the certificate.                                                             |
+| `certificate.version`         | `certificate.version`     | Version number of the certificate.                                                      |
 
-| OCSF                          | Raw             | Notes           |
-| ----------------------------- | --------------- | --------------- |
-|`time`                         |`ts`             | |
-|`start_time`                   |`ts`             | |
-|`metadata.logged_time`         |`_write_ts`      | |
-|`metadata.loggers[].name`      |`_system_name`   | |
-|`certificate.fingerprints[].value` |`fingerprint`   | In a record where `certificate.fingerprints[].algorithm` = `certificate.sig_alg` |
-|`certificate.issuer`           |`certificate.issuer`    | |
-|`certificate.not_valid_after`  |`certificate.expiration_time`| |
-|`certificate.not_valid_before` |`certificate.created_time`   | |
-|`certificate.serial_number`    |`certificate.serial`    | |
-|`certificate.subject`          |`certificate.subject`   | |
-|`certificate.version`          |`certificate.version`   | |
-|`observables[].value`          |`san.dns{}`      | In a record where observables[].type_id = "1" AND observables[].type = "Hostname" |
+
+ ### Conditional mapping:
+Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
+| OCSF                               | Raw              | Evaluation Conditions                                                               | Zeek Field Description                                                                 |
+| ---------------------------------- | ---------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `certificate.fingerprints[].value` | `fingerprint`    | Where `certificate.fingerprints[].algorithm` = `certificate.sig_alg`                | Fingerprint of the certificate using the specified signature algorithm.                |
+| `observables[].value`              | `san.dns{}`      | Where observables[].type_id = "1" AND observables[].type = "Hostname"               | List of DNS entries in the Subject Alternative Name (SAN) field.                       |
+
 
  ### Unmapped:
-| OCSF            | Raw                        | Notes           |
-| --------------- | -------------------------- | --------------- |
-|`unmapped`       |`basic_constraints.ca`      | boolean |
-|`unmapped`       |`basic_constraints.path_len`| int |
-|`unmapped`       |`certificate.curve`         | |
-|`unmapped`       |`certificate.exponent`      | |
-|`unmapped`       |`certificate.key_alg`       | |
-|`unmapped`       |`certificate.key_length`    | |
-|`unmapped`       |`certificate.key_type`      | |
-|`unmapped`       |`client_cert`               | boolean |
-|`unmapped`       |`host_cert`                 | boolean |
+| OCSF            | Raw                        | Zeek Field Description                                                                  |
+| --------------- | -------------------------- | --------------------------------------------------------------------------------------- |
+| `unmapped`      | `basic_constraints.ca`     | CA flag set? Indicates if the certificate can sign other certificates.                  |
+| `unmapped`      | `basic_constraints.path_len`| Maximum path length for the certificate chain.                                         |
+| `unmapped`      | `certificate.curve`        | Curve used in the certificate, if it is an EC-certificate.                              |
+| `unmapped`      | `certificate.exponent`     | Exponent used in the certificate, if it is an RSA-certificate.                          |
+| `unmapped`      | `certificate.key_alg`      | Key algorithm used in the certificate.                                                  |
+| `unmapped`      | `certificate.key_length`   | Key length in bits for the certificate.                                                 |
+| `unmapped`      | `certificate.key_type`     | Key type, such as RSA, DSA, or EC, if parseable by OpenSSL.                             |
+| `unmapped`      | `client_cert`              | Indicates if this certificate was sent from the client.                                 |
+| `unmapped`      | `host_cert`                | Indicates if this certificate was an end-host certificate, or sent as part of a chain.  |
