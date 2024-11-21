@@ -55,9 +55,9 @@
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                           | Raw               | Evaluation Conditions                         | Zeek Field Description                                                                  |
 | ------------------------------ | ----------------- | --------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `observables.value`            | `rdfp_hash`       | Where `observables.type_id` = "30"            | The rdfp_hash information.                                                              |
-| `observables.value`            | `rdfp_string`     | Where `observables.type_id` = "99"            | A fingerprint which represents an RDP client.                                           |
-| `observables.value`            | `keyboard_layout` | Where `observables.type_id` = "99"            | Keyboard layout (language) of the client machine.                                       |
+| `observables[].value`          | `rdfp_hash`       | Where `observables[].type_id` = "30"          | The rdfp_hash information.                                                              |
+| `observables[].value`          | `rdfp_string`     | Where `observables[].type_id` = "99"          | A fingerprint which represents an RDP client.                                           |
+| `observables[].value`          | `keyboard_layout` | Where `observables[].type_id` = "99"          | Keyboard layout (language) of the client machine.                                       |
 
  ### Unmapped:
 | OCSF                     | Raw                | Zeek Field Description                                                                  |
