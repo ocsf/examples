@@ -22,10 +22,10 @@
  - `metadata.product.vendor_name`: `Zeek`
  - `severity`: `Informational`
  - `severity_id`: `1`
- - `dst_endpoint.agent_list.type`: `Remote Access`
- - `dst_endpoint.agent_list.type_id`: `9`
- - `src_endpoint.agent_list.type`: `Remote Access`
- - `src_endpoint.agent_list.type_id`: `9`
+ - `dst_endpoint.agent_list[].type`: `Remote Access`
+ - `dst_endpoint.agent_list[].type_id`: `9`
+ - `src_endpoint.agent_list[].type`: `Remote Access`
+ - `src_endpoint.agent_list[].type_id`: `9`
 
  ### Mapping:
 
@@ -38,7 +38,7 @@
 | `metadata.uid`                 | `uid`                       | Unique ID for the connection.                                                           |
 | `src_endpoint.ip`              | `id.orig_h`                 | The originator’s IP address.                                                            |
 | `src_endpoint.port`            | `id.orig_p`                 | The originator’s port number.                                                           |
-| `src_endpoint.agent_list.name` | `client`                    | The client’s version string.                                                            |
+| `src_endpoint.agent_list[].name` | `client`                    | The client’s version string.                                                            |
 | `src_endpoint.location.city`   | `remote_location.city`      | The city.                                                                               |
 | `src_endpoint.location.country`| `remote_location.country_code` | The country code.                                                                    |
 | `src_endpoint.location.lat`    | `remote_location.latitude`  | Latitude.                                                                               |
@@ -46,7 +46,7 @@
 | `src_endpoint.location.region` | `remote_location.region`    | The region.                                                                             |
 | `dst_endpoint.ip`              | `id.resp_h`                 | The responder’s IP address.                                                             |
 | `dst_endpoint.port`            | `id.resp_p`                 | The responder’s port number.                                                            |
-| `dst_endpoint.agent_list.name` | `server`                    | The server’s version string.                                                            |
+| `dst_endpoint.agent_list[].name` | `server`                    | The server’s version string.                                                            |
 | `client_hassh.algorithm`       | `hasshAlgorithms`           | The hasshAlgorithms information.                                                        |
 | `client_hassh.fingerprint`     | `hassh`                     | The hassh information.                                                                  |
 | `server_hassh.algorithm`       | `hasshServerAlgorithms`     | The hasshServerAlgorithms information.                                                  |
