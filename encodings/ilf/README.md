@@ -53,75 +53,550 @@ For real-time analysis of cyber events, it is necessary to process event records
 
 ## OCSF to ILF Event Type Mapping
 
-OCSF supports several event classes and type IDs within each event classes. Mapping 
+OCSF supports several event classes and type IDs within each event classes. The ILF event_type is calculated  as: OCSF_`Class UID * 100 + Activity ID`. Below are some examples.
 
-```
-The ILF event_type is calculated  as: `OCSF_class_uid * 100 + activity_id`.
+| OCSF Class UID: Name              | OCSF Activity ID :Name             |       ILF Event Type|
+| ------------ | --------------------------- | --------- |
+| `1004: Memory Activity`| `0` : Unknown| `OCSF_100400` |
+| `1004: Memory Activity`| `1` : Allocate Page| `OCSF_100401` |
+| `1004: Memory Activity`| `2`:  Modify Page| `OCSF_100402` |
 
- **100400** Memory Activity: Unknown => OCSF_100400
- **100401** Memory Activity: Allocate Page => OCSF_100401
- **100402** Memory Activity: Modify Page => OCSF_100402
-```
 
 ## ILF Sender and Receiver Fields Mapping
-TBD
+Currently, ILF sender/from field is `*` and receiver/to field is `*`
  
 ## ILF Timestamp
-ILF time stamp will be the time when the ILF record is created. 
+ILF time stamp will be the time when the ILF record is created. The other time mesurements are available as attribute fields in ILF, if necessary.
 
-### OCSF to ILF Attribute Fields Mapping
+## OCSF to ILF Attribute Fields Mapping
 
-Mapping from OCSF to ILF event records requires among other things to flatten the structs within OCSF because ILF does not support structs.
+OCSF events do not distinguish between a missing field or a field with a NULL value, whereas ILF does. Therefore, if a field is missing in the OCSF JSON, ILF provides the option to either produce an attribute field key with NULL value, or to remove the attribute key entirely from the JSON. Additionally, Special fields such as unmapped data may be excluded from the resulting ILF record.
 
-```markdown
-## Rules for Flattening an OCSF Struct to an ILF
+Unlike formats such as JSON, ILF does not allow nested data objects or structs when transporting data- this means that when translating an OCSF object, we need to "flatten" the object and all it's nested fields into a one-dimensional array of keys and values. We do this via the recursive process below:
 
-**Notes:**
-- This process is recursive and builds a “path” for each entry as it deconstructs each value.
-- “Special fields” are always ignored.
+### Process for Flattening an OCSF object as ILF Attribute Field Key/Value Pair(s)
 
-For each field in the OCSF:
+Start with an empty list of Key, Value pairs and an empty "Path". The Path acts as the attribute Key in the ILF record, and describes the hierarchy of where the data is located in the OCSF record.
 
-1. **If it is a List/Vector:**
-   - Add each element of the array, adding the index of the array entry to the path.
+For a given OCSF Message Element D:
 
-2. **If it is a Message:**
-   - If it is `None`, add a `None` value to the ILF.
-   - If it is not `None`, add each field in the Message according to these rules, adding the name of the field to the path.
+1. if D is an Object field or Unmapped Dictionary:
+    - If D is not None, for each field in the Object or Dictionary, flatten the value of the field with the field's name or key added to the path. Add all flattened fields to the ILF's list of Key, Value pairs.
+      - e.g. for the nested data `{"hello": {"world": 1}}` the resulting flattened key, value pair would be `(hello_d_world, 1)`
+    - If the value of D is None, instead add a None value at the current Path to the ILF's list of Key, Value pairs.
+      - e.g. for the nested data `{"hello": null}` the resulting flattened key, value pair would be `(hello, None)`
+2. If D is a List or Vector
+    - For each entry in the List, flatten the entry with the entry's index in the List added to the path. Add all flattened entries to the ILF's list of Key, Value pairs.
+      - e.g. for the nested data `{"hello": [1,2]}` the resulting flattened key, value pairs would be `(hello_d_0, 1), (hello_d_1, 2)`
+3. If D is an Enum
+    - If D is not None, Add the path of the enum and the value of the Enum as an integer to the ILF's list of Key, Value pairs
+    - If the value of D is None, instead add a None value at the current Path to the ILF's list of Key, Value pairs.
+4. If D is a Timestamp
+    - Convert the timestamp to a RFC3339-compliant string and add the path of the timestamp and the RFC3339-Compliant String to the ILF's list of Key, Value pairs.
+      - e.g. for the data `{"start_time_dt": "2021-09-07T20:37:30.502680Z"}` the resulting flattened Key, Value pairs would be `("start_time_dt", "2021-09-07T20:37:30.502680+00:00")`
+5. If D is a basic Value (String, Boolean, Integer, Long, Float, or Null)
+    - Add it's path and Value to the ILF's list of Key, Value pairs.
+      - e.g. for the data `{"data": {"int": 1, "bool": true, "float": 0.12, "null": null}}` the resulting flattened Key, Value pairs would be `[(data.int, 1), (data.bool, true), (data.float, 0.12), (data.null, None)]`
 
-3. **If it is an Enum:**
-   - If it is `None`, add a `None` value to the ILF.
-   - If it is not `None`, return the value of the Enum as an integer.
+At the end of this process, we should have a list of Key, Value pairs that encompass all the structured data from the OCSF object which we use as the ILF's attribute fields.
 
-4. **If it is an Optional:**
-   - If it is `None`, add a `None` value to the ILF.
-   - If it is not `None`, add the value according to these rules.
+### ILF Attribute Names
 
-5. **If it is a Protobuf Timestamp:**
-   - Convert the timestamp to a RFC3339-compliant string and add the value to the ILF.
+ILF Attribute names can only contain alphanumeric characters and underscores- other characters are disallowed. When translating from more permissive formats, we follow the following conversion table to translate invalid special characters. Characters not in this table are disallowed entirely.
 
-6. **If it is a Protobuf Generic Struct:**
-   - Add each field in the Message according to these rules, adding the name of the field to the path.
+| Character | Replacement String |
+| --------- | ------------------ |
+| `!` | `_ex_` |
+| `@` | `_at_` |
+| `#` | `_ot_` |
+| `$` | `_dl_` |
+| `%` | `_pc_` |
+| `^` | `_ct_` |
+| `&` | `_am_` |
+| `*` | `_st_` |
+| `(` | `_op_` |
+| `)` | `_cp_` |
+| `{` | `_ob_` |
+| `}` | `_cb_` |
+| `[` | `_os_` |
+| `]` | `_cs_` |
+| `:` | `_co_` |
+| `"` | `_dq_` |
+| `;` | `_sc_` |
+| `'` | `_sq_` |
+| `<` | `_lt_` |
+| `>` | `_gt_` |
+| `,` | `_co_` |
+| `.` | `_d_` |
+| `` ` `` | `_bt_` |
+| `~` | `_ti_` |
+| `-` | `_mi_` |
+| `+` | `_pu_` |
+| `=` | `_eq_` |
+| `/` | `_fs_` |
+| `?` | `_qm_` |
+| `\|` | `_pi_` |
+| `\` | `_bs_` |
 
-7. **If it is a Protobuf Generic Value:**
-   - If it is a List value, add the list according to the List rules.
-   - If it is a Null or if it is a `None` value, add a `None` value to the ILF.
-   - If it is a Struct value, add the struct according to the Struct rules.
-   - If it is a Number value, add it as a Float value to the ILF.
-   - If it is a String value, add it as a String value to the ILF.
-   - If it is a Boolean value, add it as a Bool value to the ILF.
 
-8. **If it is a String, Int, Float, Long, or Boolean:**
-   - Add the value to the ILF.
+### Types used in ILF encoding
+
+The ILF encoding types are based on the Protobuf types. Special cases are made for Values of type null_value, struct_value, and list_value- these are "flattened" as described in the process above.
+
+We also include below the types used in the Rust implementation of the OCSF to ILF universal translator.
+
+| OCSF Type    | Protobuf Type               | ILF Type  | Rust Type |
+| ------------ | --------------------------- | --------- | --------- |
+| `boolean_t`  | `bool`                      | `bool`    | `bool` | 
+| `float_t`    | `double`                    | `double`  |`f32` |
+| `integer_t`  | `int32`                     | `integer` | `i32` | 
+| `long_t`     | `int64`                     | `long`    | `i64` |
+| `string_t`   | `string`                    | `string`  | `String` |
+| `datetime_t` | `google.protobuf.Timestamp` | `string`  | `String` (Encoded with RFC3339) |
+| `json_t`     | `google.protobuf.Value`     | see below for types based on variants of the Value type |
+
+| `google.protobuf.Value` Variant | ILF type |
+| --------------------------------| -------- |
+| number_value                    | `f32`    |
+| string_value                    | `String` |
+| bool_value                      | `bool`   |
+| null_value                      | `None`   |
+| struct_value                    | flattened set of Key, Value pairs |
+| list_value                      | flattened set of Key, Value pairs | 
+
+
+## Example Mapping from an OCSF JSON to ILF
+
+Sample OCSF record (ocsf_eks.json)
+
+```
+{
+    "activity_id": 1,
+    "activity_name": "Create",
+    "actor": {
+      "session": {
+        "credential_uid": "EXAMPLEUIDTEST",
+        "issuer": "arn:aws:iam::123456789012:role/example-test-161366663-NodeInstanceRole-abc12345678912",
+        "uid": "i-12345678901"
+      },
+      "user": {
+        "groups": [
+          {
+            "name": "system:bootstrappers"
+          },
+          {
+            "name": "system:nodes"
+          },
+          {
+            "name": "system:authenticated"
+          }
+        ],
+        "name": "system:node:ip-192-001-02-03.ec2.internal",
+        "type_id": 0,
+        "uid": "heptio-authenticator-aws:123456789012:ABCD1234567890EXAMPLE"
+      }
+    },
+    "api": {
+      "operation": "create",
+      "request": {
+        "uid": "f47c68f2-d3ac-4f96-b2f4-5d497bf79b64"
+      },
+      "response": {
+        "code": 201
+      },
+      "version": "v1"
+    },
+    "category_name": "Application Activity",
+    "category_uid": 6,
+    "class_name": "API Activity",
+    "class_uid": 6003,
+    "cloud": {
+      "account": {
+        "uid": "arn:aws:sts::123456789012:assumed-role/example-test-161366663-NodeInstanceRole-abc12345678912/i-12345678901"
+      },
+      "provider": "AWS"
+    },
+    "http_request": {
+      "url": {
+        "path": "/api/v1/nodes"
+      },
+      "user_agent": "kubelet/v1.21.2 (linux/amd64) kubernetes/729bdfc"
+    },
+    "message": "ResponseComplete",
+    "metadata": {
+      "log_level": "RequestResponse",
+      "product": {
+        "feature": {
+          "name": "Elastic Kubernetes Service"
+        },
+        "name": "Amazon EKS",
+        "vendor_name": "AWS",
+        "version": "audit.k8s.io/v1"
+      },
+      "profiles": [
+        "cloud",
+        "datetime"
+      ],
+      "version": "1.2.0"
+    },
+    "observables": [
+      {
+        "name": "actor.user.name",
+        "type": "User Name",
+        "type_id": 4,
+        "value": "system:node:ip-192-001-02-03.ec2.internal"
+      },
+      {
+        "name": "src_endpoint.ip",
+        "type": "IP Address",
+        "type_id": 2,
+        "value": "12.000.22.33"
+      },
+      {
+        "name": "http_request.url.path",
+        "type": "URL String",
+        "type_id": 6,
+        "value": "/api/v1/nodes"
+      }
+    ],
+    "resources": [
+      {
+        "name": "ip-192-001-02-03.ec2.internal",
+        "namespace": null,
+        "type": "nodes",
+        "uid": null,
+        "version": null
+      }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+      "ip": "12.000.22.33"
+    },
+    "start_time": 1631047050502680,
+    "start_time_dt": "2021-09-07T20:37:30.502680Z",
+    "time": 1631047050642854,
+    "time_dt": "2021-09-07T20:37:30.642854Z",
+    "type_name": "API Activity: Create",
+    "type_uid": 600301,
+    "unmapped": {
+      "annotations": {
+        "authorization.k8s.io/decision": "allow",
+        "authorization.k8s.io/reason": ""
+      },
+      "kind": "Event",
+      "objectRef": {},
+      "requestObject": {
+        "apiVersion": "v1",
+        "kind": "Node",
+        "metadata": {
+          "annotations": {
+            "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+          },
+          "creationTimestamp": null,
+          "labels": {
+            "alpha.eksctl.io/cluster-name": "ABCD1234567890EXAMPLE",
+            "alpha.eksctl.io/nodegroup-name": "ng-5fe434eb",
+            "beta.kubernetes.io/arch": "amd64",
+            "beta.kubernetes.io/instance-type": "m5.xlarge",
+            "beta.kubernetes.io/os": "linux",
+            "eks.amazonaws.com/capacityType": "ON_DEMAND",
+            "eks.amazonaws.com/nodegroup": "ng-5fe434eb",
+            "eks.amazonaws.com/nodegroup-image": "ami-0193ebf9573ebc9f7",
+            "eks.amazonaws.com/sourceLaunchTemplateId": "lt-0f20d6f901007611e",
+            "eks.amazonaws.com/sourceLaunchTemplateVersion": "1",
+            "failure-domain.beta.kubernetes.io/region": "us-east-1",
+            "failure-domain.beta.kubernetes.io/zone": "us-east-1f",
+            "kubernetes.io/arch": "amd64",
+            "kubernetes.io/hostname": "ip-192-001-02-03.ec2.internal",
+            "kubernetes.io/os": "linux",
+            "node.kubernetes.io/instance-type": "m5.xlarge",
+            "topology.kubernetes.io/region": "us-east-1",
+            "topology.kubernetes.io/zone": "us-east-1f"
+          },
+          "name": "ip-192-001-02-03.ec2.internal"
+        },
+        "spec": {
+          "providerID": "aws:///us-east-1f/i-12345678901"
+        },
+        "status": {
+          "addresses": [
+            {
+              "address": "192.000.22.33",
+              "type": "InternalIP"
+            },
+            {
+              "address": "12.000.22.33",
+              "type": "ExternalIP"
+            },
+            {
+              "address": "ip-192-001-02-03.ec2.internal",
+              "type": "Hostname"
+            },
+            {
+              "address": "ip-192-001-02-03.ec2.internal",
+              "type": "InternalDNS"
+            },
+            {
+              "address": "ec2-12.000.22.33.compute-1.amazonaws.com",
+              "type": "ExternalDNS"
+            }
+          ],
+          "allocatable": {
+            "attachable-volumes-aws-ebs": "25",
+            "cpu": "3920m",
+            "hugepages-1Gi": "0",
+            "hugepages-2Mi": "0",
+            "memory": "15076868Ki",
+            "pods": "58"
+          },
+          "capacity": {
+            "attachable-volumes-aws-ebs": "25",
+            "cpu": "4",
+            "hugepages-1Gi": "0",
+            "hugepages-2Mi": "0",
+            "memory": "16093700Ki",
+            "pods": "58"
+          },
+          "conditions": [
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has sufficient memory available",
+              "reason": "KubeletHasSufficientMemory",
+              "status": "False",
+              "type": "MemoryPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has no disk pressure",
+              "reason": "KubeletHasNoDiskPressure",
+              "status": "False",
+              "type": "DiskPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has sufficient PID available",
+              "reason": "KubeletHasSufficientPID",
+              "status": "False",
+              "type": "PIDPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "[container runtime status check may not have completed yet, container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized, CSINode is not yet initialized, missing node capacity for resources: ephemeral-storage]",
+              "reason": "KubeletNotReady",
+              "status": "False",
+              "type": "Ready"
+            }
+          ],
+          "daemonEndpoints": {
+            "kubeletEndpoint": {
+              "Port": 10250
+            }
+          },
+          "nodeInfo": {
+            "architecture": "amd64",
+            "bootID": "0d0dd4f2-8829-4b03-9f29-794f4908281b",
+            "containerRuntimeVersion": "docker://19.3.13",
+            "kernelVersion": "5.4.141-67.229.amzn2.x86_64",
+            "kubeProxyVersion": "v1.21.2-eks-55daa9d",
+            "kubeletVersion": "v1.21.2-eks-55daa9d",
+            "machineID": "ec2483c633b0e271f36ce14e45a361b8",
+            "operatingSystem": "linux",
+            "osImage": "Amazon Linux 2",
+            "systemUUID": "ec2483c6-33b0-e271-f36c-e14e45a361b8"
+          }
+        }
+      },
+      "responseObject": {
+        "apiVersion": "v1",
+        "kind": "Node",
+        "metadata": {
+          "annotations": {
+            "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+          },
+          "creationTimestamp": "2021-09-07T20:37:30Z",
+          "labels": {
+            "alpha.eksctl.io/cluster-name": "ABCD1234567890EXAMPLE",
+            "alpha.eksctl.io/nodegroup-name": "ng-5fe434eb",
+            "beta.kubernetes.io/arch": "amd64",
+            "beta.kubernetes.io/instance-type": "m5.xlarge",
+            "beta.kubernetes.io/os": "linux",
+            "eks.amazonaws.com/capacityType": "ON_DEMAND",
+            "eks.amazonaws.com/nodegroup": "ng-5fe434eb",
+            "eks.amazonaws.com/nodegroup-image": "ami-0193ebf9573ebc9f7",
+            "eks.amazonaws.com/sourceLaunchTemplateId": "lt-0f20d6f901007611e",
+            "eks.amazonaws.com/sourceLaunchTemplateVersion": "1",
+            "failure-domain.beta.kubernetes.io/region": "us-east-1",
+            "failure-domain.beta.kubernetes.io/zone": "us-east-1f",
+            "kubernetes.io/arch": "amd64",
+            "kubernetes.io/hostname": "ip-192-001-02-03.ec2.internal",
+            "kubernetes.io/os": "linux",
+            "node.kubernetes.io/instance-type": "m5.xlarge",
+            "topology.kubernetes.io/region": "us-east-1",
+            "topology.kubernetes.io/zone": "us-east-1f"
+          },
+          "managedFields": [
+            {
+              "apiVersion": "v1",
+              "fieldsType": "FieldsV1",
+              "fieldsV1": {
+                "f:metadata": {
+                  "f:annotations": {
+                    ".": {},
+                    "f:volumes.kubernetes.io/controller-managed-attach-detach": {}
+                  },
+                  "f:labels": {
+                    ".": {},
+                    "f:alpha.eksctl.io/cluster-name": {},
+                    "f:alpha.eksctl.io/nodegroup-name": {},
+                    "f:beta.kubernetes.io/arch": {},
+                    "f:beta.kubernetes.io/instance-type": {},
+                    "f:beta.kubernetes.io/os": {},
+                    "f:eks.amazonaws.com/capacityType": {},
+                    "f:eks.amazonaws.com/nodegroup": {},
+                    "f:eks.amazonaws.com/nodegroup-image": {},
+                    "f:eks.amazonaws.com/sourceLaunchTemplateId": {},
+                    "f:eks.amazonaws.com/sourceLaunchTemplateVersion": {},
+                    "f:failure-domain.beta.kubernetes.io/region": {},
+                    "f:failure-domain.beta.kubernetes.io/zone": {},
+                    "f:kubernetes.io/arch": {},
+                    "f:kubernetes.io/hostname": {},
+                    "f:kubernetes.io/os": {},
+                    "f:node.kubernetes.io/instance-type": {},
+                    "f:topology.kubernetes.io/region": {},
+                    "f:topology.kubernetes.io/zone": {}
+                  }
+                },
+                "f:spec": {
+                  "f:providerID": {}
+                }
+              },
+              "manager": "kubelet",
+              "operation": "Update",
+              "time": "2021-09-07T20:37:30Z"
+            }
+          ],
+          "name": "ip-192-001-02-03.ec2.internal",
+          "resourceVersion": "67933403",
+          "uid": "4ecf628a-1b50-47ed-932c-bb1df89dad10"
+        },
+        "spec": {
+          "providerID": "aws:///us-east-1f/i-12345678901",
+          "taints": [
+            {
+              "effect": "NoSchedule",
+              "key": "node.kubernetes.io/not-ready"
+            }
+          ]
+        },
+        "status": {
+          "addresses": [
+            {
+              "address": "192.000.22.33",
+              "type": "InternalIP"
+            },
+            {
+              "address": "12.000.22.33",
+              "type": "ExternalIP"
+            },
+            {
+              "address": "ip-192-001-02-03.ec2.internal",
+              "type": "Hostname"
+            },
+            {
+              "address": "ip-192-001-02-03.ec2.internal",
+              "type": "InternalDNS"
+            },
+            {
+              "address": "ec2-12.000.22.33.compute-1.amazonaws.com",
+              "type": "ExternalDNS"
+            }
+          ],
+          "allocatable": {
+            "attachable-volumes-aws-ebs": "25",
+            "cpu": "3920m",
+            "hugepages-1Gi": "0",
+            "hugepages-2Mi": "0",
+            "memory": "15076868Ki",
+            "pods": "58"
+          },
+          "capacity": {
+            "attachable-volumes-aws-ebs": "25",
+            "cpu": "4",
+            "hugepages-1Gi": "0",
+            "hugepages-2Mi": "0",
+            "memory": "16093700Ki",
+            "pods": "58"
+          },
+          "conditions": [
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has sufficient memory available",
+              "reason": "KubeletHasSufficientMemory",
+              "status": "False",
+              "type": "MemoryPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has no disk pressure",
+              "reason": "KubeletHasNoDiskPressure",
+              "status": "False",
+              "type": "DiskPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "kubelet has sufficient PID available",
+              "reason": "KubeletHasSufficientPID",
+              "status": "False",
+              "type": "PIDPressure"
+            },
+            {
+              "lastHeartbeatTime": "2021-09-07T20:37:28Z",
+              "lastTransitionTime": "2021-09-07T20:37:28Z",
+              "message": "[container runtime status check may not have completed yet, container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized, CSINode is not yet initialized, missing node capacity for resources: ephemeral-storage]",
+              "reason": "KubeletNotReady",
+              "status": "False",
+              "type": "Ready"
+            }
+          ],
+          "daemonEndpoints": {
+            "kubeletEndpoint": {
+              "Port": 10250
+            }
+          },
+          "nodeInfo": {
+            "architecture": "amd64",
+            "bootID": "0d0dd4f2-8829-4b03-9f29-794f4908281b",
+            "containerRuntimeVersion": "docker://19.3.13",
+            "kernelVersion": "5.4.141-67.229.amzn2.x86_64",
+            "kubeProxyVersion": "v1.21.2-eks-55daa9d",
+            "kubeletVersion": "v1.21.2-eks-55daa9d",
+            "machineID": "ec2483c633b0e271f36ce14e45a361b8",
+            "operatingSystem": "linux",
+            "osImage": "Amazon Linux 2",
+            "systemUUID": "ec2483c6-33b0-e271-f36c-e14e45a361b8"
+          }
+        }
+      },
+      "responseStatus": {
+        "metadata": {}
+      },
+      "user": {
+        "extra": {}
+      }
+    }
+  }
 ```
 
-Types not mentioned above are mapped to the protobuf type of their
-underlying type.
+ILF Translation:
 
-TODO: figure out which types are using "underlying types".
-
-### Structured Types
-
-TODO: discuss struct and array unpacking
-using JSON syntax (object.attribute)
-
+```
+OCSF_600301[*,*,2024-11-20T16:45:21.994493-05:00,(actor_d_user_d_groups_d_1_d_name="system:nodes";unmapped_d_requestObject_d_status_d_daemonEndpoints_d_kubeletEndpoint_d_Port=10250;unmapped_d_requestObject_d_status_d_allocatable_d_hugepages_mi_1Gi="0";unmapped_d_requestObject_d_status_d_conditions_d_0_d_lastTransitionTime="2021-09-07T20:37:28Z";unmapped_d_requestObject_d_status_d_nodeInfo_d_architecture="amd64";unmapped_d_responseObject_d_status_d_capacity_d_memory="16093700Ki";actor_d_user_d_type_id=0;unmapped_d_requestObject_d_status_d_addresses_d_3_d_address="ip-192-001-02-03.ec2.internal";unmapped_d_requestObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_capacityType="ON_DEMAND";api_d_operation="create";start_time=1631047050502680;unmapped_d_responseObject_d_metadata_d_labels_d_kubernetes_d_io_fs_os="linux";unmapped_d_responseObject_d_status_d_conditions_d_0_d_reason="KubeletHasSufficientMemory";unmapped_d_requestObject_d_status_d_addresses_d_4_d_type="ExternalDNS";api_d_version="v1";unmapped_d_responseObject_d_status_d_addresses_d_3_d_address="ip-192-001-02-03.ec2.internal";unmapped_d_responseObject_d_status_d_allocatable_d_memory="15076868Ki";activity_id=1;unmapped_d_requestObject_d_status_d_capacity_d_hugepages_mi_1Gi="0";unmapped_d_responseObject_d_status_d_addresses_d_3_d_type="InternalDNS";unmapped_d_responseObject_d_status_d_conditions_d_0_d_status="False";unmapped_d_responseObject_d_status_d_addresses_d_4_d_address="ec2-12.000.22.33.compute-1.amazonaws.com";unmapped_d_requestObject_d_status_d_conditions_d_1_d_message="kubelet has no disk pressure";unmapped_d_responseObject_d_status_d_allocatable_d_hugepages_mi_1Gi="0";unmapped_d_requestObject_d_status_d_conditions_d_3_d_message="[container runtime status check may not have completed yet, container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized, CSINode is not yet initialized, missing node capacity for resources: ephemeral-storage]";unmapped_d_responseObject_d_status_d_nodeInfo_d_containerRuntimeVersion="docker://19.3.13";unmapped_d_requestObject_d_status_d_addresses_d_0_d_type="InternalIP";actor_d_session_d_credential_uid="EXAMPLEUIDTEST";actor_d_user_d_groups_d_2_d_name="system:authenticated";unmapped_d_requestObject_d_status_d_allocatable_d_cpu="3920m";unmapped_d_responseObject_d_status_d_conditions_d_3_d_lastHeartbeatTime="2021-09-07T20:37:28Z";unmapped_d_requestObject_d_status_d_addresses_d_0_d_address="192.000.22.33";metadata_d_product_d_vendor_name="AWS";unmapped_d_responseObject_d_metadata_d_managedFields_d_0_d_manager="kubelet";unmapped_d_responseObject_d_status_d_addresses_d_2_d_type="Hostname";unmapped_d_requestObject_d_metadata_d_labels_d_beta_d_kubernetes_d_io_fs_arch="amd64";category_name="Application Activity";unmapped_d_requestObject_d_status_d_capacity_d_cpu="4";unmapped_d_requestObject_d_status_d_conditions_d_2_d_reason="KubeletHasSufficientPID";unmapped_d_requestObject_d_status_d_conditions_d_0_d_type="MemoryPressure";unmapped_d_requestObject_d_metadata_d_labels_d_failure_mi_domain_d_beta_d_kubernetes_d_io_fs_zone="us-east-1f";unmapped_d_responseObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_nodegroup="ng-5fe434eb";unmapped_d_requestObject_d_status_d_conditions_d_3_d_reason="KubeletNotReady";unmapped_d_responseObject_d_status_d_addresses_d_4_d_type="ExternalDNS";unmapped_d_requestObject_d_spec_d_providerID="aws:///us-east-1f/i-12345678901";unmapped_d_responseObject_d_status_d_nodeInfo_d_bootID="0d0dd4f2-8829-4b03-9f29-794f4908281b";unmapped_d_responseObject_d_status_d_daemonEndpoints_d_kubeletEndpoint_d_Port=10250;unmapped_d_requestObject_d_status_d_nodeInfo_d_containerRuntimeVersion="docker://19.3.13";observables_d_0_d_type_id=4;unmapped_d_requestObject_d_status_d_conditions_d_2_d_lastHeartbeatTime="2021-09-07T20:37:28Z";unmapped_d_responseObject_d_metadata_d_labels_d_beta_d_kubernetes_d_io_fs_arch="amd64";unmapped_d_requestObject_d_status_d_conditions_d_1_d_reason="KubeletHasNoDiskPressure";time_dt="2021-09-07T20:37:30.642854+00:00";unmapped_d_requestObject_d_status_d_conditions_d_0_d_reason="KubeletHasSufficientMemory";unmapped_d_requestObject_d_status_d_capacity_d_pods="58";unmapped_d_annotations_d_authorization_d_k8s_d_io_fs_reason="";unmapped_d_requestObject_d_status_d_nodeInfo_d_systemUUID="ec2483c6-33b0-e271-f36c-e14e45a361b8";unmapped_d_responseObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_capacityType="ON_DEMAND";category_uid=6;unmapped_d_requestObject_d_metadata_d_name="ip-192-001-02-03.ec2.internal";unmapped_d_responseObject_d_metadata_d_labels_d_node_d_kubernetes_d_io_fs_instance_mi_type="m5.xlarge";unmapped_d_responseObject_d_status_d_capacity_d_cpu="4";unmapped_d_requestObject_d_metadata_d_labels_d_node_d_kubernetes_d_io_fs_instance_mi_type="m5.xlarge";unmapped_d_responseObject_d_status_d_conditions_d_0_d_message="kubelet has sufficient memory available";unmapped_d_requestObject_d_status_d_allocatable_d_pods="58";observables_d_0_d_name="actor.user.name";unmapped_d_responseObject_d_metadata_d_labels_d_alpha_d_eksctl_d_io_fs_cluster_mi_name="ABCD1234567890EXAMPLE";http_request_d_user_agent="kubelet/v1.21.2 (linux/amd64) kubernetes/729bdfc";observables_d_1_d_value="12.000.22.33";severity="Informational";unmapped_d_responseObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_sourceLaunchTemplateId="lt-0f20d6f901007611e";unmapped_d_responseObject_d_metadata_d_name="ip-192-001-02-03.ec2.internal";unmapped_d_responseObject_d_metadata_d_managedFields_d_0_d_operation="Update";unmapped_d_responseObject_d_status_d_conditions_d_2_d_message="kubelet has sufficient PID available";unmapped_d_responseObject_d_status_d_conditions_d_2_d_reason="KubeletHasSufficientPID";unmapped_d_responseObject_d_kind="Node";unmapped_d_annotations_d_authorization_d_k8s_d_io_fs_decision="allow";unmapped_d_responseObject_d_status_d_conditions_d_2_d_lastHeartbeatTime="2021-09-07T20:37:28Z";unmapped_d_responseObject_d_status_d_capacity_d_hugepages_mi_1Gi="0";observables_d_2_d_value="/api/v1/nodes";unmapped_d_responseObject_d_status_d_conditions_d_1_d_lastHeartbeatTime="2021-09-07T20:37:28Z";unmapped_d_requestObject_d_status_d_conditions_d_1_d_lastHeartbeatTime="2021-09-07T20:37:28Z";metadata_d_version="1.2.0";unmapped_d_responseObject_d_status_d_conditions_d_3_d_message="[container runtime status check may not have completed yet, container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:docker: network plugin is not ready: cni config uninitialized, CSINode is not yet initialized, missing node capacity for resources: ephemeral-storage]";metadata_d_profiles_d_1="datetime";unmapped_d_responseObject_d_status_d_addresses_d_0_d_type="InternalIP";unmapped_d_requestObject_d_metadata_d_labels_d_beta_d_kubernetes_d_io_fs_instance_mi_type="m5.xlarge";metadata_d_product_d_feature_d_name="Elastic Kubernetes Service";unmapped_d_responseObject_d_status_d_allocatable_d_pods="58";unmapped_d_responseObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_nodegroup_mi_image="ami-0193ebf9573ebc9f7";unmapped_d_requestObject_d_status_d_conditions_d_0_d_message="kubelet has sufficient memory available";unmapped_d_responseObject_d_status_d_conditions_d_1_d_reason="KubeletHasNoDiskPressure";unmapped_d_requestObject_d_status_d_nodeInfo_d_kubeProxyVersion="v1.21.2-eks-55daa9d";message="ResponseComplete";observables_d_1_d_type_="IP Address";unmapped_d_responseObject_d_apiVersion="v1";unmapped_d_requestObject_d_status_d_conditions_d_3_d_lastTransitionTime="2021-09-07T20:37:28Z";metadata_d_product_d_name="Amazon EKS";unmapped_d_requestObject_d_status_d_nodeInfo_d_kubeletVersion="v1.21.2-eks-55daa9d";unmapped_d_requestObject_d_status_d_nodeInfo_d_kernelVersion="5.4.141-67.229.amzn2.x86_64";unmapped_d_requestObject_d_status_d_addresses_d_2_d_address="ip-192-001-02-03.ec2.internal";unmapped_d_responseObject_d_status_d_nodeInfo_d_machineID="ec2483c633b0e271f36ce14e45a361b8";unmapped_d_requestObject_d_kind="Node";unmapped_d_requestObject_d_status_d_capacity_d_hugepages_mi_2Mi="0";unmapped_d_requestObject_d_status_d_allocatable_d_hugepages_mi_2Mi="0";unmapped_d_requestObject_d_apiVersion="v1";api_d_request_d_uid="f47c68f2-d3ac-4f96-b2f4-5d497bf79b64";unmapped_d_requestObject_d_metadata_d_labels_d_topology_d_kubernetes_d_io_fs_region="us-east-1";unmapped_d_requestObject_d_status_d_nodeInfo_d_bootID="0d0dd4f2-8829-4b03-9f29-794f4908281b";unmapped_d_requestObject_d_status_d_conditions_d_2_d_lastTransitionTime="2021-09-07T20:37:28Z";unmapped_d_responseObject_d_status_d_nodeInfo_d_architecture="amd64";unmapped_d_requestObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_nodegroup="ng-5fe434eb";unmapped_d_requestObject_d_status_d_conditions_d_2_d_message="kubelet has sufficient PID available";unmapped_d_responseObject_d_status_d_conditions_d_3_d_reason="KubeletNotReady";unmapped_d_responseObject_d_status_d_nodeInfo_d_kernelVersion="5.4.141-67.229.amzn2.x86_64";actor_d_user_d_groups_d_0_d_name="system:bootstrappers";severity_id=1;unmapped_d_responseObject_d_status_d_conditions_d_3_d_status="False";unmapped_d_responseObject_d_metadata_d_uid="4ecf628a-1b50-47ed-932c-bb1df89dad10";unmapped_d_requestObject_d_status_d_capacity_d_memory="16093700Ki";observables_d_2_d_type_id=6;unmapped_d_requestObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_sourceLaunchTemplateVersion="1";unmapped_d_responseObject_d_status_d_conditions_d_2_d_type="PIDPressure";unmapped_d_responseObject_d_status_d_nodeInfo_d_osImage="Amazon Linux 2";unmapped_d_requestObject_d_status_d_addresses_d_1_d_address="12.000.22.33";actor_d_user_d_name="system:node:ip-192-001-02-03.ec2.internal";unmapped_d_responseObject_d_metadata_d_annotations_d_volumes_d_kubernetes_d_io_fs_controller_mi_managed_mi_attach_mi_detach="true";unmapped_d_kind="Event";unmapped_d_responseObject_d_metadata_d_labels_d_alpha_d_eksctl_d_io_fs_nodegroup_mi_name="ng-5fe434eb";unmapped_d_responseObject_d_metadata_d_managedFields_d_0_d_fieldsType="FieldsV1";observables_d_0_d_type_="User Name";unmapped_d_requestObject_d_status_d_conditions_d_1_d_status="False";unmapped_d_requestObject_d_status_d_conditions_d_3_d_type="Ready";unmapped_d_requestObject_d_status_d_conditions_d_0_d_status="False";unmapped_d_requestObject_d_status_d_nodeInfo_d_osImage="Amazon Linux 2";unmapped_d_responseObject_d_metadata_d_managedFields_d_0_d_apiVersion="v1";resources_d_0_d_name="ip-192-001-02-03.ec2.internal";unmapped_d_requestObject_d_status_d_nodeInfo_d_operatingSystem="linux";unmapped_d_responseObject_d_status_d_conditions_d_1_d_lastTransitionTime="2021-09-07T20:37:28Z";actor_d_user_d_uid="heptio-authenticator-aws:123456789012:ABCD1234567890EXAMPLE";unmapped_d_responseObject_d_status_d_addresses_d_2_d_address="ip-192-001-02-03.ec2.internal";unmapped_d_requestObject_d_metadata_d_labels_d_failure_mi_domain_d_beta_d_kubernetes_d_io_fs_region="us-east-1";unmapped_d_requestObject_d_metadata_d_labels_d_beta_d_kubernetes_d_io_fs_os="linux";time=1631047050642854;type_uid=600301;observables_d_1_d_type_id=2;unmapped_d_responseObject_d_status_d_conditions_d_1_d_message="kubelet has no disk pressure";unmapped_d_responseObject_d_metadata_d_labels_d_failure_mi_domain_d_beta_d_kubernetes_d_io_fs_zone="us-east-1f";unmapped_d_responseObject_d_metadata_d_labels_d_kubernetes_d_io_fs_arch="amd64";unmapped_d_responseObject_d_status_d_allocatable_d_attachable_mi_volumes_mi_aws_mi_ebs="25";actor_d_session_d_issuer="arn:aws:iam::123456789012:role/example-test-161366663-NodeInstanceRole-abc12345678912";observables_d_1_d_name="src_endpoint.ip";api_d_response_d_code=201;start_time_dt="2021-09-07T20:37:30.502680+00:00";unmapped_d_responseObject_d_spec_d_taints_d_0_d_effect="NoSchedule";unmapped_d_responseObject_d_status_d_nodeInfo_d_systemUUID="ec2483c6-33b0-e271-f36c-e14e45a361b8";unmapped_d_responseObject_d_status_d_allocatable_d_hugepages_mi_2Mi="0";unmapped_d_responseObject_d_metadata_d_creationTimestamp="2021-09-07T20:37:30Z";unmapped_d_requestObject_d_metadata_d_annotations_d_volumes_d_kubernetes_d_io_fs_controller_mi_managed_mi_attach_mi_detach="true";unmapped_d_requestObject_d_status_d_addresses_d_4_d_address="ec2-12.000.22.33.compute-1.amazonaws.com";unmapped_d_responseObject_d_status_d_conditions_d_0_d_lastHeartbeatTime="2021-09-07T20:37:28Z";unmapped_d_requestObject_d_status_d_addresses_d_1_d_type="ExternalIP";unmapped_d_responseObject_d_status_d_capacity_d_pods="58";unmapped_d_requestObject_d_status_d_allocatable_d_memory="15076868Ki";unmapped_d_requestObject_d_status_d_conditions_d_3_d_lastHeartbeatTime="2021-09-07T20:37:28Z";unmapped_d_responseObject_d_metadata_d_managedFields_d_0_d_time="2021-09-07T20:37:30Z";unmapped_d_requestObject_d_metadata_d_labels_d_topology_d_kubernetes_d_io_fs_zone="us-east-1f";unmapped_d_responseObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_sourceLaunchTemplateVersion="1";unmapped_d_requestObject_d_status_d_conditions_d_3_d_status="False";unmapped_d_responseObject_d_status_d_conditions_d_1_d_type="DiskPressure";unmapped_d_requestObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_nodegroup_mi_image="ami-0193ebf9573ebc9f7";unmapped_d_responseObject_d_status_d_capacity_d_attachable_mi_volumes_mi_aws_mi_ebs="25";unmapped_d_responseObject_d_metadata_d_labels_d_kubernetes_d_io_fs_hostname="ip-192-001-02-03.ec2.internal";unmapped_d_responseObject_d_status_d_nodeInfo_d_kubeletVersion="v1.21.2-eks-55daa9d";unmapped_d_responseObject_d_status_d_capacity_d_hugepages_mi_2Mi="0";unmapped_d_responseObject_d_status_d_addresses_d_0_d_address="192.000.22.33";unmapped_d_responseObject_d_status_d_conditions_d_0_d_type="MemoryPressure";unmapped_d_requestObject_d_status_d_allocatable_d_attachable_mi_volumes_mi_aws_mi_ebs="25";http_request_d_url_d_path="/api/v1/nodes";unmapped_d_requestObject_d_status_d_capacity_d_attachable_mi_volumes_mi_aws_mi_ebs="25";unmapped_d_responseObject_d_status_d_allocatable_d_cpu="3920m";class_uid=6003;type_name="API Activity: Create";metadata_d_log_level="RequestResponse";unmapped_d_responseObject_d_status_d_conditions_d_3_d_lastTransitionTime="2021-09-07T20:37:28Z";unmapped_d_requestObject_d_metadata_d_labels_d_kubernetes_d_io_fs_hostname="ip-192-001-02-03.ec2.internal";unmapped_d_requestObject_d_metadata_d_labels_d_alpha_d_eksctl_d_io_fs_cluster_mi_name="ABCD1234567890EXAMPLE";cloud_d_provider="AWS";class_name="API Activity";unmapped_d_requestObject_d_status_d_conditions_d_0_d_lastHeartbeatTime="2021-09-07T20:37:28Z";unmapped_d_responseObject_d_status_d_conditions_d_3_d_type="Ready";metadata_d_product_d_version="audit.k8s.io/v1";unmapped_d_responseObject_d_status_d_addresses_d_1_d_type="ExternalIP";unmapped_d_responseObject_d_metadata_d_labels_d_failure_mi_domain_d_beta_d_kubernetes_d_io_fs_region="us-east-1";observables_d_2_d_name="http_request.url.path";unmapped_d_responseObject_d_status_d_conditions_d_1_d_status="False";activity_name="Create";unmapped_d_responseObject_d_status_d_conditions_d_0_d_lastTransitionTime="2021-09-07T20:37:28Z";unmapped_d_requestObject_d_status_d_addresses_d_3_d_type="InternalDNS";unmapped_d_responseObject_d_status_d_nodeInfo_d_operatingSystem="linux";unmapped_d_requestObject_d_status_d_nodeInfo_d_machineID="ec2483c633b0e271f36ce14e45a361b8";unmapped_d_responseObject_d_status_d_conditions_d_2_d_status="False";unmapped_d_requestObject_d_metadata_d_labels_d_kubernetes_d_io_fs_os="linux";cloud_d_account_d_uid="arn:aws:sts::123456789012:assumed-role/example-test-161366663-NodeInstanceRole-abc12345678912/i-12345678901";observables_d_2_d_type_="URL String";unmapped_d_responseObject_d_spec_d_providerID="aws:///us-east-1f/i-12345678901";unmapped_d_requestObject_d_status_d_conditions_d_1_d_lastTransitionTime="2021-09-07T20:37:28Z";unmapped_d_responseObject_d_status_d_nodeInfo_d_kubeProxyVersion="v1.21.2-eks-55daa9d";actor_d_session_d_uid="i-12345678901";metadata_d_profiles_d_0="cloud";unmapped_d_requestObject_d_status_d_addresses_d_2_d_type="Hostname";unmapped_d_responseObject_d_spec_d_taints_d_0_d_key="node.kubernetes.io/not-ready";unmapped_d_requestObject_d_metadata_d_labels_d_eks_d_amazonaws_d_com_fs_sourceLaunchTemplateId="lt-0f20d6f901007611e";unmapped_d_responseObject_d_metadata_d_labels_d_topology_d_kubernetes_d_io_fs_zone="us-east-1f";unmapped_d_responseObject_d_metadata_d_resourceVersion="67933403";unmapped_d_requestObject_d_metadata_d_labels_d_kubernetes_d_io_fs_arch="amd64";unmapped_d_requestObject_d_metadata_d_labels_d_alpha_d_eksctl_d_io_fs_nodegroup_mi_name="ng-5fe434eb";resources_d_0_d_type_="nodes";src_endpoint_d_ip="12.000.22.33";unmapped_d_responseObject_d_metadata_d_labels_d_beta_d_kubernetes_d_io_fs_os="linux";unmapped_d_responseObject_d_metadata_d_labels_d_beta_d_kubernetes_d_io_fs_instance_mi_type="m5.xlarge";unmapped_d_responseObject_d_status_d_addresses_d_1_d_address="12.000.22.33";unmapped_d_responseObject_d_status_d_conditions_d_2_d_lastTransitionTime="2021-09-07T20:37:28Z";unmapped_d_requestObject_d_status_d_conditions_d_1_d_type="DiskPressure";observables_d_0_d_value="system:node:ip-192-001-02-03.ec2.internal";unmapped_d_responseObject_d_metadata_d_labels_d_topology_d_kubernetes_d_io_fs_region="us-east-1";unmapped_d_requestObject_d_status_d_conditions_d_2_d_type="PIDPressure";unmapped_d_requestObject_d_status_d_conditions_d_2_d_status="False";)]
+```
