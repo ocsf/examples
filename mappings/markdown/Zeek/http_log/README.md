@@ -6,22 +6,24 @@
   - https://docs.zeek.org/en/master/logs/http.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html#type-HTTP::Info
     
- ### Static mapping: OCSF Version 1.3.0
- - `metadata.version`: `1.3.0`
- - `category_name`: `Network Activity`
- - `category_uid`: `4`
- - `class_name`: `HTTP Activity`
- - `class_uid`: `4002`
- - `metadata.log_name`: `http.log`
- - `metadata.loggers.log_provider`: `Zeek`
- - `metadata.loggers.product.name=`: `Zeek`
- - `metadata.product.cpe_name`: `cpe:2.3:a:zeek:zeek`
- - `metadata.product.feature.name`: `http.log`
- - `metadata.product.name`: `Zeek`
- - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/http.html`
- - `metadata.product.vendor_name`: `Zeek`
- - `severity`: `Informational`
- - `severity_id`: `1`
+ ### Static mapping
+| OCSF field                          | Value                                           |
+| ----------------------------------- | ----------------------------------------------- |
+| `metadata.version`                  | "1.3.0"                                         |
+| `category_name`                     | "Network Activity"                              |
+| `category_uid`                      | "4"                                             |
+| `class_name`                        | "HTTP Activity"                                 |
+| `class_uid`                         | "4002"                                          |
+| `metadata.log_name`                 | "http.log"                                      |
+| `metadata.loggers[].log_provider`   | "Zeek"                                          |
+| `metadata.loggers[].product.name`   | "Zeek"                                          |
+| `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
+| `metadata.product.feature.name`     | "http.log"                                      |
+| `metadata.product.name`             | "Zeek"                                          |
+| `metadata.product.url_string`       | "https://docs.zeek.org/en/current/logs/http.html"|
+| `metadata.product.vendor_name`      | "Zeek"                                          |
+| `severity`                          | "Informational"                                 |
+| `severity_id`                       | "1"                                             |
 
  ### Mapping:
 | OCSF                           | Raw               | Zeek Field Description                                                                  |
@@ -53,15 +55,15 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | OCSF                              | Raw               | Evaluation Conditions                                                                                     | Zeek Field Description                                                                  |
 | --------------------------------- | ----------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `http_request.http_cookies[].value` | `cookie`        | Where `http_request.http_cookies[].name` = "Request Cookie"                                               | Cookie value used by the client machine.                                                |
-| `http_request.http_headers[].value` | `accept_language` | Where `http_request.http_headers[].name` = "Accept Language"                                                | (No description available)                                                              |
-| `http_request.http_headers[].value` | `accept_encoding` | Where `http_request.http_headers[].name` = "Accept Encoding"                                                | (No description available)                                                              |
-| `http_request.http_headers[].value` | `accept`          | Where `http_request.http_headers[].name` = "Accept"                                                         | (No description available)                                                              |
+| `http_request.http_headers[].value` | `accept_language` | Where `http_request.http_headers[].name` = "Accept Language"                                                |                                                               |
+| `http_request.http_headers[].value` | `accept_encoding` | Where `http_request.http_headers[].name` = "Accept Encoding"                                                |                                                               |
+| `http_request.http_headers[].value` | `accept`          | Where `http_request.http_headers[].name` = "Accept"                                                         |                                                               |
 | `http_request.http_headers[].value` | `post_body`       | Where `http_request.http_headers[].name` = "Body"                                                           | The post_body information.                                                              |
 | `http_request.http_headers[].value` | `origin`          | Where `http_request.http_headers[].name` = "Origin"                                                         | Value of the Origin header from the client.                                             |
-| `http_request.http_headers[].value` | `client_headers`  | Where `http_request.http_headers[].name` = "Client Headers"                                                 | (No description available)                                                              |
-| `http_response.http_cookies[].value`| `resp_cookie`     | Where `http_response.http_cookies[].name` = "Response Cookie"                                               | (No description available)                                                              |
-| `http_response.http_headers[].value`| `server_headers`  | Where `http_response.http_headers[].name` = "Server Headers"                                                | (No description available)                                                              |
-| `observables[].value`               | `username`        | Where `observables[].type_id` = `4`                                                                         | Username if basic-auth is performed for the request.                                    |
+| `http_request.http_headers[].value` | `client_headers`  | Where `http_request.http_headers[].name` = "Client Headers"                                                 |                                                               |
+| `http_response.http_cookies[].value`| `resp_cookie`     | Where `http_response.http_cookies[].name` = "Response Cookie"                                               |                                                               |
+| `http_response.http_headers[].value`| `server_headers`  | Where `http_response.http_headers[].name` = "Server Headers"                                                |                                                               |
+| `observables[].value`               | `username`        | Where `observables[].type_id` = "4"                                                                         | Username if basic-auth is performed for the request.                                    |
 
  ### Unmapped (proposed):
 | OCSF                              | Raw                      | Zeek Field Description                                                                  |
@@ -73,5 +75,5 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | `http_request.(file.uids[])`      | `orig_fuids`             | An ordered vector of file unique IDs.                                                   |
 | `http_response.(file.uids[])`     | `resp_fuids`             | An ordered vector of file unique IDs.                                                   |
 | `unmapped`                        | `trans_depth`            | Represents the pipelined depth into the connection of this request/response transaction.|
-| `unmapped`                        | `if_none_match`          | (No description available)                                                              |
-| `unmapped`                        | `if_modified_since`      | (No description available)                                                              |
+| `unmapped`                        | `if_none_match`          |                                                               |
+| `unmapped`                        | `if_modified_since`      |                                                               |
