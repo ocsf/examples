@@ -5,27 +5,29 @@
   - https://schema.ocsf.io/1.3.0/classes/rdp_activity
   - https://docs.zeek.org/en/master/logs/rdp.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/rdp/main.zeek.html#type-RDP::Info
-    
- ### Static mapping: OCSF Version: 1.3.0
- - `metadata.version`: `1.3.0`
- - `category_name`: `Network Activity`
- - `category_uid`: `4`
- - `class_name`: `RDP Activity`
- - `class_uid`: `4007`
- - `metadata.log_name`: `rdp.log`
- - `metadata.loggers[].log_provider`: `Zeek`
- - `metadata.loggers[].product.name`: `Zeek`
- - `metadata.product.cpe_name`: `cpe:2.3:a:zeek:zeek`
- - `metadata.product.feature.name`: `rdp.log`
- - `metadata.product.name`: `Zeek`
- - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/rdp.html`
- - `metadata.product.vendor_name`: `Zeek`
- - `severity`: `Informational`
- - `severity_id`: `1`
- - `dst_endpoint.agent_list.type`: `Remote Access`
- - `dst_endpoint.agent_list.type_id`: `9`
- - `src_endpoint.agent_list.type`: `Remote Access`
- - `src_endpoint.agent_list.type_id`: `9`
+
+ ### Static mapping
+| OCSF field                          | Value                                           |
+| ----------------------------------- | ----------------------------------------------- |
+| `metadata.version`                  | "1.3.0"                                         |
+| `category_name`                     | "Network Activity"                              |
+| `category_uid`                      | "4"                                             |
+| `class_name`                        | "RDP Activity"                                  |
+| `class_uid`                         | "4007"                                          |
+| `metadata.log_name`                 | "rdp.log"                                       |
+| `metadata.loggers[].log_provider`   | "Zeek"                                          |
+| `metadata.loggers[].product.name`   | "Zeek"                                          |
+| `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
+| `metadata.product.feature.name`     | "rdp.log"                                       |
+| `metadata.product.name`             | "Zeek"                                          |
+| `metadata.product.url_string`       | "https://docs.zeek.org/en/current/logs/rdp.html"|
+| `metadata.product.vendor_name`      | "Zeek"                                          |
+| `severity`                          | "Informational"                                 |
+| `severity_id`                       | "1"                                             |
+| `dst_endpoint.agent_list[].type`    | "Remote Access"                                 |
+| `dst_endpoint.agent_list[].type_id` | "9"                                             |
+| `src_endpoint.agent_list[].type`    | "Remote Access"                                 |
+| `src_endpoint.agent_list[].type_id` | "9"                                             |
 
  ### Mapping:
 
@@ -39,8 +41,8 @@
 | `src_endpoint.ip`              | `id.orig_h`            | The originator’s IP address.                                                            |
 | `src_endpoint.port`            | `id.orig_p`            | The originator’s port number.                                                           |
 | `src_endpoint.hostname`        | `client_name`          | Name of the client machine.                                                             |
-| `src_endpoint.agent_list.name` | `client_build`         | RDP client version used by the client machine.                                          |
-| `src_endpoint.agent_list.version` | `client_dig_product_id` | Product ID of the client machine.                                                   |
+| `src_endpoint.agent_list[].name` | `client_build`         | RDP client version used by the client machine.                                          |
+| `src_endpoint.agent_list[].version` | `client_dig_product_id` | Product ID of the client machine.                                                   |
 | `dst_endpoint.ip`              | `id.resp_h`            | The responder’s IP address.                                                             |
 | `dst_endpoint.port`            | `id.resp_p`            | The responder’s port number.                                                            |
 | `identifier_cookie`            | `cookie`               | Cookie value used by the client machine.                                                |
