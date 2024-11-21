@@ -7,22 +7,24 @@
   - https://docs.zeek.org/en/master/logs/conn.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html#type-Conn::Info
  
- ### Static mapping: OCSF Version 1.3.0
- - `metadata.version`: `1.3.0`
- - `category_name`: `Network Activity`
- - `category_uid`: `4`
- - `class_name`: `Network Activity`
- - `class_uid`: `4001`
- - `metadata.log_name`: `conn.log`
- - `metadata.loggers[].log_provider`: `Zeek`
- - `metadata.loggers[].product.name`: `Zeek`
- - `metadata.product.cpe_name`: `cpe:2.3:a:zeek:zeek`
- - `metadata.product.feature.name`: `conn.log`
- - `metadata.product.name`: `Zeek`
- - `metadata.product.url_string`: `https://docs.zeek.org/en/current/logs/conn.html`
- - `metadata.product.vendor_name`: `Zeek`
- - `severity`: `Informational`
- - `severity_id`: `1`
+ ### Static mapping
+| OCSF field                          | Value                                           |
+| ----------------------------------- | ----------------------------------------------- |
+| `metadata.version`                  | "1.3.0"                                         |
+| `category_name`                     | "Network Activity"                              |
+| `category_uid`                      | "4"                                             |
+| `class_name`                        | "Network Activity"                              |
+| `class_uid`                         | "4001"                                          |
+| `metadata.log_name`                 | "conn.log"                                      |
+| `metadata.loggers[].log_provider`   | "Zeek"                                          |
+| `metadata.loggers[].product.name`   | "Zeek"                                          |
+| `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
+| `metadata.product.feature.name`     | "conn.log"                                      |
+| `metadata.product.name`             | "Zeek"                                          |
+| `metadata.product.url_string`       | "https://docs.zeek.org/en/current/logs/conn.html"|
+| `metadata.product.vendor_name`      | "Zeek"                                          |
+| `severity`                          | "Informational"                                 |
+| `severity_id`                       | "1"                                             |
 
  ### Mapping:
 
