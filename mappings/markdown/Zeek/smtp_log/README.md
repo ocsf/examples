@@ -24,34 +24,37 @@
  - `severity_id`: `1`
 
  ### Mapping:
+| OCSF                           | Raw               | Zeek Field Description                                                                 |
+| ------------------------------ | ----------------- | --------------------------------------------------------------------------------------- |
+| `time`                         | `ts`              | Timestamp indicating when the event occurred.                                           |
+| `start_time`                   | `ts`              | Timestamp indicating when the event occurred.                                           |
+| `metadata.logged_time`         | `_write_ts`       | Timestamp indicating when the log entry was written to disk.                            |
+| `metadata.loggers[].name`      | `_system_name`    | Name of the system or logging subsystem generating the log entry.                        |
+| `metadata.uid`                 | `uid`             | Unique ID for the connection.                                                           |
+| `src_endpoint.ip`              | `id.orig_h`       | The originator’s IP address.                                                            |
+| `src_endpoint.port`            | `id.orig_p`       | The originator’s port number.                                                           |
+| `dst_endpoint.ip`              | `id.resp_h`       | The responder’s IP address.                                                             |
+| `dst_endpoint.port`            | `id.resp_p`       | The responder’s port number.                                                            |
+| `email.message_uid`            | `msg_id`          | Contents of the MsgID header.                                                           |
+| `email.from`                   | `from`            | Contents of the From header.                                                            |
+| `email.to`                     | `to`              | Contents of the To header.                                                              |
+| `email.smtp_to`                | `rcptto`          | Email addresses found in the Rcpt header.                                               |
+| `email.smtp_from`              | `mailfrom`        | Email addresses found in the From header.                                               |
+| `smtp_hello`                   | `helo`            | Contents of the Helo header.                                                            |
+| `status_detail`                | `last_reply`      | The last message that the server sent to the client.                                    |
 
-| OCSF                           | Raw               |
-| ------------------------------ | ----------------- |
-|`time`                          |`ts`               |
-|`start_time`                    |`ts`               |
-|`metadata.logged_time`          |`_write_ts`        |
-|`metadata.loggers[].name`       |`_system_name`     |
-|`metadata.uid`                  |`uid`              |
-|`src_endpoint.ip`               |`id.orig_h`        |
-|`src_endpoint.port`             |`id.orig_p`        |
-|`dst_endpoint.ip`               |`id.resp_h`        |
-|`dst_endpoint.port`             |`id.resp_p`        |
-|`email.message_uid`             |`msg_id`           |
-|`email.from`                    |`from`             |
-|`email.to`                      |`to`               |
-|`email.smtp_to`                 |`rcptto`           |
-|`email.smtp_from`               |`mailfrom`         |
-|`email_url_activity.url.hostname` |`domains`        |
-|`email_url_activity.url.url_string` |`urls`         |
-|`network_activity.proxy.intermediate_ips` |`path`   |
-|`network_file_activity.file.uid`|`fuids`            |
-|`smtp_hello`                    |`helo`             |
-|`status_detail`                 |`last_reply`       |
+ ### Mapping from a different OCSF category:
+| OCSF                                      | Raw       | Zeek Field Description                                                                  |
+| ----------------------------------------- | --------- | --------------------------------------------------------------------------------------- |
+| `email_url_activity.url.hostname`         | `domains` | The domains seen in the email.                                                          |
+| `email_url_activity.url.url_string`       | `urls`    | The URLs seen in the email.                                                             |
+| `network_activity.proxy.intermediate_ips` | `path`    | The message transmission path, as extracted from the headers.                           |
+| `network_file_activity.file.uid`          | `fuids`   | An ordered vector of file unique IDs seen attached to the message.                      |
 
  ### Unmapped (proposed):
  
-| OCSF                     | Raw                      |
-| -------------------------| -------------------------|
-| `unmapped`               | `date`                   |
-| `unmapped`               | `tls`                    |
-| `(app_name)`             | `is_webmail`             |
+| OCSF                     | Raw                | Zeek Field Description                                                                  |
+| -------------------------| -------------------| --------------------------------------------------------------------------------------- |
+| `unmapped`               | `date`             | Contents of the Date header.                                                            |
+| `unmapped`               | `tls`              | Boolean indicator for when the connection has switched to using TLS.                    |
+| `(app_name)`             | `is_webmail`       | Boolean indicator of if the message was sent through a webmail interface.               |
