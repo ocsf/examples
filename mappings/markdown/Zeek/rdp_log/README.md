@@ -29,38 +29,42 @@
 
  ### Mapping:
 
-| OCSF                           | Raw               |
-| ------------------------------ | ----------------- |
-|`time`                          |`ts`               |
-|`start_time`                    |`ts`               |
-|`metadata.logged_time`          |`_write_ts`        |
-|`metadata.loggers[].name`       |`_system_name`     |
-|`metadata.uid`                  |`uid`              |
-|`src_endpoint.ip`               |`id.orig_h`        |
-|`src_endpoint.port`             |`id.orig_p`        |
-|`src_endpoint.hostname`         |`client_name`      |
-|`src_endpoint.agent_list.name`  |`client_build`     |
-|`src_endpoint.agent_list.version`|`client_dig_product_id`|   
-|`dst_endpoint.ip`               |`id.resp_h`        |
-|`dst_endpoint.port`             |`id.resp_p`        |
-|`identifier_cookie`             |`cookie`           |
-|`protocol_ver`                  |`security_protocol`|
-|`status_detail`                 |`result`           |
-|`tls.key_length`                |`encryption_method`|
-|`observable.type_id:30`         |`rdfp_hash`        |
-|`observable.type_id:99`         |`rdfp_string`      |
-|`observables.type_id:99`        |`keyboard_layout`  |
-|`remote_display.color_depth`    |`requested_color_depth`|
-|`remote_display.physical_height`|`desktop_height`     |
-|`remote_display.physical_width` |`desktop_width`      |
+| OCSF                           | Raw                    | Zeek Field Description                                                                  |
+| ------------------------------ | ---------------------- | --------------------------------------------------------------------------------------- |
+| `time`                         | `ts`                   | Timestamp indicating when the event occurred.                                           |
+| `start_time`                   | `ts`                   | Timestamp indicating when the event occurred.                                           |
+| `metadata.logged_time`         | `_write_ts`            | Timestamp indicating when the log entry was written to disk.                            |
+| `metadata.loggers[].name`      | `_system_name`         | Name of the system or logging subsystem generating the log entry.                       |
+| `metadata.uid`                 | `uid`                  | Unique ID for the connection.                                                           |
+| `src_endpoint.ip`              | `id.orig_h`            | The originator’s IP address.                                                            |
+| `src_endpoint.port`            | `id.orig_p`            | The originator’s port number.                                                           |
+| `src_endpoint.hostname`        | `client_name`          | Name of the client machine.                                                             |
+| `src_endpoint.agent_list.name` | `client_build`         | RDP client version used by the client machine.                                          |
+| `src_endpoint.agent_list.version` | `client_dig_product_id` | Product ID of the client machine.                                                   |
+| `dst_endpoint.ip`              | `id.resp_h`            | The responder’s IP address.                                                             |
+| `dst_endpoint.port`            | `id.resp_p`            | The responder’s port number.                                                            |
+| `identifier_cookie`            | `cookie`               | Cookie value used by the client machine.                                                |
+| `protocol_ver`                 | `security_protocol`    | Security protocol chosen by the server.                                                 |
+| `status_detail`                | `result`               | Status result for the connection.                                                       |
+| `tls.key_length`               | `encryption_method`    | Encryption method of the connection.                                                    |
+| `remote_display.color_depth`   | `requested_color_depth`| The color depth requested by the client in the high_color_depth field.                  |
+| `remote_display.physical_height` | `desktop_height`     | Desktop height of the client machine.                                                   |
+| `remote_display.physical_width`| `desktop_width`        | Desktop width of the client machine.                                                    |
+
+ ### Conditional mapping:
+Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
+| OCSF                           | Raw               | Evaluation Conditions                         | Zeek Field Description                                                                  |
+| ------------------------------ | ----------------- | --------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `observables.value`            | `rdfp_hash`       | Where `observables.type_id` = "30"            | The rdfp_hash information.                                                              |
+| `observables.value`            | `rdfp_string`     | Where `observables.type_id` = "99"            | A fingerprint which represents an RDP client.                                           |
+| `observables.value`            | `keyboard_layout` | Where `observables.type_id` = "99"            | Keyboard layout (language) of the client machine.                                       |
 
  ### Unmapped:
- 
-| OCSF                     | Raw                      |
-| -------------------------| -------------------------|
-|`unmapped`                      |`cert_count`        |
-|`unmapped`                      |`cert_permanent`    |
-|`unmapped`                      |`cert_type`         |
-|`unmapped`                      |`channels_joined`   |
-|`unmapped`                      |`client_channels`   |
-|`unmapped`                      |`encryption_level`  |
+| OCSF                     | Raw                | Zeek Field Description                                                                  |
+| -------------------------| -------------------| --------------------------------------------------------------------------------------- |
+| `unmapped`               | `cert_count`       | The number of certs seen.                                                               |
+| `unmapped`               | `cert_permanent`   | Indicates if the provided certificate or certificate chain is permanent or temporary.   |
+| `unmapped`               | `cert_type`        | If the connection is being encrypted with native RDP encryption, this is the type of cert being used. |
+| `unmapped`               | `channels_joined`  | The number of channels a client joined during the connection sequence.                  |
+| `unmapped`               | `client_channels`  | The channels requested by the client.                                                   |
+| `unmapped`               | `encryption_level` | Encryption level of the connection.                                                     |
