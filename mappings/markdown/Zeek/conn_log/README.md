@@ -28,8 +28,8 @@
 
 | OCSF                          | Raw             | Zeek Field Description                                                                 |
 | ----------------------------- | --------------- | --------------------------------------------------------------------------------------- |
-| `time`                        | `ts`            | Time when the SSH connection began.                                                     |
-| `start_time`                  | `ts`            | Time when the SSH connection began.                                                     |
+| `time`                        | `ts`            | Time when the connection began.                                                         |
+| `start_time`                  | `ts`            | Time when the connection began.                                                         |
 | `metadata.logged_time`        | `_write_ts`     | Timestamp indicating when the log entry was written to disk.                            |
 | `metadata.loggers[].name`     | `_system_name`  | Name of the system or logging subsystem generating the log entry.                       |
 | `metadata.uid`                | `uid`           | Unique ID for the connection.                                                           |
