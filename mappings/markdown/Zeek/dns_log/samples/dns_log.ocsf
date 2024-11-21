@@ -1,44 +1,53 @@
 {
-    "time": 1591367999.305988,
-    "metadata.uid": "CMdzit1AMNsmfAIiQc",
-    "src_endpoint.ip": "192.168.4.76",
-    "src_endpoint.port": 36844,
-    "dst_endpoint.ip": "192.168.4.1",
-    "dst_endpoint.port": 53,
-    "connection_info.protocol_name": "udp",
-    "answers.packet_uid": 19671,
-    "unmapped.rtt": 0.06685185432434082,
-    "query.hostname": "testmyids.com",
-    "query.class": "C_INTERNET",
-    "query.type": "A",
-    "rcode": "NOERROR",
-    "answers": [
-        { "flag_ids": [
-              3, 
-              4
-           ],
-           "packet_uid": 19671,
-           "rdata": "31.3.245.133",
-           "ttl": "3600" 
-        }
-    ],
-    "activity_id": false,
-    "category_uid": 4,
-    "category_name": "Network Activity",
-    "class_uid": 4003,
-    "class_name": "DNS Activity",
-    "metadata": {
-        "profiles": [
-            "security_control"
-        ],
-        "product": {
-            "name": "Zeek",
-            "feature": {
-                "name": "dns.log"
-            },
-            "vendor_name": "Zeek"
-        }
+  "activity_id": 1,
+  "activity_name": "Query",
+  "answers": [
+    {
+      "flags": [ 3, 4 ],
+      "rdata": "31.3.245.133",
+      "ttl": 3600
+    }
+  ],
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "DNS Activity",
+  "class_uid": 4003,
+  "connection_info": {
+    "direction_id": 0,
+    "protocol_name": "udp"
+  },
+  "dst_endpoint": {
+    "ip": "192.168.4.1",
+    "port": 53
+  },
+  "metadata": {
+    "product": {
+      "name": "Zeek DNS",
+      "vendor_name": "Zeek"
     },
-    "severity": "Informational",
-    "severity_id": 1
+    "uid": "CMdzit1AMNsmfAIiQc",
+    "version": "1.1.0"
+  },
+  "query": {
+    "class": "C_INTERNET",
+    "hostname": "testmyids.com",
+    "packet_uid": 19671,
+    "type": "A"
+  },
+  "rcode": "NOERROR",
+  "rcode_id": 0,
+  "severity": "Informational",
+  "severity_id": 1,
+  "src_endpoint": {
+    "ip": "192.168.4.1",
+    "port": 36844
+  },
+  "time": 1591367999305988,
+  "type_name": "DNS Activity: Query",
+  "type_uid": 400301,
+  "unmapped": {
+    "qclass": 1,
+    "qtype": 1,
+    "rtt": 0.06685185432434082
+  }
 }
