@@ -43,7 +43,7 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | OCSF                               | Raw              | Evaluation Conditions                                                               | Zeek Field Description                                                                 |
 | ---------------------------------- | ---------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `certificate.fingerprints[].value` | `fingerprint`    | Where `certificate.fingerprints[].algorithm` = `certificate.sig_alg`                | Fingerprint of the certificate using the specified signature algorithm.                |
-| `observables[].value`              | `san.dns{}`      | Where observables[].type_id = "1" AND observables[].type = "Hostname"               | List of DNS entries in the Subject Alternative Name (SAN) field.                       |
+| `observables[].value`              | `san.dns{}`      | Where `observables[].type_id` = "1" AND `observables[].type` = "Hostname"           | List of DNS entries in the Subject Alternative Name (SAN) field.                       |
 
 
  ### Unmapped:
