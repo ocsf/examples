@@ -1,0 +1,89 @@
+{
+  "time": "2024-10-16T04:54:04.474340Z",
+  "start_time": "2024-10-16T04:54:04.474340Z",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "SSH Activity",
+  "class_uid": 4007,
+  "severity": "Informational",
+  "severity_id": 1,
+  "metadata": {
+    "version": "1.3.0",
+    "log_name": "ssh.log",
+    "logged_time": "2024-10-16T04:54:04.950981Z",
+    "loggers": [
+      {
+        "name": "sensor",
+        "log_provider": "Zeek",
+        "product": {
+          "name": "Zeek"
+        }
+      }
+    ],
+    "product": {
+      "cpe_name": "cpe:2.3:a:zeek:zeek",
+      "feature": {
+        "name": "ssh.log"
+      },
+      "name": "Zeek",
+      "url_string": "https://docs.zeek.org/en/current/logs/ssh.html",
+      "vendor_name": "Zeek"
+    },
+    "uid": "CwjjT11TKp4IDDkiol"
+  },
+  "activity_id": 1,
+  "count": 2,
+  "connection_info": {
+    "direction": "INBOUND"
+  },
+  "src_endpoint": {
+    "ip": "3.18.161.242",
+    "port": 52100,
+    "agent_list": [
+      {
+        "name": "SSH-2.0-OpenSSH_8.1p1 Debian-1",
+        "type": "Remote Access",
+        "type_id": 9
+      }
+    ],
+    "location": {
+      "city": "Columbus",
+      "country": "US",
+      "lat": 39.9625,
+      "long": -83.0061,
+      "region": "OH"
+    }
+  },
+  "dst_endpoint": {
+    "ip": "192.168.10.152",
+    "port": 22,
+    "agent_list": [
+      {
+        "name": "SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3",
+        "type": "Remote Access",
+        "type_id": 9
+      }
+    ]
+  },
+  "client_hassh": {
+    "algorithm": "curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,ext-info-c;chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com;umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1;none,zlib@openssh.com,zlib",
+    "fingerprint": "ec7378c1a92f5a8dde7e8b7a1ddf33d1"
+  },
+  "server_hassh": {
+    "algorithm": "curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1;chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com;umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1;none,zlib@openssh.com",
+    "fingerprint": "b12d2871a1189eff20364cf5333619ee"
+  },
+  "protocol_ver": 2,
+  "unmapped": {
+    "cipher_alg": "chacha20-poly1305@openssh.com",
+    "compression_alg": "none",
+    "hasshVersion": "1.1",
+    "host_key": "eb:ce:a8:7f:51:fe:32:ac:16:a0:f0:1d:9c:d8:db:54",
+    "host_key_alg": "ecdsa-sha2-nistp256",
+    "inferences": ["CTS", "PKA", "AUTO", "LFD"],
+    "kex_alg": "curve25519-sha256",
+    "mac_alg": "umac-64-etm@openssh.com",
+    "cshka": "ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa",
+    "sshka": "ssh-rsa,rsa-sha2-512,rsa-sha2-256,ecdsa-sha2-nistp256,ssh-ed25519"
+  }
+}
