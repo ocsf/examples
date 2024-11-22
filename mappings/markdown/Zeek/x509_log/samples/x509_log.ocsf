@@ -1,0 +1,54 @@
+{
+  "time": "2024-11-19T16:57:42.534728Z",
+  "start_time": "2024-11-19T16:57:42.534728Z",
+  "category_name": "Identity & Access Management",
+  "category_uid": 3,
+  "class_name": "Authentication",
+  "class_uid": 3002,
+  "severity": "Informational",
+  "severity_id": 1,
+  "metadata": {
+    "version": "1.3.0",
+    "log_name": "x509.log",
+    "logged_time": "2024-11-19T16:57:42.534728Z",
+    "loggers": [
+      {
+        "name": "sensor.aod-20241107.training.corelight.io",
+        "log_provider": "Zeek",
+        "product": {
+          "name": "Zeek"
+        }
+      }
+    ],
+    "product": {
+      "cpe_name": "cpe:2.3:a:zeek:zeek",
+      "feature": {
+        "name": "x509.log"
+      },
+      "name": "Zeek",
+      "url_string": "https://docs.zeek.org/en/current/logs/x509.html",
+      "vendor_name": "Zeek"
+    }
+  },
+  "certificate": {
+    "issuer": "CN=DigiCert Cloud Services CA-1,O=DigiCert Inc,C=US",
+    "not_valid_after": "2025-06-26T23:59:59.000000Z",
+    "not_valid_before": "2024-06-27T00:00:00.000000Z",
+    "serial_number": "0C34C0B2A945152AF38D0281A8A02B41",
+    "subject": "CN=ecs.office.com,O=Microsoft Corporation,L=Redmond,ST=Washington,C=US",
+    "version": 3,
+    "fingerprints": [
+      {
+        "algorithm": "sha256WithRSAEncryption",
+        "value": "73556d5e0b4f40194c79d8f803708069c0f3653f306315c314919e9e4fe34d18"
+      }
+    ]
+  },
+  "observables": [
+    {
+      "type": "Hostname",
+      "type_id": 1,
+      "value": "ecs.office.com"
+    }
+  ]
+}
