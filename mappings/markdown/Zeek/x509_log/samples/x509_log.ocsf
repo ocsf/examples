@@ -61,5 +61,18 @@
       "type_id": 1,
       "value": "ecs.office.com"
     }
-  ]
+  ],
+  "unmapped": {
+    "basic_constraints": {
+      "ca": false
+    },
+    "certificate": {
+      "key_alg": "rsaEncryption",
+      "key_length": 2048,
+      "key_type": "rsa",
+      "exponent": "65537"
+    },
+    "client_cert": false,
+    "host_cert": true
+  }
 }
