@@ -1,53 +1,111 @@
 {
-    "time": 1591367999.305988,
-    "uuid": "CMdzit1AMNsmfAIiQc",
-    "src_endpoint": {
-      "ip": "192.168.4.76",
-      "port": 36844
-    },
-    "dst_endpoint": {
-      "ip": "192.168.4.1",
-      "port": 53
-    },
-    "connection_info": {
-      "protocol_name": "udp"
-    },
-    "bytes_in": 62,
-    "packets_in": 2,
-    "orig_bytes": {
-      "ip": 118
-    },
-    "bytes_out": 141,
-    "packets_out": 2,
-    "resp_bytes": {
-      "ip": 197
-    },
-    "duration": 0.06685185432434082,
-    "unmapped": {
-      "conn_state": "SF"
-    },
-    "category_uid": 4,
-    "category_name": "Network Activity",
-    "class_uid": 4001,
-    "class_name": "Network Activity",
-    "metadata": {
-      "profiles": [
-        "security_control"
-      ],
-      "product": {
-        "name": "Zeek",
-        "feature": {
-          "name": "conn.log"
-        },
-        "vendor_name": "Zeek"
+  "time": "2024-10-16T04:07:01.489619Z",
+  "start_time": "2024-10-16T04:07:01.489619Z",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Network Activity",
+  "class_uid": 4001,
+  "severity": "Informational",
+  "severity_id": 1,
+  "metadata": {
+    "version": "1.3.0",
+    "log_name": "conn.log",
+    "logged_time": "2024-10-16T04:08:11.828325Z",
+    "loggers": [
+      {
+        "name": "sensor",
+        "log_provider": "Zeek",
+        "product": {
+          "name": "Zeek"
+        }
       }
+    ],
+    "product": {
+      "cpe_name": "cpe:2.3:a:zeek:zeek",
+      "feature": {
+        "name": "conn.log"
+      },
+      "name": "Zeek",
+      "url_string": "https://docs.zeek.org/en/current/logs/conn.html",
+      "vendor_name": "Zeek"
     },
-    "severity": "Informational",
-    "severity_id": 1,
-    "proposed_new_attributes": {
-      "application_protocol": "dns",
-      "bytes_missed": 0,
-      "connection_history": "Dd"
-    }
+    "uid": "CmRFd61N7G7YA909D1"
+  },
+  "src_endpoint": {
+    "ip": "10.4.30.5",
+    "port": 49227,
+    "mac": "00:1d:09:5b:d6:84",
+    "observables": [
+      {
+        "value": "PODTRONICS",
+        "reputation": {
+          "provider": "NTLM_AUTH"
+        },
+        "type_id": "1",
+        "type": "Hostname"
+      }
+    ]
+  },
+  "dst_endpoint": {
+    "ip": "37.120.182.208",
+    "port": 80,
+    "mac": "20:e5:2a:b6:93:f1",
+    "location": {
+      "country": "DE"
+    },
+    "observables": [
+      {
+        "value": "ip.anysrc.net",
+        "reputation": {
+          "provider": "HTTP_HOST"
+        },
+        "type_id": "1",
+        "type": "Hostname"
+      }
+    ]
+  },
+  "app_name": "http",
+  "connection_info": {
+    "community_uid": "1:DvgXgCo2JR5r4T25PBZYFw3ObFc=",
+    "protocol_name": "tcp"
+  },
+  "duration": 65.33815288543701,
+  "network_endpoint": {
+    "vlan_uid": 12
+  },
+  "status_code": "SF",
+  "traffic": {
+    "bytes_in": 213,
+    "packets_in": 5,
+    "bytes_out": 164,
+    "packets_out": 6,
+    "bytes": 377,
+    "packets": 11
+  },
+  "unmapped": {
+    "bytes_missed": 0,
+    "connection_info_history": "ShADadfF",
+    "app": [
+      "firefox",
+      "mozilla",
+      "windows"
+    ],
+    "corelight_shunted": false,
+    "pcr": -0.129973474801061,
+    "spcap": {
+      "rule": 1,
+      "trigger": "all-unencrypted",
+      "url": "https://sensor.io/spcap/v1/?uid=CmRFd61N7G7YA909D1"
+    },
+    "suri_ids": [
+      "SI7YwTINm9Rd"
+    ],
+    "tunnel_parents": [
+      "C2y6XKB2ovrcvv1G5"
+    ],
+    "local_orig": true,
+    "local_resp": false,
+    "orig_ip_bytes": 416,
+    "resp_ip_bytes": 417
   }
-  
+}
