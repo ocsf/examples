@@ -2,11 +2,15 @@
 
 For real-time analysis of cyber events, it is necessary to process event records from an event stream as quickly as possible to facilitate detection of adversary actions. Some techniques for speeding up the detection are partial interpretation of an event record, and applying regex to the event stream. MITRE developed Intermediate Log Format (ILF) format to enable such techniques. 
 
+The scope of the mapping specified here is limited to one way translation from OCSF JSON records to ILF records. In the future, a reverse translation, from ILF records to OCSF may be contemplated.
+
+We discuss some of the implementation considerations for an OCSF to ILF translation tool that implements the algorithms/rules described below in a [section below](#implementation-considerations).
+
 ## ILF Record Structure
 
 1. An ILF record (referred to simply as as “record” below) MUST have the following structure.
 ```
-<event type>[<sender>,<receiver>,<time stamp>,(<attribute_fields>)] 
+<event type>[<sender>,<receiver>,<time stamp>,(<attribute fields>)] 
 ```
 2. Every record ends with a space, inserted after the closing square brace “]”. Additional whitespace, such as newlines, can also follow the space.
 3. The `<event type>`, `<sender>`, and `<receiver>` fields are interpreted as strings, and are not required to be in quotes.
@@ -17,7 +21,7 @@ For real-time analysis of cyber events, it is necessary to process event records
     - These fields can be empty. 
     - If the `<sender>` or `<receiver>` values are not known or are irrelevant, their values can be *. 
     - If the record is broadcast, then the `<receiver>` field is *.
-5. The fourth and last field of an ILF record, `<attribute_fields>`, contains semicolon-separated key-value pairs with the structure `<attribute_name>=<attribute_value>`
+5. The fourth and last field of an ILF record, `<attribute fields>`, contains semicolon-separated key-value pairs with the structure `<attribute_name>=<attribute_value>`
     - `<attribute fields>` can be empty, though the enclosing parentheses must remain.
     - An attribute name may contain alphanumeric characters, “.”, or “_”
     - `<attribute_value>` can be empty in some records in an event stream, as long as `<attribute_name>` is specified.
@@ -63,10 +67,15 @@ OCSF supports several event classes and type IDs within each event classes. The 
 
 
 ## ILF Sender and Receiver Fields Mapping
-Currently, ILF sender field is `*` and receiver field is `*`
+
+ILF sender field will be, by default, the `metadata.product.name` field of an OCSF event record. This default can be changed in the ILF using the `_` to concatenate the multiple fields, e.g., changed to the concatenated `product.name` and `product.version` fields of OCSF Metadata object with with a `_`. A specific example of such a concatenation is:  `AWS_audit_d_k8s_d_io_fs_v1`, correspinding the product name field of `AWS` and product version of `audit.k8s.io/v1`.
+
+The nonalphanumeric characters in the contributing fields to the ILF  `sender` field of ILF will be replaced based on the rules described below in [section](#ilf-attribute-names).
+
+When translated from an OCSF record, the receiver field in an ILF record will always be `*`.
  
 ## ILF Timestamp
-ILF time stamp will be the time when the ILF record is created. The other time mesurements are available as attribute fields in ILF, if available in the OCSF record.
+ILF time stamp will be the time when the ILF record is created. The other time mesurements are available as attribute fields in ILF, if necessary.
 
 ## OCSF to ILF Attribute Fields Mapping
 
@@ -100,9 +109,11 @@ For a given OCSF Message Element D:
 
 At the end of this process, we should have a list of Key, Value pairs that encompass all the structured data from the OCSF object which we use as the ILF's attribute fields.
 
-### ILF Attribute Names
+### ILF Attribute Names 
 
-ILF Attribute names can only contain alphanumeric characters and underscores- other characters are disallowed. When translating from more permissive formats, we follow the following conversion table to translate invalid special characters. Characters not in this table are disallowed entirely.
+Some ILF receivers, i.e., tools that process the ILF formatted event records, may not be able to correctly process some of the non-alphanueric characters in the attribute names, except `_`. In such cases,  the  conversion table below will be used to translate such characters. Characters not in this table are disallowed entirely and cannot be mapped to ILF event records. An OCSF to ILF translator may not do such translation if the receiver can process the original characters correctly.
+
+If the OCSF names do have any of these replacement strings in it, an extra `_` will be added before and after that replacement string, e.g., `xyz_d_abc` will be replaced by `xyz__d__abc`. This is done to support a future reverse mapping from ILF events to OCSF event.
 
 | Character | Replacement String |
 | --------- | ------------------ |
@@ -164,6 +175,14 @@ We also include below the types used in the Rust implementation of the OCSF to I
 | struct_value                    | flattened set of Key, Value pairs |
 | list_value                      | flattened set of Key, Value pairs | 
 
+## Implementation Considerations
+
+For ILF, reducing the size of the event record is an important consideration. An OCSF to ILF translator has the option of improvements based on the following possibilities.
+
+1. The `unmapped` objects and fields may be optionally not included in the ILF record. 
+2. Since ILF does differentiate between the existence of an attribute vs. the attribute value being NULL, the ILF translator may optionally remove the attributes from ILF records, if the value of the incoming OCSF object or field is NULL or not present.
+3. The mapping of nonalphanumeric characters [above](#ilf-attribute-names) may be configured to use the original character, e.g., `.` instead of `_d_`, if the receiver of the ILF events can correctly process them.
+4. The `sender` may be changed as described [above](#ilf-sender-and-receiver-fields-mapping).
 
 ## Example Mapping from an OCSF JSON to ILF
 
