@@ -17,6 +17,7 @@
 | `metadata.log_name`                 | "x509.log"                                      |
 | `metadata.loggers[].log_provider`   | "Zeek"                                          |
 | `metadata.loggers[].product.name`   | "Zeek"                                          |
+| `metadata.loggers[].product.vendor_name` | "Zeek"                                     |
 | `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
 | `metadata.product.feature.name`     | "x509.log"                                      |
 | `metadata.product.name`             | "Zeek"                                          |
@@ -24,6 +25,10 @@
 | `metadata.product.vendor_name`      | "Zeek"                                          |
 | `severity`                          | "Informational"                                 |
 | `severity_id`                       | "1"                                             |
+| `activity_id`                       | "99"                                            |
+| `type_uid`                          | "300299"                                        |
+| `service.name`                      | "N/A"                                           |
+| `user.name`                         | "N/A"                                           |
 
  ### Mapping:
 | OCSF                          | Raw                       | Zeek Field Description                                                                  |
@@ -44,7 +49,7 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | OCSF                               | Raw              | Evaluation Conditions                                                               | Zeek Field Description                                                                 |
 | ---------------------------------- | ---------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `certificate.fingerprints[].value` | `fingerprint`    | Where `certificate.fingerprints[].algorithm` = `certificate.sig_alg`                | Fingerprint of the certificate using the specified signature algorithm.                |
-| `observables[].value`              | `san.dns{}`      | Where `observables[].type_id` = "1" AND `observables[].type` = "Hostname"           | List of DNS entries in the Subject Alternative Name (SAN) field.                       |
+| `observables[].value`              | `san.dns{}`      | Where `observables[].type_id` = "1" AND `observables[].type` = "Hostname" AND `observables[].name` = "certificate.subject"  | List of DNS entries in the Subject Alternative Name (SAN) field.                       |
 
  ### Unmapped:
 | OCSF            | Raw                        | Zeek Field Description                                                                  |
