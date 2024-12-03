@@ -56,7 +56,7 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`api.response.data`|`responseElements`|
 |`metadata.event_code`|`eventType`|
 |`resources[].uid`|`resources[].ARN`|
-|`resources[].account.uid`|`resources[].accountId`|
+|`resources[].owner.account.uid`|`resources[].accountId`|
 |`resources[].type`|`resources[].type`|
 
 
