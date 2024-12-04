@@ -1,0 +1,22 @@
+{
+  "_path": "ftp",
+  "_system_name": "sensor",
+  "_write_ts": "2024-10-16T02:50:22.110501Z",
+  "arg": "192,168,4,59,218,125",
+  "command": "PORT",
+  "data_channel.orig_h": "192.168.6.58",
+  "data_channel.passive": false,
+  "data_channel.resp_h": "192.168.4.59",
+  "data_channel.resp_p": 55933,
+  "file_size": 10582201,
+  "id.orig_h": "192.168.4.59",
+  "id.orig_p": 35342,
+  "id.resp_h": "192.168.6.58",
+  "id.resp_p": 21,
+  "password": "<hidden>",
+  "reply_code": 200,
+  "reply_msg": "PORT command successful",
+  "ts": "2024-10-16T02:50:22.108428Z",
+  "uid": "C7Uupd44YYLGqNO5Qf",
+  "user": "osbox"
+}
