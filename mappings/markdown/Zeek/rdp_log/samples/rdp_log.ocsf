@@ -1,0 +1,159 @@
+{
+  "time": "2024-10-16T04:54:20.366021Z",
+  "start_time": "2024-10-16T04:54:20.366021Z",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "RDP Activity",
+  "class_uid": 4007,
+  "severity": "Informational",
+  "severity_id": 1,
+  "metadata": {
+    "version": "1.3.0",
+    "log_name": "rdp.log",
+    "logged_time": "2024-10-16T04:54:34.526749Z",
+    "loggers": [
+      {
+        "name": "sensor",
+        "log_provider": "Zeek",
+        "product": {
+          "name": "Zeek"
+        }
+      }
+    ],
+    "product": {
+      "cpe_name": "cpe:2.3:a:zeek:zeek",
+      "feature": {
+        "name": "rdp.log"
+      },
+      "name": "Zeek",
+      "url_string": "https://docs.zeek.org/en/current/logs/rdp.html",
+      "vendor_name": "Zeek"
+    },
+    "uid": "CIuEvA4WtEAVJsMMbj"
+  },
+  "src_endpoint": {
+    "ip": "192.168.57.1",
+    "port": 50929,
+    "agent_list": [
+      {
+        "type": "Remote Access",
+        "type_id": 9
+      }
+    ]
+  },
+  "dst_endpoint": {
+    "ip": "192.168.57.8",
+    "port": 3389,
+    "agent_list": [
+      {
+        "type": "Remote Access",
+        "type_id": 9
+      }
+    ]
+  },
+  "identifier_cookie": "Administrator",
+  "protocol_ver": "HYBRID",
+  "status_detail": "encrypted",
+  "unmapped": {
+    "cert_count": 0,
+    "channels_joined": 3,
+    "inferences": ["IPWA", "SOC"],
+    "auth_success": true
+  }
+}
+
+
+
+{
+  "time": "2024-10-16T04:18:00.877142Z",
+  "start_time": "2024-10-16T04:18:00.877142Z",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "RDP Activity",
+  "class_uid": 4007,
+  "severity": "Informational",
+  "severity_id": 1,
+  "metadata": {
+    "version": "1.3.0",
+    "log_name": "rdp.log",
+    "logged_time": "2024-10-16T04:18:12.066275Z",
+    "loggers": [
+      {
+        "name": "sensor",
+        "log_provider": "Zeek",
+        "product": {
+          "name": "Zeek"
+        }
+      }
+    ],
+    "product": {
+      "cpe_name": "cpe:2.3:a:zeek:zeek",
+      "feature": {
+        "name": "rdp.log"
+      },
+      "name": "Zeek",
+      "url_string": "https://docs.zeek.org/en/current/logs/rdp.html",
+      "vendor_name": "Zeek"
+    },
+    "uid": "CTvJ8s31CqSnorBi99"
+  },
+  "src_endpoint": {
+    "ip": "192.168.202.16",
+    "port": 52593,
+    "hostname": "bty",
+    "agent_list": [
+      {
+        "name": "RDP 5.1",
+        "version": "3c571ed0-3415-474b-ae94-74e151b",
+        "type": "Remote Access",
+        "type_id": 9
+      }
+    ]
+  },
+  "dst_endpoint": {
+    "ip": "192.168.2.100",
+    "port": 3389,
+    "agent_list": [
+      {
+        "type": "Remote Access",
+        "type_id": 9
+      }
+    ]
+  },
+  "identifier_cookie": "rooty",
+  "protocol_ver": "RDP",
+  "status_detail": "Success",
+  "tls": {
+    "key_length": "128bit"
+  },
+  "remote_display": {
+    "color_depth": "24bit",
+    "physical_height": 600,
+    "physical_width": 800
+  },
+  "observables": [
+    {
+      "value": "27956f914067e63f3dba1e7d563e0e86",
+      "type": "Fingerprint",
+      "type_id": "30"
+    },
+    {
+      "value": "4,8,00000003,00000009,00000000,cliprdr:0000a0c0",
+      "type": "Other",
+      "type_id": "99"
+    },
+    {
+      "value": "English - United States",
+      "type": "Other",
+      "type_id": "99"
+    }
+  ],
+  "unmapped": {
+    "cert_count": 1,
+    "cert_permanent": true,
+    "cert_type": "RSA",
+    "channels_joined": 0,
+    "client_channels": ["cliprdr"],
+    "encryption_level": "Client compatible"
+  }
+}

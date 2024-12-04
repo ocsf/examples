@@ -1,0 +1,55 @@
+{
+    "_path": "rdp",
+    "_system_name": "sensor",
+    "_write_ts": "2024-10-16T04:54:34.526749Z",
+    "auth_success": true,
+    "cert_count": 0,
+    "channels_joined": 3,
+    "cookie": "Administrator",
+    "id.orig_h": "192.168.57.1",
+    "id.orig_p": 50929,
+    "id.resp_h": "192.168.57.8",
+    "id.resp_p": 3389,
+    "inferences": [
+        "IPWA",
+        "SOC"
+    ],
+    "result": "encrypted",
+    "security_protocol": "HYBRID",
+    "ts": "2024-10-16T04:54:20.366021Z",
+    "uid": "CIuEvA4WtEAVJsMMbj"
+}
+
+{
+    "_path": "rdp",
+    "_system_name": "sensor",
+    "_write_ts": "2024-10-16T04:18:12.066275Z",
+    "cert_count": 1,
+    "cert_permanent": true,
+    "cert_type": "RSA",
+    "channels_joined": 0,
+    "client_build": "RDP 5.1",
+    "client_channels": [
+        "cliprdr"
+    ],
+    "client_dig_product_id": "3c571ed0-3415-474b-ae94-74e151b",
+    "client_name": "bty",
+    "cookie": "rooty",
+    "desktop_height": 600,
+    "desktop_width": 800,
+    "encryption_level": "Client compatible",
+    "encryption_method": "128bit",
+    "id.orig_h": "192.168.202.16",
+    "id.orig_p": 52593,
+    "id.resp_h": "192.168.2.100",
+    "id.resp_p": 3389,
+    "inferences": [],
+    "keyboard_layout": "English - United States",
+    "rdfp_hash": "27956f914067e63f3dba1e7d563e0e86",
+    "rdfp_string": "4,8,00000003,00000009,00000000,cliprdr:0000a0c0",
+    "requested_color_depth": "24bit",
+    "result": "Success",
+    "security_protocol": "RDP",
+    "ts": "2024-10-16T04:18:00.877142Z",
+    "uid": "CTvJ8s31CqSnorBi99"
+}
