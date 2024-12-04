@@ -1,0 +1,152 @@
+{
+    "activity_id": 9,
+    "activity_name": "Lock",
+    "actor": {
+        "session": {
+            "uid": "idxEXAMPLE"
+        },
+        "user": {
+            "email_addr": "okta@okta-test.com",
+            "name": "OKTA Test user",
+            "type": "User",
+            "type_id": 1,
+            "uid": "0123456789"
+        }
+    },
+    "category_name": "Identity & Access Management",
+    "category_uid": 3,
+    "class_name": "Account Change",
+    "class_uid": 3001,
+    "http_request": {
+        "uid": "ZvqAhywEXAMPLE",
+        "url": {
+            "path": "/idp/idx/challenge/answer?"
+        },
+        "user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36"
+    },
+    "message": "Max sign in attempts exceeded",
+    "metadata": {
+        "event_code": "user.account.lock",
+        "product": {
+            "name": "Okta System Log",
+            "vendor_name": "Okta",
+            "version": "0"
+        },
+        "profiles": [
+            "datetime"
+        ],
+        "uid": "a8daaacb-7f18-1111-1111-11111111",
+        "version": "1.3.0"
+    },
+    "observables": [
+        {
+            "name": "src_endpoint.ip",
+            "type": "IP Address",
+            "type_id": 2,
+            "value": "1.1.1.1"
+        },
+        {
+            "name": "http_request.user_agent",
+            "type": "HTTP User-Agent",
+            "type_id": 16,
+            "value": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36"
+        },
+        {
+            "name": "actor.user.name",
+            "type": "User Name",
+            "type_id": 4,
+            "value": "OKTA Test user"
+        }
+    ],
+    "severity": "Unknown",
+    "severity_id": 0,
+    "src_endpoint": {
+        "autonomous_system": {
+            "name": "NAITWAYS SAS",
+            "number": 57119
+        },
+        "domain": "naitways.com",
+        "ip": "1.1.1.1",
+        "location": {
+            "city": "Paris",
+            "country": "France",
+            "isp": "NAITWAYS SAS",
+            "lat": 48.90654,
+            "long": 2.33339,
+            "postal_code": "01111"
+        },
+        "os": {
+            "name": "Android",
+            "type": "Android",
+            "type_id": 201
+        },
+        "type": "Mobile"
+    },
+    "status": "Failure",
+    "status_id": 2,
+    "time": 1727692936,
+    "time_dt": "2023-09-30T10:42:16.000Z",
+    "type_uid": 300109,
+    "type_name": "Account Change: Lock",
+    "unmapped": {
+        "request": {
+            "ipChain": [
+                {
+                    "ip": "1.1.1.1",
+                    "geographicalContext": {
+                        "country": "France",
+                        "city": "Paris",
+                        "postalCode": "0111",
+                        "state": "Paris",
+                        "geolocation": {
+                            "lon": 2.33339,
+                            "lat": 48.90654
+                        }
+                    },
+                    "version": "V4"
+                }
+            ]
+        },
+        "authenticationContext": {
+            "rootSessionId": "idxEXAMPLE",
+            "authenticationStep": 0
+        },
+        "securityContext": {
+            "isProxy": false
+        },
+        "debugContext": {
+            "debugData": {
+                "authnRequestId": "Zvpl28xuEXAMPLE",
+                "oktaUserAgentExtended": "okta-auth-js/1.8.0 okta-signin-widget-7.19.1",
+                "behaviors": "{New Geo-Location=NEGATIVE, New Device=NEGATIVE, New IP=NEGATIVE, New State=NEGATIVE, New Country=NEGATIVE, Velocity=NEGATIVE, New City=NEGATIVE}",
+                "dtHash": "5fEXAMPLE",
+                "risk": "{level=LOW}",
+                "requestUri": "/idp/idx/challenge/answer",
+                "threatSuspected": "false"
+            }
+        },
+        "client": {
+            "zone": "null",
+            "userAgent": {
+                "browser": "CHROME"
+            },
+            "geographicalContext": {
+                "state": "Paris"
+            }
+        },
+        "outcome": {
+            "reason": "LOCKED_OUT"
+        },
+        "transaction": {
+            "id": "ZvqAhyEXAMPLE",
+            "type": "WEB"
+        }
+    },
+    "user": {
+        "email_addr": "okta@okta-test.com",
+        "name": "OKTA Test user",
+        "type": "User",
+        "type_id": 1,
+        "uid": "0123456789"
+    }
+}

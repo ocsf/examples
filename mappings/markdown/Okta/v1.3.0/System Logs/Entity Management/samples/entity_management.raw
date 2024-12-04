@@ -1,0 +1,89 @@
+{
+  "actor": {
+    "id": "00uttidj01jqL21aM1d6",
+    "type": "User",
+    "alternateId": "john.doe@example.com",
+    "displayName": "John Doe"
+  },
+  "client": {
+    "userAgent": {
+      "rawUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+      "os": "Mac OS X",
+      "browser": "CHROME"
+    },
+    "device": "Computer",
+    "ipAddress": "10.0.0.1",
+    "geographicalContext": {
+      "city": "New York",
+      "state": "New York",
+      "country": "United States",
+      "postalCode": "10013",
+      "geolocation": {
+        "lat": 40.3157,
+        "lon": -74.01
+      }
+    }
+  },
+  "authenticationContext": {
+    "authenticationStep": 0,
+    "rootSessionId": "idxBager62CSveUkTxvgRtonA",
+    "externalSessionId": "idxBager62CSveUkTxvgRtonA"
+  },
+  "displayMessage": "Create policy",
+  "eventType": "policy.lifecycle.create",
+  "outcome": {
+    "result": "SUCCESS"
+  },
+  "published": "2024-08-13T15:58:20.353Z",
+  "securityContext": {
+    "asNumber": 394089,
+    "asOrg": "ASN 0000",
+    "isp": "google",
+    "isProxy": false
+  },
+  "severity": "INFO",
+  "debugContext": {
+    "debugData": {
+      "requestId": "ab609228fe84ce59cdcbfa690bcce016",
+      "requestUri": "/api/v1/policies",
+      "url": "/api/v1/policies?"
+    }
+  },
+  "legacyEventType": "policy.created",
+  "transaction": {
+    "type": "WEB",
+    "id": "ab609228fe84ce59cdcbfa690bgce016"
+  },
+  "target": [
+    {
+      "alternateId": "unknown",
+      "displayName": "Exclude MFA",
+      "id": "00phjos6i2N0LcrqO1d7",
+      "type": "PolicyEntity",
+      "detailEntry": {
+        "policyType": "OktaSignOn"
+      }
+    }
+  ],
+  "uuid": "dc9fd3c0-598c-11ef-8478-2b7584bf8d5a",
+  "version": 0,
+  "request": {
+    "ipChain": [
+      {
+        "ip": "10.0.0.1",
+        "geographicalContext": {
+          "city": "New York",
+          "state": "New York",
+          "country": "United States",
+          "postalCode": 10013,
+          "geolocation": {
+            "lat": 40.3157,
+            "lon": -74.01
+          }
+        },
+        "version": "V4",
+        "source": null
+      }
+    ]
+  }
+}
