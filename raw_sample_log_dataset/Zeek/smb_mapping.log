@@ -1,0 +1,27 @@
+{"ts":1323202695.377084,"uid":"C6C7jB4sjAjJTpoalj","id.orig_h":"10.0.0.11","id.orig_p":49208,"id.resp_h":"10.0.0.12","id.resp_p":445,"path":"\\\\10.0.0.12\\smb2","share_type":"DISK"}
+{"ts":1323202695.378188,"uid":"C6C7jB4sjAjJTpoalj","id.orig_h":"10.0.0.11","id.orig_p":49208,"id.resp_h":"10.0.0.12","id.resp_p":445,"path":"\\\\10.0.0.12\\IPC$","share_type":"PIPE"}
+{"ts":1459928961.988916,"uid":"CPIBFz2Ii8vPmlzXcg","id.orig_h":"192.168.56.1","id.orig_p":56062,"id.resp_h":"192.168.56.101","id.resp_p":445,"path":"\\\\192.168.56.101\\IPC$","service":"IPC","share_type":"PIPE"}
+{"ts":1459928962.779403,"uid":"CPIBFz2Ii8vPmlzXcg","id.orig_h":"192.168.56.1","id.orig_p":56062,"id.resp_h":"192.168.56.101","id.resp_p":445,"path":"\\\\192.168.56.101\\MY PICTURES","service":"A:","native_file_system":"NTFS","share_type":"DISK"}
+{"ts":1459928965.078015,"uid":"CPIBFz2Ii8vPmlzXcg","id.orig_h":"192.168.56.1","id.orig_p":56062,"id.resp_h":"192.168.56.101","id.resp_p":445,"path":"\\\\192.168.56.101\\IPC$","service":"IPC","share_type":"PIPE"}
+{"ts":1459928965.134814,"uid":"CPIBFz2Ii8vPmlzXcg","id.orig_h":"192.168.56.1","id.orig_p":56062,"id.resp_h":"192.168.56.101","id.resp_p":445,"path":"\\\\192.168.56.101\\IPC$","service":"IPC","share_type":"PIPE"}
+{"ts":1490797192.275346,"uid":"CdxfvOXV5LfM8z1Te","id.orig_h":"10.10.34.184","id.orig_p":56493,"id.resp_h":"172.19.23.143","id.resp_p":445,"path":"\\\\phxlabbal821\\lustre","share_type":"DISK"}
+{"ts":1490797192.282679,"uid":"CdxfvOXV5LfM8z1Te","id.orig_h":"10.10.34.184","id.orig_p":56493,"id.resp_h":"172.19.23.143","id.resp_p":445,"path":"\\\\phxlabbal821\\IPC$","share_type":"PIPE"}
+{"ts":1495015336.544229,"uid":"C51y2v298LlFq7CnQe","id.orig_h":"10.160.64.139","id.orig_p":38166,"id.resp_h":"10.160.65.202","id.resp_p":445,"path":"\\\\WS2016\\encrypted","share_type":"DISK"}
+{"ts":1495015336.569009,"uid":"C51y2v298LlFq7CnQe","id.orig_h":"10.160.64.139","id.orig_p":38166,"id.resp_h":"10.160.65.202","id.resp_p":445,"path":"\\\\10.160.65.202\\IPC$","share_type":"PIPE"}
+{"ts":1515751774.025566,"uid":"CJJjjT3JRSeG06lgi5","id.orig_h":"192.168.0.1","id.orig_p":53235,"id.resp_h":"192.168.0.2","id.resp_p":445,"path":"\\\\WIN2K\\IPC$","service":"IPC","share_type":"PIPE"}
+{"ts":1516269475.874775,"uid":"CTEkLt3JNgVBL6sNq5","id.orig_h":"192.168.0.1","id.orig_p":34493,"id.resp_h":"192.168.0.2","id.resp_p":445,"path":"\\\\WIN2K\\IPC$","service":"IPC","share_type":"PIPE"}
+{"ts":1516283072.991305,"uid":"COzBSD3L55v3zJtsU9","id.orig_h":"192.168.0.1","id.orig_p":17704,"id.resp_h":"192.168.0.2","id.resp_p":445,"path":"\\\\WIN2K\\IPC$","service":"IPC","share_type":"PIPE"}
+{"ts":1516293476.877655,"uid":"CgToUa4YoE45ktToOh","id.orig_h":"192.168.0.1","id.orig_p":63700,"id.resp_h":"192.168.0.2","id.resp_p":445,"path":"\\\\WIN2K\\IPC$","service":"IPC","share_type":"PIPE"}
+{"ts":1516376010.610005,"uid":"C4LjmO1DQkNyTHx7Ze","id.orig_h":"192.168.0.1","id.orig_p":40263,"id.resp_h":"192.168.0.2","id.resp_p":445,"path":"\\\\WIN2K\\IPC$","service":"IPC","share_type":"PIPE"}
+{"ts":1605189167.730794,"uid":"CjzBCX2ExLnXD5XJGa","id.orig_h":"172.17.0.184","id.orig_p":57092,"id.resp_h":"172.17.0.189","id.resp_p":445,"path":"\\\\172.17.0.189\\share2","share_type":"DISK"}
+{"ts":1634816944.142981,"uid":"CeBQDp4TimMUcE3rp6","id.orig_h":"172.16.0.211","id.orig_p":49811,"id.resp_h":"172.16.0.5","id.resp_p":445,"path":"\\\\win7.test.local\\IPC$","share_type":"PIPE"}
+{"ts":1634817175.101111,"uid":"CvqAFR1yiTpZNwNP7g","id.orig_h":"172.16.0.211","id.orig_p":49815,"id.resp_h":"172.16.0.100","id.resp_p":445,"path":"\\\\WIN-R5NF6DMLDVH.TEST.local\\IPC$","share_type":"PIPE"}
+{"ts":1634817206.507463,"uid":"CrVK1I1TZ1WY8Bbw6a","id.orig_h":"172.16.0.211","id.orig_p":49821,"id.resp_h":"172.16.0.100","id.resp_p":445,"path":"\\\\WIN-R5NF6DMLDVH\\IPC$","share_type":"PIPE"}
+{"ts":1634817333.991525,"uid":"Cgbmmu3NEPM3q2kRJf","id.orig_h":"172.16.0.211","id.orig_p":49827,"id.resp_h":"172.16.0.5","id.resp_p":445,"path":"\\\\win7.test.local\\IPC$","share_type":"PIPE"}
+{"ts":1657914389.947003,"uid":"CUpNHuAW9rzRJrxA3","id.orig_h":"127.0.0.1","id.orig_p":54268,"id.resp_h":"127.0.0.1","id.resp_p":445,"path":"\\\\127.0.0.1\\tmp","share_type":"DISK"}
+{"ts":1659460970.924319,"uid":"C47sKl1hAgJDHclGi2","id.orig_h":"192.168.2.186","id.orig_p":62083,"id.resp_h":"192.168.2.69","id.resp_p":445,"path":"\\\\192.168.2.69\\IPC$","share_type":"PIPE"}
+{"ts":1659460970.946425,"uid":"C47sKl1hAgJDHclGi2","id.orig_h":"192.168.2.186","id.orig_p":62083,"id.resp_h":"192.168.2.69","id.resp_p":445,"path":"\\\\192.168.2.69\\SHARED","share_type":"DISK"}
+{"ts":1659460970.948298,"uid":"C47sKl1hAgJDHclGi2","id.orig_h":"192.168.2.186","id.orig_p":62083,"id.resp_h":"192.168.2.69","id.resp_p":445,"path":"\\\\192.168.2.69\\IPC$","share_type":"PIPE"}
+{"ts":1682504731.442339,"uid":"CAOTUC3Btrq2PVgpka","id.orig_h":"127.0.0.1","id.orig_p":34884,"id.resp_h":"127.0.0.1","id.resp_p":445,"path":"\\\\127.0.0.1\\IPC$","share_type":"PIPE"}
+{"ts":1682504731.443766,"uid":"CAOTUC3Btrq2PVgpka","id.orig_h":"127.0.0.1","id.orig_p":34884,"id.resp_h":"127.0.0.1","id.resp_p":445,"path":"\\\\127.0.0.1\\public","share_type":"DISK"}
+{"ts":1688129351.369218,"uid":"CNkR3T3omNFFHJ7E21","id.orig_h":"172.17.0.1","id.orig_p":38016,"id.resp_h":"172.17.0.2","id.resp_p":445,"path":"\\\\127.0.0.1\\IPC$","share_type":"PIPE"}
