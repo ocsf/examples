@@ -1,0 +1,86 @@
+{
+  "activity_id": 1,
+  "activity_name": "Create",
+  "actor": {
+    "user": {
+      "name": "actor5",
+      "uid": "73"
+    },
+    "session": {
+      "uid": "3495"
+    }
+  },
+  "category_name": "Identity & Access Management",
+  "category_uid": 3,
+  "class_name": "Account Change",
+  "class_uid": 3001,
+  "http_request": {
+    "user_agent": "Mozilla/5.0 (Macintosh Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+    "http_method": "POST",
+    "referrer": "https://github.groups",
+    "url": {
+      "url_string": "https://github-test.com/enterprises/examplecompany/admins"
+    }
+  },
+  "metadata": {
+    "event_code": "user.create",
+    "product": {
+      "name": "Github Audit Log",
+      "vendor_name": "Github",
+      "version": "0"
+    },
+    "profiles": ["datetime", "host"],
+    "version": "1.3.0"
+  },
+  "observables": [
+    {
+      "name": "src_endpoint.ip",
+      "type": "IP Address",
+      "type_id": 2,
+      "value": "1.1.1.1"
+    },
+    {
+      "name": "http_request.user_agent",
+      "type": "HTTP User-Agent",
+      "type_id": 16,
+      "value": "Mozilla/5.0 (Macintosh Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "actor.user.name",
+      "type": "User Name",
+      "type_id": 4,
+      "value": "actor5"
+    }
+  ],
+  "severity": "Informational",
+  "severity_id": 1,
+  "src_endpoint": {
+    "ip": "1.1.1.1",
+    "location": {
+      "city": "",
+      "country": "",
+      "postal_code": ""
+    }
+  },
+  "time": 1727681685875,
+  "time_dt": "2024-10-17T14:42:46.000Z",
+  "type_uid": 300101,
+  "type_name": "Account Change: Create",
+  "user": {
+    "name": "user5",
+    "uid": "147"
+  },
+  "unmapped": {
+    "business": "businessname",
+    "actor_is_bot": "False",
+    "category_type": "Group Management",
+    "server_id": "11111-1111-11111-1111",
+    "actor_location": {
+      "country_code": "",
+      "region_name": "",
+      "region": ""
+    },
+    "business_id": 1,
+    "request_id": "10000000-0000-0000-0000-000000000000"
+  }
+}

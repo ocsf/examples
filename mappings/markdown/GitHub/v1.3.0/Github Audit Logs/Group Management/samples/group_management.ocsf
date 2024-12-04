@@ -1,0 +1,78 @@
+{
+  "activity_id": 3,
+  "activity_name": "Add User",
+  "actor": {
+    "user": {
+      "account": {
+        "name": "acme",
+        "type": "Other",
+        "type_id": 99,
+        "uid": "11111"
+      },
+      "email_addr": "test_user@acme.com",
+      "name": "test_user",
+      "type": "Unknown",
+      "type_id": 0,
+      "uid": "51111"
+    }
+  },
+  "category_name": "Identity & Access Management",
+  "category_uid": 3,
+  "class_name": "Group Management",
+  "class_uid": 3006,
+  "group": {
+    "name": "Wiley Coyote"
+  },
+  "http_request": {
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+  },
+  "metadata": {
+    "event_code": "team.add_member",
+    "product": {
+      "name": "GitHub Audit Log",
+      "vendor_name": "GitHub"
+    },
+    "profiles": ["datetime", "host"],
+    "uid": "m-111111111111==",
+    "version": "1.3.0"
+  },
+  "observables": [
+    {
+      "name": "src_endpoint.ip",
+      "type": "IP Address",
+      "type_id": 2,
+      "value": "1.1.1.1"
+    },
+    {
+      "name": "http_request.user_agent",
+      "type": "HTTP User-Agent",
+      "type_id": 16,
+      "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "actor.user.name",
+      "type": "User Name",
+      "type_id": 4,
+      "value": "test_user"
+    }
+  ],
+  "severity": "Informational",
+  "severity_id": 1,
+  "src_endpoint": {
+    "location": {
+      "country": "US"
+    },
+    "ip": "1.1.1.1"
+  },
+  "time": 1729176166108,
+  "time_dt": "2024-10-17T14:42:46.000Z",
+  "type_name": "Group Management: Add User",
+  "type_uid": 300603,
+  "unmapped": {
+    "business": "acme-inc"
+  },
+  "user": {
+    "name": "test_user_2",
+    "uid": "51112"
+  }
+}
