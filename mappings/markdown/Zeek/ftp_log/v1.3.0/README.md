@@ -6,6 +6,8 @@
   - https://docs.zeek.org/en/master/logs/ftp.html
   - https://docs.zeek.org/en/current/scripts/base/protocols/ftp/main.zeek.html
     
+ ### OCSF Version: v1.3.0
+
  ### Static mapping
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
