@@ -6,7 +6,9 @@
   - https://schema.ocsf.io/1.3.0/classes/network_activity
   - https://docs.zeek.org/en/master/logs/conn.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html#type-Conn::Info
- 
+
+ ### OCSF Version: v1.3.0
+  
  ### Static mapping
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
