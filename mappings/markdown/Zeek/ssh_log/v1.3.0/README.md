@@ -6,6 +6,8 @@
   - https://docs.zeek.org/en/master/logs/ssh.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/ssh/main.zeek.html#type-SSH::Info
     
+ ### OCSF Version: v1.3.0
+
  ### Static mapping:
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
