@@ -6,6 +6,8 @@
   - https://docs.zeek.org/en/master/logs/rdp.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/rdp/main.zeek.html#type-RDP::Info
 
+ ### OCSF Version: v1.3.0
+ 
  ### Static mapping
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
