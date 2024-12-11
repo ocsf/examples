@@ -3,7 +3,7 @@
   "activity_name": "Query",
   "answers": [
     {
-      "flags": [ 3, 4 ],
+      "flags_ids": [3, 4],
       "rdata": "31.3.245.133",
       "ttl": 3600
     }
