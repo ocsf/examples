@@ -1,0 +1,48 @@
+{
+  "activity_id": 5,
+  "activity_name": "Refuse",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Network Activity",
+  "class_uid": 4001,
+  "time": 1539174896000,
+  "raw_data": "Oct 10 2018 12:34:56 localhost CiscoASA[999]: %ASA-4-106023: Deny tcp src outside:100.66.19.254/80 dst inside:172.31.98.44/8277 by access-group \"inbound\" [0x0, 0x0]",
+  "src_endpoint": {
+    "ip": "100.66.19.254",
+    "port": 80,
+    "interface_name": "outside"
+  },
+  "dst_endpoint": {
+    "ip": "172.31.98.44",
+    "port": 8277,
+    "interface_name": "inside"
+  },
+  "connection_info": {
+    "boundary": "External",
+    "boundary_id": 3,
+    "direction": "Inbound",
+    "direction_id": 1,
+    "protocol_name": "tcp"
+  },
+  "metadata": {
+    "event_code": "106023",
+    "original_time": "Oct 10 2018 12:34:56",
+    "product": {
+      "vendor_name": "Cisco",
+      "name": "Cisco ASA",
+      "version": "Unknown"
+    },
+    "version": "1.3.0"
+  },
+  "severity_id": 5,
+  "severity": "Critical",
+  "type_name": "Network Activity: Refuse",
+  "type_uid": 400105,
+  "status": "Failure",
+  "status_id": 2,
+  "unmapped": {
+    "rule_ids": "0x0, 0x0",
+    "program": "CiscoASA",
+    "pid": "999"
+  }
+}
