@@ -1,5 +1,7 @@
 # OCSF Examples
 
+DISCLAIMER: This repository is by no means a 'gold standard' for OCSF mappings. It serves as a starting point for examples of how logs can be interpreted and mapped to OCSF. These examples are not vendor approved and should be used for informational purposes only.
+
 This, the OCSF Examples repository, contains a collection of
 supporting content for OCSF, such as:
 
