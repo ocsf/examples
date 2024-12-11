@@ -6,6 +6,8 @@
   - https://docs.zeek.org/en/master/logs/http.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/http/main.zeek.html#type-HTTP::Info
     
+ ### OCSF Version: v1.3.0
+
  ### Static mapping
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
