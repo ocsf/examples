@@ -6,6 +6,8 @@
   - https://docs.zeek.org/en/master/logs/smtp.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/smtp/main.zeek.html#type-SMTP::Info
     
+ ### OCSF Version: v1.3.0
+ 
  ### Static mapping:
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
