@@ -1,0 +1,28 @@
+{
+  "action": "user.create",
+  "business": "businessname",
+  "actor_is_bot": "False",
+  "method": "POST",
+  "actor_session": 3495,
+  "server_id": "11111-1111-11111-1111",
+  "url": "https://github-test.com/enterprises/examplecompany/admins",
+  "actor_ip": "11.11.111.1",
+  "actor": "actor5",
+  "referrer": "https://github.groups",
+  "@timestamp": 1727681685875,
+  "user_id": 147,
+  "name": "Business Name",
+  "actor_location": {
+    "country_code": "",
+    "city": "",
+    "country_name": "",
+    "region_name": "",
+    "region": "",
+    "postal_code": ""
+  },
+  "user_agent": "Mozilla/5.0 (Macintosh Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
+  "actor_id": 73,
+  "business_id": 1,
+  "user": "user5",
+  "request_id": "10000000-0000-0000-0000-000000000000"
+}

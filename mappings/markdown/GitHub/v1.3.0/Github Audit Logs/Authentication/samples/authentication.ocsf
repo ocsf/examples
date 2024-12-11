@@ -1,0 +1,62 @@
+{
+  "activity_id": 1,
+  "activity_name": "Logon",
+  "actor": {
+    "user": {
+      "email_addr": "test_user@acme.com",
+      "name": "test_user",
+      "type": "Unknown",
+      "type_id": 0,
+      "uid": "51111"
+    }
+  },
+  "auth_protocol": "SAML",
+  "auth_protocol_id": 5,
+  "category_name": "Identity & Access Management",
+  "category_uid": 3,
+  "class_name": "Authentication",
+  "class_uid": 3002,
+  "http_request": {
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+  },
+  "logon_type": "Other",
+  "logon_type_id": 99,
+  "metadata": {
+    "event_code": "business.sso_response",
+    "product": {
+      "name": "GitHub Audit Log",
+      "vendor_name": "GitHub"
+    },
+    "profiles": ["datetime", "host"],
+    "uid": "m-111111111111==",
+    "version": "1.3.0"
+  },
+  "observables": [
+    {
+      "name": "http_request.user_agent",
+      "type": "HTTP User-Agent",
+      "type_id": 16,
+      "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+    },
+    {
+      "name": "actor.user.name",
+      "type": "User Name",
+      "type_id": 4,
+      "value": "test_user"
+    }
+  ],
+  "severity": "Informational",
+  "severity_id": 1,
+  "time": 1729176166108,
+  "time_dt": "2024-10-17T14:42:46.000Z",
+  "type_name": "Authentication: Logon",
+  "type_uid": 300201,
+  "unmapped": {
+    "business_id": 11,
+    "business": "acme-inc"
+  },
+  "user": {
+    "name": "test_user",
+    "uid": "51111"
+  }
+}
