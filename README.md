@@ -58,5 +58,5 @@ More details about representations and encodings can be found in the
 [`encodings/`](encodings/README.md) directory.
 
 
-## raw_sample_logs
+## raw_sample_log_dataset
 This is a place to store sanitized log datasets. Text datasets will throw an error at 50MB and fail to upload at 100MB so keeps it smaller then 100MB. Please try and donate log file datasets with a high cardinality of event types. The more event types that exist in each dataset, the easer it is to conditionally map each log source. Thank you for your participation in the OCSF. The file Stucture is to be "vendor name"/"vendor product" -> file.json 
