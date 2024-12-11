@@ -6,6 +6,8 @@
   - https://docs.zeek.org/en/master/logs/ssl.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/ssl/main.zeek.html#type-SSL::Info
 
+ ### OCSF Version: v1.3.0
+ 
  ### Static mapping:
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
