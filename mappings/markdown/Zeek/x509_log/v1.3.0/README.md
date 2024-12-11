@@ -6,6 +6,8 @@
   - https://docs.zeek.org/en/master/logs/x509.html
   - https://docs.zeek.org/en/master/scripts/base/files/x509/main.zeek.html#type-X509::Info
     
+ ### OCSF Version: v1.3.0
+     
  ### Static mapping:
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
