@@ -17,8 +17,6 @@
 | `class_name`                        | "SSH Activity"                                  |
 | `class_uid`                         | "4007"                                          |
 | `metadata.log_name`                 | "ssh.log"                                       |
-| `metadata.loggers[].log_provider`   | "Zeek"                                          |
-| `metadata.loggers[].product.name`   | "Zeek"                                          |
 | `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
 | `metadata.product.feature.name`     | "ssh.log"                                       |
 | `metadata.product.name`             | "Zeek"                                          |
