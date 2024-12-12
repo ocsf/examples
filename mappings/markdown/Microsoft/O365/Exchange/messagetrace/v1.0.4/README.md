@@ -24,3 +24,30 @@
 | `direction_name`                    | `Unknown`                                       |
 | `severity`                          | `Unknown`                                       |
 | `severity_id`                       | `0`                                             |
+
+ ### Mapping:
+
+| OCSF                           | Raw                             |
+| ------------------------------ | ------------------------------- |
+| `email.message_uid`            | `MessageId`                     |
+| `email.size`                   | `Size`                          |
+| `email.smtp_from`              | `SenderAddress`                 |
+| `email.smtp_to`                | `RecipientAddress`              |
+| `email.subject`                | `Subject`                       |
+| `message_trace_uid`            | `MessageTraceId`                |
+| `metadata.original_time`       | `Received`                      |
+| `src_endpoint.ip`              | `FromIP`                        |
+| `status`                       | `Status`                        |
+| `time`                         | `Received` (converted to epoch) |
+| `type_uid`                     | `400904`                        |
+
+### Conditional Mapping
+| OCSF                           | Condition                                           |
+| ------------------------------ | --------------------------------------------------- |
+| `status_id`                    | `default: 0, if "Delivered": 1, if "Failed": 2, else: 99` |
+
+### Unmapped
+| OCSF                           | Raw                             |
+| ------------------------------ | ------------------------------- |
+| `unmapped.Index`               | `Index`                         |
+| `unmapped.Organization`        | `Organization`                  |
