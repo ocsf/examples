@@ -1,0 +1,42 @@
+{
+  "activity_id": 4,
+  "activity_name": "Trace",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Email Activity",
+  "class_uid": 4009,
+  "direction_id": 0,
+  "direction_name": "Unknown",
+  "email": {
+    "message_uid": "<SJ0PR06MB7116E976D2AECD1432BABAC8F3302@SJ0PR06MB7116.namprd06.prod.outlook.com>",
+    "size": 53238,
+    "smtp_from": "first.last@testdomain2.com",
+    "smtp_to": [
+      "first_last@testdomain2.com"
+    ],
+    "subject": "Subject Line"
+  },
+  "message_trace_uid": "de9b1f4e-175a-4324-034a-08dd14c42e5b",
+  "metadata": {
+    "original_time": "2024-12-05T00:31:38.0340554",
+    "product": {
+      "name": "O365",
+      "vendor_name": "Microsoft"
+    },
+    "uid": "34701246-e51a-458a-9bbc-715a33385b01",
+    "version": "1.0.0-rc.2"
+  },
+  "severity": "Unknown",
+  "severity_id": 0,
+  "src_endpoint": {
+    "ip": "127.0.0.1"
+  },
+  "status": "Expanded",
+  "status_id": 99,
+  "time": 1733358698034,
+  "type_uid": 400904,
+  "unmapped": {
+    "Index": 16,
+    "Organization": "testdomain2.onmicrosoft.com"
+  }
+}
