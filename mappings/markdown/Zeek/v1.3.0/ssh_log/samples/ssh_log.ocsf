@@ -1,7 +1,7 @@
 {
   "metadata": {
     "version": "1.3.0",
-    "logged_time": 1729064044.950981,
+    "logged_time": 1729064044,
     "loggers": [
       {
         "name": "sensor"
@@ -17,8 +17,8 @@
   "category_uid": 4,
   "class_uid": 4007,
   "severity_id": 1,
-  "time": 1729064044.47434,
-  "start_time": 1729064044.47434,
+  "time": 1729064044,
+  "start_time": 1729064044,
   "activity_id": 99,
   "activity_name": "Authorization Successful",
   "type_uid": 400799,
@@ -30,7 +30,7 @@
     "port": 52100,
     "agent_list": [
       {
-        "name": "SSH-2.0-OpenSSH_8.1p1 Debian-1",
+        "name": "SSH Client",
         "type_id": 9
       }
     ],
@@ -47,22 +47,22 @@
     "port": 22,
     "agent_list": [
       {
-        "name": "SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3",
+        "name": "SSH Server",
         "type_id": 9
       }
     ]
   },
   "client_hassh": {
     "fingerprint": {
-      "value": "ec7378c1a92f5a8dde7e8b7a1ddf33d1"
-    },
-    "algorithm_id": 1
+      "value": "ec7378c1a92f5a8dde7e8b7a1ddf33d1",
+      "algorithm_id": 1
+    }
   },
   "server_hassh": {
     "fingerprint": {
-      "value": "b12d2871a1189eff20364cf5333619ee"
-    },
-    "algorithm_id": 1
+      "value": "b12d2871a1189eff20364cf5333619ee",
+      "algorithm_id": 1
+    }
   },
   "count": 2,
   "protocol_ver": "2",
@@ -70,57 +70,57 @@
     {
       "value": "1.1",
       "type_id": 99,
-      "type": "hassh Version"
+      "name": "hassh Version"
     },
     {
       "value": "curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1,ext-info-c;chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com;umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1;none,zlib@openssh.com,zlib",
       "type_id": 99,
-      "type": "hassh Algorithms"
+      "name": "hassh Algorithms"
     },
     {
       "value": "curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,diffie-hellman-group14-sha256,diffie-hellman-group14-sha1;chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com;umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1;none,zlib@openssh.com",
       "type_id": 99,
-      "type": "hasshServerAlgorithms"
+      "name": "hasshServerAlgorithms"
     },
     {
       "value": "chacha20-poly1305@openssh.com",
       "type_id": 99,
-      "type": "Encryption algorithm"
+      "name": "Encryption algorithm"
     },
     {
       "value": "none",
       "type_id": 99,
-      "type": "Compression algorithm"
+      "name": "Compression algorithm"
     },
     {
       "value": "eb:ce:a8:7f:51:fe:32:ac:16:a0:f0:1d:9c:d8:db:54",
       "type_id": 99,
-      "type": "Server’s key fingerprint"
+      "name": "Server’s key fingerprint"
     },
     {
       "value": "ecdsa-sha2-nistp256",
       "type_id": 99,
-      "type": "Server host key’s algorithm"
+      "name": "Server host key’s algorithm"
     },
     {
       "value": "curve25519-sha256",
       "type_id": 99,
-      "type": "Key exchange algorithm"
+      "name": "Key exchange algorithm"
     },
     {
       "value": "umac-64-etm@openssh.com",
       "type_id": 99,
-      "type": "Signing (MAC) algorithm"
+      "name": "Signing (MAC) algorithm"
     },
     {
       "value": "ecdsa-sha2-nistp256-cert-v01@openssh.com,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-ed25519,rsa-sha2-512,rsa-sha2-256,ssh-rsa",
       "type_id": 99,
-      "type": "cshka"
+      "name": "cshka"
     },
     {
       "value": "ssh-rsa,rsa-sha2-512,rsa-sha2-256,ecdsa-sha2-nistp256,ssh-ed25519",
       "type_id": 99,
-      "type": "sshka"
+      "name": "sshka"
     }
   ]
 }
