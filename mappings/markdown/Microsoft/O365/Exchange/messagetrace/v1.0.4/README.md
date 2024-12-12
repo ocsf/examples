@@ -24,7 +24,6 @@
 | `direction_name`                    | `Unknown`                                       |
 | `severity`                          | `Unknown`                                       |
 | `severity_id`                       | `0`                                             |
-| `type_uid`                          | `400904`                                        |
 
  ### Mapping:
 
@@ -40,6 +39,11 @@
 | `src_endpoint.ip`              | `FromIP`                        |
 | `status_detail`                | `Status`                        |
 | `time`                         | `Received` (converted to epoch) |
+
+### Calculated Mapping
+| OCSF                                | Calculation                               |
+| ----------------------------------- | ----------------------------------------- |
+| `type_uid`                          | `class_uid * 100 + activity_id` (`400904`)|
 
 ### Conditional Mapping
 | OCSF                           | Condition                                                                                         |
