@@ -1,0 +1,14 @@
+{
+  "Organization": "testdomain.onmicrosoft.com",
+  "MessageId": "<-1485666524.89606.1729702511228.JavaMail.vending@testing.com>",
+  "Received": "2024-10-23T16:55:14.3612002",
+  "SenderAddress": "vending@testing.com",
+  "RecipientAddress": "testuser@testdomain.com",
+  "Subject": "Asset Overdue Alert",
+  "Status": "Failed",
+  "ToIP": null,
+  "FromIP": "8.8.8.8",
+  "Size": 26921,
+  "MessageTraceId": "6a285e92-b85c-4e0f-a262-08dcf3837710",
+  "Index": 1876
+}

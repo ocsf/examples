@@ -1,0 +1,43 @@
+{
+  "activity_id": 4,
+  "activity_name": "Trace",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Email Activity",
+  "class_uid": 4009,
+  "direction": "Unknown",
+  "direction_id": 0,
+  "email": {
+    "message_uid": "<-LbY7S0UTGWCu_rrqO-tSQ@geopod-ismtpd-29>",
+    "size": 544560,
+    "smtp_from": "shop@somefakeoutlet.com",
+    "smtp_to": [
+      "testuser@testdomain.com"
+    ],
+    "subject": "ALL ACCESS: Sporti Granny Sweater Collection Out Now 💧"
+  },
+  "message_trace_uid": "61826cd8-944b-48c0-add2-08dceeb00f28",
+  "metadata": {
+    "original_time": "2024-10-17T13:31:51.574677",
+    "product": {
+      "name": "O365",
+      "vendor_name": "Microsoft"
+    },
+    "uid": "66f02f3a-5fc9-42b1-ad99-f61d6c95b737",
+    "version": "1.4.0"
+  },
+  "severity": "Unknown",
+  "severity_id": 0,
+  "src_endpoint": {
+    "ip": "8.8.8.8"
+  },
+  "status": "Resolved",
+  "status_detail": "Resolved",
+  "status_id": 99,
+  "time": 1729171911574,
+  "type_uid": 400904,
+  "unmapped": {
+    "Index": 12401,
+    "Organization": "testdomain.onmicrosoft.com"
+  }
+}
