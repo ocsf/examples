@@ -63,18 +63,14 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | `connection_info.direction_id` | `direction`       | If "INBOUND" then "1", if "OUTBOUND" then "2", else "3". |                                                      |
 | `client_hassh.algorithm_id`    | `hassh`           | If `hassh` is present, MD5 (algorithm_id = "1") is used to derive it. | The hassh information.                  |
 | `server_hassh.algorithm_id`    | `hasshServer`     | If `hasshServer` is present, MD5 (algorithm_id = "1") is used to derive it. | The hasshServer information.      |
-
- ### Unmapped (proposed):
-| OCSF                     | Raw                | Zeek Field Description                                                                  |
-| -------------------------| -------------------| --------------------------------------------------------------------------------------- |
-| `unmapped`               | `hasshVersion`     | The hasshVersion information.                                                           |
-| `unmapped`               | `hasshAlgorithms`  | The hasshAlgorithms information.                                                        |
-| `unmapped`               | `hasshServerAlgorithms` | The hasshServerAlgorithms information.                                             |
-| `unmapped`               | `cipher_alg`       | The encryption algorithm in use.                                                        |
-| `unmapped`               | `compression_alg`  | The compression algorithm in use.                                                       |
-| `unmapped`               | `host_key`         | The server’s key fingerprint.                                                           |
-| `unmapped`               | `host_key_alg`     | The server host key’s algorithm.                                                        |
-| `unmapped`               | `kex_alg`          | The key exchange algorithm in use.                                                      |
-| `unmapped`               | `mac_alg`          | The signing (MAC) algorithm in use.                                                     |
-| `unmapped`               | `cshka`            | The cshka information.                                                                  |
-| `unmapped`               | `sshka`            | The sshka information.        
+| `observables[].value`          | `hasshVersion`    | In an object where `observables[].type_id` = "99" and `observables[].type` = "hassh Version"               | The hasshVersion information.                                                           |
+| `observables[].value`          | `hasshAlgorithms` | In an object where `observables[].type_id` = "99" and `observables[].type` = "hassh Algorithms"            | The hasshAlgorithms information.                                                        |
+| `observables[].value`          | `hasshServerAlgorithms` | In an object where `observables[].type_id` = "99" and `observables[].type` = "hasshServerAlgorithms" | The hasshServerAlgorithms information.                                                  |
+| `observables[].value`          | `cipher_alg`      | In an object where `observables[].type_id` = "99" and `observables[].type` = "Encryption algorithm"        | The encryption algorithm in use.                                                        |
+| `observables[].value`          | `compression_alg` | In an object where `observables[].type_id` = "99" and `observables[].type` = "Compression algorithm"       | The compression algorithm in use.                                                       |
+| `observables[].value`          | `host_key`        | In an object where `observables[].type_id` = "99" and `observables[].type` = "Server’s key fingerprint"    | The server’s key fingerprint.                                                           |
+| `observables[].value`          | `host_key_alg`    | In an object where `observables[].type_id` = "99" and `observables[].type` = "Server host key’s algorithm" | The server host key’s algorithm.                                                        |
+| `observables[].value`          | `kex_alg`         | In an object where `observables[].type_id` = "99" and `observables[].type` = "Key exchange algorithm"      | The key exchange algorithm in use.                                                      |
+| `observables[].value`          | `mac_alg`         | In an object where `observables[].type_id` = "99" and `observables[].type` = "Signing (MAC) algorithm"     | The signing (MAC) algorithm in use.                                                     |
+| `observables[].value`          | `cshka`           | In an object where `observables[].type_id` = "99" and `observables[].type` = "cshka"                       | The cshka information.                                                                  |
+| `observables[].value`          | `sshka`           | In an object where `observables[].type_id` = "99" and `observables[].type` = "sshka"                       | The sshka information.                                                                  |
