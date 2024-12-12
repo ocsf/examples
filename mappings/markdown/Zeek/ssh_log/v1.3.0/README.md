@@ -30,7 +30,6 @@
 | `src_endpoint.agent_list[].type_id` | "9"                                             |
 
  ### Mapping:
-
 | OCSF                           | Raw                         | Zeek Field Description                                                                  |
 | ------------------------------ | --------------------------- | --------------------------------------------------------------------------------------- |
 | `time`                         | `ts`                        | Timestamp indicating when the event occurred. (Convert to epoch value)                  |
@@ -49,27 +48,27 @@
 | `dst_endpoint.ip`              | `id.resp_h`                 | The responder’s IP address.                                                             |
 | `dst_endpoint.port`            | `id.resp_p`                 | The responder’s port number.                                                            |
 | `dst_endpoint.agent_list[].name` | `server`                  | The server’s version string.                                                            |
-| `client_hassh.algorithm`       | `hasshAlgorithms`           | The hasshAlgorithms information.                                                        |
-| `client_hassh.fingerprint`     | `hassh`                     | The hassh information.                                                                  |
-| `server_hassh.algorithm`       | `hasshServerAlgorithms`     | The hasshServerAlgorithms information.                                                  |
-| `server_hassh.fingerprint`     | `hasshServer`               | The hasshServer information.                                                            |
+| `client_hassh.fingerprint.value` | `hassh`                   | The hassh information.                                                                  |
+| `server_hassh.fingerprint.value` | `hasshServer`             | The hasshServer information.                                                            |
 | `count`                        | `auth_attempts`             | The number of authentication attempts observed.                                         |
-| `connection_info.direction`    | `direction`                 | Direction of the connection (INBOUND/OUTBOUND).                                         |
-| `protocol_ver`                 | `version`                   | SSH major version (1, 2, or unset).                                                     |
-
+| `protocol_ver`                 | `version`                   | SSH major version (1, 2, or unset).  (Use string value for vendor compatibility)        |
 
  ### Conditional mapping:
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                           | Raw               | Evaluation Conditions | Zeek Field Description                                                                  |
 | ------------------------------ | ----------------- | --------------------- | --------------------------------------------------------------------------------------- |
-| `activity_id`                  | `auth_success`    | Change `activity_id` value based on mapped `auth_success` value. | Authentication result (T=success, F=failure, unset=unknown).                          |
-
+| `activity_id`                  | `auth_success`    | Change `activity_id` value based on mapped `auth_success` value. | Authentication result (T=success, F=failure, unset=unknown). |
+| `connection_info.direction_id` | `direction`       | If "INBOUND" then "1", if "OUTBOUND" then "2", else "3".                                                        |
+| `client_hassh.algorithm_id`    | "1"               | If `client_hassh.fingerprint.value` is present, MD5 (algorithm_id "1") is used to derive it                     |
+| `server_hassh.algorithm_id`    | "1"               | If `server_hassh.fingerprint.value` is present, MD5 (algorithm_id "1") is used to derive it                     |
 
  ### Unmapped (proposed):
 | OCSF                     | Raw                | Zeek Field Description                                                                 |
 | -------------------------| -------------------| --------------------------------------------------------------------------------------- |
 | `unmapped`               | `inferences`       | Inferences from SOL analysis.                                                           |
 | `unmapped`               | `hasshVersion`     | The hasshVersion information.                                                           |
+| `unmapped`               | `hasshAlgorithms`  | The hasshAlgorithms information.                                                        |
+| `unmapped`               | `hasshServerAlgorithms` | The hasshServerAlgorithms information.                                             |
 | `unmapped`               | `cipher_alg`       | The encryption algorithm in use.                                                        |
 | `unmapped`               | `compression_alg`  | The compression algorithm in use.                                                       |
 | `unmapped`               | `host_key`         | The server’s key fingerprint.                                                           |
