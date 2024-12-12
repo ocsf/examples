@@ -1,0 +1,44 @@
+{
+  "activity_id": 4,
+  "activity_name": "Trace",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Email Activity",
+  "class_uid": 4009,
+  "direction_id": 0,
+  "email": {
+    "message_uid": "<-1485666524.89606.1729702511228.JavaMail.vending@testing.com>",
+    "size": 26921,
+    "smtp_from": "vending@testing.com",
+    "smtp_to": [
+      "testuser@testdomain.com"
+    ],
+    "subject": "Asset Overdue Alert"
+  },
+  "message_trace_uid": "6a285e92-b85c-4e0f-a262-08dcf3837710",
+  "metadata": {
+    "original_time": "2024-10-23T16:55:14.3612002",
+    "product": {
+      "name": "O365",
+      "vendor_name": "Microsoft"
+    },
+    "profiles": [
+      "splunk/ba"
+    ],
+    "uid": "c468a938-ff12-4ace-94eb-a1a121288170",
+    "version": "1.0.0-rc.2"
+  },
+  "severity": "Unknown",
+  "severity_id": 0,
+  "src_endpoint": {
+    "ip": "8.8.8.8"
+  },
+  "status": "Failed",
+  "status_id": 2,
+  "time": 1729702514361,
+  "type_uid": 400904,
+  "unmapped": {
+    "Index": 1876,
+    "Organization": "testdomain.onmicrosoft.com"
+  }
+}
