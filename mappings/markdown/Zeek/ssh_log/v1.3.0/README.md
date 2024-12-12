@@ -16,10 +16,7 @@
 | `class_uid`                         | "4007"                                          |
 | `severity_id`                       | "1"                                             |
 | `metadata.log_name`                 | "ssh.log"                                       |
-| `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
-| `metadata.product.feature.name`     | "ssh.log"                                       |
 | `metadata.product.name`             | "Zeek"                                          |
-| `metadata.product.url_string`       | "https://docs.zeek.org/en/current/logs/ssh.html"|
 | `metadata.product.vendor_name`      | "Zeek"                                          |
 | `dst_endpoint.agent_list[].name`    | "SSH Server"                                    |
 | `dst_endpoint.agent_list[].type_id` | "9"                                             |
