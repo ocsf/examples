@@ -1,0 +1,42 @@
+{
+  "activity_id": 4,
+  "activity_name": "Trace",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Email Activity",
+  "class_uid": 4009,
+  "direction_id": 0,
+  "direction_name": "Unknown",
+  "email": {
+    "message_uid": "198658196.2eb547a3-e65f-465d-9636-e3619c9d7b71.1729263037387.JavaMail.OMRAP-RF-Email.351f52b1ab9c",
+    "size": 53066,
+    "smtp_from": "reg.reporting.do.not.reply@example.com",
+    "smtp_to": [
+      "user@exampledomain.com"
+    ],
+    "subject": "Report 2024-10-17 - 90440"
+  },
+  "message_trace_uid": "1896433f-f63a-43be-ce4f-08dcef84c8d0",
+  "metadata": {
+    "original_time": "2024-10-18T14:54:36.3616847",
+    "product": {
+      "name": "O365",
+      "vendor_name": "Microsoft"
+    },
+    "uid": "7a56049d-9c79-46c4-a1ac-ce6dfe8f2005",
+    "version": "1.0.0-rc.2"
+  },
+  "severity": "Unknown",
+  "severity_id": 0,
+  "src_endpoint": {
+    "ip": "208.67.222.222"
+  },
+  "status": "Delivered",
+  "status_id": 1,
+  "time": 1729263276361,
+  "type_uid": 400904,
+  "unmapped": {
+    "Index": 1603,
+    "Organization": "exampledomain.onmicrosoft.com"
+  }
+}
