@@ -30,28 +30,28 @@
 | `src_endpoint.agent_list[].type_id` | "9"                                             |
 
  ### Mapping:
-| OCSF                           | Raw                         | Zeek Field Description                                                                  |
-| ------------------------------ | --------------------------- | --------------------------------------------------------------------------------------- |
-| `time`                         | `ts`                        | Timestamp indicating when the event occurred. (Convert to epoch value)                  |
-| `start_time`                   | `ts`                        | Timestamp indicating when the event occurred. (Convert to epoch value)                  |
-| `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk. (Convert to epoch value)   |
-| `metadata.loggers[].name`      | `_system_name`              | Name of the system or logging subsystem generating the log entry.                       |
-| `metadata.uid`                 | `uid`                       | Unique ID for the connection.                                                           |
-| `src_endpoint.ip`              | `id.orig_h`                 | The originator’s IP address.                                                            |
-| `src_endpoint.port`            | `id.orig_p`                 | The originator’s port number.                                                           |
-| `src_endpoint.agent_list[].name` | `client`                  | The client’s version string.                                                            |
-| `src_endpoint.location.city`   | `remote_location.city`      | The city.                                                                               |
-| `src_endpoint.location.country`| `remote_location.country_code` | The country code.                                                                    |
-| `src_endpoint.location.lat`    | `remote_location.latitude`  | Latitude.                                                                               |
-| `src_endpoint.location.long`   | `remote_location.longitude` | Longitude.                                                                              |
-| `src_endpoint.location.region` | `remote_location.region`    | The region.                                                                             |
-| `dst_endpoint.ip`              | `id.resp_h`                 | The responder’s IP address.                                                             |
-| `dst_endpoint.port`            | `id.resp_p`                 | The responder’s port number.                                                            |
-| `dst_endpoint.agent_list[].name` | `server`                  | The server’s version string.                                                            |
-| `client_hassh.fingerprint.value` | `hassh`                   | The hassh information.                                                                  |
-| `server_hassh.fingerprint.value` | `hasshServer`             | The hasshServer information.                                                            |
-| `count`                        | `auth_attempts`             | The number of authentication attempts observed.                                         |
-| `protocol_ver`                 | `version`                   | SSH major version (1, 2, or unset).  (Use string value for vendor compatibility)        |
+| OCSF                           | Raw                         | Zeek Field Description                                                                  | Notes                   |
+| ------------------------------ | --------------------------- | --------------------------------------------------------------------------------------- | ----------------------- |
+| `time`                         | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. |
+| `start_time`                   | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. |
+| `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk.                            | Convert to epoch value. |
+| `metadata.loggers[].name`      | `_system_name`              | Name of the system or logging subsystem generating the log entry.                       |                         |
+| `metadata.uid`                 | `uid`                       | Unique ID for the connection.                                                           |                         |
+| `src_endpoint.ip`              | `id.orig_h`                 | The originator’s IP address.                                                            |                         |
+| `src_endpoint.port`            | `id.orig_p`                 | The originator’s port number.                                                           |                         |
+| `src_endpoint.agent_list[].name` | `client`                  | The client’s version string.                                                            |                         |
+| `src_endpoint.location.city`   | `remote_location.city`      | The city.                                                                               |                         |
+| `src_endpoint.location.country`| `remote_location.country_code` | The country code.                                                                    |                         |
+| `src_endpoint.location.lat`    | `remote_location.latitude`  | Latitude.                                                                               |                         |
+| `src_endpoint.location.long`   | `remote_location.longitude` | Longitude.                                                                              |                         |
+| `src_endpoint.location.region` | `remote_location.region`    | The region.                                                                             |                         |
+| `dst_endpoint.ip`              | `id.resp_h`                 | The responder’s IP address.                                                             |                         |
+| `dst_endpoint.port`            | `id.resp_p`                 | The responder’s port number.                                                            |                         |
+| `dst_endpoint.agent_list[].name` | `server`                  | The server’s version string.                                                            |                         |
+| `client_hassh.fingerprint.value` | `hassh`                   | The hassh information.                                                                  |                         |
+| `server_hassh.fingerprint.value` | `hasshServer`             | The hasshServer information.                                                            |                         |
+| `count`                        | `auth_attempts`             | The number of authentication attempts observed.                                         |                         |
+| `protocol_ver`                 | `version`                   | SSH major version (1, 2, or unset).                                                     | As string for vendor compatibility. |
 
  ### Conditional mapping:
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
