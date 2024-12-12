@@ -55,9 +55,9 @@
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                           | Raw               | Zeek Field Description                                              | Evaluation Conditions                                                                   |
 | ------------------------------ | ----------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `activity_id`                  | `auth_success`    | Authentication result.                                              | If "true" then "99", <br>if "false" then "4", <br>else "6". (integer)                   |
+| `activity_id`                  | `auth_success`    | Authentication result.                                              | If "true" then "99", <br>if "false" then "4", <br>else "6". <br>Type is Integer.        |
 | `activity_name`                | `auth_success`    | Authentication result.                                              | If "true" then "Authorization Successful", <br>else defined by activity_id.             |
-| `type_uid`                     | `auth_success`    | Authentication result.                                              | If "true" then "400799", <br>if "false" then "400704", <br>else "400706". (integer)     |
+| `type_uid`                     | `auth_success`    | Authentication result.                                              | If "true" then "400799", <br>if "false" then "400704", <br>else "400706". <br>Type is Integer. |
 | `connection_info.direction_id` | `direction`       | Direction of the connection. If the client was a local host logging into an external host, this would be OUTBOUND. INBOUND would be set for the opposite situation. | If "INBOUND" then "1", <br>if "OUTBOUND" then "2", <br>else "3". |
 | `client_hassh.fingerprint.algorithm_id` | `hassh`  | The hassh information.                                              | If `hassh` is present, then "1". (MD5) <br>Type is Integer.                             |
 | `server_hassh.fingerprint.algorithm_id` | `hasshServer` | The hasshServer information.                                   | If `hasshServer` is present, then "1". (MD5) <br>Type is Integer.                       |
