@@ -9,33 +9,25 @@
 
  ### OCSF Version: v1.3.0
   
- ### Static mapping
+ ### Static value mapping
 | OCSF field                          | Value                                           |
 | ----------------------------------- | ----------------------------------------------- |
 | `metadata.version`                  | "1.3.0"                                         |
-| `category_name`                     | "Network Activity"                              |
 | `category_uid`                      | "4"                                             |
-| `class_name`                        | "Network Activity"                              |
 | `class_uid`                         | "4001"                                          |
-| `metadata.log_name`                 | "conn.log"                                      |
-| `metadata.loggers[].log_provider`   | "Zeek"                                          |
-| `metadata.loggers[].product.name`   | "Zeek"                                          |
-| `metadata.product.cpe_name`         | "cpe:2.3:a:zeek:zeek"                           |
-| `metadata.product.feature.name`     | "conn.log"                                      |
-| `metadata.product.name`             | "Zeek"                                          |
-| `metadata.product.url_string`       | "https://docs.zeek.org/en/current/logs/conn.html"|
-| `metadata.product.vendor_name`      | "Zeek"                                          |
-| `severity`                          | "Informational"                                 |
 | `severity_id`                       | "1"                                             |
+| `metadata.product.name`             | "Zeek"                                          |
+| `metadata.product.vendor_name`      | "Zeek"                                          |
 
- ### Mapping:
 
-| OCSF                          | Raw             | Zeek Field Description                                                                 |
+ ### Direct field mapping:
+| OCSF                          | Raw             | Zeek Field Description                                                                  |
 | ----------------------------- | --------------- | --------------------------------------------------------------------------------------- |
 | `time`                        | `ts`            | Time when the connection began.                                                         |
 | `start_time`                  | `ts`            | Time when the connection began.                                                         |
 | `metadata.logged_time`        | `_write_ts`     | Timestamp indicating when the log entry was written to disk.                            |
 | `metadata.loggers[].name`     | `_system_name`  | Name of the system or logging subsystem generating the log entry.                       |
+| `metadata.log_name`           | `_path`         | Log name.                                                                               |
 | `metadata.uid`                | `uid`           | Unique ID for the connection.                                                           |
 | `src_endpoint.ip`             | `id.orig_h`     | The originator’s IP address.                                                            |
 | `src_endpoint.port`           | `id.orig_p`     | The originator’s port number.                                                           |
@@ -55,7 +47,6 @@
 | `traffic.packets_in`          | `resp_pkts`     | Number of packets that the responder sent.                                              |
 | `traffic.bytes_out`           | `orig_bytes`    | The number of payload bytes the originator sent.                                        |
 | `traffic.packets_out`         | `orig_pkts`     | Number of packets that the originator sent.                                             |
-
 
 
  ### Conditional mapping:
