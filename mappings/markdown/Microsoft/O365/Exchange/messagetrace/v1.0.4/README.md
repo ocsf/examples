@@ -22,3 +22,5 @@
 | `metadata.version`                  | `1.4.0`                                         |
 | `direction_id`                      | `0`                                             |
 | `direction_name`                    | `Unknown`                                       |
+| `severity`                          | `Unknown`                                       |
+| `severity_id`                       | `0`                                             |
