@@ -5,8 +5,8 @@
   "category_uid": 4,
   "class_name": "Email Activity",
   "class_uid": 4009,
+  "direction": "Unknown",
   "direction_id": 0,
-  "direction_name": "Unknown",
   "email": {
     "message_uid": "<-LbY7S0UTGWCu_rrqO-tSQ@geopod-ismtpd-29>",
     "size": 544560,

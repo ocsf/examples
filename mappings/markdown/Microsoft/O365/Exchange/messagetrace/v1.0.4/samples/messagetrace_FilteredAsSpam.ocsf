@@ -5,8 +5,8 @@
   "category_uid": 4,
   "class_name": "Email Activity",
   "class_uid": 4009,
+  "direction": "Unknown",
   "direction_id": 0,
-  "direction_name": "Unknown",
   "email": {
     "message_uid": "<-1747485340.246114.1729710607409.JavaMail.root@ip-10-90-64-46.ec2.internal>",
     "size": 167735,

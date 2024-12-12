@@ -5,8 +5,8 @@
   "category_uid": 4,
   "class_name": "Email Activity",
   "class_uid": 4009,
+  "direction": "Unknown",
   "direction_id": 0,
-  "direction_name": "Unknown",
   "email": {
     "message_uid": "198658196.2eb547a3-e65f-465d-9636-e3619c9d7b71.1729263037387.JavaMail.OMRAP-RF-Email.351f52b1ab9c",
     "size": 53066,
