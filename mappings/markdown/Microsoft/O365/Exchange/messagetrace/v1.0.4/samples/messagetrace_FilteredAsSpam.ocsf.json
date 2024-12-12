@@ -1,0 +1,41 @@
+{
+  "activity_id": 4,
+  "activity_name": "Trace",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Email Activity",
+  "class_uid": 4009,
+  "direction_id": 0,
+  "email": {
+    "message_uid": "<-1747485340.246114.1729710607409.JavaMail.root@ip-10-90-64-46.ec2.internal>",
+    "size": 167735,
+    "smtp_from": "remote.diagnostics@testing.com",
+    "smtp_to": [
+      "johndoe1@testdomain.com"
+    ],
+    "subject": "R2 / * / 2023 / Wed 10/23/2024 14:09:57 EST / Hot Engine Problems (WC) / Z163817-01 / EOA Problem"
+  },
+  "message_trace_uid": "8ff3175d-d59a-462f-6651-08dcf3967f1f",
+  "metadata": {
+    "original_time": "2024-10-23T19:11:28.3176017",
+    "product": {
+      "name": "O365",
+      "vendor_name": "Microsoft"
+    },
+    "uid": "dcdfaaf9-5da6-43e1-b08c-ccda9b4ecad0",
+    "version": "1.0.0-rc.2"
+  },
+  "severity": "Unknown",
+  "severity_id": 0,
+  "src_endpoint": {
+    "ip": "208.67.222.222"
+  },
+  "status": "FilteredAsSpam",
+  "status_id": 99,
+  "time": 1729710688317,
+  "type_uid": 400904,
+  "unmapped": {
+    "Index": 20125,
+    "Organization": "testdomain.onmicrosoft.com"
+  }
+}
