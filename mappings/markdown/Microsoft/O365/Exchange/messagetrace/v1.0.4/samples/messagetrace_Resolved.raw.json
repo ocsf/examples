@@ -1,0 +1,14 @@
+{
+  "Organization": "testdomain.onmicrosoft.com",
+  "MessageId": "<-LbY7S0UTGWCu_rrqO-tSQ@geopod-ismtpd-29>",
+  "Received": "2024-10-17T13:31:51.574677",
+  "SenderAddress": "shop@somefakeoutlet.com",
+  "RecipientAddress": "testuser@testdomain.com",
+  "Subject": "ALL ACCESS: Sporti Granny Sweater Collection Out Now \ud83d\udca7",
+  "Status": "Resolved",
+  "ToIP": null,
+  "FromIP": "8.8.8.8",
+  "Size": 544560,
+  "MessageTraceId": "61826cd8-944b-48c0-add2-08dceeb00f28",
+  "Index": 12401
+}
