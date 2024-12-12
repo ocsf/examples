@@ -41,9 +41,9 @@
 | `time`                         | `Received` (converted to epoch) |
 
 ### Calculated Mapping
-| OCSF                                | Calculation                               |
-| ----------------------------------- | ----------------------------------------- |
-| `type_uid`                          | `class_uid * 100 + activity_id` (`400904`)|
+| OCSF                                | Calculation                               | Notes
+| ----------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `type_uid`                          | `class_uid * 100 + activity_id` (`400904`)| Given the simple calculation, implementers may either calculate this field or statically map it to 400904 |
 
 ### Conditional Mapping
 | OCSF                           | Condition                                                                                         |
