@@ -8,35 +8,32 @@
   "direction_id": 0,
   "direction_name": "Unknown",
   "email": {
-    "message_uid": "<SJ0PR06MB7116E976D2AECD1432BABAC8F3302@SJ0PR06MB7116.namprd06.prod.outlook.com>",
-    "size": 53238,
-    "smtp_from": "first.last@testdomain2.com",
+    "message_uid": "<ZG9VBXKJSOU4.FA3ANQQ6AFVL1@sj0pr06mb7776>",
+    "size": 0,
+    "smtp_from": "ttsender@microsoft.com",
     "smtp_to": [
       "first_last@testdomain2.com"
     ],
-    "subject": "Subject Line"
+    "subject": "test subject"
   },
-  "message_trace_uid": "de9b1f4e-175a-4324-034a-08dd14c42e5b",
+  "message_trace_uid": "46734309-b552-45a6-c4ec-08dd14bf1534",
   "metadata": {
-    "original_time": "2024-12-05T00:31:38.0340554",
+    "original_time": "2024-12-04T23:55:08.356734",
     "product": {
       "name": "O365",
       "vendor_name": "Microsoft"
     },
-    "uid": "34701246-e51a-458a-9bbc-715a33385b01",
+    "uid": "a04a1f17-d3b6-45c2-af98-fd60e73784bb",
     "version": "1.0.4"
   },
   "severity": "Unknown",
   "severity_id": 0,
-  "src_endpoint": {
-    "ip": "127.0.0.1"
-  },
-  "status": "Expanded",
+  "status": "Pending",
   "status_id": 99,
-  "time": 1733358698034,
+  "time": 1733356508356,
   "type_uid": 400904,
   "unmapped": {
-    "Index": 16,
+    "Index": 14395,
     "Organization": "testdomain2.onmicrosoft.com"
   }
 }
