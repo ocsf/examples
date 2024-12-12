@@ -15,7 +15,6 @@
 | `category_uid`                      | "4"                                             |
 | `class_uid`                         | "4007"                                          |
 | `severity_id`                       | "1"                                             |
-| `metadata.log_name`                 | "ssh.log"                                       |
 | `metadata.product.name`             | "Zeek"                                          |
 | `metadata.product.vendor_name`      | "Zeek"                                          |
 | `dst_endpoint.agent_list[].name`    | "SSH Server"                                    |
@@ -30,6 +29,7 @@
 | `start_time`                   | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. |
 | `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk.                            | Convert to epoch value. |
 | `metadata.loggers[].name`      | `_system_name`              | Name of the system or logging subsystem generating the log entry.                       |                         |
+| `metadata.log_name`            | `_path`                     | Log name.                                                                               |                         |
 | `metadata.uid`                 | `uid`                       | Unique ID for the connection.                                                           |                         |
 | `src_endpoint.ip`              | `id.orig_h`                 | The originator’s IP address.                                                            |                         |
 | `src_endpoint.port`            | `id.orig_p`                 | The originator’s port number.                                                           |                         |
