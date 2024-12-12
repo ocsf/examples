@@ -5,8 +5,10 @@
   - https://schema.ocsf.io/1.3.0/classes/ssh_activity
   - https://docs.zeek.org/en/master/logs/ssh.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/ssh/main.zeek.html#type-SSH::Info
-    
+
+
  ### OCSF Version: v1.3.0
+
 
  ### Static value mapping:
 | OCSF field                          | Value                                           |
@@ -21,6 +23,7 @@
 | `dst_endpoint.agent_list[].type_id` | "9"                                             |
 | `src_endpoint.agent_list[].name`    | "SSH Client"                                    |
 | `src_endpoint.agent_list[].type_id` | "9"                                             |
+
 
  ### Direct field mapping:
 | OCSF                           | Raw                         | Zeek Field Description                                                                  | Notes                   |
@@ -47,16 +50,17 @@
 | `count`                        | `auth_attempts`             | The number of authentication attempts observed.                                         |                         |
 | `protocol_ver`                 | `version`                   | SSH major version (1, 2, or unset).                                                     | As string for vendor compatibility. |
 
+
  ### Conditional mapping:
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                           | Raw               | Zeek Field Description                                              | Evaluation Conditions                                                                   |
 | ------------------------------ | ----------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `activity_id`                  | `auth_success`    | Authentication result (true=success, false=failure, unset=unknown). | If "true" then "99", <br>if "false" then "4", <br>else "6".                                     |
-| `activity_name`                | `auth_success`    | Authentication result (true=success, false=failure, unset=unknown). | If "true" then "Authorization Successful", <br>else defined by activity_id.                 |
-| `type_uid`                     | `auth_success`    | Authentication result (true=success, false=failure, unset=unknown). | If "true" then "400799", <br>if "false" then "400704", <br>else "400706".                       |
-| `connection_info.direction_id` | `direction`       |                                                                     | If "INBOUND" then "1", <br>if "OUTBOUND" then "2", <br>else "3".                                |
-| `client_hassh.algorithm_id`    | `hassh`           | The hassh information.                                              | If `hassh` is present, MD5 (algorithm_id = "1") is used to derive it.                   |
-| `server_hassh.algorithm_id`    | `hasshServer`     | The hasshServer information.                                        | If `hasshServer` is present, MD5 (algorithm_id = "1") is used to derive it.             |
+| `activity_id`                  | `auth_success`    | Authentication result.                                              | If "true" then "99", <br>if "false" then "4", <br>else "6".                             |
+| `activity_name`                | `auth_success`    | Authentication result.                                              | If "true" then "Authorization Successful", <br>else defined by activity_id.             |
+| `type_uid`                     | `auth_success`    | Authentication result.                                              | If "true" then "400799", <br>if "false" then "400704", <br>else "400706".               |
+| `connection_info.direction_id` | `direction`       | Direction of the connection. If the client was a local host logging into an external host, this would be OUTBOUND. INBOUND would be set for the opposite situation. | If "INBOUND" then "1", <br>if "OUTBOUND" then "2", <br>else "3". |
+| `client_hassh.algorithm_id`    | `hassh`           | The hassh information.                                              | If `hassh` is present, then "1". (MD5)                                                  |
+| `server_hassh.algorithm_id`    | `hasshServer`     | The hasshServer information.                                        | If `hasshServer` is present, then "1". (MD5)                                            |
 | `observables[].value`          | `hasshVersion`    | The hasshVersion information.                                       | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].type` = "hassh Version"               |
 | `observables[].value`          | `hasshAlgorithms` | The hasshAlgorithms information.                                    | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].type` = "hassh Algorithms"            |
 | `observables[].value`          | `hasshServerAlgorithms` | The hasshServerAlgorithms information.                        | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].type` = "hasshServerAlgorithms"       |
