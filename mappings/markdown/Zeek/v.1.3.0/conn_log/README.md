@@ -51,7 +51,7 @@
 
  ### Conditional mapping:
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
-| OCSF                          | Raw                              | Evaluation Conditions                                                        | Zeek Field Description                                                                                    |
+| OCSF                          | Raw                              | Zeek Field Description                                                       | Evaluation Conditions                                                                                     |
 | ----------------------------- | -------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `traffic.bytes`               | `resp_bytes` <br>+ `orig_bytes`      | The total number of payload bytes sent by both the originator and responder. | Sum of `resp_bytes` + `orig_bytes`                                                                        |
 | `traffic.packets`             | `orig_pkts` <br>+ `resp_pkts`        | The total number of packets sent by both the originator and responder.       | Sum of `orig_pkts` + `resp_pkts`                                                                          |
