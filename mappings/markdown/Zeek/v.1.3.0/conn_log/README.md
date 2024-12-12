@@ -53,19 +53,19 @@
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                          | Raw                              | Zeek Field Description                                                       | Evaluation Conditions                                                                                     |
 | ----------------------------- | -------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `traffic.bytes`               | `resp_bytes` <br>+ `orig_bytes`      | The total number of payload bytes sent by both the originator and responder. | Sum of `resp_bytes` + `orig_bytes`                                                                        |
-| `traffic.packets`             | `orig_pkts` <br>+ `resp_pkts`        | The total number of packets sent by both the originator and responder.       | Sum of `orig_pkts` + `resp_pkts`                                                                          |
-| `src_endpoint.observables[].value` | `id.orig_h_name.vals`       | The set of names observed for a given originator address.                    | In a record where <br>`src_endpoint.observables[].reputation.provider` = `id.orig_h_name.src` <br>and `src_endpoint.observables[].type_id` = "1" <br>and `src_endpoint.observables[].type` = "Hostname" |
-| `dst_endpoint.observables[].value` | `id.resp_h_name.vals`       | The set of names observed for a given responder address.                     | In a record where <br>`dst_endpoint.observables[].reputation.provider` = `id.resp_h_name.src` <br>and `dst_endpoint.observables[].type_id` = "1" <br>and `dst_endpoint.observables[].type` = "Hostname" |
+| `traffic.bytes`               | `resp_bytes` <br>+ `orig_bytes`  | The total number of payload bytes sent by both the originator and responder. | Sum of `resp_bytes` + `orig_bytes`                                                                        |
+| `traffic.packets`             | `orig_pkts` <br>+ `resp_pkts`    | The total number of packets sent by both the originator and responder.       | Sum of `orig_pkts` + `resp_pkts`                                                                          |
+| `observables[].value`         | `id.orig_h_name.vals`            | The set of names observed for a given originator address.                    | In a record where <br>`observables[].name` = "src_endpoint.hostname" <br>and `observables[].type_id` = "1" <br>and`observables[].reputation.provider` = `id.orig_h_name.src` <br>and`observables[].reputation.base_score` = "0" <br>and `observables[].reputation.score_id` = "0" |
+| `observables[].value`         | `id.resp_h_name.vals`            | The set of names observed for a given responder address.                     | In a record where <br>`observables[].name` = "dst_endpoint.hostname" <br>and `observables[].type_id` = "1" <br>and`observables[].reputation.provider` = `id.resp_h_name.src` <br>and`observables[].reputation.base_score` = "0" <br>and `observables[].reputation.score_id` = "0" |
 
  ### Unmapped (proposed):
 
-| OCSF                        | Raw              | Zeek Field Description                                                                 |
+| OCSF                        | Raw              | Zeek Field Description                                                                  |
 | --------------------------- | ---------------- | --------------------------------------------------------------------------------------- |
 | `(bytes_missed)`            | `missed_bytes`   | Indicates the number of bytes missed in content gaps.                                   |
 | `connection_info.(history)` | `history`        | Records the state history of connections as a string of letters.                        |
 | `unmapped`                  | `app`            | (No description available)                                                              |
-| `unmapped`                  | `corelight_shunted` | (No description available)                                                            |
+| `unmapped`                  | `corelight_shunted` | (No description available)                                                           |
 | `unmapped`                  | `pcr`            | (No description available)                                                              |
 | `unmapped`                  | `spcap.rule`     | (No description available)                                                              |
 | `unmapped`                  | `spcap.trigger`  | (No description available)                                                              |
