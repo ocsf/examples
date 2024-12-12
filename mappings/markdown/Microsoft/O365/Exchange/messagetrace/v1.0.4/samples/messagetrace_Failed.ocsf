@@ -31,7 +31,8 @@
   "src_endpoint": {
     "ip": "8.8.8.8"
   },
-  "status": "Failed",
+  "status_detail": "Failure",
+  "status_detail": "Failed",
   "status_id": 2,
   "time": 1729702514361,
   "type_uid": 400904,

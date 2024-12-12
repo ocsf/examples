@@ -32,6 +32,7 @@
     "ip": "2603:10b6:a03:3cb::11"
   },
   "status": "GettingStatus",
+  "status_detail": "GettingStatus",
   "status_id": 99,
   "time": 1733358441179,
   "type_uid": 400904,

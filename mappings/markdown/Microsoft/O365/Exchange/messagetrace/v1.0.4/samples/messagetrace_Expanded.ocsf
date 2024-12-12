@@ -32,6 +32,7 @@
     "ip": "127.0.0.1"
   },
   "status": "Expanded",
+  "status_detail": "Expanded",
   "status_id": 99,
   "time": 1733358698034,
   "type_uid": 400904,

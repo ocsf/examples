@@ -29,6 +29,7 @@
   "severity": "Unknown",
   "severity_id": 0,
   "status": "Pending",
+  "status_detail": "Pending",
   "status_id": 99,
   "time": 1733356508356,
   "type_uid": 400904,

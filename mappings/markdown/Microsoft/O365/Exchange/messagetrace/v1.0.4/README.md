@@ -37,14 +37,15 @@
 | `message_trace_uid`            | `MessageTraceId`                |
 | `metadata.original_time`       | `Received`                      |
 | `src_endpoint.ip`              | `FromIP`                        |
-| `status`                       | `Status`                        |
+| `status_detail`                | `Status`                        |
 | `time`                         | `Received` (converted to epoch) |
 | `type_uid`                     | `400904`                        |
 
 ### Conditional Mapping
-| OCSF                           | Condition                                           |
-| ------------------------------ | --------------------------------------------------- |
-| `status_id`                    | `default: 0, if "Delivered": 1, if "Failed": 2, else: 99` |
+| OCSF                           | Condition                                                                                         |
+| ------------------------------ | ------------------------------------------------------------------------------------------------- |
+| `status`                       | `default: "Unknown, if "Delivered": "Success", if "Failed": "Failure", else: value of raw Status` |
+| `status_id`                    | `default: 0, if "Delivered": 1, if "Failed": 2, else: 99`                                         |
 
 ### Unmapped
 | OCSF                           | Raw                             |

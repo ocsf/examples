@@ -32,6 +32,7 @@
     "ip": "8.8.8.8"
   },
   "status": "Resolved",
+  "status_detail": "Resolved",
   "status_id": 99,
   "time": 1729171911574,
   "type_uid": 400904,
