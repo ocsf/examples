@@ -51,12 +51,12 @@
 
  ### Conditional mapping:
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
-| OCSF                          | Raw                              | Evaluation Conditions                                                                                  | Zeek Field Description                                                                                   |
-| ----------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| `traffic.bytes`               | `resp_bytes` + `orig_bytes`      | Sum of `resp_bytes` + `orig_bytes`                                                                     | The total number of payload bytes sent by both the originator and responder.                             |
-| `traffic.packets`             | `orig_pkts` + `resp_pkts`        | Sum of `orig_pkts` + `resp_pkts`                                                                       | The total number of packets sent by both the originator and responder.                                    |
-| `src_endpoint.observables[].value` | `id.orig_h_name.vals`         | In a record where `src_endpoint.observables[].reputation.provider` = `id.orig_h_name.src` AND `src_endpoint.observables[].type_id` = "1" AND `src_endpoint.observables[].type` = "Hostname" | The set of names observed for a given originator address. |
-| `dst_endpoint.observables[].value` | `id.resp_h_name.vals`         | In a record where `dst_endpoint.observables[].reputation.provider` = `id.resp_h_name.src` AND `dst_endpoint.observables[].type_id` = "1" AND `dst_endpoint.observables[].type` = "Hostname" | The set of names observed for a given responder address. |
+| OCSF                          | Raw                              | Evaluation Conditions                                                        | Zeek Field Description                                                                                    |
+| ----------------------------- | -------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `traffic.bytes`               | `resp_bytes` <br>+ `orig_bytes`      | The total number of payload bytes sent by both the originator and responder. | Sum of `resp_bytes` + `orig_bytes`                                                                        |
+| `traffic.packets`             | `orig_pkts` <br>+ `resp_pkts`        | The total number of packets sent by both the originator and responder.       | Sum of `orig_pkts` + `resp_pkts`                                                                          |
+| `src_endpoint.observables[].value` | `id.orig_h_name.vals`       | The set of names observed for a given originator address.                    | In a record where <br>`src_endpoint.observables[].reputation.provider` = `id.orig_h_name.src` <br>and `src_endpoint.observables[].type_id` = "1" <br>and `src_endpoint.observables[].type` = "Hostname" |
+| `dst_endpoint.observables[].value` | `id.resp_h_name.vals`       | The set of names observed for a given responder address.                     | In a record where <br>`dst_endpoint.observables[].reputation.provider` = `id.resp_h_name.src` <br>and `dst_endpoint.observables[].type_id` = "1" <br>and `dst_endpoint.observables[].type` = "Hostname" |
 
  ### Unmapped (proposed):
 
