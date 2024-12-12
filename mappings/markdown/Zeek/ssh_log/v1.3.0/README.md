@@ -33,9 +33,9 @@
 
 | OCSF                           | Raw                         | Zeek Field Description                                                                  |
 | ------------------------------ | --------------------------- | --------------------------------------------------------------------------------------- |
-| `time`                         | `ts`                        | Timestamp indicating when the event occurred.                                           |
-| `start_time`                   | `ts`                        | Timestamp indicating when the event occurred.                                           |
-| `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk.                            |
+| `time`                         | `ts`                        | Timestamp indicating when the event occurred. (Convert to epoch value)                  |
+| `start_time`                   | `ts`                        | Timestamp indicating when the event occurred. (Convert to epoch value)                  |
+| `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk. (Convert to epoch value)   |
 | `metadata.loggers[].name`      | `_system_name`              | Name of the system or logging subsystem generating the log entry.                       |
 | `metadata.uid`                 | `uid`                       | Unique ID for the connection.                                                           |
 | `src_endpoint.ip`              | `id.orig_h`                 | The originator’s IP address.                                                            |
