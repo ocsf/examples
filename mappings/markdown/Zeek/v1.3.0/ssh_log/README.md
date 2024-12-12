@@ -61,14 +61,18 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | `connection_info.direction_id` | `direction`       | Direction of the connection. If the client was a local host logging into an external host, this would be OUTBOUND. INBOUND would be set for the opposite situation. | If "INBOUND" then "1", <br>if "OUTBOUND" then "2", <br>else "3". |
 | `client_hassh.fingerprint.algorithm_id` | `hassh`  | The hassh information.                                              | If `hassh` is present, then "1". (MD5) <br>Type is Integer.                             |
 | `server_hassh.fingerprint.algorithm_id` | `hasshServer` | The hasshServer information.                                   | If `hasshServer` is present, then "1". (MD5) <br>Type is Integer.                       |
-| `observables[].value`          | `hasshVersion`    | The hasshVersion information.                                       | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "hassh Version"               |
-| `observables[].value`          | `hasshAlgorithms` | The hasshAlgorithms information.                                    | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "hassh Algorithms"            |
-| `observables[].value`          | `hasshServerAlgorithms` | The hasshServerAlgorithms information.                        | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "hasshServerAlgorithms"       |
-| `observables[].value`          | `cipher_alg`      | The encryption algorithm in use.                                    | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "Encryption algorithm"        |
-| `observables[].value`          | `compression_alg` | The compression algorithm in use.                                   | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "Compression algorithm"       |
-| `observables[].value`          | `host_key`        | The server’s key fingerprint.                                       | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "Server’s key fingerprint"    |
-| `observables[].value`          | `host_key_alg`    | The server host key’s algorithm.                                    | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "Server host key’s algorithm" |
-| `observables[].value`          | `kex_alg`         | The key exchange algorithm in use.                                  | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "Key exchange algorithm"      |
-| `observables[].value`          | `mac_alg`         | The signing (MAC) algorithm in use.                                 | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "Signing (MAC) algorithm"     |
-| `observables[].value`          | `cshka`           | The cshka information.                                              | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "cshka"                       |
-| `observables[].value`          | `sshka`           | The sshka information.                                              | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "sshka"                       |
+
+ ### Unmapped:
+| OCSF       | Raw               | Zeek Field Description                                              |
+| ---------- | ----------------- | ------------------------------------------------------------------- |
+| `unmapped` | `hasshVersion`    | The hasshVersion information.                                       |
+| `unmapped` | `hasshAlgorithms` | The hasshAlgorithms information.                                    |
+| `unmapped` | `hasshServerAlgorithms` | The hasshServerAlgorithms information.                        |
+| `unmapped` | `cipher_alg`      | The encryption algorithm in use.                                    |
+| `unmapped` | `compression_alg` | The compression algorithm in use.                                   |
+| `unmapped` | `host_key`        | The server’s key fingerprint.                                       |
+| `unmapped` | `host_key_alg`    | The server host key’s algorithm.                                    |
+| `unmapped` | `kex_alg`         | The key exchange algorithm in use.                                  |
+| `unmapped` | `mac_alg`         | The signing (MAC) algorithm in use.                                 |
+| `unmapped` | `cshka`           | The cshka information.                                              |
+| `unmapped` | `sshka`           | The sshka information.                                              |
