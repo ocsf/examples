@@ -23,9 +23,6 @@
       "name": "O365",
       "vendor_name": "Microsoft"
     },
-    "profiles": [
-      "splunk/ba"
-    ],
     "uid": "d37f72f1-d426-4303-9cdd-3fc2ce776076",
     "version": "1.0.4"
   },
