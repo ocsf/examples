@@ -28,9 +28,9 @@
  ### Direct field mapping:
 | OCSF                           | Raw                         | Zeek Field Description                                                                  | Notes                   |
 | ------------------------------ | --------------------------- | --------------------------------------------------------------------------------------- | ----------------------- |
-| `time`                         | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. (Integer) |
-| `start_time`                   | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. (Integer) |
-| `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk.                            | Convert to epoch value. (Integer) |
+| `time`                         | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. <br>Type is Integer. |
+| `start_time`                   | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. <br>Type is Integer. |
+| `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk.                            | Convert to epoch value. <br>Type is Integer. |
 | `metadata.loggers[].name`      | `_system_name`              | Name of the system or logging subsystem generating the log entry.                       |                         |
 | `metadata.log_name`            | `_path`                     | Log name.                                                                               |                         |
 | `metadata.uid`                 | `uid`                       | Unique ID for the connection.                                                           |                         |
