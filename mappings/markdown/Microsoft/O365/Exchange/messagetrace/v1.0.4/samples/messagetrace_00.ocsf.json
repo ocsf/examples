@@ -1,0 +1,45 @@
+{
+  "activity_id": 4,
+  "activity_name": "Trace",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Email Activity",
+  "class_uid": 4009,
+  "direction_id": 0,
+  "direction_name": "Unknown",
+  "email": {
+    "message_uid": "<SA9PR09MB5838517C85310ECE43856647DB4D2@SA9PR09MB5838.tstprd09.prod.outlook.com>",
+    "size": 56562,
+    "smtp_from": "user@testdomain.com",
+    "smtp_to": [
+      "user@testdomain.com"
+    ],
+    "subject": "FW: Request for proposal*"
+  },
+  "message_trace_uid": "f8290baa-c368-4c82-a18e-08dcf394db3d",
+  "metadata": {
+    "original_time": "2024-10-23T18:59:43.8726542",
+    "product": {
+      "name": "O365",
+      "vendor_name": "Microsoft"
+    },
+    "profiles": [
+      "splunk/ba"
+    ],
+    "uid": "d37f72f1-d426-4303-9cdd-3fc2ce776076",
+    "version": "1.0.4"
+  },
+  "severity": "Unknown",
+  "severity_id": 0,
+  "src_endpoint": {
+    "ip": "208.67.222.222"
+  },
+  "status": "Quarantined",
+  "status_id": 99,
+  "time": 1729709983872,
+  "type_uid": 400904,
+  "unmapped": {
+    "Index": 24260,
+    "Organization": "testdomain.onmicrosoft.com"
+  }
+}
