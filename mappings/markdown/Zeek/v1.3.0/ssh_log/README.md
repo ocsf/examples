@@ -11,31 +11,31 @@
 
 
  ### Static value mapping:
-| OCSF field                          | Value                                           |
-| ----------------------------------- | ----------------------------------------------- |
-| `metadata.version`                  | "1.3.0"                                         |
-| `category_uid`                      | "4"                                             |
-| `class_uid`                         | "4007"                                          |
-| `severity_id`                       | "1"                                             |
-| `metadata.product.name`             | "Zeek"                                          |
-| `metadata.product.vendor_name`      | "Zeek"                                          |
-| `dst_endpoint.agent_list[].name`    | "SSH Server"                                    |
-| `dst_endpoint.agent_list[].type_id` | "9"                                             |
-| `src_endpoint.agent_list[].name`    | "SSH Client"                                    |
-| `src_endpoint.agent_list[].type_id` | "9"                                             |
+| OCSF field                          | Value        | Type       |
+| ----------------------------------- | ------------ | ---------- |
+| `metadata.version`                  | "1.3.0"      |            |
+| `category_uid`                      | "4"          | Integer    |
+| `class_uid`                         | "4007"       | Integer    |
+| `severity_id`                       | "1"          | Integer    |
+| `metadata.product.name`             | "Zeek"       |            |
+| `metadata.product.vendor_name`      | "Zeek"       |            |
+| `dst_endpoint.agent_list[].name`    | "SSH Server" |            |
+| `dst_endpoint.agent_list[].type_id` | "9"          | Integer    |
+| `src_endpoint.agent_list[].name`    | "SSH Client" |            |
+| `src_endpoint.agent_list[].type_id` | "9"          | Integer    |
 
 
  ### Direct field mapping:
 | OCSF                           | Raw                         | Zeek Field Description                                                                  | Notes                   |
 | ------------------------------ | --------------------------- | --------------------------------------------------------------------------------------- | ----------------------- |
-| `time`                         | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. |
-| `start_time`                   | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. |
-| `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk.                            | Convert to epoch value. |
+| `time`                         | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. (Integer) |
+| `start_time`                   | `ts`                        | Timestamp indicating when the event occurred.                                           | Convert to epoch value. (Integer) |
+| `metadata.logged_time`         | `_write_ts`                 | Timestamp indicating when the log entry was written to disk.                            | Convert to epoch value. (Integer) |
 | `metadata.loggers[].name`      | `_system_name`              | Name of the system or logging subsystem generating the log entry.                       |                         |
 | `metadata.log_name`            | `_path`                     | Log name.                                                                               |                         |
 | `metadata.uid`                 | `uid`                       | Unique ID for the connection.                                                           |                         |
 | `src_endpoint.ip`              | `id.orig_h`                 | The originator’s IP address.                                                            |                         |
-| `src_endpoint.port`            | `id.orig_p`                 | The originator’s port number.                                                           |                         |
+| `src_endpoint.port`            | `id.orig_p`                 | The originator’s port number.                                                           | Integer                 |
 | `src_endpoint.agent_list[].name` | `client`                  | The client’s version string.                                                            |                         |
 | `src_endpoint.location.city`   | `remote_location.city`      | The city.                                                                               |                         |
 | `src_endpoint.location.country`| `remote_location.country_code` | The country code.                                                                    |                         |
@@ -47,7 +47,7 @@
 | `dst_endpoint.agent_list[].name` | `server`                  | The server’s version string.                                                            |                         |
 | `client_hassh.fingerprint.value` | `hassh`                   | The hassh information.                                                                  |                         |
 | `server_hassh.fingerprint.value` | `hasshServer`             | The hasshServer information.                                                            |                         |
-| `count`                        | `auth_attempts`             | The number of authentication attempts observed.                                         |                         |
+| `count`                        | `auth_attempts`             | The number of authentication attempts observed.                                         | Integer                 |
 | `protocol_ver`                 | `version`                   | SSH major version (1, 2, or unset).                                                     | As string for vendor compatibility. |
 
 
@@ -55,12 +55,12 @@
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                           | Raw               | Zeek Field Description                                              | Evaluation Conditions                                                                   |
 | ------------------------------ | ----------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `activity_id`                  | `auth_success`    | Authentication result.                                              | If "true" then "99", <br>if "false" then "4", <br>else "6".                             |
+| `activity_id`                  | `auth_success`    | Authentication result.                                              | If "true" then "99", <br>if "false" then "4", <br>else "6". (integer)                   |
 | `activity_name`                | `auth_success`    | Authentication result.                                              | If "true" then "Authorization Successful", <br>else defined by activity_id.             |
-| `type_uid`                     | `auth_success`    | Authentication result.                                              | If "true" then "400799", <br>if "false" then "400704", <br>else "400706".               |
+| `type_uid`                     | `auth_success`    | Authentication result.                                              | If "true" then "400799", <br>if "false" then "400704", <br>else "400706". (integer)     |
 | `connection_info.direction_id` | `direction`       | Direction of the connection. If the client was a local host logging into an external host, this would be OUTBOUND. INBOUND would be set for the opposite situation. | If "INBOUND" then "1", <br>if "OUTBOUND" then "2", <br>else "3". |
-| `client_hassh.fingerprint.algorithm_id` | `hassh`  | The hassh information.                                              | If `hassh` is present, then "1". (MD5)                                                  |
-| `server_hassh.fingerprint.algorithm_id` | `hasshServer` | The hasshServer information.                                   | If `hasshServer` is present, then "1". (MD5)                                            |
+| `client_hassh.fingerprint.algorithm_id` | `hassh`  | The hassh information.                                              | If `hassh` is present, then "1". (MD5) <br>Type is Integer.                             |
+| `server_hassh.fingerprint.algorithm_id` | `hasshServer` | The hasshServer information.                                   | If `hasshServer` is present, then "1". (MD5) <br>Type is Integer.                       |
 | `observables[].value`          | `hasshVersion`    | The hasshVersion information.                                       | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "hassh Version"               |
 | `observables[].value`          | `hasshAlgorithms` | The hasshAlgorithms information.                                    | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "hassh Algorithms"            |
 | `observables[].value`          | `hasshServerAlgorithms` | The hasshServerAlgorithms information.                        | In an record where <br>`observables[].type_id` = "99" <br>and `observables[].name` = "hasshServerAlgorithms"       |
