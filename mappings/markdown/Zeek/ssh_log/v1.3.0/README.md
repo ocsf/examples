@@ -57,15 +57,16 @@
 Fields described here are subject to dynamic mappings contingent on a conditional evaluation of source data.
 | OCSF                           | Raw               | Evaluation Conditions | Zeek Field Description                                                                  |
 | ------------------------------ | ----------------- | --------------------- | --------------------------------------------------------------------------------------- |
-| `activity_id`                  | `auth_success`    | Change `activity_id` value based on mapped `auth_success` value. | Authentication result (T=success, F=failure, unset=unknown). |
-| `connection_info.direction_id` | `direction`       | If "INBOUND" then "1", if "OUTBOUND" then "2", else "3".                                                        |
-| `client_hassh.algorithm_id`    | "1"               | If `client_hassh.fingerprint.value` is present, MD5 (algorithm_id "1") is used to derive it                     |
-| `server_hassh.algorithm_id`    | "1"               | If `server_hassh.fingerprint.value` is present, MD5 (algorithm_id "1") is used to derive it                     |
+| `activity_id`                  | `auth_success`    | If "true" then "99", if "false" then "4", else "6". | Authentication result (true=success, false=failure, unset=unknown). |
+| `activity_name`                | `auth_success`    | If "true" then "Authorization Successful", else defined by activity_id. | Authentication result (true=success, false=failure, unset=unknown). |
+| `type_uid`                     | `auth_success`    | If "true" then "400799", if "false" then "400704", else "400706". | Authentication result (true=success, false=failure, unset=unknown). |
+| `connection_info.direction_id` | `direction`       | If "INBOUND" then "1", if "OUTBOUND" then "2", else "3". |                                                      |
+| `client_hassh.algorithm_id`    | `hassh`           | If `hassh` is present, MD5 (algorithm_id = "1") is used to derive it. | The hassh information.                  |
+| `server_hassh.algorithm_id`    | `hasshServer`     | If `hasshServer` is present, MD5 (algorithm_id = "1") is used to derive it. | The hasshServer information.      |
 
  ### Unmapped (proposed):
-| OCSF                     | Raw                | Zeek Field Description                                                                 |
+| OCSF                     | Raw                | Zeek Field Description                                                                  |
 | -------------------------| -------------------| --------------------------------------------------------------------------------------- |
-| `unmapped`               | `inferences`       | Inferences from SOL analysis.                                                           |
 | `unmapped`               | `hasshVersion`     | The hasshVersion information.                                                           |
 | `unmapped`               | `hasshAlgorithms`  | The hasshAlgorithms information.                                                        |
 | `unmapped`               | `hasshServerAlgorithms` | The hasshServerAlgorithms information.                                             |
