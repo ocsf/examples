@@ -6,6 +6,7 @@
   "class_name": "Email Activity",
   "class_uid": 4009,
   "direction_id": 0,
+  "direction_name": "Unknown",
   "email": {
     "message_uid": "<-1485666524.89606.1729702511228.JavaMail.vending@testing.com>",
     "size": 26921,

@@ -8,22 +8,22 @@
   "direction_id": 0,
   "direction_name": "Unknown",
   "email": {
-    "message_uid": "<-1747485340.246114.1729710607409.JavaMail.root@ip-10-90-64-46.ec2.internal>",
-    "size": 167735,
-    "smtp_from": "remote.diagnostics@testing.com",
+    "message_uid": "<SA9PR09MB5838517C85310ECE43856647DB4D2@SA9PR09MB5838.tstprd09.prod.outlook.com>",
+    "size": 56562,
+    "smtp_from": "user@testdomain.com",
     "smtp_to": [
-      "johndoe1@testdomain.com"
+      "user@testdomain.com"
     ],
-    "subject": "R2 / * / 2023 / Wed 10/23/2024 14:09:57 EST / Hot Engine Problems (WC) / Z163817-01 / EOA Problem"
+    "subject": "FW: Request for proposal*"
   },
-  "message_trace_uid": "8ff3175d-d59a-462f-6651-08dcf3967f1f",
+  "message_trace_uid": "f8290baa-c368-4c82-a18e-08dcf394db3d",
   "metadata": {
-    "original_time": "2024-10-23T19:11:28.3176017",
+    "original_time": "2024-10-23T18:59:43.8726542",
     "product": {
       "name": "O365",
       "vendor_name": "Microsoft"
     },
-    "uid": "dcdfaaf9-5da6-43e1-b08c-ccda9b4ecad0",
+    "uid": "1e8db88b-1a0c-49ee-86ce-ad252a162942",
     "version": "1.0.0-rc.2"
   },
   "severity": "Unknown",
@@ -31,12 +31,12 @@
   "src_endpoint": {
     "ip": "208.67.222.222"
   },
-  "status": "FilteredAsSpam",
+  "status": "None",
   "status_id": 99,
-  "time": 1729710688317,
+  "time": 1729709983872,
   "type_uid": 400904,
   "unmapped": {
-    "Index": 20125,
+    "Index": 24260,
     "Organization": "testdomain.onmicrosoft.com"
   }
 }
