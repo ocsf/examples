@@ -1,0 +1,43 @@
+{
+  "activity_id": 4,
+  "activity_name": "Trace",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Email Activity",
+  "class_uid": 4009,
+  "direction": "Unknown",
+  "direction_id": 0,
+  "email": {
+    "message_uid": "<BY3PR06MB813201B0A905E9DF36BCEA768F302@BY3PR06MB8132.namprd06.prod.outlook.com>",
+    "size": 27684,
+    "smtp_from": "first_last@testdomain2.onmicrosoft.com",
+    "smtp_to": [
+      "first_last@testdomain2.onmicrosoft.com"
+    ],
+    "subject": "HierarchySync_Ping_397887_6da4db39-e8fb-4565-939d-4f2849bd8ccf"
+  },
+  "message_trace_uid": "db0f258b-b076-468a-2014-08dd14c39542",
+  "metadata": {
+    "original_time": "2024-12-05T00:27:21.1795476",
+    "product": {
+      "name": "O365",
+      "vendor_name": "Microsoft"
+    },
+    "uid": "32517bbf-2ef5-4657-a315-d569db9bcb29",
+    "version": "1.4.0"
+  },
+  "severity": "Unknown",
+  "severity_id": 0,
+  "src_endpoint": {
+    "ip": "2603:10b6:a03:3cb::11"
+  },
+  "status": "GettingStatus",
+  "status_detail": "GettingStatus",
+  "status_id": 99,
+  "time": 1733358441179,
+  "type_uid": 400904,
+  "unmapped": {
+    "Index": 1098,
+    "Organization": "testdomain2.onmicrosoft.com"
+  }
+}

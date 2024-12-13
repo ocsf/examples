@@ -1,0 +1,14 @@
+{
+  "Organization": "testdomain.onmicrosoft.com",
+  "MessageId": "<-1747485340.246114.1729710607409.JavaMail.root@ip-10-90-64-46.ec2.internal>",
+  "Received": "2024-10-23T19:11:28.3176017",
+  "SenderAddress": "remote.diagnostics@testing.com",
+  "RecipientAddress": "johndoe1@testdomain.com",
+  "Subject": "R2 / * / 2023 / Wed 10/23/2024 14:09:57 EST / Hot Engine Problems (WC) / Z163817-01 / EOA Problem",
+  "Status": "FilteredAsSpam",
+  "ToIP": null,
+  "FromIP": "208.67.222.222",
+  "Size": 167735,
+  "MessageTraceId": "8ff3175d-d59a-462f-6651-08dcf3967f1f",
+  "Index": 20125
+}
