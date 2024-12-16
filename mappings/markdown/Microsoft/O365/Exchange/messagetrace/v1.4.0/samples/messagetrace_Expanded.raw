@@ -1,0 +1,14 @@
+{
+  "Organization": "testdomain2.onmicrosoft.com",
+  "MessageId": "<SJ0PR06MB7116E976D2AECD1432BABAC8F3302@SJ0PR06MB7116.namprd06.prod.outlook.com>",
+  "Received": "2024-12-05T00:31:38.0340554",
+  "SenderAddress": "first.last@testdomain2.com",
+  "RecipientAddress": "first_last@testdomain2.com",
+  "Subject": "Subject Line",
+  "Status": "Expanded",
+  "ToIP": null,
+  "FromIP": "127.0.0.1",
+  "Size": 53238,
+  "MessageTraceId": "de9b1f4e-175a-4324-034a-08dd14c42e5b",
+  "Index": 16
+}
