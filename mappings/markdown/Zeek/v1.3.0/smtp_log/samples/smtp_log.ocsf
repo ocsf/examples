@@ -1,0 +1,136 @@
+{
+    "metadata": {
+        "version": "1.3.0",
+        "product": {
+            "name": "Zeek",
+            "vendor_name": "Zeek"
+        },
+        "logged_time": 1729035861,
+        "loggers": [
+            {
+                "name": "sensor"
+            }
+        ],
+        "log_name": "smtp",
+        "uid": "CeeTpA1FJhH0qqvUsb"
+    },
+    "category_uid": 4,
+    "class_uid": 4009,
+    "severity_id": 1,
+    "direction_id": 0,
+    "type_uid": 400903,
+    "time": 1729035853,
+    "start_time": 1729035853,
+    "src_endpoint": {
+        "ip": "10.4.20.103",
+        "port": 49817
+    },
+    "dst_endpoint": {
+        "ip": "202.124.241.204",
+        "port": 25
+    },
+    "email": {
+        "message_uid": "<0d64537c-c0aa-4573-b69a-aee01a03efc4@local>",
+        "from": "richq@resultslifecoaching.com.au",
+        "to": [
+            "Warren Lutze <estimating@beenleighinterior.com.au>"
+        ],
+        "smtp_to": [
+            "estimating@beenleighinterior.com.au"
+        ],
+        "smtp_from": "richq@resultslifecoaching.com.au"
+    },
+    "smtp_hello": "localhost",
+    "status_detail": "250 OK id=1jQdTE-00052K-Gx",
+    "unmapped": {
+        "date": "Mon, 20 Apr 2020 23:53:46 +0300",
+        "tls": false,
+        "is_webmail": false,
+        "domains": [
+            "cimfl.com",
+            "www.w3.org",
+            "www.dinkumdunnies.com.au",
+            "gnxpublishers.ca",
+            "www.beenleighinterior.com.au",
+            "ns-hd.co.jp",
+            "schemas.microsoft.com"
+        ],
+        "urls": [
+            "http://www.beenleighinterior.com.au/",
+            "https://gnxpublishers.ca/wp-content/uploads/2020/04/vary/28506345.zip",
+            "http://www.dinkumdunnies.com.au",
+            "http://cimfl.com/wp-content/vary/100516985.zip",
+            "http://ns-hd.co.jp/wp-content/uploads/2020/04/vary/63223.zip",
+            "http://schemas.microsoft.com/office/2004/12/omml",
+            "http://www.w3.org/TR/REC-html40"
+        ],
+        "path": [
+            "202.124.241.204",
+            "10.4.20.103"
+        ],
+        "fuids": [
+            "FiXeGk2NgUY1a8pbGd",
+            "FGK0ZMKFkbaCdD1Y6"
+        ]
+    }
+}
+
+
+{
+    "metadata": {
+        "version": "1.3.0",
+        "product": {
+            "name": "Zeek",
+            "vendor_name": "Zeek"
+        },
+        "logged_time": 1729048469,
+        "loggers": [
+            {
+                "name": "sensor"
+            }
+        ],
+        "log_name": "smtp",
+        "uid": "CLBehalPxWB23iVu"
+    },
+    "category_uid": 4,
+    "class_uid": 4009,
+    "severity_id": 1,
+    "direction_id": 0,
+    "type_uid": 400903,
+    "time": 1729048469,
+    "start_time": 1729048469,
+    "src_endpoint": {
+        "ip": "192.168.0.12",
+        "port": 1713
+    },
+    "dst_endpoint": {
+        "ip": "192.168.0.13",
+        "port": 25
+    },
+    "email": {
+        "message_uid": "<327D7B5223214259B3756468AFF23AAE@napier>",
+        "from": "martin.tor@4salet.com",
+        "to": [
+            "<bert.manly@five8nine.com>"
+        ],
+        "smtp_to": [
+            "bert.manly@five8nine.com"
+        ],
+        "smtp_from": "martin.tor@4salet.com"
+    },
+    "smtp_hello": "napier",
+    "status_detail": "250 2.6.0  <327D7B5223214259B3756468AFF23AAE@napier> Queued mail for delivery",
+    "unmapped": {
+        "date": "Mon, 11 Mar 2013 22:10:34 -0000",
+        "tls": false,
+        "is_webmail": false,
+        "path": [
+            "192.168.0.13",
+            "192.168.0.12"
+        ],
+        "fuids": [
+            "FqsWrT3HKOPfML4gQh"
+        ],
+        "user_agent": "Microsoft Outlook Express 6.00.3790.3959"
+    }
+}
