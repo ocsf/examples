@@ -1,0 +1,14 @@
+{
+  "Organization": "exampledomain.onmicrosoft.com",
+  "MessageId": "198658196.2eb547a3-e65f-465d-9636-e3619c9d7b71.1729263037387.JavaMail.OMRAP-RF-Email.351f52b1ab9c",
+  "Received": "2024-10-18T14:54:36.3616847",
+  "SenderAddress": "reg.reporting.do.not.reply@example.com",
+  "RecipientAddress": "user@exampledomain.com",
+  "Subject": "Report 2024-10-17 - 90440",
+  "Status": "Delivered",
+  "ToIP": null,
+  "FromIP": "208.67.222.222",
+  "Size": 53066,
+  "MessageTraceId": "1896433f-f63a-43be-ce4f-08dcef84c8d0",
+  "Index": 1603
+}

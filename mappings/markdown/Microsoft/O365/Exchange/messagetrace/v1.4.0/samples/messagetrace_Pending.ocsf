@@ -1,0 +1,40 @@
+{
+  "activity_id": 4,
+  "activity_name": "Trace",
+  "category_name": "Network Activity",
+  "category_uid": 4,
+  "class_name": "Email Activity",
+  "class_uid": 4009,
+  "direction": "Unknown",
+  "direction_id": 0,
+  "email": {
+    "message_uid": "<ZG9VBXKJSOU4.FA3ANQQ6AFVL1@sj0pr06mb7776>",
+    "size": 0,
+    "smtp_from": "ttsender@microsoft.com",
+    "smtp_to": [
+      "first_last@testdomain2.com"
+    ],
+    "subject": "test subject"
+  },
+  "message_trace_uid": "46734309-b552-45a6-c4ec-08dd14bf1534",
+  "metadata": {
+    "original_time": "2024-12-04T23:55:08.356734",
+    "product": {
+      "name": "O365",
+      "vendor_name": "Microsoft"
+    },
+    "uid": "a04a1f17-d3b6-45c2-af98-fd60e73784bb",
+    "version": "1.4.0"
+  },
+  "severity": "Unknown",
+  "severity_id": 0,
+  "status": "Pending",
+  "status_detail": "Pending",
+  "status_id": 99,
+  "time": 1733356508356,
+  "type_uid": 400904,
+  "unmapped": {
+    "Index": 14395,
+    "Organization": "testdomain2.onmicrosoft.com"
+  }
+}
