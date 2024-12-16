@@ -1,0 +1,26 @@
+{
+   "_path":"x509",
+   "_system_name":"sensor.aod-20241107.training.corelight.io",
+   "_write_ts":"2024-11-19T16:57:42.534728Z",
+   "ts":"2024-11-19T16:57:42.534728Z",
+   "fingerprint":"73556d5e0b4f40194c79d8f803708069c0f3653f306315c314919e9e4fe34d18",
+   "certificate.version":3,
+   "certificate.serial":"0C34C0B2A945152AF38D0281A8A02B41",
+   "certificate.subject":"CN=ecs.office.com,O=Microsoft Corporation,L=Redmond,ST=Washington,C=US",
+   "certificate.issuer":"CN=DigiCert Cloud Services CA-1,O=DigiCert Inc,C=US",
+   "certificate.not_valid_before":"2024-06-27T00:00:00.000000Z",
+   "certificate.not_valid_after":"2025-06-26T23:59:59.000000Z",
+   "certificate.key_alg":"rsaEncryption",
+   "certificate.sig_alg":"sha256WithRSAEncryption",
+   "certificate.key_type":"rsa",
+   "certificate.key_length":2048,
+   "certificate.exponent":"65537",
+   "san.dns":[
+      "ecs.office.com"
+   ],
+   "basic_constraints.ca":false,
+   "host_cert":true,
+   "client_cert":false,
+   "rx":"192.168.100.10",
+   "tx":"52.123.249.188"
+}
