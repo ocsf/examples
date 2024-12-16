@@ -1,0 +1,14 @@
+{
+  "Organization": "testdomain2.onmicrosoft.com",
+  "MessageId": "<ZG9VBXKJSOU4.FA3ANQQ6AFVL1@sj0pr06mb7776>",
+  "Received": "2024-12-04T23:55:08.356734",
+  "SenderAddress": "ttsender@microsoft.com",
+  "RecipientAddress": "first_last@testdomain2.com",
+  "Subject": "test subject",
+  "Status": "Pending",
+  "ToIP": null,
+  "FromIP": null,
+  "Size": 0,
+  "MessageTraceId": "46734309-b552-45a6-c4ec-08dd14bf1534",
+  "Index": 14395
+}
