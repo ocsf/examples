@@ -1,0 +1,54 @@
+{
+  "_path": "conn",
+  "_system_name": "sensor",
+  "_write_ts": "2024-10-16T04:08:11.828325Z",
+  "app": [
+    "firefox",
+    "mozilla",
+    "windows"
+  ],
+  "community_id": "1:DvgXgCo2JR5r4T25PBZYFw3ObFc=",
+  "conn_state": "SF",
+  "corelight_shunted": false,
+  "duration": 65.33815288543701,
+  "history": "ShADadfF",
+  "id.orig_h": "10.4.30.5",
+  "id.orig_h_name.src": "NTLM_AUTH",
+  "id.orig_h_name.vals": [
+    "PODTRONICS"
+  ],
+  "id.orig_p": 49227,
+  "id.resp_h": "37.120.182.208",
+  "id.resp_h_name.src": "HTTP_HOST",
+  "id.resp_h_name.vals": [
+    "ip.anysrc.net"
+  ],
+  "id.resp_p": 80,
+  "local_orig": true,
+  "local_resp": false,
+  "missed_bytes": 0,
+  "orig_bytes": 164,
+  "orig_ip_bytes": 416,
+  "orig_l2_addr": "00:1d:09:5b:d6:84",
+  "orig_pkts": 6,
+  "pcr": -0.129973474801061,
+  "proto": "tcp",
+  "resp_bytes": 213,
+  "resp_cc": "DE",
+  "resp_ip_bytes": 417,
+  "resp_l2_addr": "20:e5:2a:b6:93:f1",
+  "resp_pkts": 5,
+  "service": "http",
+  "spcap.rule": 1,
+  "spcap.trigger": "all-unencrypted",
+  "spcap.url": "https://sensor.io/spcap/v1/?uid=CmRFd61N7G7YA909D1",
+  "suri_ids": [
+    "SI7YwTINm9Rd"
+  ],
+  "ts": "2024-10-16T04:07:01.489619Z",
+  "tunnel_parents": [
+    "C2y6XKB2ovrcvv1G5"
+  ],
+  "uid": "CmRFd61N7G7YA909D1",
+  "vlan": 12
+}
