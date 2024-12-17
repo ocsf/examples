@@ -5,7 +5,7 @@
       "name": "Zeek",
       "vendor_name": "Zeek"
     },
-    "logged_time": 1729051691,
+    "logged_time": 1729052891,
     "loggers": [
       {
         "name": "sensor"
@@ -17,14 +17,16 @@
   "category_uid": 4,
   "class_uid": 4001,
   "severity_id": 1,
-  "time": 1729051621,
-  "start_time": 1729051621,
+  "connection_info": {
+    "direction_id": 0,
+    "community_uid": "1:DvgXgCo2JR5r4T25PBZYFw3ObFc=",
+    "protocol_name": "tcp"
+  },
+  "time": 1729052821,
+  "start_time": 1729052821,
   "src_endpoint": {
     "ip": "10.4.30.5",
     "port": 49227,
-    "location": {
-      "country": ""
-    },
     "mac": "00:1d:09:5b:d6:84"
   },
   "dst_endpoint": {
@@ -36,11 +38,6 @@
     "mac": "20:e5:2a:b6:93:f1"
   },
   "app_name": "http",
-  "connection_info": {
-    "community_uid": "1:DvgXgCo2JR5r4T25PBZYFw3ObFc=",
-    "direction_id": 0,
-    "protocol_name": "tcp"
-  },
   "duration": 65,
   "status_code": "SF",
   "traffic": {
@@ -56,8 +53,8 @@
   "observables": [
     {
       "name": "src_endpoint.hostname",
-      "value": "PODTRONICS",
       "type_id": 1,
+      "value": "PODTRONICS",
       "reputation": {
         "provider": "NTLM_AUTH",
         "base_score": 0.0,
@@ -66,8 +63,8 @@
     },
     {
       "name": "dst_endpoint.hostname",
-      "value": "ip.anysrc.net",
       "type_id": 1,
+      "value": "ip.anysrc.net",
       "reputation": {
         "provider": "HTTP_HOST",
         "base_score": 0.0,

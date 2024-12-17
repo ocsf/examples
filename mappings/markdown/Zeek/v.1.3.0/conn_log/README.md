@@ -39,7 +39,6 @@
 | `dst_endpoint.location.country` | `resp_cc`     | Country code for GeoIP lookup of the responding IP address.                             |                         |
 | `dst_endpoint.mac`            | `resp_l2_addr`  | Link-layer address of the responder, if available.                                      |                         |
 | `app_name`                    | `service`       | An identification of an application protocol being sent over the connection.            |                         |
-| `connection_info.community_uid` | `community_id`| The community ID.                                                                       | Unmapped in v1.3.0, mapped in v1.4.0-dev |
 | `connection_info.protocol_name` | `proto`       | The transport layer protocol of the connection.                                         |                         |
 | `duration`                    | `duration`      | How long the connection lasted.                                                         | Type is Integer.        |
 | `status_code`                 | `conn_state`    | Possible connection states.                                                             |                         |
@@ -54,6 +53,7 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | OCSF                          | Raw                              | Zeek Field Description                                                       | Evaluation Conditions                                                                                     |
 | ----------------------------- | -------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `activity_id`                 | `conn_state` | Possible connection states. | If "SF" or "RSTO" or "RSTR" or "RSTRH" or "SH" or "SHR" then "2" (Close) <br>if "S0" then "4" (Fail), <br>if "REJ" then "5" (Refuse), <br>if "OTH" or "S1" or "S2" or "S3" then "6" (Traffic) <br>else "6" (Traffic) <br>Type is Integer. |
+| `connection_info.community_uid` | `community_id`| The community ID.                                                                       | Unmapped in v1.3.0, mapped in v1.4.0-dev |
 | `type_uid`                    | `class_uid` <br>+ `activity_id` | N/A | Calculate with: (`class_uid` * 100) + `activity_id` <br>Type is Integer. |
 | `traffic.bytes`               | `resp_bytes` <br>+ `orig_bytes`  | The total number of payload bytes sent by both the originator and responder. | Sum of `resp_bytes` + `orig_bytes` <br>Type is Integer.       |
 | `traffic.packets`             | `orig_pkts` <br>+ `resp_pkts`    | The total number of packets sent by both the originator and responder.       | Sum of `orig_pkts` + `resp_pkts` <br>Type is Integer.       |
