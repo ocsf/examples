@@ -24,9 +24,9 @@
  ### Direct field mapping:
 | OCSF                          | Raw             | Zeek Field Description                                                                  | Notes                   |
 | ----------------------------- | --------------- | --------------------------------------------------------------------------------------- | ----------------------- |
-| `time`                        | `ts`            | Time when the connection began.                                                         | Convert to epoch value. <br>Type is timestamp_t (Integer). |
-| `start_time`                  | `ts`            | Time when the connection began.                                                         | Convert to epoch value. <br>Type is timestamp_t (Integer). |
-| `metadata.logged_time`        | `_write_ts`     | Timestamp indicating when the log entry was written to disk.                            | Convert to epoch value. <br>Type is timestamp_t (Integer). |
+| `time`                        | `ts`            | Time when the connection began.                                                         | Convert to epoch value. <br>Type is timestamp_t (Long). |
+| `start_time`                  | `ts`            | Time when the connection began.                                                         | Convert to epoch value. <br>Type is timestamp_t (Long). |
+| `metadata.logged_time`        | `_write_ts`     | Timestamp indicating when the log entry was written to disk.                            | Convert to epoch value. <br>Type is timestamp_t (Long). |
 | `metadata.loggers[].name`     | `_system_name`  | Name of the system or logging subsystem generating the log entry.                       |                         |
 | `metadata.log_name`           | `_path`         | Log name.                                                                               |                         |
 | `metadata.uid`                | `uid`           | Unique ID for the connection.                                                           |                         |
