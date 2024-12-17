@@ -53,7 +53,6 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | OCSF                          | Raw                              | Zeek Field Description                                                       | Evaluation Conditions                                                                                     |
 | ----------------------------- | -------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `activity_id`                 | `conn_state` | Possible connection states. | If "SF" or "RSTO" or "RSTR" or "RSTRH" or "SH" or "SHR" then "2" (Close) <br>if "S0" then "4" (Fail), <br>if "REJ" then "5" (Refuse), <br>if "OTH" or "S1" or "S2" or "S3" then "6" (Traffic) <br>else "6" (Traffic) <br>Type is Integer. |
-| `connection_info.community_uid` | `community_id`| The community ID.                                                                       | Unmapped in v1.3.0, mapped in v1.4.0-dev |
 | `type_uid`                    | `class_uid` <br>+ `activity_id` | N/A | Calculate with: (`class_uid` * 100) + `activity_id` <br>Type is Integer. |
 | `traffic.bytes`               | `resp_bytes` <br>+ `orig_bytes`  | The total number of payload bytes sent by both the originator and responder. | Sum of `resp_bytes` + `orig_bytes` <br>Type is Integer.       |
 | `traffic.packets`             | `orig_pkts` <br>+ `resp_pkts`    | The total number of packets sent by both the originator and responder.       | Sum of `orig_pkts` + `resp_pkts` <br>Type is Integer.       |
@@ -67,7 +66,8 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | --------------------------- | ---------------- | --------------------------------------------------------------------------------------- |
 | `(bytes_missed)`            | `missed_bytes`   | Indicates the number of bytes missed in content gaps.                                   |
 | `connection_info.(history)` | `history`        | Records the state history of connections as a string of letters.                        |
-| `(network_endpoint).vlan_uid` | `vlan`           | The outer VLAN for this connection, if applicable.                                      |
+| `(network_endpoint).vlan_uid` | `vlan`           | The outer VLAN for this connection, if applicable.                                    |
+| `connection_info.community_uid` | `community_id`| The community ID.       - Unmapped in v1.3.0, mapped in v1.4.0-dev |
 | `unmapped`                  | `app`            |                                                                                         |
 | `unmapped`                  | `corelight_shunted` |                                                                                      |
 | `unmapped`                  | `pcr`            |                                                                                         |

@@ -19,7 +19,6 @@
   "severity_id": 1,
   "connection_info": {
     "direction_id": 0,
-    "community_uid": "1:DvgXgCo2JR5r4T25PBZYFw3ObFc=",
     "protocol_name": "tcp"
   },
   "time": 1729052821,
@@ -71,5 +70,25 @@
         "score_id": 0
       }
     }
-  ]
+  ],
+  "unmapped": {
+    "missed_bytes": 0,
+    "history": "ShADadfF",
+    "vlan": 12,
+    "community_id": "1:DvgXgCo2JR5r4T25PBZYFw3ObFc=",
+    "app": ["firefox", "mozilla", "windows"],
+    "corelight_shunted": false,
+    "pcr": -0.129973474801061,
+    "spcap": {
+      "rule": 1,
+      "trigger": "all-unencrypted",
+      "url": "https://sensor.io/spcap/v1/?uid=CmRFd61N7G7YA909D1"
+    },
+    "suri_ids": ["SI7YwTINm9Rd"],
+    "tunnel_parents": ["C2y6XKB2ovrcvv1G5"],
+    "local_orig": true,
+    "local_resp": false,
+    "orig_ip_bytes": 416,
+    "resp_ip_bytes": 417
+  }
 }
