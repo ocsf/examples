@@ -16,7 +16,7 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
 3. The `<event type>`, `<sender>`, and `<receiver>` fields are interpreted as strings, and are not required to be in quotes.
     - An `<event type>` MUST consist of only alphanumeric characters or “_”.
     - The `<sender>` and `<receiver>` fields can contain alphanumeric characters or the characters ‘.’, ‘*’and ‘_’. The dot (`.`) character is used to specify hierarchy of components of the sender or receiver, e.g., car.brake
-    - The `<time stamp>` field MUST be compliant to these standards: ISO8601 or UNIX epoc. All `<time stamp>` fields in a stream of records must follow the same standard. The timestamp field can be empty. Exception - though ISO-8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
+    - The `<time stamp>` field MUST be compliant to these standards: ISO8601 or UNIX epoc. All `<time stamp>` fields in a stream of records must follow the same standard. The timestamp field can be empty. Exception - though ISO-8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used to demote decimal points.
 4. The fields, `<sender>`, `<receiver>`, and `<time stamp>`, are located at the first, second, and third locations, respectively. 
     - These fields may be empty, though the comma separators of the fields MUST be present. e.g., `OCSF_100400[,,,()] ` is a valid ILF record.
     - If the `<sender>` or `<receiver>` values are not known or are irrelevant, their values can be *. 
