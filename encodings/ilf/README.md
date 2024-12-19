@@ -15,16 +15,16 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
 2. Every record ends with a space, inserted after the closing square brace “]”. Additional whitespace, such as newlines, can also follow the space.
 3. The `<event type>`, `<sender>`, and `<receiver>` fields are interpreted as strings, and are not required to be in quotes.
     - An `<event type>` MUST consist of only alphanumeric characters or “_”.
-    - The `<sender>` and `<receiver>` fields can contain alphanumeric characters or the characters ‘.’, ‘*’and ‘_’. The dot (.) character is used to specify hierarchy of components of the sender or receiver, e.g., car.brake.
-    - The `<time stamp>` field MUST be compliant to these standards: ISO8601 or UNIX epoc. All `<time stamp>` fields in a stream of records must follow the same standard. The timestamp field can be empty. 
-4. The fields, `<sender>`, `<receiver>`, and `<time stamp>`, are located at the first, second, and third locations, respectively, and are mandatory. 
-    - These fields can be empty. 
+    - The `<sender>` and `<receiver>` fields can contain alphanumeric characters or the characters ‘.’, ‘*’and ‘_’. The dot (`.`) character is used to specify hierarchy of components of the sender or receiver, e.g., car.brake
+    - The `<time stamp>` field MUST be compliant to these standards: ISO8601 or UNIX epoc. All `<time stamp>` fields in a stream of records must follow the same standard. The timestamp field can be empty. Exception - though ISO-8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
+4. The fields, `<sender>`, `<receiver>`, and `<time stamp>`, are located at the first, second, and third locations, respectively. 
+    - These fields may be empty, though the comma separators of the fields MUST be present. e.g., `OCSF_100400[,,,()] ` is a valid ILF record.
     - If the `<sender>` or `<receiver>` values are not known or are irrelevant, their values can be *. 
     - If the record is broadcast, then the `<receiver>` field is *.
 5. The fourth and last field of an ILF record, `<attribute fields>`, contains semicolon-separated key-value pairs with the structure `<attribute_name>=<attribute_value>`
     - `<attribute fields>` can be empty, though the enclosing parentheses must remain.
     - An attribute name may contain alphanumeric characters, “.”, or “_”
-    - `<attribute_value>` can be empty in some records in an event stream, as long as `<attribute_name>` is specified.
+    - `<attribute_value>` can be empty in some records in an event stream, as long as `<attribute_name>=` is specified. 
     - `<attribute_value>` is interpreted based on the event and component structure definitions provided to the ILF consumer.
     - When an `<attribute_value>` is a string, it is enclosed in double quotes, and the string content within the quotes must be escaped appropriately and conform to Java string escape conventions.
     - The key-value pairs need not follow the same location order in different ILF records in the same event stream.
@@ -34,8 +34,8 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
         - Strings may be encoded as UTF-8, UTF-16, or UTF-32 characters, depending on what the ILF consumer expects.
         - All other character escapes are ignored by the ILF consumer and passed through. (e.g. \n is kept as \n, not turned into a newline.)
     - Numbers
-        - Integer, long, double, including signed prefixes (e.g., 2.1, -17, -17.0, 17l).
-        - Base-10 float, including signed exponents (e.g., 10.3e-3).
+        - Integer, long, double, including signed prefixes (e.g., 2.1, -17, -17.0, 17l). Exception - though ISO-8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
+        - Base-10 float, including signed exponents (e.g., 10.3e-3). Exception - though ISO-8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
         - Binary numbers are prefixed with 0b (e.g., 0b1100).
         - Octal numbers are prefixed with 0o (e.g., 0o723).
         - Hex numbers are prefixed with 0x (e.g., 0x93ABCDEF).
@@ -49,7 +49,7 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
         - The types of values in dictionaries can only be Strings or Numbers.
         - Whitespace is allowed around the keys or values.
     - Time
-        - Specified based on the ISO8601 standard.
+        - Specified based on the ISO8601 standard. Exception - though ISO-8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
     - Enums
         - If a value can’t be parsed into one of the above forms, it is parsed as an enum. 
         - Enums can only contain alphanumeric characters, or ‘_’ and '.’.
@@ -57,7 +57,7 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
 
 ## OCSF to ILF Event Type Mapping
 
-OCSF supports several event classes and type IDs within each event classes. The ILF event_type is calculated  as: OCSF_`Class UID * 100 + Activity ID`. Below are some examples.
+OCSF supports several event classes and type IDs within each event classes. The ILF event_type is the same as OCSF `type ID', calculated  as: OCSF_`Class UID * 100 + Activity ID`.  Below are some examples.
 
 | OCSF Class UID: Name              | OCSF Activity ID :Name             |       ILF Event Type|
 | ------------ | --------------------------- | --------- |
@@ -68,7 +68,7 @@ OCSF supports several event classes and type IDs within each event classes. The 
 
 ## ILF Sender and Receiver Fields Mapping
 
-ILF sender field will be, by default, the `metadata.product.name` field of an OCSF event record. This default can be changed in the ILF using the `_` to concatenate the multiple fields, e.g., changed to the concatenated `product.name` and `product.version` fields of OCSF Metadata object with with a `_`. A specific example of such a concatenation is:  `AWS_audit_d_k8s_d_io_fs_v1`, correspinding the product name field of `AWS` and product version of `audit.k8s.io/v1`.
+ILF sender field will be, by default, the `metadata.product.name` field of an OCSF event record. This default can be changed in the ILF using the `_` to concatenate the multiple fields, e.g., changed to the concatenated `product.name` and `product.version` fields of OCSF Metadata object with with a `_`. A specific example of such a concatenation is:  `AWS_audit_d_k8s_d_io_fs_v1`, corresponding  to the product name field of `AWS` and product version of `audit.k8s.io/v1`.
 
 The nonalphanumeric characters in the contributing fields to the ILF  `sender` field of ILF will be replaced based on the rules described below in [section](#ilf-attribute-names).
 
