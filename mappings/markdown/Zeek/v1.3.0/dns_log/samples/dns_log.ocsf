@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "version": "1.3.0",
+    "product": {
+      "name": "Zeek",
+      "vendor_name": "Zeek"
+    },
+    "logged_time": 1729165829,
+    "loggers": [
+      {
+        "name": "sensor"
+      }
+    ],
+    "log_name": "dns",
+    "uid": "CSTYRyVNejbcG9lQf"
+  },
+  "category_uid": 4,
+  "class_uid": 4003,
+  "severity_id": 1,
+  "time": 1729165829,
+  "start_time": 1729165829,
+  "src_endpoint": {
+    "ip": "172.27.0.137",
+    "port": 34526
+  },
+  "dst_endpoint": {
+    "ip": "172.27.0.2",
+    "port": 53
+  },
+  "connection_info": {
+    "protocol_name": "udp"
+  },
+  "query": {
+    "hostname": "staging-validation-poc.s3.amazonaws.com",
+    "type": "AAAA",
+    "class": "C_INTERNET",
+    "packet_uid": 60300
+  },
+  "rcode": "NOERROR",
+  "rcode_id": 0,
+  "response_time": 0.004117012023925781,
+  "answers": [
+    {
+      "rdata": "s3-1-w.amazonaws.com",
+      "ttl": 300,
+      "packet_uid": 60300,
+      "flag_ids": [3]  // RD is true
+    },
+    {
+      "rdata": "s3-w.us-east-1.amazonaws.com",
+      "ttl": 140,
+      "packet_uid": 60300,
+      "flag_ids": [3]  // RD is true
+    }
+  ],
+  "status_id": 1,
+  "unmapped": {
+    "icann_host_subdomain": "staging-validation-poc.s3",
+    "icann_domain": "amazonaws.com",
+    "icann_tld": "com",
+    "is_trusted_domain": false,
+    "qclass": 1,
+    "qtype": 28
+  }
+}
