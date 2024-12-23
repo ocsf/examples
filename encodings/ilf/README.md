@@ -167,14 +167,14 @@ We also include below the types used in the Rust implementation of the OCSF to I
 | `datetime_t` | `google.protobuf.Timestamp` | `string`  | `String` (Encoded with RFC3339) |
 | `json_t`     | `google.protobuf.Value`     | see below for types based on variants of the Value type |
 
-| `google.protobuf.Value` Variant | ILF type |
-| --------------------------------| -------- |
-| number_value                    | `f32`    |
-| string_value                    | `String` |
-| bool_value                      | `bool`   |
-| null_value                      | `None`   |
-| struct_value                    | flattened set of Key, Value pairs |
-| list_value                      | flattened set of Key, Value pairs | 
+| `google.protobuf.Value` Variant |ILF Type | Rust type | 
+| --------------------------------| -------- |--------- |
+| number_value                    | `double`   | `f32`    |
+| string_value                    | `string`   |`String` |
+| bool_value                      | `bool`   | `bool`   |
+| null_value                      | `null`   | `None`   |
+| struct_value                    | [link text](#Process for Flattening an OCSF object as ILF Attribute Field Key/Value Pair(s)) |flattened set of Key, Value pairs |
+| list_value                      |[link text](#Process for Flattening an OCSF object as ILF Attribute Field Key/Value Pair(s))| flattened set of Key, Value pairs | 
 
 ## Implementation Considerations
 
