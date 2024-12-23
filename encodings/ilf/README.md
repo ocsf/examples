@@ -83,7 +83,7 @@ OCSF events do not distinguish between a missing field or a field with a NULL va
 
 Unlike formats such as JSON, ILF does not allow nested data objects or structs when transporting data- this means that when translating an OCSF object, we need to "flatten" the object and all it's nested fields into a one-dimensional array of keys and values. We do this via the recursive process below:
 
-### Process for Flattening an OCSF object as ILF Attribute Field Key/Value Pair(s)
+### Process for Flattening an OCSF object as ILF Attribute Field Key Value Pair(s)
 
 Start with an empty list of Key, Value pairs and an empty "Path". The Path acts as the attribute Key in the ILF record, and describes the hierarchy of where the data is located in the OCSF record.
 
@@ -173,8 +173,8 @@ We also include below the types used in the Rust implementation of the OCSF to I
 | string_value                    | `string`   |`String` |
 | bool_value                      | `bool`   | `bool`   |
 | null_value                      | `null`   | `None`   |
-| struct_value                    | [link text](#Process for Flattening an OCSF object as ILF Attribute Field Key/Value Pair(s)) |flattened set of Key, Value pairs |
-| list_value                      |[link text](#Process for Flattening an OCSF object as ILF Attribute Field Key/Value Pair(s))| flattened set of Key, Value pairs | 
+| struct_value                    | [See above](#process-for-flattening-an-ocsf-object-as-ilf-attribute-field-key-value-pairs) |flattened set of Key, Value pairs |
+| list_value                      |[See above](#process-for-flattening-an-ocsf-object-as-ilf-attribute-field-key-value-pairs)| flattened set of Key, Value pairs | 
 
 ## Implementation Considerations
 
