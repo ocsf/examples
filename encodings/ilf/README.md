@@ -90,7 +90,7 @@ Start with an empty list of Key, Value pairs and an empty "Path". The Path acts 
 For a given OCSF Message Element D:
 
 1. If the type of D is an Object field or Unmapped Dictionary:
-    - If D the value of is not None, for each field in the Object or Dictionary, flatten the value of the field with the field's name or key added to the path. Add all flattened fields to the ILF's list of Key, Value pairs.
+    - If D the value of is not `null`, for each field in the Object or Dictionary, flatten the value of the field with the field's name or key added to the path. Add all flattened fields to the ILF's list of Key, Value pairs.
       - e.g. for the nested data `{"hello": {"world": 1}}` the resulting flattened key, value pair would be `(hello_d_world, 1)`
     - If the value of D is `null`,  add a `null` value at the current Path to the ILF's list of Key, Value pairs.
       - e.g. for the nested data `{"hello": null}` the resulting flattened key, value pair would be `(hello, null)`
