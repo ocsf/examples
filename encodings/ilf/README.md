@@ -92,21 +92,21 @@ For a given OCSF Message Element D:
 1. If the type of D is an Object field or Unmapped Dictionary:
     - If D the value of is not None, for each field in the Object or Dictionary, flatten the value of the field with the field's name or key added to the path. Add all flattened fields to the ILF's list of Key, Value pairs.
       - e.g. for the nested data `{"hello": {"world": 1}}` the resulting flattened key, value pair would be `(hello_d_world, 1)`
-    - If the value of D is None, instead add a None value at the current Path to the ILF's list of Key, Value pairs.
-      - e.g. for the nested data `{"hello": null}` the resulting flattened key, value pair would be `(hello, None)`
+    - If the value of D is `null`,  add a `null` value at the current Path to the ILF's list of Key, Value pairs.
+      - e.g. for the nested data `{"hello": null}` the resulting flattened key, value pair would be `(hello, null)`
 2. If the type of D is a List or Vector
     - For each entry in the List, flatten the entry with the entry's index in the List added to the path. Add all flattened entries to the ILF's list of Key, Value pairs.
       - e.g. for the nested data `{"hello": [1,2]}` the resulting flattened key, value pairs would be `(hello_d_0, 1), (hello_d_1, 2)`
 3. If the type of D is an Enum
-    - If the value of D is not None, Add the path of the enum and the value of the Enum as an integer to the ILF's list of Key, Value pairs
-    - If the value of D is None, instead add a None value at the current Path to the ILF's list of Key, Value pairs.
+    - If the value of D is not `null`, add the path of the enum and the value of the Enum as an integer to the ILF's list of Key, Value pairs
+    - If the value of D is `null`,  add a `null` value at the current Path to the ILF's list of Key, Value pairs.
 4. If the type of D is a Timestamp
     - Convert the timestamp to a RFC3339-compliant string and add the path of the timestamp and the RFC3339-Compliant String to the ILF's list of Key, Value pairs.
       - e.g. for the data `{"start_time_dt": "2021-09-07T20:37:30.502680Z"}` the resulting flattened Key, Value pairs would be `("start_time_dt", "2021-09-07T20:37:30.502680+00:00")`
       - Note that we use RFC3339 timestamp here to align with other OCSF encodings
 5. If the type of D is a basic Value (String, Boolean, Integer, Long, Float, or Null)
     - Add it's path and Value to the ILF's list of Key, Value pairs.
-      - e.g. for the data `{"data": {"int": 1, "bool": true, "float": 0.12, "null": null}}` the resulting flattened Key, Value pairs would be `[(data.int, 1), (data.bool, true), (data.float, 0.12), (data.null, None)]`
+      - e.g. for the data `{"data": {"int": 1, "bool": true, "float": 0.12, "null": null}}` the resulting flattened Key, Value pairs would be `[(data.int, 1), (data.bool, true), (data.float, 0.12), (data.null, "null")]`
 
 At the end of this process, we should have a list of Key, Value pairs that encompass all the structured data from the OCSF object which we use as the ILF's attribute fields.
 
