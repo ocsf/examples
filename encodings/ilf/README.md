@@ -1,6 +1,6 @@
 # OCSF MITRE Intermediate Log Format (ILF) Encoding
 
-For real-time analysis of cyber events, it is necessary to process event records from an event stream as quickly as possible to facilitate detection of adversary actions. Some techniques for speeding up the detection are partial interpretation of an event record, and applying regex to the event stream. MITRE developed Intermediate Log Format (ILF) format to enable such techniques. 
+For real-time analysis of cyber events, it is necessary to process event records from an event stream as quickly as possible to facilitate detection of adversary actions. Some techniques for speeding up the detection are partial interpretation of an event record, and applying regex to the event stream. [MITRE](https://www.mitre.org/) developed Intermediate Log Format (ILF) format to enable such techniques. 
 
 The scope of the mapping specified here is limited to one way translation from OCSF JSON records to ILF records. In the future, a reverse translation, from ILF records to OCSF may be contemplated.
 
@@ -44,20 +44,20 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
         - Only Numbers and Strings are allowed in arrays.
         - Whitespace is allowed around the array values.
     - Dictionaries
-        - Dictionaries are sequences of key value pairs matched with semicolons, separated by commas, surrounded with curly brackets (e.g. {“key”: 4, “key2”:6.1 , “8”:677 }).
+        - Dictionaries are sequences of key value pairs matched with colons, separated by commas, surrounded with curly brackets (e.g. {“key”: 4, “key2”:6.1 , “8”:677 }).
         - Keys in dictionaries MUST be strings.
         - The types of values in dictionaries can only be Strings or Numbers.
         - Whitespace is allowed around the keys or values.
     - Time
         - Specified based on the ISO8601 standard. Exception - though ISO8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
     - Enums
-        - If a value can’t be parsed into one of the above forms, it is parsed as an enum. 
         - Enums can only contain alphanumeric characters, or ‘_’ and '.’.
-
+          
+If the value of an attribute cannot be parsed as a String, Number, Array, Dictionary, or Time, an attempt will be made to parse it as an enum. A failure to parse may be flagged an error, or ignored.
 
 ## OCSF to ILF Event Type Mapping
 
-OCSF supports several event classes and type IDs within each event classes. The ILF event_type is the same as OCSF `type ID', calculated  as: OCSF_`Class UID * 100 + Activity ID`.  Below are some examples.
+OCSF supports several event classes and type IDs within each event classes. The ILF event_type is the same as OCSF `type ID`, calculated  as: OCSF_`Class UID * 100 + Activity ID`.  Below are some examples.
 
 | OCSF Class UID: Name              | OCSF Activity ID :Name             |       ILF Event Type|
 | ------------ | --------------------------- | --------- |
@@ -79,9 +79,8 @@ ILF time stamp will be the time when the ILF record is created. The other time m
 
 ## OCSF to ILF Attribute Fields Mapping
 
-OCSF events do not distinguish between a missing field or a field with a NULL value, whereas ILF does. Therefore, if a field is missing in the OCSF JSON, ILF provides the option to either produce an attribute field key with NULL value, or to remove the attribute key entirely from the JSON. Additionally, Special fields such as unmapped data may be excluded from the resulting ILF record.
-
-Unlike formats such as JSON, ILF does not allow nested data objects or structs when transporting data- this means that when translating an OCSF object, we need to "flatten" the object and all it's nested fields into a one-dimensional array of keys and values. We do this via the recursive process below:
+Special fields in OCSF such as unmapped data may be excluded from the resulting ILF record.
+Unlike formats such as JSON, ILF does not allow nested data objects or structs when transporting data, which implies that when translating an OCSF object, we need to "flatten" the object and all it's nested fields into a one-dimensional array of keys and values. We do this via the recursive process below:
 
 ### Process for Flattening an OCSF object as ILF Attribute Field Key Value Pair(s)
 
@@ -90,7 +89,7 @@ Start with an empty list of Key, Value pairs and an empty "Path". The Path acts 
 For a given OCSF Message Element D:
 
 1. If the type of D is an Object field or Unmapped Dictionary:
-    - If D the value of is not `null`, for each field in the Object or Dictionary, flatten the value of the field with the field's name or key added to the path. Add all flattened fields to the ILF's list of Key, Value pairs.
+    - If the value of D is not `null`, for each field in the Object or Dictionary, flatten the value of the field with the field's name or key added to the path. Add all flattened fields to the ILF's list of Key, Value pairs.
       - e.g. for the nested data `{"hello": {"world": 1}}` the resulting flattened key, value pair would be `(hello_d_world, 1)`
     - If the value of D is `null`,  add a `null` value at the current Path to the ILF's list of Key, Value pairs.
       - e.g. for the nested data `{"hello": null}` the resulting flattened key, value pair would be `(hello, null)`
@@ -104,7 +103,7 @@ For a given OCSF Message Element D:
     - Convert the timestamp to a RFC3339-compliant string and add the path of the timestamp and the RFC3339-Compliant String to the ILF's list of Key, Value pairs.
       - e.g. for the data `{"start_time_dt": "2021-09-07T20:37:30.502680Z"}` the resulting flattened Key, Value pairs would be `("start_time_dt", "2021-09-07T20:37:30.502680+00:00")`
       - Note that we use RFC3339 timestamp here to align with other OCSF encodings
-5. If the type of D is a basic Value (String, Boolean, Integer, Long, Float, or Null)
+5. If the type of D is a basic Value (String, Boolean, Integer, Long, or Float)
     - Add it's path and Value to the ILF's list of Key, Value pairs.
       - e.g. for the data `{"data": {"int": 1, "bool": true, "float": 0.12, "null": null}}` the resulting flattened Key, Value pairs would be `[(data.int, 1), (data.bool, true), (data.float, 0.12), (data.null, "null")]`
 
@@ -180,8 +179,8 @@ We also include below the types used in the Rust implementation of the OCSF to I
 
 For ILF, reducing the size of the event record is an important consideration. An OCSF to ILF translator has the option of improvements based on the following possibilities.
 
-1. The `unmapped` objects and fields may be optionally not included in the ILF record. 
-2. Since ILF does differentiate between the existence of an attribute vs. the attribute value being NULL, the ILF translator may optionally remove the attributes from ILF records, if the value of the incoming OCSF object or field is NULL or not present.
+1. A processor of ILF records may assume that the types of the ILF `<time stamp>` field and the attributes are known and available.
+2. The `unmapped` objects and fields may be optionally not included in the ILF record.
 3. The mapping of nonalphanumeric characters [above](#ilf-attribute-names) may be configured to use the original character, e.g., `.` instead of `_d_`, if the receiver of the ILF events can correctly process them.
 4. The `sender` may be changed as described [above](#ilf-sender-and-receiver-fields-mapping).
 
