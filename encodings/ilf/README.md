@@ -180,9 +180,10 @@ We also include below the types used in the Rust implementation of the OCSF to I
 For ILF, reducing the size of the event record is an important consideration. An OCSF to ILF translator has the option of improvements based on the following possibilities.
 
 1. A processor of ILF records may assume that the types of the ILF `<time stamp>` field and the attributes are known and available. An OCSF to ILF translator may provide this information to an ILF processor.
-2. The `unmapped` objects and fields may be optionally not included in the ILF record.
-3. The mapping of nonalphanumeric characters [above](#ilf-attribute-names) may be configured to use the original character, e.g., `.` instead of `_d_`, if the receiver of the ILF events can correctly process them.
-4. The `sender` may be changed as described [above](#ilf-sender-and-receiver-fields-mapping).
+2. OCSF does not distinguish between a missing field in an event vs. the value of the field being null. ILF does make this distinction, and an ILF translator could potentially flag missing fields. However, the OCSF to ILF translation will ignore such missing fields in an incoming OCSF event. 
+3. The `unmapped` objects and fields may be optionally not included in the ILF record.
+4. The mapping of nonalphanumeric characters [above](#ilf-attribute-names) may be configured to use the original character, e.g., `.` instead of `_d_`, if the receiver of the ILF events can correctly process them.
+5. The `sender` may be changed as described [above](#ilf-sender-and-receiver-fields-mapping).
 
 ## Example Mapping from an OCSF JSON to ILF
 
