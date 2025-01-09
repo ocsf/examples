@@ -1,0 +1,88 @@
+{
+    "_path": "http",
+    "_system_name": "sensor",
+    "_write_ts": "2024-10-16T02:43:57.736852Z",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+    "accept_encoding": "gzip",
+    "accept_language": "en-US,en;q=0.9,fr;q=0.8",
+    "client_headers": [
+        "HOST: lifeisnetwork.com",
+        "CONNECTION: Keep-Alive",
+        "ACCEPT-ENCODING: gzip",
+        "CF-IPCOUNTRY: US",
+        "X-FORWARDED-FOR: 20.115.4.12",
+        "CF-RAY: 6bc5aa001b3f6fbb-IAD",
+        "CONTENT-LENGTH: 28",
+        "X-FORWARDED-PROTO: https",
+        "CF-VISITOR: {\"scheme\":\"https\"}",
+        "ACCEPT: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+        "USER-AGENT: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
+        "ACCEPT-LANGUAGE: en-US,en;q=0.9,fr;q=0.8",
+        "CACHE-CONTROL: max-age=0",
+        "REFERER: anonymousfox.co",
+        "UPGRADE-INSECURE-REQUESTS: 1",
+        "CONTENT-TYPE: application/x-www-form-urlencoded",
+        "CF-CONNECTING-IP: 20.115.4.12",
+        "CDN-LOOP: cloudflare"
+    ],
+    "cookie": [
+        "JSESSIONID=80DF1E116C9617F3EEAFBE46CF0A8E05"
+    ],
+    "dest_host": "lifeisnetwork.com",
+    "id.orig_h": "172.70.175.90",
+    "id.orig_p": 26566,
+    "id.resp_h": "198.71.247.91",
+    "id.resp_p": 80,
+    "if_modified_since": "Fri, 02 Jun 2017 17:39:05 GMT",
+    "if_none_match": "\"80424021c7dbd21:0\"",
+    "method": "POST",
+    "orig_filenames": [
+        "payload.zip"
+    ],
+    "orig_fuids": [
+        "FDDthg48f7r5xYMkAf"
+    ],
+    "orig_mime_types": [
+        "text/plain"
+    ],
+    "origin": "http://172.0.0.101",
+    "post_body": "1=echo%22AnonymousFox+%22%3B",
+    "proxied": [
+        "X-FORWARDED-FOR -> 20.115.4.12"
+    ],
+    "referrer": "anonymousfox.co",
+    "request_body_len": 28,
+    "resp_cookie": [
+        "SSID=eaf1bddcaafb7e25f4fe29a6dc0744f1; HttpOnly"
+    ],
+    "resp_filenames": [
+        "ISRG Root X1.der"
+    ],
+    "resp_fuids": [
+        "Fa3Nye3upzqg6Rruoa"
+    ],
+    "resp_mime_types": [
+        "text/html"
+    ],
+    "response_body_len": 279,
+    "server_headers": [
+        "DATE: Sun, 12 Dec 2021 08:43:15 GMT",
+        "SERVER: Apache/2.4.41 (Ubuntu)",
+        "CONTENT-LENGTH: 279",
+        "KEEP-ALIVE: timeout=5, max=100",
+        "CONNECTION: Keep-Alive",
+        "CONTENT-TYPE: text/html; charset=iso-8859-1"
+    ],
+    "status_code": 404,
+    "status_msg": "Not Found",
+    "tags": [
+        "CVE_2021_44228::LOG4J_RCE"
+    ],
+    "trans_depth": 1,
+    "ts": "2024-10-16T02:43:57.734946Z",
+    "uid": "CbNapWwSGFIOYRBzk",
+    "uri": "/wp-includes/css/wp-config.php",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
+    "username": "tomcat",
+    "version": "1.1"
+}
