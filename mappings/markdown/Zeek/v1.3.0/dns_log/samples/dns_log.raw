@@ -1,0 +1,39 @@
+{
+  "AA": false,
+  "RA": true,
+  "RD": true,
+  "TC": false,
+  "TTLs": [
+    300,
+    140
+  ],
+  "Z": 0,
+  "_path": "dns",
+  "_system_name": "sensor",
+  "_write_ts": "2024-10-18T14:30:29.149981Z",
+  "answers": [
+    "s3-1-w.amazonaws.com",
+    "s3-w.us-east-1.amazonaws.com"
+  ],
+  "icann_domain": "amazonaws.com",
+  "icann_host_subdomain": "staging-validation-poc.s3",
+  "icann_tld": "com",
+  "id.orig_h": "172.27.0.137",
+  "id.orig_p": 34526,
+  "id.resp_h": "172.27.0.2",
+  "id.resp_p": 53,
+  "is_trusted_domain": false,
+  "proto": "udp",
+  "qclass": 1,
+  "qclass_name": "C_INTERNET",
+  "qtype": 28,
+  "qtype_name": "AAAA",
+  "query": "staging-validation-poc.s3.amazonaws.com",
+  "rcode": 0,
+  "rcode_name": "NOERROR",
+  "rejected": false,
+  "rtt": 0.004117012023925781,
+  "trans_id": 60300,
+  "ts": "2024-10-18T14:30:29.145864Z",
+  "uid": "CSTYRyVNejbcG9lQf"
+}
