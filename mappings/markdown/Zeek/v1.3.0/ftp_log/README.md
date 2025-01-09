@@ -55,6 +55,8 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 
 
  ### Unmapped (proposed):
+| OCSF                           | Raw                                            | Zeek Field Description                                              |
+| ------------------------------ | -----------------------------------------------| --------------------------------------------------------------------|
 | `unmapped`                     | `data_channel.passive`                         | Whether PASV mode is toggled for control channel.  |
 | `connection_info.direction_id` | `data_channel.orig_h` && `data_channel.resp_h` | The host that will be initiating the data connection and the host that will be accepting the data connection. | Compare to determine Internal/External/Outbound/Inbound context. |
 | `(observables[]).value`        | `user`                                         | User name for the current FTP session.  | Where `observables[].type_id` = "4" |
