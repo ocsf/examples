@@ -33,6 +33,7 @@
 | `src_endpoint.port`            | `id.orig_p`                 | The originator’s port number.                                                           | Type is Integer.        |
 | `dst_endpoint.ip`              | `id.resp_h`                 | The responder’s IP address.                                                             |                         |
 | `dst_endpoint.port`            | `id.resp_p`                 | The responder’s port number.                                                            | Type is Integer.        |
+| `status_detail`                | `validation_status`         | Result of certificate validation for this connection.                                   |                         |
 | `tls.cipher`                   | `cipher`                    | SSL/TLS cipher suite that the server chose.                                             |                         |
 | `tls.certificate.subject`      | `subject`                   | SSL subject string.                                                                     |                         |
 | `tls.certificate.issuer`       | `issuer`                    | SSL issuer string.                                                                      |                         |
@@ -47,7 +48,6 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | OCSF                           | Raw               | Evaluation Conditions | Zeek Field Description                                                                 |
 | ------------------------------ | ----------------- | ----------------------| -------------------------------------------------------------------------------------- |
 | `activity_id`                  | `established`     | Dynamically map to activity_id based on value of `established` field. | Flag to indicate if this SSL session has been established successfully, or if it was aborted during the handshake. |
-| `tls.certificate.is_self_signed` | `validation_status`       |                                   | Result of certificate validation for this connection.                         |
 
 
  ### Unmapped (proposed):
