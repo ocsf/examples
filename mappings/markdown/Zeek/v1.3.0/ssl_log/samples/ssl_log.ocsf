@@ -1,37 +1,26 @@
 {
-  "time": "2024-10-18T13:57:30.489454Z",
-  "start_time": "2024-10-18T13:57:30.489454Z",
-  "category_name": "Network Activity",
-  "category_uid": 4,
-  "class_name": "Network Activity",
-  "class_uid": 4001,
-  "severity": "Informational",
-  "severity_id": 1,
   "metadata": {
     "version": "1.3.0",
-    "log_name": "ssl.log",
-    "logged_time": "2024-10-18T13:57:36.459547Z",
+    "logged_time": 1729261056,
     "loggers": [
       {
-        "name": "sensor",
-        "log_provider": "Zeek",
-        "product": {
-          "name": "Zeek"
-        }
+        "name": "sensor"
       }
     ],
+    "log_name": "ssl",
+    "uid": "CgwD6k3ViUYQLs49A4",
     "product": {
-      "cpe_name": "cpe:2.3:a:zeek:zeek",
-      "feature": {
-        "name": "ssl.log"
-      },
       "name": "Zeek",
-      "url_string": "https://docs.zeek.org/en/current/logs/ssl.html",
       "vendor_name": "Zeek"
-    },
-    "uid": "CgwD6k3ViUYQLs49A4"
+    }
   },
-  "activity_id": 1,
+  "category_uid": 4,
+  "class_uid": 4001,
+  "severity_id": 1,
+  "time": 1729261050,
+  "start_time": 1729261050,
+  "activity_id": 6,
+  "type_uid": 400106,
   "src_endpoint": {
     "ip": "10.1.0.104",
     "port": 57335
@@ -40,15 +29,28 @@
     "ip": "172.241.1.68",
     "port": 443
   },
+  "status_detail": "certificate has expired",
   "tls": {
-    "alert": "certificate_unknown",
     "cipher": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
     "certificate": {
       "subject": "CN=code.yengo.com",
-      "issuer": "CN=R3,O=Let's Encrypt,C=US"
+      "issuer": "CN=R3,O=Let's Encrypt,C=US",
+      "fingerprints": [
+        {
+          "algorithm_id": 0,
+          "value": "NULL"
+        }
+      ],
+      "serial_number": "NULL"
     },
-    "ja3_hash": "f0bb8fb38d017e359d2692a270974136",
-    "ja3s_hash": "00447ab319e9d94ba2b4c1248e155917",
+    "ja3_hash": {
+      "value": "f0bb8fb38d017e359d2692a270974136",
+      "algorithm_id": 1
+    },
+    "ja3s_hash": {
+      "value": "00447ab319e9d94ba2b4c1248e155917",
+      "algorithm_id": 1
+    },
     "sni": "code.yengo.com",
     "version": "TLSv12"
   },
@@ -59,20 +61,17 @@
       }
     },
     "tls_certificates": {
-      "client": {
-        "fingerprints": [
-          "b0517ac6a5e27ca615398ccdb75dc376a8d7df3059f73c3f1d6b3bf6739513ef",
-          "67add1166b020ae61b8f5fd96813c04c2aa589960796865572a3c7e737613dff"
-        ]
-      },
-      "server": {
-        "fingerprints": [
-          "b0517ac6a5e27ca615398ccdb75dc376a8d7df3059f73c3f1d6b3bf6739513ed",
-          "67add1166b020ae61b8f5fd96813c04c2aa589960796865572a3c7e737613dfd",
-          "6d99fb265eb1c5b3844765fcbc648f3cd8e1bffafdc4c2f99b9d47cf7ff1c24f"
-        ]
-      }
+      "client_fingerprints": [
+        "b0517ac6a5e27ca615398ccdb75dc376a8d7df3059f73c3f1d6b3bf6739513ef",
+        "67add1166b020ae61b8f5fd96813c04c2aa589960796865572a3c7e737613dff"
+      ],
+      "server_fingerprints": [
+        "b0517ac6a5e27ca615398ccdb75dc376a8d7df3059f73c3f1d6b3bf6739513ed",
+        "67add1166b020ae61b8f5fd96813c04c2aa589960796865572a3c7e737613dfd",
+        "6d99fb265eb1c5b3844765fcbc648f3cd8e1bffafdc4c2f99b9d47cf7ff1c24f"
+      ]
     },
+    "last_alert": "certificate_unknown",
     "curve": "x25519",
     "next_protocol": "h2",
     "sni_matches_cert": true
