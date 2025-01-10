@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "version": "1.3.0",
+    "product": {
+      "name": "Zeek",
+      "vendor_name": "Zeek"
+    },
+    "logged_time": 1729092622,
+    "loggers": [
+      {
+        "name": "sensor"
+      }
+    ],
+    "log_name": "ftp",
+    "uid": "C7Uupd44YYLGqNO5Qf"
+  },
+  "category_uid": 4,
+  "class_uid": 4008,
+  "severity_id": 1,
+  "time": 1729092622,
+  "start_time": 1729092622,
+  "src_endpoint": {
+    "ip": "192.168.4.59",
+    "port": 35342,
+    "agent_list": [
+      {
+        "name": "FTP Client",
+        "type_id": 9
+      }
+    ]
+  },
+  "dst_endpoint": {
+    "ip": "192.168.6.58",
+    "port": 21,
+    "agent_list": [
+      {
+        "name": "FTP Server",
+        "type_id": 9
+      }
+    ]
+  },
+  "file": {
+    "size": 10582201,
+    "name": "192,168,4,59,218,125",
+    "type_id": 0
+  },
+  "codes": [
+    200
+  ],
+  "status_code": "200",
+  "status_detail": "PORT command successful",
+  "activity_id": 0,
+  "type_uid": 400800,
+  "command": "PORT 192,168,4,59,218,125",
+  "unmapped": {
+    "data_channel.passive": false,
+    "connection_info.direction_id": {
+      "data_channel.orig_h": "192.168.6.58",
+      "data_channel.resp_h": "192.168.4.59"
+    },
+    "observables": [
+      {
+        "value": "osbox",
+        "type_id": 4
+      },
+      {
+        "value": "<hidden>",
+        "type_id": 99
+      }
+    ]
+  }
+}
