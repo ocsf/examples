@@ -48,9 +48,12 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | OCSF                           | Raw               | Evaluation Conditions | Zeek Field Description                                                                 |
 | ------------------------------ | ----------------- | ----------------------| -------------------------------------------------------------------------------------- |
 | `activity_id`                  | `established`     | Dynamically map to activity_id based on value of `established` field. | Flag to indicate if this SSL session has been established successfully, or if it was aborted during the handshake. |
+| `tls.certificate.fingerprints[].algorithm_id` | 0  | If `tls.certificate.issuer` exists, `tls.certificate.fingerprints[].algorithm_id` = 0, <br>else do not create `tls.certificate.fingerprints[].value`. <br>Type is Integer. | Zeek SSL logs do not contain the certificate fingerprint. Certificate details are sent via the X509 log. |
+| `tls.certificate.fingerprints[].value` | "NULL"    | If `tls.certificate.issuer` exists, `tls.certificate.fingerprints[].value` = "NULL", <br>else do not create `tls.certificate.fingerprints[].value`. | Zeek SSL logs do not contain the certificate fingerprint. Certificate details are sent via the X509 log. |
+| `tls.certificate.serial_number` | "NULL"           | If `tls.certificate.issuer` exists, `tls.certificate.serial_number` = "NULL", <br>else do not create `tls.certificate.serial_number`. | Zeek SSL logs do not contain the certificate serial number. Certificate details are sent via the X509 log. |
 | `tls.ja3_hash.algorithm_id`    | 1                 | If `ja3` exists, `tls.ja3_hash.algorithm_id` = 1, <br>else do not create `tls.ja3_hash.algorithm_id`. <br>Type is Integer. | The ja3 algorithm information (MD5). |
 | `tls.ja3s_hash.algorithm_id`   | 1                 | If `ja3s` exists, `tls.ja3s_hash.algorithm_id` = 1, <br>else do not create `tls.ja3s_hash.algorithm_id`. <br>Type is Integer. | The ja3s algorithm information (MD5). |
-| `type_uid`                     | `class_uid` + `activity_id` | N/A | Calculate with: (`class_uid` * 100) + `activity_id`. <br>Type is long_t. |
+| `type_uid`                     | `class_uid` + `activity_id` | N/A         | Calculate with: (`class_uid` * 100) + `activity_id`. <br>Type is long_t.               |
 
 
  ### Unmapped (proposed):
