@@ -1,0 +1,50 @@
+{
+    "time": 1598377391.921726,
+    "uuid": "CsukF91Bx9mrqdEaH9",
+    "src_endpoint": {
+      "ip": "192.168.4.49",
+      "port": 56718
+    },
+    "dst_endpoint": {
+      "ip": "13.32.202.10",
+      "port": 443
+    },
+    "version": "TLSv12",
+    "cipher": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+    "certificate": "secp256r1",
+    "domain": "www.taosecurity.com",
+    "certificate_chain": [
+      "F2XEvj1CahhdhtfvT4",
+      "FZ7ygD3ERPfEVVohG9",
+      "F7vklpOKI4yX9wmvh",
+      "FAnbnR32nIIr2j9XV"
+    ],
+    "subject": "CN=www.taosecurity.com",
+    "issuer": "CN=Amazon,OU=Server CA 1B,O=Amazon,C=US",
+    "unmapped": {
+      "next_protocol": "h2",
+      "resumed": false
+    },
+    "network_activity": {
+      "status_id": "1"
+    },
+    "category_uid": 4,
+    "category_name": "Network Activity",
+    "class_uid": 4001,
+    "class_name": "Network Activity",
+    "metadata": {
+      "profiles": [
+        "security_control"
+      ],
+      "product": {
+        "name": "Zeek",
+        "feature": {
+          "name": "ssl.log"
+        },
+        "vendor_name": "Zeek"
+      }
+    },
+    "severity": "Informational",
+    "severity_id": 1
+  }
+  

@@ -1,0 +1,20 @@
+{
+  "ts": 1591367999.305988,
+  "uid": "CMdzit1AMNsmfAIiQc",
+  "id.orig_h": "192.168.4.76",
+  "id.orig_p": 36844,
+  "id.resp_h": "192.168.4.1",
+  "id.resp_p": 53,
+  "proto": "udp",
+  "service": "dns",
+  "duration": 0.06685185432434082,
+  "orig_bytes": 62,
+  "resp_bytes": 141,
+  "conn_state": "SF",
+  "missed_bytes": 0,
+  "history": "Dd",
+  "orig_pkts": 2,
+  "orig_ip_bytes": 118,
+  "resp_pkts": 2,
+  "resp_ip_bytes": 197
+}
