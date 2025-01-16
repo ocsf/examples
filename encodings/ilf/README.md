@@ -16,7 +16,7 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
 3. The `<event type>`, `<sender>`, and `<receiver>` fields are interpreted as strings, and are not required to be in quotes.
     - An `<event type>` MUST consist of only alphanumeric characters or “_”.
     - The `<sender>` and `<receiver>` fields can contain alphanumeric characters and the characters ‘.’, ‘*’and ‘_’. The dot (`.`) character is used to specify hierarchy of components of the sender or receiver, e.g., car.brake
-    - The `<time stamp>` field MUST be compliant to these standards: ISO8601 or UNIX epoc. All `<time stamp>` fields in a stream of records must follow the same standard. The timestamp field can be empty. Exception - though ISO8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used to demote decimal points.
+    - The `<time stamp>` field MUST be compliant to these standards: RFC 3339 or UNIX epoc. All `<time stamp>` fields in a stream of records must follow the same standard. The timestamp field can be empty. 
 4. The fields, `<sender>`, `<receiver>`, and `<time stamp>`, are located at the first, second, and third locations, respectively. 
     - These fields may be empty, though the comma separators of the fields MUST be present. e.g., `OCSF_100400[,,,()] ` is a valid ILF record.
     - If the `<sender>` or `<receiver>` values are not known or are irrelevant, their values can be *. 
@@ -34,8 +34,8 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
         - Strings may be encoded as UTF-8, UTF-16, or UTF-32 characters, depending on what the ILF consumer expects.
         - All other character escapes are ignored by the ILF consumer and passed through. (e.g. \n is kept as \n, not turned into a newline.)
     - Numbers
-        - Integer, long, double, including signed prefixes (e.g., 2.1, -17, -17.0, 17l). Exception - though ISO8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
-        - Base-10 float, including signed exponents (e.g., 10.3e-3). Exception - though ISO8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
+        - Integer, long, double, including signed prefixes (e.g., 2.1, -17, -17.0, 17l). 
+        - Base-10 float, including signed exponents (e.g., 10.3e-3). 
         - Binary numbers are prefixed with 0b (e.g., 0b1100).
         - Octal numbers are prefixed with 0o (e.g., 0o723).
         - Hex numbers are prefixed with 0x (e.g., 0x93ABCDEF).
@@ -49,7 +49,7 @@ We discuss some of the implementation considerations for an OCSF to ILF translat
         - The types of values in dictionaries can only be Strings or Numbers.
         - Whitespace is allowed around the keys or values.
     - Time
-        - Specified based on the ISO8601 standard. Exception - though ISO8601 permits both comma (`,`) and dot (`.`) for decimal points, in ILF, only dot (`.`) must be used as decimal points.
+        - Specified based on the RFC 3339 or Unix epoc standard. 
     - Enums
         - Enums can only contain alphanumeric characters, or ‘_’ and '.’.
           
