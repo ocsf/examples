@@ -1,0 +1,100 @@
+{
+    "action": "Allowed",
+    "action_id": 1,
+    "activity_id": 6,
+    "activity_name": "Traffic",
+    "answers": [
+        {
+            "class": "IN",
+            "rdata": "127.0.0.62",
+            "type": "A"
+        }
+    ],
+    "category_name": "Network Activity",
+    "category_uid": 4,
+    "class_name": "DNS Activity",
+    "class_uid": 4003,
+    "cloud": {
+        "account": {
+            "uid": "123456789012"
+        },
+        "provider": "AWS",
+        "region": "us-east-1"
+    },
+    "connection_info": {
+        "direction": "Unknown",
+        "direction_id": 0,
+        "protocol_name": "UDP"
+    },
+    "disposition": "Alert",
+    "dst_endpoint": {
+        "instance_uid": "rslvr-in-0000000000000000",
+        "interface_uid": "rni-0000000000000000"
+    },
+    "firewall_rule": {
+        "uid": "rslvr-frg-000000000000000"
+    },
+    "metadata": {
+        "product": {
+            "feature": {
+                "name": "Resolver Query Logs"
+            },
+            "name": "Route 53",
+            "vendor_name": "AWS",
+            "version": "1.100000"
+        },
+        "profiles": [
+            "cloud",
+            "security_control",
+            "datetime"
+        ],
+        "version": "1.1.0"
+    },
+    "observables": [
+        {
+            "name": "answers[].rdata",
+            "type": "IP Address",
+            "type_id": 2,
+            "value": "127.0.0.62"
+        },
+        {
+            "name": "dst_endpoint.instance_uid",
+            "type": "Resource UID",
+            "type_id": 10,
+            "value": "rslvr-in-0000000000000000"
+        },
+        {
+            "name": "src_endpoint.ip",
+            "type": "IP Address",
+            "type_id": 2,
+            "value": "10.200.21.100"
+        },
+        {
+            "name": "query.hostname",
+            "type": "Hostname",
+            "type_id": 1,
+            "value": "ip-127-0-0-62.alert.firewall.canary."
+        }
+    ],
+    "query": {
+        "class": "IN",
+        "hostname": "ip-127-0-0-62.alert.firewall.canary.",
+        "type": "A"
+    },
+    "rcode": "NoError",
+    "rcode_id": 0,
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+        "ip": "10.200.21.100",
+        "port": 15083,
+        "vpc_uid": "vpc-00000000000000000"
+    },
+    "time": 1665694956000,
+    "time_dt": "2022-10-13T17:02:36.000-04:00",
+    "type_name": "DNS Activity: Traffic",
+    "type_uid": 400306,
+    "unmapped": {
+        "firewall_domain_list_id": "rslvr-fdl-0000000000000"
+    }
+}
