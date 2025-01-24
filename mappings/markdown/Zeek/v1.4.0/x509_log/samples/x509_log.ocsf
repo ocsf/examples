@@ -1,78 +1,78 @@
 {
-  "time": 1732200000,
-  "start_time": 1732200000,
-  "category_name": "Identity & Access Management",
-  "category_uid": 3,
-  "class_name": "Authentication",
-  "class_uid": 3002,
-  "severity": "Informational",
-  "severity_id": 1,
   "metadata": {
-    "version": "1.3.0",
-    "log_name": "x509.log",
-    "logged_time": 1732200000,
+    "version": "1.4.0",
+    "product": {
+      "name": "Zeek",
+      "vendor_name": "Zeek"
+    },
+    "logged_time": 1700412262534,
     "loggers": [
       {
-        "name": "sensor.aod-20241107.training.corelight.io",
-        "log_provider": "Zeek",
-        "product": {
-          "name": "Zeek",
-          "vendor_name": "Zeek"
-        }
-      }
-    ],
-    "product": {
-      "cpe_name": "cpe:2.3:a:zeek:zeek",
-      "feature": {
-        "name": "x509.log"
-      },
-      "name": "Zeek",
-      "url_string": "https://docs.zeek.org/en/current/logs/x509.html",
-      "vendor_name": "Zeek"
-    }
-  },
-  "activity_id": 99,
-  "type_uid": 300299,
-  "service": {
-    "uid": "N/A"
-  },
-  "user": {
-    "uid": "N/A"
-  },
-  "certificate": {
-    "issuer": "CN=DigiCert Cloud Services CA-1,O=DigiCert Inc,C=US",
-    "expiration_time": 1732200000,
-    "created_time": 1732200000,
-    "serial_number": "0C34C0B2A945152AF38D0281A8A02B41",
-    "subject": "CN=ecs.office.com,O=Microsoft Corporation,L=Redmond,ST=Washington,C=US",
-    "version": "3",
-    "fingerprints": [
-      {
-        "algorithm": "SHA-256",
-        "algorithm_id": 3,
-        "value": "73556d5e0b4f40194c79d8f803708069c0f3653f306315c314919e9e4fe34d18"
+        "name": "sensor.aod-20241107.training.corelight.io"
       }
     ]
   },
-  "observables": [
-    {
-      "name": "certificate.subject",
-      "type": "Hostname",
-      "type_id": 1,
-      "value": "ecs.office.com"
-    }
-  ],
-  "unmapped": {
-    "basic_constraints": {
-      "ca": false
-    },
+  "category_uid": 4,
+  "class_uid": 4001,
+  "severity_id": 1,
+  "activity_id": 99,
+  "activity_name": "Certificate details",
+  "type_uid": 300299,
+  "service": {
+    "name": "N/A"
+  },
+  "user": {
+    "name": "N/A"
+  },
+  "time": 1700412262534,
+  "start_time": 1700412262534,
+  "tls": {
     "certificate": {
-      "key_alg": "rsaEncryption",
-      "key_length": 2048,
-      "key_type": "rsa",
-      "exponent": "65537"
+      "issuer": "CN=DigiCert Cloud Services CA-1,O=DigiCert Inc,C=US",
+      "not_valid_after": 1750982399000,
+      "not_valid_before": 1719446400000,
+      "serial_number": "0C34C0B2A945152AF38D0281A8A02B41",
+      "subject": "CN=ecs.office.com,O=Microsoft Corporation,L=Redmond,ST=Washington,C=US",
+      "version": 3,
+      "fingerprints": [
+        {
+          "algorithm": "sha256WithRSAEncryption",
+          "value": "73556d5e0b4f40194c79d8f803708069c0f3653f306315c314919e9e4fe34d18"
+        }
+      ]
     },
-    "client_cert": false,
-    "host_cert": true
+    "sans": ["ecs.office.com"],
+    "tls_extension_list": [
+      {
+        "type_id": 99,
+        "type": "certificate_key_type",
+        "data": "rsa"
+      },
+      {
+        "type_id": 99,
+        "type": "certificate_key_length",
+        "data": "2048"
+      },
+      {
+        "type_id": 99,
+        "type": "certificate_exponent",
+        "data": "65537"
+      },
+      {
+        "type_id": 99,
+        "type": "is_host_cert",
+        "data": "true"
+      },
+      {
+        "type_id": 99,
+        "type": "is_client_cert",
+        "data": "false"
+      },
+      {
+        "type_id": 47,
+        "type": "certificate_authorities",
+        "data": "false"
+      }
+    ]
   }
 }
