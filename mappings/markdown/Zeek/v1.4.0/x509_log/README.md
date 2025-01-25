@@ -54,4 +54,8 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | `tls.tls_extension_list.data`      | `certificate.key_type`     | Key type, such as RSA, DSA, or EC, if parseable by OpenSSL.                             | Where `tls.tls_extension_list.type_id` = 99 <br>Type is Integer <br>and `tls.tls_extension_list.type` = "certificate_key_type". |
 | `tls.tls_extension_list.data`      | `client_cert`              | Indicates if this certificate was sent from the client.                                 | Where `tls.tls_extension_list.type_id` = 99 <br>Type is Integer <br>and `tls.tls_extension_list.type` = "is_client_cert"<br>Type is string. |
 | `tls.tls_extension_list.data`      | `host_cert`                | Indicates if this certificate was an end-host certificate, or sent as part of a chain.  | Where `tls.tls_extension_list.type_id` = 99 <br>Type is Integer <br>and `tls.tls_extension_list.type` = "is_host_cert"<br>Type is string. |
-| `tls.tls_extension_list.data`      | `san.dns{}`                | List of DNS entries in the Subject Alternative Name (SAN) field.                        | Where `tls.tls_extension_list.type_id` = 0 <br>Type is Integer <br>`tls.tls_extension_list.type` will = "server_name". |
+
+ ### Unmapped (proposed)
+| OCSF                            | Raw                        | Zeek Field Description                                                                  |
+| ------------------------------- | -------------------------- | --------------------------------------------------------------------------------------- | 
+| `tls.certificate.(sans[])`      | `san.dns{}`                | List of DNS entries in the Subject Alternative Name (SAN) field.                        | Notable from Tenzir on `tls.sans[]`: "This is actually a schema bug. <br>The SAN array should be part of the certificate object in theory, as it's part of the cert." |
