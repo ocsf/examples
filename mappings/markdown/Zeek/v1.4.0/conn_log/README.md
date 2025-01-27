@@ -7,7 +7,7 @@
   - https://docs.zeek.org/en/master/logs/conn.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html#type-Conn::Info
 
- ### OCSF Version: v1.3.0
+ ### OCSF Version: v1.4.0
   
  ### Static value mapping
 | OCSF field                          | Value        | Type       |
