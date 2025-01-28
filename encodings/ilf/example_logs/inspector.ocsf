@@ -1,0 +1,136 @@
+{
+    "activity_id": 2,
+    "activity_name": "Update",
+    "category_name": "Findings",
+    "category_uid": 2,
+    "class_name": "Vulnerability Finding",
+    "class_uid": 2002,
+    "cloud": {
+        "account": {
+            "uid": "111111111111"
+        },
+        "provider": "AWS",
+        "region": "us-east-2"
+    },
+    "finding_info": {
+        "created_time_dt": "2023-04-21T11:59:04.000-04:00",
+        "desc": "Issue summary: The AES-XTS cipher decryption implementation for 64 bit ARM\nplatform contains a bug that could cause it to read past the input buffer,\nleading to a crash.\n\nImpact summary: Applications that use the AES-XTS algorithm on the 64 bit ARM\nplatform can crash in rare circumstances. The AES-XTS algorithm is usually\nused for disk encryption.\n\nThe AES-XTS cipher decryption implementation for 64 bit ARM platform will read\npast the end of the ciphertext buffer if the ciphertext size is 4 mod 5 in 16\nbyte blocks, e.g. 144 bytes or 1024 bytes. If the memory after the ciphertext\nbuffer is unmapped, this will trigger a crash which results in a denial of\nservice.\n\nIf an attacker can control the size and location of the ciphertext buffer\nbeing decrypted by an application using AES-XTS on 64 bit ARM, the\napplication is affected. This is fairly unlikely making this issue\na Low severity one.",
+        "first_seen_time_dt": "2023-04-21T11:59:04.000-04:00",
+        "last_seen_time_dt": "2024-01-26T17:19:14.000-05:00",
+        "modified_time_dt": "2024-01-26T17:19:14.000-05:00",
+        "title": "CVE-2023-1255 - openssl",
+        "types": [
+            "Software and Configuration Checks/Vulnerabilities/CVE"
+        ],
+        "uid": "arn:aws:inspector2:us-east-2:111111111111:finding/faa0d54609b94871badcc83ac7c2add5"
+    },
+    "metadata": {
+        "log_version": "2018-10-08",
+        "processed_time_dt": "2024-01-26T17:59:56.923-05:00",
+        "product": {
+            "feature": {
+                "uid": "AWSInspector"
+            },
+            "name": "Inspector",
+            "uid": "arn:aws:securityhub:us-east-2::product/aws/inspector",
+            "vendor_name": "Amazon",
+            "version": "2"
+        },
+        "profiles": [
+            "cloud",
+            "datetime"
+        ],
+        "version": "1.1.0"
+    },
+    "observables": [
+        {
+            "name": "resource.uid",
+            "type": "Resource UID",
+            "type_id": 10,
+            "value": "arn:aws:ecr:us-east-2:111111111111:repository/browserhostingstack-EXAMPLE-btb1o54yh1jr/sha256:e9e2afad74f4e80511a5cff33d3d989b9797a718425f27e549f5b1f862c058a8"
+        }
+    ],
+    "resource": {
+        "cloud_partition": "aws",
+        "data": "{\"AwsEcrContainerImage\":{\"Architecture\":\"amd64\",\"ImageDigest\":\"sha256:e9e2afad74f4e80511a5cff33d3d989b9797a718425f27e549f5b1f862c058a8\",\"ImagePublishedAt\":\"2023-04-11T21:07:55Z\",\"RegistryId\":\"111111111111\",\"RepositoryName\":\"browserhostingstack-EXAMPLE-btb1o54yh1jr\"}}",
+        "region": "us-east-2",
+        "type": "AwsEcrContainerImage",
+        "uid": "arn:aws:ecr:us-east-2:111111111111:repository/browserhostingstack-EXAMPLE-btb1o54yh1jr/sha256:e9e2afad74f4e80511a5cff33d3d989b9797a718425f27e549f5b1f862c058a8"
+    },
+    "severity": "Medium",
+    "severity_id": 3,
+    "status": "New",
+    "time": 1706307554000,
+    "time_dt": "2024-01-26T17:19:14.000-05:00",
+    "type_name": "Vulnerability Finding: Update",
+    "type_uid": 200202,
+    "unmapped": {
+        "FindingProviderFields.Severity.Label": "MEDIUM",
+        "FindingProviderFields.Types[]": "Software and Configuration Checks/Vulnerabilities/CVE",
+        "ProductFields.aws/inspector/FindingStatus": "ACTIVE",
+        "ProductFields.aws/inspector/inspectorScore": "5.9",
+        "ProductFields.aws/inspector/packageVulnerabilityDetails/vulnerablePackages/sourceLayerHashes": "sha256:f56be85fc22e46face30e2c3de3f7fe7c15f8fd7c4e5add29d7f64b87abdaa09",
+        "ProductFields.aws/inspector/resources/1/resourceDetails/awsEcrContainerImageDetails/platform": "ALPINE_LINUX_3_17",
+        "ProductFields.aws/securityhub/CompanyName": "Amazon",
+        "ProductFields.aws/securityhub/FindingId": "arn:aws:securityhub:us-east-2::product/aws/inspector/arn:aws:inspector2:us-east-2:111111111111:finding/faa0d54609b94871badcc83ac7c2add5",
+        "ProductFields.aws/securityhub/ProductName": "Inspector",
+        "RecordState": "ACTIVE",
+        "Severity.Normalized": "40",
+        "Vulnerabilities[].Cvss[].Source": "NVD,NVD",
+        "Vulnerabilities[].Vendor.VendorSeverity": "MEDIUM",
+        "Vulnerabilities[].VulnerablePackages[].SourceLayerHash": "sha256:f56be85fc22e46face30e2c3de3f7fe7c15f8fd7c4e5add29d7f64b87abdaa09",
+        "WorkflowState": "NEW"
+    },
+    "vulnerabilities": [
+        {
+            "affected_packages": [
+                {
+                    "architecture": "X86_64",
+                    "epoch": 0,
+                    "fixed_in_version": "0:3.0.8-r4",
+                    "name": "openssl",
+                    "package_manager": "OS",
+                    "release": "r3",
+                    "remediation": {
+                        "desc": "apk update && apk upgrade openssl"
+                    },
+                    "version": "3.0.8"
+                }
+            ],
+            "cve": {
+                "created_time_dt": "2023-04-20T13:15:06.000-04:00",
+                "cvss": [
+                    {
+                        "base_score": 5.9,
+                        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                        "version": "3.1"
+                    },
+                    {
+                        "base_score": 5.9,
+                        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                        "version": "3.1"
+                    }
+                ],
+                "epss": {
+                    "score": "0.00066"
+                },
+                "modified_time_dt": "2023-09-08T13:15:15.000-04:00",
+                "references": [
+                    "https://nvd.nist.gov/vuln/detail/CVE-2023-1255"
+                ],
+                "uid": "CVE-2023-1255"
+            },
+            "is_exploit_available": true,
+            "is_fix_available": true,
+            "references": [
+                "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=bc2f61ad70971869b242fc1cb445b98bad50074a",
+                "https://www.openssl.org/news/secadv/20230419.txt",
+                "https://git.openssl.org/gitweb/?p=openssl.git;a=commitdiff;h=02ac9c9420275868472f33b01def01218742b8bb"
+            ],
+            "remediation": {
+                "desc": "Remediation is available. Please refer to the Fixed version in the vulnerability details section above.For detailed remediation guidance for each of the affected packages, refer to the vulnerabilities section of the detailed finding JSON."
+            },
+            "vendor_name": "NVD"
+        }
+    ]
+}
