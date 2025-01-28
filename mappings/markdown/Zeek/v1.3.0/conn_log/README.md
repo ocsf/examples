@@ -69,12 +69,6 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 | `(network_endpoint).vlan_uid` | `vlan`           | The outer VLAN for this connection, if applicable.                                    |
 | `connection_info.community_uid` | `community_id`| The community ID.       - Unmapped in v1.3.0, mapped in v1.4.0-dev |
 | `unmapped`                  | `app`            |                                                                                         |
-| `unmapped`                  | `corelight_shunted` |                                                                                      |
-| `unmapped`                  | `pcr`            |                                                                                         |
-| `unmapped`                  | `spcap.rule`     |                                                                                         |
-| `unmapped`                  | `spcap.trigger`  |                                                                                         |
-| `unmapped`                  | `spcap.url`      |                                                                                         |
-| `unmapped`                  | `suri_ids`       |                                                                                         |
 | `unmapped`                  | `tunnel_parents` | If this connection was over a tunnel, indicate the uid values for any encapsulating parent connections. |
 | `unmapped`                  | `local_orig`     | Indicates if the connection is originated locally.                                      |
 | `unmapped`                  | `local_resp`     | Indicates if the connection is responded to locally.                                    |
