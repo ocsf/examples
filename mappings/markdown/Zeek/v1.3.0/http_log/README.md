@@ -36,7 +36,7 @@
 | `http_request.http_method`     | `method`          | Verb used in the HTTP request (GET, POST, HEAD, etc.).                                  |                         |
 | `http_request.length`          | `request_body_len`| Actual uncompressed content size of the data transferred from the client.               | Type is Integer.        |
 | `http_request.referrer`        | `referrer`        | Value of the “referrer” header.                                                         |                         |
-| `http_request.url.hostname`    | `dest_host`       |                                                                                         |                         |
+| `http_request.url.hostname`    | `host`            |                                                                                         | Raw field is `host` in Zeek http.log, <br>but `dest_host` in Corelight http.log. |
 | `http_request.url.path`        | `uri`             | URI used in the request.                                                                |                         |
 | `http_request.user_agent`      | `user_agent`      | Value of the User-Agent header from the client.                                         |                         |
 | `http_request.version`         | `version`         | Value of the version portion of the reply.                                              |                         |
