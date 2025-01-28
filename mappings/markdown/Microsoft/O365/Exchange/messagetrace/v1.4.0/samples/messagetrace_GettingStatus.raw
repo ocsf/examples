@@ -1,0 +1,14 @@
+{
+  "Organization": "testdomain2.onmicrosoft.com",
+  "MessageId": "<BY3PR06MB813201B0A905E9DF36BCEA768F302@BY3PR06MB8132.namprd06.prod.outlook.com>",
+  "Received": "2024-12-05T00:27:21.1795476",
+  "SenderAddress": "first_last@testdomain2.onmicrosoft.com",
+  "RecipientAddress": "first_last@testdomain2.onmicrosoft.com",
+  "Subject": "HierarchySync_Ping_397887_6da4db39-e8fb-4565-939d-4f2849bd8ccf",
+  "Status": "GettingStatus",
+  "ToIP": null,
+  "FromIP": "2603:10b6:a03:3cb::11",
+  "Size": 27684,
+  "MessageTraceId": "db0f258b-b076-468a-2014-08dd14c39542",
+  "Index": 1098
+}

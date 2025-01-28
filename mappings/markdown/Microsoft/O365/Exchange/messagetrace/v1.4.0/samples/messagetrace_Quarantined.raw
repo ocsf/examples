@@ -1,0 +1,14 @@
+{
+  "Organization": "testdomain.onmicrosoft.com",
+  "MessageId": "<SA9PR09MB5838517C85310ECE43856647DB4D2@SA9PR09MB5838.tstprd09.prod.outlook.com>",
+  "Received": "2024-10-23T18:59:43.8726542",
+  "SenderAddress": "user@testdomain.com",
+  "RecipientAddress": "user@testdomain.com",
+  "Subject": "FW: Request for proposal*",
+  "Status": "Quarantined",
+  "ToIP": null,
+  "FromIP": "208.67.222.222",
+  "Size": 56562,
+  "MessageTraceId": "f8290baa-c368-4c82-a18e-08dcf394db3d",
+  "Index": 24260
+}
