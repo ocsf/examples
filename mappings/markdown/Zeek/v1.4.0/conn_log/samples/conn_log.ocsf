@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "version": "1.3.0",
+    "version": "1.4.0",
     "product": {
       "name": "Zeek",
       "vendor_name": "Zeek"
@@ -20,6 +20,7 @@
   "connection_info": {
     "community_id": "1:DvgXgCo2JR5r4T25PBZYFw3ObFc=",
     "direction_id": 0,
+    "flag_history": "ShADadfF",
     "protocol_name": "tcp"
   },
   "time": 1729052821,
@@ -46,7 +47,8 @@
     "bytes_out": 164,
     "packets_out": 6,
     "bytes": 377,
-    "packets": 11
+    "packets": 11,
+    "bytes_missed": 0
   },
   "activity_id": 2,
   "type_uid": 400102,
@@ -73,18 +75,8 @@
     }
   ],
   "unmapped": {
-    "missed_bytes": 0,
-    "history": "ShADadfF",
     "vlan": 12,
     "app": ["firefox", "mozilla", "windows"],
-    "corelight_shunted": false,
-    "pcr": -0.129973474801061,
-    "spcap": {
-      "rule": 1,
-      "trigger": "all-unencrypted",
-      "url": "https://sensor.io/spcap/v1/?uid=CmRFd61N7G7YA909D1"
-    },
-    "suri_ids": ["SI7YwTINm9Rd"],
     "tunnel_parents": ["C2y6XKB2ovrcvv1G5"],
     "local_orig": true,
     "local_resp": false,
