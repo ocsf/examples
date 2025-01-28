@@ -39,7 +39,8 @@
 | `dst_endpoint.location.country` | `resp_cc`     | Country code for GeoIP lookup of the responding IP address.                             | Type is mac_t.          |
 | `dst_endpoint.mac`            | `resp_l2_addr`  | Link-layer address of the responder, if available.                                      |                         |
 | `app_name`                    | `service`       | An identification of an application protocol being sent over the connection.            |                         |
-| `connection_info.community_uid` | `community_id`| The community ID.                                                                       | |
+| `connection_info.community_uid` | `community_id`| The community ID.                                                                       |                         |
+| `connection_info.flag_history`  | `history`     | Records the state history of connections as a string of letters.                        |                         |
 | `connection_info.protocol_name` | `proto`       | The transport layer protocol of the connection.                                         |                         |
 | `duration`                    | `duration`      | How long the connection lasted.                                                         | Type is long_t.         |
 | `status_code`                 | `conn_state`    | Possible connection states.                                                             | Type is string.         |
@@ -47,6 +48,7 @@
 | `traffic.packets_in`          | `resp_pkts`     | Number of packets that the responder sent.                                              | Type is long_t.         |
 | `traffic.bytes_out`           | `orig_bytes`    | The number of payload bytes the originator sent.                                        | Type is long_t.         |
 | `traffic.packets_out`         | `orig_pkts`     | Number of packets that the originator sent.                                             | Type is long_t.         |
+| `traffic.bytes_missed`        | `missed_bytes`  | Indicates the number of bytes missed in content gaps.                                   | Type is long_t.         |
 
 
  ### Conditional mapping:
@@ -65,16 +67,8 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 
 | OCSF                        | Raw              | Zeek Field Description                                                                  |
 | --------------------------- | ---------------- | --------------------------------------------------------------------------------------- |
-| `(bytes_missed)`            | `missed_bytes`   | Indicates the number of bytes missed in content gaps.                                   |
-| `connection_info.(history)` | `history`        | Records the state history of connections as a string of letters.                        |
 | `(network_endpoint).vlan_uid` | `vlan`           | The outer VLAN for this connection, if applicable.                                    |
 | `unmapped`                  | `app`            |                                                                                         |
-| `unmapped`                  | `corelight_shunted` |                                                                                      |
-| `unmapped`                  | `pcr`            |                                                                                         |
-| `unmapped`                  | `spcap.rule`     |                                                                                         |
-| `unmapped`                  | `spcap.trigger`  |                                                                                         |
-| `unmapped`                  | `spcap.url`      |                                                                                         |
-| `unmapped`                  | `suri_ids`       |                                                                                         |
 | `unmapped`                  | `tunnel_parents` | If this connection was over a tunnel, indicate the uid values for any encapsulating parent connections. |
 | `unmapped`                  | `local_orig`     | Indicates if the connection is originated locally.                                      |
 | `unmapped`                  | `local_resp`     | Indicates if the connection is responded to locally.                                    |
