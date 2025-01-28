@@ -1,0 +1,100 @@
+{
+    "activity_id": 1,
+    "activity_name": "Create",
+    "actor": {
+        "session": {
+            "created_time_dt": "2023-11-17T11:43:57.000-05:00",
+            "is_mfa": false,
+            "issuer": "arn:aws:iam::112233445566:role/Admin"
+        },
+        "user": {
+            "account": {
+                "uid": "112233445566"
+            },
+            "credential_uid": "ASIA2W7SOKHEXAMPLE",
+            "type": "AssumedRole",
+            "uid": "arn:aws:sts::112233445566:assumed-role/Admin/Admin-user",
+            "uid_alt": "AROA2W7SOKHEXAMPLE:Admin-user"
+        }
+    },
+    "api": {
+        "operation": "CreateUser",
+        "request": {
+            "data": "{\"userName\":\"test_user2\"}",
+            "uid": "c99bf9da-e0bd-4bf7-bb32-example"
+        },
+        "response": {
+            "data": "{\"user\":{\"path\":\"/\",\"userName\":\"test_user2\",\"userId\":\"AIDA2W7SOKHEXAMPLE\",\"arn\":\"arn:aws:iam::112233445566:user/test_user2\",\"createDate\":\"Mar 17, 2023 5:07:59 PM\"}}"
+        },
+        "service": {
+            "name": "iam.amazonaws.com"
+        }
+    },
+    "category_name": "Identity & Access Management",
+    "category_uid": 3,
+    "class_name": "Account Change",
+    "class_uid": 3001,
+    "cloud": {
+        "provider": "AWS",
+        "region": "us-east-1"
+    },
+    "http_request": {
+        "user_agent": "AWS Internal"
+    },
+    "metadata": {
+        "event_code": "AwsApiCall",
+        "product": {
+            "feature": {
+                "name": "Management"
+            },
+            "name": "CloudTrail",
+            "vendor_name": "AWS",
+            "version": "1.08"
+        },
+        "profiles": [
+            "cloud",
+            "datetime"
+        ],
+        "uid": "7dd15a89-ae0f-4340-8e6c-example",
+        "version": "1.1.0"
+    },
+    "observables": [
+        {
+            "name": "src_endpoint.ip",
+            "type": "IP Address",
+            "type_id": 2,
+            "value": "52.95.4.21"
+        },
+        {
+            "name": "user.name",
+            "type": "User Name",
+            "type_id": 4,
+            "value": "test_user2"
+        }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+        "ip": "52.95.4.21"
+    },
+    "status": "Success",
+    "time": 1679072879000,
+    "time_dt": "2023-03-17T13:07:59.000-04:00",
+    "type_name": "Account Change: Create",
+    "type_uid": 300101,
+    "unmapped": {
+        "managementEvent": "true",
+        "readOnly": "false",
+        "recipientAccountId": "112233445566",
+        "sessionCredentialFromConsole": "true",
+        "userIdentity.sessionContext.sessionIssuer.accountId": "112233445566",
+        "userIdentity.sessionContext.sessionIssuer.principalId": "AROA2W7SOKHEXAMPLE",
+        "userIdentity.sessionContext.sessionIssuer.type": "Role",
+        "userIdentity.sessionContext.sessionIssuer.userName": "Admin"
+    },
+    "user": {
+        "name": "test_user2",
+        "uid": "arn:aws:iam::112233445566:user/test_user2",
+        "uid_alt": "AIDA2W7SOKHEXAMPLE"
+    }
+}
