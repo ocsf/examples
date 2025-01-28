@@ -1,0 +1,74 @@
+{
+	"action": "REJECT",
+	"time_dt": "2022-04-12T00:02:12.000Z",
+	"end_time_dt": "2022-04-12T00:03:08.000Z",
+	"category_name": "Network Activity",
+	"class_uid": 4001,
+	"class_name": "Network Activity",
+	"category_uid": 4,
+	"activity_name": "Traffic",
+	"activity_id": 5,
+	"metadata": {
+		"product": {
+			"name": "Amazon VPC",
+			"feature": {
+				"name": "Flowlogs"
+			},
+			"vendor_name": "AWS",
+			"version": "5"
+		},
+		"profiles": [
+			"cloud",
+			"security_control",
+			"datetime"
+		],
+		"version": "1.1.0"
+	},
+	"cloud": {
+		"provider": "AWS",
+		"account": {
+			"uid": "123456789012"
+		},
+		"region": "us-east-1",
+		"zone": "use1-az1"
+	},
+	"severity_id": 1,
+	"severity": "Informational",
+	"src_endpoint": {
+		"port": 56858,
+		"svc_name": "-",
+		"ip": "1.2.3.4"
+	},
+	"dst_endpoint": {
+		"port": 39938,
+		"svc_name": "-",
+		"ip": "172.31.2.52",
+		"subnet_uid": "subnet-000000000000000000",
+		"interface_uid": "eni-000000000000000000",
+		"vpc_uid": "vpc-00000000",
+		"instance_uid": "i-000000000000000000"
+	},
+	"connection_info": {
+		"protocol_num": 6,
+		"tcp_flags": 2,
+		"protocol_ver": "IPv4",
+		"direction_id": 1,
+		"direction": "Inbound"
+	},
+	"traffic": {
+		"packets": 1,
+		"bytes": 40
+	},
+	"status_code": "OK",
+	"time": 1649721732,
+	"end_time": 1649721788,
+	"unmapped": {
+		"sublocation_id": "-",
+		"sublocation_type": "-"
+	},
+	"action_id": 2,
+	"status": "Failure",
+	"status_id": 2,
+	"disposition": "Blocked",
+	"type_uid": 400106
+}
