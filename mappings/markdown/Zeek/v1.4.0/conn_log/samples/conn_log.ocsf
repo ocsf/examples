@@ -1,0 +1,86 @@
+{
+  "metadata": {
+    "version": "1.4.0",
+    "product": {
+      "name": "Zeek",
+      "vendor_name": "Zeek"
+    },
+    "logged_time": 1729052891,
+    "loggers": [
+      {
+        "name": "sensor"
+      }
+    ],
+    "log_name": "conn",
+    "uid": "CmRFd61N7G7YA909D1"
+  },
+  "category_uid": 4,
+  "class_uid": 4001,
+  "severity_id": 1,
+  "connection_info": {
+    "community_id": "1:DvgXgCo2JR5r4T25PBZYFw3ObFc=",
+    "direction_id": 0,
+    "flag_history": "ShADadfF",
+    "protocol_name": "tcp"
+  },
+  "time": 1729052821,
+  "start_time": 1729052821,
+  "src_endpoint": {
+    "ip": "10.4.30.5",
+    "port": 49227,
+    "mac": "00:1d:09:5b:d6:84"
+  },
+  "dst_endpoint": {
+    "ip": "37.120.182.208",
+    "port": 80,
+    "location": {
+      "country": "DE"
+    },
+    "mac": "20:e5:2a:b6:93:f1"
+  },
+  "app_name": "http",
+  "duration": 65,
+  "status_code": "SF",
+  "traffic": {
+    "bytes_in": 213,
+    "packets_in": 5,
+    "bytes_out": 164,
+    "packets_out": 6,
+    "bytes": 377,
+    "packets": 11,
+    "bytes_missed": 0
+  },
+  "activity_id": 2,
+  "type_uid": 400102,
+  "observables": [
+    {
+      "name": "src_endpoint.hostname",
+      "type_id": 1,
+      "value": "PODTRONICS",
+      "reputation": {
+        "provider": "NTLM_AUTH",
+        "base_score": 0.0,
+        "score_id": 0
+      }
+    },
+    {
+      "name": "dst_endpoint.hostname",
+      "type_id": 1,
+      "value": "ip.anysrc.net",
+      "reputation": {
+        "provider": "HTTP_HOST",
+        "base_score": 0.0,
+        "score_id": 0
+      }
+    }
+  ],
+  "unmapped": {
+    "vlan": 12,
+    "app": ["firefox", "mozilla", "windows"],
+    "tunnel_parents": ["C2y6XKB2ovrcvv1G5"],
+    "local_orig": true,
+    "local_resp": false,
+    "orig_ip_bytes": 416,
+    "resp_ip_bytes": 417
+  }
+}
