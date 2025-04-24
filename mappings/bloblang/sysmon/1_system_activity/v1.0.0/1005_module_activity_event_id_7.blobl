@@ -1,0 +1,155 @@
+
+
+# Required Fields - v1.0.0
+root.class_uid = 1005
+
+root.disposition_id = 17
+root.module.load_type_id = 2
+root.metadata.version = "1.0.0"
+root.metadata.profiles = ["security_control","datetime"]
+root.metadata.product.vendor_name = "Sysmon"
+root.device.type_id = match this.winlog.computer_name {
+  this.contains("WSAMZN") => 6
+  this.contains("EC2AMAZ") => 1
+  _=> 0
+}
+root.severity_id = if this.winlog.event_data.exists("Signed") {match this.winlog.event_data.Signed {
+  this.contains("false") => 3
+  this.contains("failed") => 3
+  this.contains("true") => 2
+  _=> 1
+}} else {1}
+root.activity_id = 1
+root.time = this.time.ts_unix_milli()
+root.time_dt = this.time
+
+root.category_uid = 1
+
+# Recommended Fields - v1.0.0
+root.attacks = [{
+    "version": "v13",
+    "technique": {
+        "name" : this.mitre.technique_name,
+        "uid" : this.mitre.technique_id},
+    "tactics" : [],
+}]
+root.message = this.winlog.task
+# root.timezone_offset = Not available
+root.status_id = 1
+
+root.module.type = if this.winlog.event_data.exists("OriginalFileName") { this.winlog.event_data.OriginalFileName.split(".").index(-1) }
+root.module.file.name = this.winlog.event_data.OriginalFileName
+root.module.file.type_id = 1
+
+# root.device.interface_name = Not available
+# root.device.instance_uid = Not available
+root.device.hostname = this.winlog.computer_name.split(".").index(0)
+
+root.actor.user.name = this.winlog.event_data.User.split("\\").index(-1)
+root.actor.user.type_id = match this.winlog.event_data.(User | SourceUser) {
+    this.contains("NT AUTHORITY") => 3
+    this.contains("my_id_for_my_company") => 1
+    _=> 0
+}
+root.actor.user.type = match this.winlog.event_data.(User | SourceUser) {
+    this.contains("NT AUTHORITY") => "System"
+    this.contains("my_id_for_my_company") => "User"
+    _=> "Unknown"
+}
+root.actor.process.uid = this.winlog.event_data.ProcessGuid.trim("{}")
+root.actor.process.pid = this.winlog.event_data.ProcessId.number()
+root.actor.process.file.type_id = 1
+root.actor.process.file.name = this.winlog.event_data.OriginalFileName
+root.actor.process.file.path = this.winlog.event_data.ImageLoaded
+root.actor.process.file.hashes = if this.winlog.event_data.exists("Hash") {this.winlog.event_data.Hash.key_values().map_each(item -> {
+    "algorithm_id": match {
+        item.key == "MD5" => 1,
+        item.key == "SHA1" => 2,
+        item.key == "SHA256" => 3,
+        item.key == "IMPHASH" => 99,
+    },
+    "algorithm": match {
+        item.key == "MD5" => "MD5",
+        item.key == "SHA1" => "SHA-1",
+        item.key == "SHA256" => "SHA-256",
+        item.key == "IMPHASH" => "IMPHASH"
+
+    },
+    "value": item.value}) } else {deleted()}
+root.actor.process.name = this.winlog.event_data.Image.split("\\").index(-1)
+
+# Optional Fields - v1.0.0
+# this.status_code =
+# this.end_time =
+# this.start_time =
+# this.end_time_dt =
+# this.malware =
+# this.category_name =
+# this.raw_data =
+# this.duration =
+# this.api =
+# this.status_detail =
+# this.disposition =
+# this.count =
+# this.status =
+# this.severity =
+# this.activity_name =
+# this.type_name =
+# this.enrichments =
+# this.start_time_dt =
+# this.time_dt =
+root.class_name = "Process Activity"
+root.category_name = "Module Activity"
+# root.actual_permissions =
+root.activity_name = "Load"
+
+root.type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+root.unmapped = this.without(
+  "m",
+  "agent",
+  "@version",
+  "ec2",
+  "ecs",
+  "event",
+  "tags",
+  "env",
+  "log",
+  "@laas",
+  "micros_container",
+  "time",
+  "mitre",
+  "ls_pipeline_id",
+  "winlog.channel",
+  "winlog.computer_name",
+  "winlog.api",
+  "winlog.fleet_env",
+  "winlog.opcode",
+  "winlog.record_id",
+  "winlog.provider_name",
+  "winlog.task",
+  "winlog.event_data.signature",
+  "winlog.event_data.ProcessGuid",
+  "winlog.event_data.ProcessId",
+  "winlog.event_data.User",
+  "winlog.event_data.Hash",
+  "winlog.event_data.ImageLoaded",
+  "winlog.event_data.Image",
+  "winlog.event_data.OriginalFileName",
+  "winlog.event_data.UtcTime",
+  "winlog.event_data.SignatureStatus",
+  "winlog.event_data.Signed"
+)
+let myhash = if root.actor.process.file.exists("hashes") { root.actor.process.file.hashes.map_each(hash -> hash.value).collapse() } else {"unknown"}
+
+observables = this.without("unmapped").with("device.hostname", "actor.process.file.name", "actor.user.name", "actor.process.name").merge($myhash).(item -> {
+   "a": match {item.device.exists("hostname") => {"name": "device.hostname", "type": "Hostname", "type_id": 1, "value": item.device.hostname}},
+   "b": match {item.actor.user.exists("name") => {"name": "actor.user.name", "type": "User Name", "type_id": 4, "value": item.actor.user.name}},
+   "d": match {item.actor.process.file.exists("name") => {"name": "actor.process.file.name", "type": "File Name", "type_id": 7, "value": item.actor.process.file.name}},
+   "e": match {item.actor.process.exists("name") => {"name": "actor.process.name", "type": "Process Name", "type_id": 9, "value": item.actor.process.name}},
+   "f": match {item.exists("0") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.0}},
+   "g": match {item.exists("1") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.1}},
+   "h": match {item.exists("2") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.2}},
+   "i": match {item.exists("3") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.3}},
+   "j": match {item.exists("4") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.4}},
+   "j": match {item.exists("5") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.5}},
+   }).values()

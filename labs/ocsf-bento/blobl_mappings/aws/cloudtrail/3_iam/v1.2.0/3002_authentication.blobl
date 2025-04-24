@@ -69,7 +69,7 @@ root.metadata.version = "1.2.0"
 root.metadata.product.feature.name = this.eventCategory 
 root.metadata.profiles = ["cloud","datetime"]
 root.metadata.correlation_uid = uuid_v4()
-#root.metadata.labels = this.env.re_find_all(".*") TODO: check Atlassian only enrichment
+#root.metadata.labels = this.env.re_find_all(".*") TODO: check my_id_for_my_company only enrichment
 
 root.is_mfa = match this.additionalEventData.MFAUsed {
     "No" => false
