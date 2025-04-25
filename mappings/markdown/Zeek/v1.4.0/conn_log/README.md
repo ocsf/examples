@@ -3,16 +3,16 @@
 - **Description**: Translates a Zeek conn.log to OCSF. 
 
 - **Event References**:
-  - https://schema.ocsf.io/1.3.0/classes/network_activity
+  - https://schema.ocsf.io/1.4.0/classes/network_activity
   - https://docs.zeek.org/en/master/logs/conn.html
   - https://docs.zeek.org/en/master/scripts/base/protocols/conn/main.zeek.html#type-Conn::Info
 
- ### OCSF Version: v1.3.0
+ ### OCSF Version: v1.4.0
   
  ### Static value mapping
 | OCSF field                          | Value        | Type       |
 | ----------------------------------- | ------------ | ---------- |
-| `metadata.version`                  | "1.3.0"      |            |
+| `metadata.version`                  | "1.4.0"      |            |
 | `category_uid`                      | 4            | Integer    |
 | `class_uid`                         | 4001         | Integer    |
 | `severity_id`                       | 1            | Integer    |
@@ -39,6 +39,8 @@
 | `dst_endpoint.location.country` | `resp_cc`     | Country code for GeoIP lookup of the responding IP address.                             | Type is mac_t.          |
 | `dst_endpoint.mac`            | `resp_l2_addr`  | Link-layer address of the responder, if available.                                      |                         |
 | `app_name`                    | `service`       | An identification of an application protocol being sent over the connection.            |                         |
+| `connection_info.community_uid` | `community_id`| The community ID.                                                                       |                         |
+| `connection_info.flag_history`  | `history`     | Records the state history of connections as a string of letters.                        |                         |
 | `connection_info.protocol_name` | `proto`       | The transport layer protocol of the connection.                                         |                         |
 | `duration`                    | `duration`      | How long the connection lasted.                                                         | Type is long_t.         |
 | `status_code`                 | `conn_state`    | Possible connection states.                                                             | Type is string.         |
@@ -46,6 +48,7 @@
 | `traffic.packets_in`          | `resp_pkts`     | Number of packets that the responder sent.                                              | Type is long_t.         |
 | `traffic.bytes_out`           | `orig_bytes`    | The number of payload bytes the originator sent.                                        | Type is long_t.         |
 | `traffic.packets_out`         | `orig_pkts`     | Number of packets that the originator sent.                                             | Type is long_t.         |
+| `traffic.bytes_missed`        | `missed_bytes`  | Indicates the number of bytes missed in content gaps.                                   | Type is long_t.         |
 
 
  ### Conditional mapping:
@@ -64,10 +67,7 @@ Fields described here are subject to dynamic mappings contingent on a conditiona
 
 | OCSF                        | Raw              | Zeek Field Description                                                                  |
 | --------------------------- | ---------------- | --------------------------------------------------------------------------------------- |
-| `(bytes_missed)`            | `missed_bytes`   | Indicates the number of bytes missed in content gaps.                                   |
-| `connection_info.(history)` | `history`        | Records the state history of connections as a string of letters.                        |
 | `(network_endpoint).vlan_uid` | `vlan`           | The outer VLAN for this connection, if applicable.                                    |
-| `connection_info.community_uid` | `community_id`| The community ID.       - Unmapped in v1.3.0, mapped in v1.4.0-dev |
 | `unmapped`                  | `app`            |                                                                                         |
 | `unmapped`                  | `tunnel_parents` | If this connection was over a tunnel, indicate the uid values for any encapsulating parent connections. |
 | `unmapped`                  | `local_orig`     | Indicates if the connection is originated locally.                                      |

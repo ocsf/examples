@@ -28,7 +28,7 @@
     "cookie": [
         "JSESSIONID=80DF1E116C9617F3EEAFBE46CF0A8E05"
     ],
-    "dest_host": "lifeisnetwork.com",
+    "host": "lifeisnetwork.com",
     "id.orig_h": "172.70.175.90",
     "id.orig_p": 26566,
     "id.resp_h": "198.71.247.91",

@@ -1,0 +1,85 @@
+{
+  "metadata": {
+    "version": "1.4.0",
+    "logged_time": 1732048662,
+    "loggers": [
+      {
+        "name": "sensor.aod-20241107.training.corelight.io"
+      }
+    ],
+    "product": {
+      "name": "Zeek",
+      "vendor_name": "Zeek"
+    }
+  },
+  "category_uid": 4,
+  "class_uid": 4001,
+  "severity_id": 1,
+  "activity_id": 99,
+  "activity_name": "Certificate details",
+  "type_uid": 300299,
+  "service": {
+    "name": "N/A"
+  },
+  "user": {
+    "name": "N/A"
+  },
+  "time": 1732048662,
+  "start_time": 1732048662,
+  "tls": {
+    "certificate": {
+      "issuer": "CN=DigiCert Cloud Services CA-1,O=DigiCert Inc,C=US",
+      "not_valid_after": 1750982399,
+      "not_valid_before": 1719446400,
+      "serial_number": "0C34C0B2A945152AF38D0281A8A02B41",
+      "subject": "CN=ecs.office.com,O=Microsoft Corporation,L=Redmond,ST=Washington,C=US",
+      "version": 3,
+      "sans": [
+        "ecs.office.com"
+      ],
+      "fingerprints": [
+        {
+          "value": "73556d5e0b4f40194c79d8f803708069c0f3653f306315c314919e9e4fe34d18",
+          "algorithm": "sha256WithRSAEncryption"
+        }
+      ]
+    },
+    "tls_extension_list": [
+      {
+        "type_id": 47,
+        "type": "certificate_authorities",
+        "data": false
+      },
+      {
+        "type_id": 99,
+        "type": "certificate_key_type",
+        "data": "rsa"
+      },
+      {
+        "type_id": 13,
+        "type": "signature_algorithms",
+        "data": "rsaEncryption"
+      },
+      {
+        "type_id": 99,
+        "type": "certificate_key_length",
+        "data": "2048"
+      },
+      {
+        "type_id": 99,
+        "type": "certificate_exponent",
+        "data": "65537"
+      },
+      {
+        "type_id": 99,
+        "type": "is_host_cert",
+        "data": true
+      },
+      {
+        "type_id": 99,
+        "type": "is_client_cert",
+        "data": false
+      }
+    ]
+  }
+}
