@@ -1,0 +1,189 @@
+
+# Sysmon Event ID - 8
+
+## Required fields - v1.0.0
+root.severity_id = 1
+root.process.user.type_id = match this.winlog.event_data.TargetUser {
+    this.contains("NT AUTHORITY") => 3
+    this.contains("my_id_for_my_company") => 1
+    _=> 0
+}
+root.process.user.type = match this.winlog.event_data.TargetUser {
+    this.contains("NT AUTHORITY") => "System"
+    this.contains("my_id_for_my_company") => "User"
+    _=> 0
+}
+root.process.file.type_id = match winlog.event_data.TargetImage.split("\\").index(-1) {
+  this.contains(".") => 1
+  _=> 0
+}
+root.process.file.type = match winlog.event_data.TargetImage.split("\\").index(-1) {
+  this.contains(".") => "Regular File"
+  _=> "Unknown"
+}
+root.process.file.name = this.winlog.event_data.TargetImage.split("\\").index(-1)
+root.metadata.version = "1.0.0"
+root.metadata.profiles = ["security_control","datetime"]
+root.metadata.product.vendor_name = "Sysmon"
+root.time = this.time.ts_unix_milli()
+root.time_dt = this.time
+root.disposition_id = 17
+root.device.type_id = match this.winlog.computer_name {
+  this.contains("WSAMZN") => 6
+  this.contains("EC2AMAZ") => 1
+  _=> 0
+}
+root.device.type = match this.winlog.computer_name {
+  this.contains("WSAMZN") => "Virtual"
+  this.contains("EC2AMAZ") => "Server"
+  _=> 0
+}
+root.class_uid = 1007
+root.category_uid = 1
+root.activity_id = 4
+
+# ## Recomended fields - v1.0.0
+# root.timezone_offset = Not available
+root.status_id = 1
+root.message = this.winlog.task
+root.attacks = [{
+    "version": "v13",
+    "technique": {
+        "name" : this.mitre.technique_name,
+        "uid" : this.mitre.technique_id},
+    "tactics" : [],
+}]
+
+root.process.user.name = this.winlog.event_data.TargetUser.split("\\").index(-1)
+root.process.user.domain = this.winlog.event_data.TargetUser.split("\\").index(0)
+# root.process.user.uid = 10-10-23 - Not available
+root.process.uid = this.winlog.event_data.TargetProcessGuid.trim("{}")
+root.process.pid = this.winlog.event_data.TargetProcessId.number()
+# root.process.namespace_pid = ""
+root.process.name = this.winlog.event_data.TargetImage.split("\\").index(-1)
+root.process.file.path = this.winlog.event_data.TargetImage
+root.process.created_time = this.winlog.event_data.UtcTime.ts_strptime("%Y-%m-%d %H:%M:%S.%f").ts_unix_milli()
+root.process.created_time_dt = this.winlog.event_data.UtcTime
+# root.process.container = ""
+# root.process.cmd_line = Event ID 8 - Does not contain cmd line.
+
+root.actor.process.user.name = this.winlog.event_data.SourceUser.split("\\").index(-1)
+root.actor.process.user.domain = this.winlog.event_data.SourceUser.split("\\").index(0)
+root.actor.process.user.type_id = match this.winlog.event_data.SourceUser {
+    this.contains("NT AUTHORITY") => 3
+    this.contains("my_id_for_my_company") => 1
+    _=> 0
+}
+root.actor.process.user.type = match this.winlog.event_data.SourceUser {
+    this.contains("NT AUTHORITY") => "System"
+    this.contains("my_id_for_my_company") => "User"
+    _=> "Unknown"
+}
+root.actor.process.uid = this.winlog.event_data.SourceProcessGuid.trim("{}")
+root.actor.process.pid = this.winlog.event_data.SourceProcessId.number()
+root.actor.process.name = this.winlog.event_data.SourceImage.split("\\").index(-1)
+# root.actor.process.cmd_line = Event ID 8 - Does not contain cmd line.
+
+root.actor.process.file.path = this.winlog.event_data.SourceImage
+root.actor.process.file.type_id = match winlog.event_data.SourceImage.split("\\").index(-1) {
+  this.contains(".") => 1
+  _=> 0
+}
+root.actor.process.file.type = match winlog.event_data.SourceImage.split("\\").index(-1) {
+  this.contains(".") => "Regular File"
+  _=> "Unknown"
+}
+root.actor.process.file.name = this.winlog.event_data.SourceImage.split("\\").index(-1)
+
+root.metadata.original_time = this.winlog.event_data.UtcTime
+root.metadata.log_provider = this.winlog.channel.split("/").index(0)
+root.metadata.log_name = this.winlog.channel.split("/").index(-1)
+root.metadata.product.version = "15" #TODO: Remove hardcoded value, add field into beats agent.
+root.metadata.product.uid = "NA" #TODO: Create product UID's
+root.metadata.product.name = "Sysmon"
+root.metadata.product.lang = "en"
+
+# root.device.interface_name = Not available in Sysmon
+# root.device.instance_uid = Not available in Sysmon
+root.device.hostname = this.winlog.computer_name.split(".").index(0)
+
+root.actor.user.name = this.winlog.event_data.SourceUser.split("\\").index(-1)
+root.actor.user.domain = this.winlog.event_data.SourceUser.split("\\").index(0)
+root.actor.user.type_id = match this.winlog.event_data.SourceUser.split("\\").index(0) {
+    this.contains("NT AUTHORITY") => 3
+    this.contains("my_id_for_my_company") => 1
+    _=> 0
+}
+root.actor.user.type = match this.winlog.event_data.SourceUser.split("\\").index(0) {
+    this.contains("NT AUTHORITY") => "System"
+    this.contains("my_id_for_my_company") => "User"
+    _=> "Unknown"
+}
+
+root.type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+# # ## Optional fields - v1.0.0
+root.unmapped = this.without(
+  "m",
+  "agent",
+  "@version",
+  "ec2",
+  "ecs",
+  "event",
+  "tags",
+  "env",
+  "log",
+  "@laas",
+  "micros_container",
+  "time",
+  "provider_name",
+  "mitre",
+  "ls_pipeline_id",
+  "winlog.api",
+  "winlog.task",
+  "winlog.computer_name",
+  "winlog.channel",
+  "winlog.event_data.SourceImage",
+  "winlog.event_data.TargetImage",
+  "winlog.event_data.SourceProcessGuid",
+  "winlog.event_data.SourceProcessId",
+  "winlog.event_data.SourceUser",
+  "winlog.event_data.TargetProcessGuid",
+  "winlog.event_data.TargetProcessId",
+  "winlog.event_data.TargetUser",
+  "winlog.event_data.UtcTime"
+)
+# root.status_detail =
+# root.status_code =
+# root.status =
+# root.start_time_dt =
+# root.start_time =
+# root.severity =
+# root.requested_permissions =
+# root.raw_data =
+# root.module =
+# root.malware =
+# root.injection_type_id =
+# root.injection_type =
+# root.exit_code =
+# root.time_dt =
+# root.enrichments =
+# root.end_time_dt =
+# root.end_time =
+# root.duration =
+# root.disposition =
+# root.count =
+root.class_name = "Process Activity"
+root.category_name = "System Activity"
+# root.actual_permissions =
+root.activity_name = "Inject"
+# root.api =
+
+observables = root.without("unmapped").with("device.hostname", "actor.user.name", "process.user.name", "actor.process.user.name", "actor.process.file.name", "process.file.name", "process.name", "actor.process.name").(item -> {
+   "a": match {item.device.exists("hostname") => {"name": "device.hostname", "type": "Hostname", "type_id": 1, "value": item.device.hostname}},
+   "b": match {item.actor.process.user.exists("name") => {"name": "actor.process.user.name", "type": "User Name", "type_id": 4, "value": item.actor.process.user.name}},
+   "c": match {item.process.user.exists("name") => {"name": "process.user.name", "type": "User Name", "type_id": 4, "value": item.process.user.name}},
+   "d": match {item.actor.process.file.exists("name") => {"name": "actor.process.file.name", "type": "File Name", "type_id": 7, "value": item.actor.process.file.name}},
+   "e": match {item.process.file.exists("name") => {"name": "process.file.name", "type": "File Name", "type_id": 7, "value": item.process.file.name}},
+   "f": match {item.process.exists("name") => {"name": "process.name", "type": "Process Name", "type_id": 9, "value": item.process.name}},
+   "g": match {item.actor.process.exists("name") => {"name": "actor.process.name", "type": "Process Name", "type_id": 9, "value": item.actor.process.name}},
+   }).values()

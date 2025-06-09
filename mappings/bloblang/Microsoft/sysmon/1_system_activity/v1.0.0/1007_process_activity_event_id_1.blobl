@@ -1,0 +1,234 @@
+
+# Sysmon Event ID - 1
+
+## Required fields - v1.0.0
+root.severity_id = 1
+
+let winlogUser = if this.winlog.event_data.exists("User") { this.winlog.event_data.User } else { this.winlog.event_data.TargetUser }
+
+root.process.user.type_id = match $winlogUser {
+    this.contains("NT AUTHORITY") => 3
+    this.contains("my_id_for_my_company") => 1
+    _=> 0
+}
+
+root.process.user.type = match $winlogUser {
+    this.contains("NT AUTHORITY") => "System"
+    this.contains("my_id_for_my_company") => "User"
+    _=> 0
+}
+
+let winlogProcessImage = if winlog.event_data.exists("Image") { this.winlog.event_data.Image } else { this.winlog.event_data.TargetImage }
+root.process.file.type_id = match $winlogProcessImage.split("\\").index(-1) {
+  this.contains(".") => 1
+  _=> 0
+}
+root.process.file.type = match $winlogProcessImage.split("\\").index(-1) {
+  this.contains(".") => "Regular File"
+  _=> "Unknown"
+}
+root.process.file.name = $winlogProcessImage.split("\\").index(-1)
+root.metadata.version = "1.0.0"
+root.metadata.profiles = ["security_control","datetime"]
+root.metadata.product.vendor_name = "Sysmon"
+root.time = this.time.ts_unix_milli()
+root.time_dt = this.time
+root.disposition_id = 17
+root.device.type_id = match this.winlog.computer_name {
+  this.contains("WSAMZN") => 6
+  this.contains("EC2AMAZ") => 1
+  _=> 0
+}
+root.device.type = match this.winlog.computer_name {
+  this.contains("WSAMZN") => "Virtual"
+  this.contains("EC2AMAZ") => "Server"
+  _=> 0
+}
+root.class_uid = 1007
+root.category_uid = 1
+root.activity_id = 1
+
+# ## Recomended fields - v1.0.0
+# root.timezone_offset = Not available
+root.status_id = 1
+root.message = this.winlog.task
+root.attacks = [{
+    "version": "v13",
+    "technique": {
+        "name" : this.mitre.technique_name,
+        "uid" : this.mitre.technique_id},
+    "tactics" : [],
+}]
+
+root.process.user.name = this.winlog.event_data.User.split("\\").index(1) | deleted()
+root.process.user.domain = this.winlog.event_data.User.split("\\").index(0) | deleted()
+# root.process.user.uid = Not available
+root.process.uid = if this.winlog.event_data.exists("ProcessGuid") { this.winlog.event_data.ProcessGuid.trim("{}") } else { this.winlog.event_data.TargetProcessGUID.trim("{}") }
+root.process.pid = if this.winlog.event_data.exists("ProcessId") { this.winlog.event_data.ProcessId.number()} else { this.winlog.event_data.TargetProcessId.number() }
+# root.process.namespace_pid = ""
+root.process.name = this.winlog.event_data.OriginalFileName
+root.process.file.path = if this.winlog.event_data.exists("Image") { this.winlog.event_data.Image } else { this.winlog.event_data.TargetImage }
+root.process.created_time = this.winlog.event_data.UtcTime.ts_strptime("%Y-%m-%d %H:%M:%S.%f").ts_unix_milli()
+root.process.created_time_dt = this.winlog.event_data.UtcTime
+# root.process.container = ""
+root.process.cmd_line = this.winlog.event_data.CommandLine
+
+let parentUserName = if this.winlog.event_data.ParentUser.type() == "array" { this.winlog.event_data.ParentUser.index(0).split("\\").index(-1) }
+                     else if this.winlog.event_data.exists("ParentUser") { this.winlog.event_data.ParentUser.split("\\").index(-1) }
+                     else if this.winlog.event_data.exists("SourceUser") { this.winlog.event_data.SourceUser.split("\\").index(-1) }
+                     else { "Unknown" }
+
+let parentUserDomain = if this.winlog.event_data.ParentUser.type() == "array" { this.winlog.event_data.ParentUser.index(0).split("\\").index(-0) }
+                     else if this.winlog.event_data.exists("ParentUser") { this.winlog.event_data.ParentUser.split("\\").index(-0) }
+                     else if this.winlog.event_data.exists("SourceUser") { this.winlog.event_data.SourceUser.split("\\").index(-0) }
+                     else { "Unknown" }
+
+root.actor.process.user.name = $parentUserName
+root.actor.process.user.domain = $parentUserDomain
+root.actor.process.user.type_id = match $parentUserDomain {
+    this.contains("NT AUTHORITY") => 3
+    this.contains("my_id_for_my_company") => 1
+    _=> 0
+}
+
+root.actor.process.user.type = match $parentUserDomain {
+    this.contains("NT AUTHORITY") => "System"
+    this.contains("my_id_for_my_company") => "User"
+    _=> "Unknown"
+}
+root.actor.process.uid = this.winlog.event_data.ParentProcessGuid.trim("{}") | deleted()
+root.actor.process.pid = this.winlog.event_data.ParentProcessId.number() | deleted()
+root.actor.process.name = this.winlog.event_data.ParentImage.split("\\").index(-1) | deleted()
+root.actor.process.cmd_line = this.winlog.event_data.ParentCommandLine | deleted()
+
+root.actor.process.file.path = this.winlog.event_data.ParentImage
+
+root.actor.process.file.type_id = match winlog.event_data.ParentImage.split("\\").index(-1) {
+  this.contains(".") => 1
+  _=> 0
+} | deleted()
+root.actor.process.file.type = match winlog.event_data.ParentImage.split("\\").index(-1) {
+  this.contains(".") => "Regular File"
+  _=> "Unknown"
+} | deleted()
+root.actor.process.file.name = this.winlog.event_data.ParentImage.split("\\").index(-1) | deleted()
+
+root.metadata.original_time = this.winlog.event_data.UtcTime
+root.metadata.log_provider = this.winlog.channel.split("/").index(0)
+root.metadata.log_name = this.winlog.channel.split("/").index(-1)
+root.metadata.product.version = "15" #TODO: Remove hardcoded value, add field into beats agent.
+root.metadata.product.uid = "NA" #TODO: Create product UID's
+root.metadata.product.name = "Sysmon"
+root.metadata.product.lang = "en"
+
+# root.device.interface_name = Not available in Sysmon
+# root.device.instance_uid = Not available in Sysmon
+root.device.hostname = this.winlog.computer_name.split(".").index(0)
+
+root.actor.user.name = $parentUserName
+root.actor.user.domain = $parentUserDomain
+root.actor.user.type_id = match $parentUserDomain {
+    this.contains("NT AUTHORITY") => 3
+    this.contains("my_id_for_my_company") => 1
+    _=> 0
+}
+root.actor.user.type = match $parentUserDomain {
+    this.contains("NT AUTHORITY") => "System"
+    this.contains("my_id_for_my_company") => "User"
+    _=> "Unknown"
+}
+root.actor.process.file.hashes = if this.winlog.event_data.exists("Hash") {this.winlog.event_data.Hash.key_values().map_each(item -> {
+    "algorithm_id": match {
+        item.key == "MD5" => 1,
+        item.key == "SHA1" => 2,
+        item.key == "SHA256" => 3,
+        item.key == "IMPHASH" => 99,
+    },
+    "algorithm": match {
+        item.key == "MD5" => "MD5",
+        item.key == "SHA1" => "SHA-1",
+        item.key == "SHA256" => "SHA-256",
+        item.key == "IMPHASH" => "IMPHASH"
+
+    },
+    "value": item.value}) } else {deleted()}
+
+root.type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+# # ## Optional fields - v1.0.0
+root.unmapped = this.without(
+  "m",
+  "agent",
+  "@version",
+  "ec2",
+  "ecs",
+  "event",
+  "tags",
+  "env",
+  "log",
+  "@laas",
+  "micros_container",
+  "time",
+  "provider_name",
+  "mitre",
+  "ls_pipeline_id",
+  "winlog.api",
+  "winlog.task",
+  "winlog.computer_name",
+  "winlog.event_data.CommandLine",
+  "winlog.event_data.Hash",
+  "winlog.channel",
+  "winlog.event_data.Image",
+  "winlog.event_data.OriginalFileName",
+  "winlog.event_data.ParentCommandLine",
+  "winlog.event_data.ParentImage",
+  "winlog.event_data.ParentProcessGuid",
+  "winlog.event_data.ParentProcessId",
+  "winlog.event_data.ParentUser",
+  "winlog.event_data.ProcessGuid",
+  "winlog.event_data.ProcessId",
+  "winlog.event_data.User",
+  "winlog.event_data.UtcTime"
+)
+# root.status_detail =
+# root.status_code =
+# root.status =
+# root.start_time_dt =
+# root.start_time =
+# root.severity =
+# root.requested_permissions =
+# root.raw_data =
+# root.module =
+# root.malware =
+# root.injection_type_id =
+# root.injection_type =
+# root.exit_code =
+# root.time_dt =
+# root.enrichments =
+# root.end_time_dt =
+# root.end_time =
+# root.duration =
+# root.disposition =
+# root.count =
+root.class_name = "Process Activity"
+root.category_name = "System Activity"
+# root.actual_permissions =
+root.activity_name = "Launch"
+# root.api =
+
+let myhash = if root.actor.process.file.exists("hashes") { root.actor.process.file.hashes.map_each(hash -> hash.value).collapse() } else {"unknown"}
+
+observables = root.without("unmapped").with("device.hostname", "actor.user.name", "process.user.name", "actor.process.user.name", "actor.process.file.name", "actor.process.name", "process.name").merge($myhash).(item -> {
+    "a": match {item.device.exists("hostname") => {"name": "device.hostname", "type": "Hostname", "type_id": 1, "value": item.device.hostname}},
+    "b": match {item.actor.user.exists("name") => {"name": "actor.user.name", "type": "User Name", "type_id": 4, "value": item.actor.user.name}},
+    "c": match {item.process.user.exists("name") => {"name": "process.user.name", "type": "User Name", "type_id": 4, "value": item.process.user.name}},
+    "d": match {item.actor.process.user.exists("name") => {"name": "actor.process.user.name", "type": "User Name", "type_id": 4, "value": item.actor.process.user.name}},
+    "e": match {item.actor.process.file.exists("name") => {"name": "actor.process.file.name", "type": "File Name", "type_id": 7, "value": item.actor.process.file.name}},
+    "f": match {item.actor.process.exists("name") => {"name": "actor.process.name", "type": "Process Name", "type_id": 9, "value": item.actor.process.name}},
+    "g": match {item.process.exists("name") => {"name": "process.name", "type": "Process Name", "type_id": 9, "value": item.process.name}},
+    "h": match {item.exists("0") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.0}},
+    "i": match {item.exists("1") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.1}},
+    "j": match {item.exists("2") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.2}},
+    "k": match {item.exists("3") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.3}},
+    "l": match {item.exists("4") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.4}},
+    "m": match {item.exists("5") => {"name": "actor.process.file.hashes.value", "type": "File Hash", "type_id": 8, "value": item.5}},
+    }).values()
