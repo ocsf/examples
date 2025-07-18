@@ -1,0 +1,83 @@
+{
+    "activity_id": 2,
+    "activity_name": "Read",
+    "actor": {
+        "user": {
+            "account": {
+                "uid": "1111111111111"
+            },
+            "credential_uid": "AKIA3Z2XBVEXAMPLE",
+            "name": "Level6",
+            "type": "IAMUser",
+            "uid": "arn:aws:iam::1111111111111:user/Level6",
+            "uid_alt": "AIDADO2GQEXAMPLE"
+        }
+    },
+    "api": {
+        "operation": "DescribeDirectConnectGateways",
+        "request": {
+            "uid": "1c8a6220-4263-4763-b526-example"
+        },
+        "response": {
+            "data": "{\"directConnectGateways\":[]}"
+        },
+        "service": {
+            "name": "directconnect.amazonaws.com"
+        },
+    },
+    "category_name": "Application Activity",
+    "category_uid": 6,
+    "class_name": "API Activity",
+    "class_uid": 6003,
+    "cloud": {
+        "account": {
+            "uid": "1111111111111"
+        },
+        "provider": "AWS",
+        "region": "us-east-1"
+    },
+    "http_request": {
+        "user_agent": "Boto3/1.15.2 Python/3.8.2 Linux/5.6.3-arch1-1 Botocore/1.18.2"
+    },
+    "metadata": {
+        "event_code": "AwsApiCall",
+        "product": {
+            "feature": {
+                "name": "Management, Data, and Insights"
+            },
+            "name": "CloudTrail",
+            "vendor_name": "AWS",
+            "version": "1.05"
+        },
+        "profiles": [
+            "cloud",
+            "datetime"
+        ],
+        "uid": "71c88be9-ea5c-43c7-8c82-example",
+        "version": "1.5.0"
+    },
+    "observables": [
+        {
+            "name": "actor.user.name",
+            "value": "Level6",
+            "type": "User Name",
+            "type_id": 4
+        },
+        {
+            "name": "src_endpoint.ip",
+            "value": "205.8.181.128",
+            "type": "IP Address",
+            "type_id": 2
+        }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+        "ip": "205.8.181.128"
+    },
+    "status": "Success",
+    "time": 1695334972000,
+    "time_dt": "2023-09-21T22:22:52+00:00",
+    "type_name": "API Activity: Read",
+    "type_uid": 600302
+}

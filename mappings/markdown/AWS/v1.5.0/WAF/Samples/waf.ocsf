@@ -1,0 +1,174 @@
+{
+    "action": "Denied",
+    "action_id": 2,
+    "activity_id": 3,
+    "activity_name": "Get",
+    "category_name": "Network Activity",
+    "category_uid": 4,
+    "class_name": "HTTP Activity",
+    "class_uid": 4002,
+    "cloud": {
+        "provider": "AWS"
+    },
+    "disposition": "Blocked",
+    "disposition_id": 2,
+    "firewall_rule": {
+        "condition": "SQL_INJECTION",
+        "match_details": [
+            "10",
+            "AND",
+            "1"
+        ],
+        "match_location": "HEADER",
+        "name": "RateBasedRule",
+        "rate_limit": 100,
+        "sensitivity": "HIGH",
+        "type": "REGULAR",
+        "uid": "Default_Action"
+    },
+    "http_request": {
+        "args": "",
+        "http_headers": [
+            {
+                "name": "X-Forwarded-For",
+                "value": "1.2.3.4"
+            },
+            {
+                "name": "X-Forwarded-Proto",
+                "value": "https"
+            },
+            {
+                "name": "X-Forwarded-Port",
+                "value": "443"
+            },
+            {
+                "name": "Host",
+                "value": "example.com"
+            },
+            {
+                "name": "sec-ch-ua",
+                "value": "\"Chromium\";v=\"94\",\"Google Chrome\";v=\"94\",\";Not A Brand\";v=\"99\""
+            },
+            {
+                "name": "sec-ch-ua-mobile",
+                "value": "?0"
+            },
+            {
+                "name": "sec-ch-ua-platform",
+                "value": "\"Windows\""
+            },
+            {
+                "name": "upgrade-insecure-requests",
+                "value": "1"
+            },
+            {
+                "name": "user-agent",
+                "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36"
+            },
+            {
+                "name": "accept",
+                "value": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"
+            }
+        ],
+        "http_method": "GET",
+        "referrer": null,
+        "uid": "1-6877bf1e-1bdf277e1ec7627716dfa10a",
+        "url": {
+            "hostname": "example.com",
+            "path": "/pen-test/pets"
+        },
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.54 Safari/537.36",
+        "version": "HTTP/1.1",
+        "x_forwarded_for": [
+            "1.2.3.4"
+        ]
+    },
+    "http_status": null,
+    "ja4_fingerprint_list": [
+        {
+            "type_id": 1,
+            "type": "JA4",
+            "value": "t13d1812h1_91b4e2f43a96_a791466c72b5"
+        }
+    ],
+    "metadata": {
+        "labels": null,
+        "product": {
+            "feature": {
+                "uid": "arn:aws:wafv2:us-east-2:123456789012:regional/webacl/general/fde13fa7-985f-4748-a25e-a2f878a6fa4f"
+            },
+            "name": "AWS WAF",
+            "vendor_name": "AWS",
+            "version": "1"
+        },
+        "profiles": [
+            "cloud",
+            "security_control",
+            "datetime"
+        ],
+        "version": "1.5.0"
+    },
+    "observables": [
+        {
+            "name": "http_request.url.hostname",
+            "value": "example.com",
+            "type": "Hostname",
+            "type_id": 1
+        },
+        {
+            "name": "src_endpoint.uid",
+            "value": "123456789012-app/Farga-1QNOPZIZ7Q77S/aa203f745ebef845",
+            "type": "Resource UID",
+            "type_id": 10
+        },
+        {
+            "name": "firewall_rule.uid",
+            "value": "Default_Action",
+            "type": "Resource UID",
+            "type_id": 10
+        },
+        {
+            "name": "src_endpoint.ip",
+            "value": "1.2.3.4",
+            "type": "IP Address",
+            "type_id": 2
+        }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+        "ip": "1.2.3.4",
+        "location": {
+            "country": "US"
+        },
+        "svc_name": "ALB",
+        "uid": "123456789012-app/Farga-1QNOPZIZ7Q77S/aa203f745ebef845"
+    },
+    "time": 1752678174452,
+    "time_dt": "2025-07-16 15:02:54.452000+00:00",
+    "tls": {
+        "ja3_hash": {
+            "algorithm": "MD5",
+            "algorithm_id": 1,
+            "value": "71912442e2cef8ae6f8ea3aba3fc0da9"
+        },
+        "version": "1.3"
+    },
+    "type_name": "HTTP Activity: Get",
+    "type_uid": 400203,
+    "unmapped": {
+        "captchaResponse.failureReason": "TOKEN_MISSING",
+        "captchaResponse.responseCode": "405",
+        "captchaResponse.solveTimestamp": "0",
+        "httpRequest.fragment": "",
+        "httpRequest.host": "somewhere.someone.dev",
+        "httpRequest.scheme": "https",
+        "rateBasedRuleList[].customValues[].key": "HEADER",
+        "rateBasedRuleList[].customValues[].name": "dogname",
+        "rateBasedRuleList[].customValues[].value": "ella",
+        "rateBasedRuleList[].evaluationWindowSec": "120",
+        "rateBasedRuleList[].limitKey": "CUSTOMKEYS",
+        "rateBasedRuleList[].rateBasedRuleId": "example",
+        "ruleGroupList[].ruleGroupId": "AWS#AWSProtectionRuleSet,AWS#AWSIpReputationList"
+    }
+}
