@@ -34,8 +34,8 @@
 |||
 |`confidence_score`|`Confidence`|
 |||
-|`time`|`LastObservedAt`|
-|`time_dt`|`LastObservedAt`|
+|`time`|`UpdatedAt`|
+|`time_dt`|`UpdatedAt`|
 |||
 |`finding_info.uid`|`Id`|
 |`finding_info.src_url`|`SourceUrl`|
