@@ -73,6 +73,10 @@ Any fields not present in an explicit mapping will be mapped to the unmapped obj
 |`activity_id`|`eventName`|
 |`type_uid`|`eventName`|
 |`type_name`|`eventName`|
+|`actor.user.credential_uid`|`userIdentity.credentialId`|
+|`actor.user.name`|`additionalEventData.UserName`|
+|`actor.user.uid_alt`|`userIdentity.onBehalfOf.userId`|
+|`actor.idp.uid`|`userIdentity.onBehalfOf.identityStoreArn`|
 
 ### Observables:
 

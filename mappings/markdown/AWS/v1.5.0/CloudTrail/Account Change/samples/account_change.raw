@@ -1,0 +1,45 @@
+{
+    "eventVersion": "1.11",
+    "userIdentity": {
+        "type": "AssumedRole",
+        "principalId": "AROA2W7SOKHEXAMPLE:scheduler",
+        "arn": "arn:aws:sts::112233445566:assumed-role/AWSServiceRole/scheduler",
+        "accountId": "112233445566",
+        "accessKeyId": "ASIA2W7SOKHEXAMPLE",
+        "sessionContext": {
+            "sessionIssuer": {
+                "type": "Role",
+                "principalId": "AROA2W7SOKHEXAMPLE",
+                "arn": "arn:aws:iam::112233445566:role/aws-service-role/Admin",
+                "accountId": "112233445566",
+                "userName": "Admin"
+            },
+            "attributes": {
+                "creationDate": "2025-07-18T14:56:35Z",
+                "mfaAuthenticated": "false"
+            }
+        },
+        "invokedBy": "ecs.amazonaws.com"
+    },
+    "eventTime": "2025-07-18T15:02:39Z",
+    "eventSource": "elasticloadbalancing.amazonaws.com",
+    "eventName": "DescribeTargetHealth",
+    "awsRegion": "us-east-2",
+    "sourceIPAddress": "ecs.amazonaws.com",
+    "userAgent": "ecs.amazonaws.com",
+    "requestParameters": {
+        "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-2:112233445566:targetgroup/alpha-EXAMPLE"
+    },
+    "responseElements": "",
+    "requestID": "d4af67c0-6f6c-4669-bcbb-96b7b039bed1",
+    "eventID": "1f28a3f1-106d-4f56-b4ab-a4a18697d7d8",
+    "readOnly": true,
+    "eventType": "AwsApiCall",
+    "apiVersion": "2015-12-01",
+    "managementEvent": true,
+    "recipientAccountId": "112233445566",
+    "eventCategory": "Management",
+    "resources": "",
+    "sharedEventID": "",
+    "vpcEndpointId": ""
+}

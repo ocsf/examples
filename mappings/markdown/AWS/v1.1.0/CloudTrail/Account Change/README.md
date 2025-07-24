@@ -65,6 +65,9 @@
 |`src_endpoint.ip/src_endpoint.domain`|`sourceIPAddress`|
 |`status`|`errorCode`|
 |`activity_name/activity_id/type_uid/type_name`|`eventName`|
+|`actor.user.credential_uid`|`userIdentity.credentialId`|
+|`actor.user.name`|`additionalEventData.UserName`|
+|`actor.user.uid_alt`|`userIdentity.onBehalfOf.userId`|
 
 ### Observables:
 
