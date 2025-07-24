@@ -68,6 +68,10 @@
 |`status`|`responseElements.ConsoleLogin`|
 |`is_mfa`|`additionalEventData.MFAUsed`|
 |`activity_name/activity_id/type_name/type_name/type_uid`|`eventName`|
+|`actor.user.credential_uid`|`userIdentity.credentialId`|
+|`actor.user.name`|`additionalEventData.UserName`|
+|`actor.user.uid_alt`|`userIdentity.onBehalfOf.userId`|
+|`actor.idp.uid`|`userIdentity.onBehalfOf.identityStoreArn`|
 
 ### Observables:
 

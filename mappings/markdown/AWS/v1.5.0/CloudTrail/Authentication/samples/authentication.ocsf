@@ -1,0 +1,88 @@
+{
+    "activity_id": 99,
+    "activity_name": "CredentialChallenge",
+    "actor": {
+        "idp": {
+            "uid": "arn:aws:identitystore::123456789012:identitystore/d-9911111111"
+        },
+        "user": {
+            "account": {
+                "uid": "123456789012"
+            },
+            "credential_uid": "da3f6703-d424-sasf-848d-b0f3384681d64",
+            "name": "test",
+            "type": "IdentityCenterUser",
+            "uid_alt": "e3644802-3061-7018-86c3-USERID"
+        }
+    },
+    "api": {
+        "operation": "CredentialChallenge",
+        "request": {
+            "uid": "1f9bc62c-58d5-4abc-aeb3-fafa2e27d719"
+        },
+        "service": {
+            "name": "signin.amazonaws.com"
+        },
+    },
+    "category_name": "Identity & Access Management",
+    "category_uid": 3,
+    "class_name": "Authentication",
+    "class_uid": 3002,
+    "cloud": {
+        "account": {
+            "uid": "123456789012"
+        },
+        "provider": "AWS",
+        "region": "eu-central-1"
+    },
+    "http_request": {
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:129.0) Gecko/20100101 Firefox/129.0"
+    },
+    "metadata": {
+        "event_code": "AwsServiceEvent",
+        "product": {
+            "feature": {
+                "name": "Management"
+            },
+            "name": "CloudTrail",
+            "vendor_name": "AWS",
+            "version": "1.08"
+        },
+        "profiles": [
+            "cloud",
+            "datetime"
+        ],
+        "uid": "09dc33de-9ddb-4fae-b81b-92465dbf6b61",
+        "version": "1.5.0"
+    },
+    "observables": [
+        {
+            "name": "actor.user.name",
+            "value": "test",
+            "type": "User Name",
+            "type_id": 4
+        },
+        {
+            "name": "src_endpoint.ip",
+            "value": "0.0.0.0",
+            "type": "IP Address",
+            "type_id": 2
+        }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+        "ip": "0.0.0.0"
+    },
+    "time": 1726763566000,
+    "time_dt": "2024-09-19T16:32:46+00:00",
+    "type_name": "Authentication: Other",
+    "type_uid": 300299,
+    "unmapped": {
+        "additionalEventData.AuthWorkflowID": "da3f6703-d4a3-4aa9-848d-b0f333b81d64",
+        "additionalEventData.CredentialType": "PASSWORD",
+        "managementEvent": "true",
+        "readOnly": "false",
+        "serviceEventDetails.CredentialChallenge": "Success"
+    }
+}

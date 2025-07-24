@@ -1,0 +1,109 @@
+{
+    "action": "Allowed",
+    "action_id": 1,
+    "activity_id": 6,
+    "activity_name": "Traffic",
+    "category_name": "Network Activity",
+    "category_uid": 4,
+    "class_name": "Network Activity",
+    "class_uid": 4001,
+    "cloud": {
+        "account": {
+            "uid": "123456789012"
+        },
+        "provider": "AWS",
+        "region": "us-east-2",
+        "zone": "use2-az2"
+    },
+    "connection_info": {
+        "boundary": "Same VPC",
+        "boundary_id": 4,
+        "direction": "Outbound",
+        "direction_id": 2,
+        "protocol_num": 6,
+        "protocol_ver": "IPv4",
+        "tcp_flags": 19
+    },
+    "disposition": "Allowed",
+    "dst_endpoint": {
+        "intermediate_ips": [
+            "10.0.0.1"
+        ],
+        "ip": "1.2.3.5",
+        "port": 8864,
+        "svc_name": "-"
+    },
+    "end_time_dt": "2025-07-11 15:26:43+00:00",
+    "metadata": {
+        "product": {
+            "feature": {
+                "name": "Flowlogs"
+            },
+            "name": "Amazon VPC",
+            "vendor_name": "AWS",
+            "version": "8"
+        },
+        "profiles": [
+            "cloud",
+            "security_control",
+            "datetime"
+        ],
+        "version": "1.5.0"
+    },
+    "observables": [
+        {
+            "name": "dst_endpoint.intermediate_ips[]",
+            "value": "10.0.0.1",
+            "type": "IP Address",
+            "type_id": 2
+        },
+        {
+            "name": "dst_endpoint.ip",
+            "value": "1.2.3.5",
+            "type": "IP Address",
+            "type_id": 2
+        },
+        {
+            "name": "src_endpoint.ip",
+            "value": "1.2.3.4",
+            "type": "IP Address",
+            "type_id": 2
+        }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+        "instance_uid": "-",
+        "interface_uid": "eni-0000000000000000",
+        "ip": "1.2.3.4",
+        "port": 8080,
+        "subnet_uid": "subnet-04941e5249e5fb165",
+        "svc_name": "-",
+        "vpc_uid": "vpc-00000000"
+    },
+    "start_time_dt": "2025-07-11 15:26:24+00:00",
+    "status_code": "OK",
+    "time": 1752247584000,
+    "time_dt": "2025-07-11 15:26:24+00:00",
+    "traffic": {
+        "bytes": 38526,
+        "packets": 8
+    },
+    "type_name": "Network Activity: Traffic",
+    "type_uid": 400106,
+    "unmapped": {
+        "ecs_cluster_arn": "arn:aws:ecs:us-east-2:123456789012:cluster/HostingStack-servercluster001A1A00-VR6z36tUltC8",
+        "ecs_cluster_name": "HostingStack-servercluster001A1A00-VR6z36tUltC8",
+        "ecs_container_id": "k5ivh86ham2ic6vhiadec7190329gyov-2248247952",
+        "ecs_container_instance_arn": "-",
+        "ecs_container_instance_id": "-",
+        "ecs_second_container_id": "k5ivh86ham2ic6vhiadec7190329gyov-3192794795",
+        "ecs_service_name": "HostingStack-FargateServiceECC8084D-5sikMgI6TJV1",
+        "ecs_task_arn": "arn:aws:ecs:us-east-2:123456789012:task/HostingStack-servercluster001A1A00-VR6z36tUltC8/k5ivh86ham2ic6vhiadec7190329gyov",
+        "ecs_task_definition_arn": "arn:aws:ecs:us-east-2:123456789012:task-definition/HostingStackocsfservertaskFFCA8C4A:236",
+        "ecs_task_id": "k5ivh86ham2ic6vhiadec7190329gyov",
+        "reject_reason": "Accepted",
+        "sublocation_id": "-",
+        "sublocation_type": "-"
+    }
+}
