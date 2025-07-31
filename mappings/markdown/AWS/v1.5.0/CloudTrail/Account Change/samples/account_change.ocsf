@@ -1,0 +1,95 @@
+{
+    "activity_id": 2,
+    "activity_name": "Read",
+    "actor": {
+        "invoked_by": "ecs.amazonaws.com",
+        "session": {
+            "created_time_dt": "2025-07-18T14:56:35.000-04:00",
+            "is_mfa": false,
+            "issuer": "arn:aws:iam::112233445566:role/aws-service-role/Admin"
+        },
+        "user": {
+            "account": {
+                "uid": "112233445566"
+            },
+            "credential_uid": "ASIA2W7SOKHEXAMPLE",
+            "type": "AssumedRole",
+            "uid": "arn:aws:sts::112233445566:assumed-role/AWSServiceRole/scheduler",
+            "uid_alt": "AROA2W7SOKHEXAMPLE:scheduler"
+        }
+    },
+    "api": {
+        "operation": "DescribeTargetHealth",
+        "request": {
+            "data": "{\"targetGroupArn\":\"arn:aws:elasticloadbalancing:us-east-2:112233445566:targetgroup/alpha-EXAMPLE\"}",
+            "uid": "d4af67c0-6f6c-4669-bcbb-96b7b039bed1"
+        },
+        "response": {
+            "data": ""
+        },
+        "service": {
+            "name": "elasticloadbalancing.amazonaws.com"
+        },
+        "version": "2015-12-01"
+    },
+    "category_name": "Application Activity",
+    "category_uid": 6,
+    "class_name": "API Activity",
+    "class_uid": 6003,
+    "cloud": {
+        "account": {
+            "uid": "112233445566"
+        },
+        "provider": "AWS",
+        "region": "us-east-2"
+    },
+    "http_request": {
+        "user_agent": "ecs.amazonaws.com"
+    },
+    "metadata": {
+        "event_code": "AwsApiCall",
+        "product": {
+            "feature": {
+                "name": "Management"
+            },
+            "name": "CloudTrail",
+            "vendor_name": "AWS",
+            "version": "1.11"
+        },
+        "profiles": [
+            "cloud",
+            "datetime"
+        ],
+        "uid": "1f28a3f1-106d-4f56-b4ab-a4a18697d7d8",
+        "version": "1.5.0"
+    },
+    "observables": [
+        {
+            "name": "src_endpoint.domain",
+            "value": "ecs.amazonaws.com",
+            "type": "Hostname",
+            "type_id": 1
+        }
+    ],
+    "severity": "Informational",
+    "severity_id": 1,
+    "src_endpoint": {
+        "domain": "ecs.amazonaws.com",
+        "uid": ""
+    },
+    "status": "Success",
+    "time": 1752850959000,
+    "time_dt": "2025-07-18T15:02:39.000-04:00",
+    "type_name": "API Activity: Read",
+    "type_uid": 600302,
+    "unmapped": {
+        "managementEvent": "true",
+        "readOnly": "true",
+        "resources": "",
+        "sharedEventID": "",
+        "userIdentity.sessionContext.sessionIssuer.accountId": "112233445566",
+        "userIdentity.sessionContext.sessionIssuer.principalId": "AROA2W7SOKHEXAMPLE",
+        "userIdentity.sessionContext.sessionIssuer.type": "Role",
+        "userIdentity.sessionContext.sessionIssuer.userName": "Admin"
+    }
+}
