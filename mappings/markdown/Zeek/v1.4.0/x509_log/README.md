@@ -20,7 +20,7 @@
 | `metadata.product.vendor_name`      | "Zeek"       |            |
 | `activity_id`                       | 99           | Integer    |
 | `activity_name`                     | "Certificate details" |   |
-| `type_uid`                          | 300299       | Integer    |
+| `type_uid`                          | 400199       | Integer    |
 | `service.name`                      | "N/A"        |            |
 | `user.name`                         | "N/A"        |            |
 

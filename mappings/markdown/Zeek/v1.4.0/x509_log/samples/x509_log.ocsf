@@ -17,7 +17,7 @@
   "severity_id": 1,
   "activity_id": 99,
   "activity_name": "Certificate details",
-  "type_uid": 300299,
+  "type_uid": 400199,
   "service": {
     "name": "N/A"
   },

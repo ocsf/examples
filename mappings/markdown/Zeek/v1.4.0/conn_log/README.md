@@ -36,7 +36,7 @@
 | `src_endpoint.mac`            | `orig_l2_addr`  | Link-layer address of the originator, if available.                                     | Type is mac_t.          |
 | `dst_endpoint.ip`             | `id.resp_h`     | The responder’s IP address.                                                             | Type is ip_t.           |
 | `dst_endpoint.port`           | `id.resp_p`     | The responder’s port number.                                                            | Type is port_t (Integer). |
-| `dst_endpoint.location.country` | `resp_cc`     | Country code for GeoIP lookup of the responding IP address.                             | Type is mac_t.          |
+| `dst_endpoint.location.country` | `resp_cc`     | Country code for GeoIP lookup of the responding IP address.                             |                         |
 | `dst_endpoint.mac`            | `resp_l2_addr`  | Link-layer address of the responder, if available.                                      |                         |
 | `app_name`                    | `service`       | An identification of an application protocol being sent over the connection.            |                         |
 | `connection_info.community_uid` | `community_id`| The community ID.                                                                       |                         |
