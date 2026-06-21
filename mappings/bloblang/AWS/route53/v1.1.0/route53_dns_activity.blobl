@@ -95,6 +95,6 @@ root.unmapped = this.without(
     "timestamp",
     )
 observables = root.without("unmapped").with("query.hostname", "src_endpoint.ip").( item -> { 
-    "a": match {item.query.exists("hostname") => {"name": "query.hostname", "type": "IP Address", "type_id": 1, "value": item.query.hostname}},
+    "a": match {item.query.exists("hostname") => {"name": "query.hostname", "type": "Hostname", "type_id": 1, "value": item.query.hostname}},
     "b": match {item.src_endpoint.exists("ip") => {"name": "src_endpoint.ip", "type": "IP Address", "type_id": 2, "value": item.src_endpoint.ip}},
     }).values()

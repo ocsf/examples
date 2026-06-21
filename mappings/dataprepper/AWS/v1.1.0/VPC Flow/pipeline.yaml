@@ -171,7 +171,7 @@ pipeline:
           - key: type_name
             add_when: /action == "ACCEPT"
             value: 'Network Activity: Traffic'
-          - key: type_uid
+          - key: type_name
             add_when: /action == "REJECT"
             value: 'Network Activity: Refuse'
     - add_entries:
