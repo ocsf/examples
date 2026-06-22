@@ -91,7 +91,7 @@ root.time = this.eventTime.ts_unix_milli()
 root.time_dt = this.eventTime
 
 root.user.uid = this.(requestParameters.roleArn|userIdentity.arn)
-root.user.name = if this.requestParameters.exists("roleSessionName"){this.requestParameters} else {deleted()}
+root.user.name = this.(userIdentity.userName|requestParameters.roleSessionName)
 root.user.uid_alt = this.userIdentity.principalId
 
 root.unmapped = this.without(
