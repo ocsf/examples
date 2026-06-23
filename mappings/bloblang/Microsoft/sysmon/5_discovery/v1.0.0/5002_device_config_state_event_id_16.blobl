@@ -1,0 +1,51 @@
+
+root.category_uid = 5
+root.category_name = "Discovery"
+root.class_uid = 5002
+root.class_name = "Device Config State"
+root.activity_name = "Log"
+root.activity_id = 1
+root.type_name = "Device Config State: Log"
+root.time = this.winlog.event_data.UtcTime.ts_strptime("%Y-%m-%d %H:%M:%S.%f").ts_unix_milli()
+root.time_dt = this.winlog.event_data.UtcTime
+root.message = this.winlog.task
+root.severity_id = 1
+root.severity = "Informational"
+root.status_id = 1
+
+root.metadata.profiles = ["host", "security_control","datetime"]
+root.metadata.event_code = this.winlog.event_id
+root.metadata.uid = this.winlog.record_id.string()
+root.metadata.logged_time = this.event.created.ts_unix_milli()
+root.metadata.logged_time_dt = this.event.created
+root.metadata.log_name = this.winlog.channel
+root.metadata.log_provider = this.winlog.provider_name
+root.metadata.product.lang = "EN"
+root.metadata.product.name = "Sysmon"
+root.metadata.product.vendor_name = "Sysmon"
+root.metadata.version = "1.0.0"
+root.metadata.original_time = this.winlog.event_data.UtcTime
+
+root.device.type = "Server"
+root.device.type_id = 1
+root.device.hostname = this.winlog.computer_name.split(".").index(0)
+root.device.os.type_id = 100
+root.device.os.type = "Windows"
+root.device.os.name = "Microsoft Windows"
+
+root.type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+root.unmapped = this.without(
+    "winlog.event_data.UtcTime",
+    "winlog.task",
+    "winlog.event_id",
+    "winlog.record_id",
+    "event.created",
+    "winlog.channel",
+    "winlog.provider_name",
+    "mitre",
+    "winlog.computer_name",
+)
+
+observables = root.without("unmapped").with("device.hostname").(item -> {
+   "a": match {item.device.exists("hostname") => {"name": "device.hostname", "type": "Hostname", "type_id": 1, "value": item.device.hostname}},
+   }).values()

@@ -1,0 +1,105 @@
+
+
+root.activity_id = 4
+root.activity_name = "Delete"
+root.category_name = "System Activity"
+root.category_uid = 1
+root.class_uid = 201002
+root.class_name = "Registry Value Activity"
+#root.type_uid = 20100204
+#root.type_name = "Registry Value Activity: Delete"
+root.message = winlog.task
+root.time = this.winlog.event_data.UtcTime.ts_strptime("%Y-%m-%d %H:%M:%S.%f").ts_unix_milli()
+root.time_dt = this.winlog.event_data.UtcTime
+root.severity_id = 1
+root.severity = "Informational"
+root.status_id = 1
+root.disposition_id = 17
+root.disposition = "Logged"
+
+root.metadata.profiles = ["host", "security_control","datetime"]
+root.metadata.event_code = this.winlog.event_id
+root.metadata.uid = this.winlog.record_id.string()
+root.metadata.logged_time = this.event.created.ts_unix_milli()
+root.metadata.logged_time_dt = this.event.created
+root.metadata.log_name = this.winlog.channel
+root.metadata.log_provider = this.winlog.provider_name
+root.metadata.product.lang = "EN"
+root.metadata.product.name = "Sysmon"
+root.metadata.product.vendor_name = "Sysmon"
+root.metadata.version = "1.0.0"
+root.metadata.original_time = this.winlog.event_data.UtcTime
+root.metadata.extension.name = "win"
+root.metadata.extension.version = "1.0.0"
+root.metadata.extension.uid = "2"
+
+root.device.type = "Server"
+root.device.type_id = 1
+root.device.hostname = this.winlog.computer_name.split(".").index(0)
+root.device.os.type_id = 100
+root.device.os.type = "Windows"
+root.device.os.name = "Microsoft Windows"
+
+root.attacks = [{
+    "version": "v13",
+    "technique": {
+        "name" : this.mitre.technique_name,
+        "uid" : this.mitre.technique_id},
+    "tactics" : [],
+}]
+
+root.actor.process.file.path = this.winlog.event_data.Image
+root.actor.process.file.name = this.winlog.event_data.Image.split("\\").index(-1)
+root.actor.process.file.type_id = match {
+    this.winlog.event_data.Image.contains(".") => 1
+    _=> 99
+}
+root.actor.process.file.type = match {
+    this.winlog.event_data.Image.contains(".") => "Regular File" # Should have a "." character if it has a file extension
+    _=> "Directory"
+}
+root.actor.process.name = this.winlog.event_data.Image.split("\\").index(-1)
+root.actor.process.pid = this.winlog.event_data.ProcessId.number()
+root.actor.process.uid = this.winlog.event_data.ProcessGuid.trim("{}")
+root.actor.process.user.name = this.winlog.event_data.User.split("\\").index(-1)
+root.actor.process.user.domain = this.winlog.event_data.User.split("\\").index(0)
+root.actor.process.user.type_id = match this.winlog.event_data.User {
+    this.contains("NT AUTHORITY") => 3
+    this.contains("S-1-5-18") => 3
+    this.contains("Administrator") => 2
+    this.contains("my_id_for_my_company") => 1
+    _=> 0
+}
+root.actor.process.user.type = match this.winlog.event_data.User {
+    this.contains("NT AUTHORITY") => "System"
+    this.contains("S-1-5-18") => "System"
+    this.contains("Administrator") => "Admin"
+    this.contains("my_id_for_my_company") => "User"
+    _=> 0
+}
+
+root.reg_value.path = this.winlog.event_data.TargetObject
+root.type_uid = root.class_uid.number() * 100 + root.activity_id.number()
+root.unmapped = this.without(
+    "winlog.task",
+    "time",
+    "winlog.event_id",
+    "winlog.channel",
+    "winlog.provider_name",
+    "winlog.event_data.Image",
+    "winlog.event_data.ProcessId",
+    "winlog.event_data.ProcessGuid",
+    "winlog.event_data.User",
+    "winlog.event_data.TargetObject",
+    "winlog.computer_name",
+    "mitre",
+    "winlog.record_id",
+    "winlog.event_data.UtcTime",
+    )
+
+observables = root.without("unmapped").with("device.hostname", "actor.process.user.name", "actor.process.file.name", "actor.process.name").(item -> {
+   "a": match {item.device.exists("hostname") => {"name": "device.hostname", "type": "Hostname", "type_id": 1, "value": item.device.hostname}},
+   "b": match {item.actor.process.user.exists("name") => {"name": "actor.process.user.name", "type": "User Name", "type_id": 4, "value": item.actor.process.user.name}},
+   "c": match {item.actor.process.file.exists("name") => {"name": "actor.process.file.name", "type": "File Name", "type_id": 7, "value": item.actor.process.file.name}},
+   "d": match {item.actor.process.exists("name") => {"name": "actor.process.name", "type": "Process Name", "type_id": 9, "value": item.actor.process.name}},
+   }).values()
